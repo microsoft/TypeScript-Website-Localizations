@@ -1,3 +1,24 @@
+# TypeScript Website Localizations
+
+A repo for handling localized versions of the TypeScript website content
+
+### How this works
+
+```sh
+git clone https://github.com/microsoft/TypeScript-Website-Localizations
+cd TypeScript-Website-Localizations
+
+# Setup
+yarn
+
+# Optional: Grab the English files
+yarn pull-en
+```
+
+That's it, you've got a copy of all the documentation and now can write documentation which follows the existing patterns.
+
+More docs to come.
+
 
 # Contributing
 

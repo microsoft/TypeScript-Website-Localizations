@@ -1,0 +1,14 @@
+{
+  "name": "typescript-website-localizations",
+  "version": "1.0.0",
+  "repository": "https://github.com/microsoft/TypeScript-Website-Localizations",
+  "author": "Microsoft",
+  "license": "MIT",
+  "scripts": {
+    "pull-en": "docs-sync pull-en microsoft/TypeScript-Website#v2",
+    "pull-others": "docs-sync yarn pull-en microsoft/TypeScript-Website#v2 --all"
+  },
+  "dependencies": {
+    "@oss-docs/sync": "*"
+  }
+}

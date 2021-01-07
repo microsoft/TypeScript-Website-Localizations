@@ -1,0 +1,12 @@
+{
+  "app": "microsoft/TypeScript-Website#v2",
+  "issues": {
+    "fr": 1
+  },
+  "docsRoots": [
+    { "from": "packages/playground-examples/copy/", "to": "docs/playground" },
+    { "from": "packages/tsconfig-reference/copy/", "to": "docs/tsconfig" },
+    { "from": "packages/typescriptlang-org/src/copy/", "to": "docs/typescriptlang" },
+    { "from": "packages/documentation/copy/", "to": "docs/documentation" }
+  ]
+}
