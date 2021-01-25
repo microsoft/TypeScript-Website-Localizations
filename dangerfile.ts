@@ -12,4 +12,9 @@
 import {danger, message} from "danger"
 
 const allFiles = [...danger.git.created_files, ...danger.git.created_files]
-message(allFiles.join(", "))
+console.log(allFiles.join(", "))
+message("Hello")
+
+message(`Files: ${allFiles.join("")}`)
+
+message(`PR: ${JSON.stringify(danger.github.pr, null, "   ")}`)
