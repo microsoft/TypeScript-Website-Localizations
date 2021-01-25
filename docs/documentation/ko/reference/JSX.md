@@ -433,3 +433,4 @@ JSX 사용자 정의에 사용되는 다양한 컴파일러 플래그가 있으�
 - [`jsxFactory`](/tsconfig/#jsxFactory)
 - [`jsxFragmentFactory`](/tsconfig/#jsxFragmentFactory)
 - [`jsxImportSource`](/tsconfig/#jsxImportSource)
+
