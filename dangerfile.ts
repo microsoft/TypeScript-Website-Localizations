@@ -14,7 +14,7 @@ const go = async () => {
       region: "eastus"
     })
     
-    message(`Translation of ${danger.github.utils.fileLinks([file])}\n\n${translation}`)
+    message(`## Translation of ${danger.github.utils.fileLinks([file])}\n\n${translation}`)
   };
 }
 
