@@ -39,7 +39,7 @@ Anda dapat menggunakan sebagian besar jenis JSDoc dan jenis TypeScript apa pun, 
 /**
  * @type {string}
  */
-var s;
+va r s;
 
 /** @type {Window} */
 var win;
