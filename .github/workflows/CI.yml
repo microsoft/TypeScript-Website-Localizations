@@ -40,11 +40,15 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt install calibre
 
-      - run: cd website
       - run: yarn install
         env:
           YARN_CHECKSUM_BEHAVIOR: ignore
+        working-directory: ./website
+
 
       # Verify the website build
       - run: yarn bootstrap
+        working-directory: ./website
+
       - run: yarn workspace typescriptlang-org build
+        working-directory: ./website
