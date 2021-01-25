@@ -37,7 +37,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
 
       # Update all the translation issues on a nightly basis
-      - run: yarn danger
+      - run: yarn danger ci
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AZURE_TRANSLATION_SUB_KEY: ${{ secrets.AZURE_TRANSLATION_SUB_KEY }}
