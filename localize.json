@@ -1,7 +1,7 @@
 {
   "app": "microsoft/TypeScript-Website#v2",
   "issues": {
-    "fr": 1
+    "pt": 1
   },
   "docsRoots": [
     { "from": "packages/playground-examples/copy/", "to": "docs/playground" },
