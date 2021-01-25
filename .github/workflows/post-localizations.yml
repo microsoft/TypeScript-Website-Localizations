@@ -39,5 +39,6 @@ jobs:
       # Update all the translation issues on a nightly basis
       - run: yarn danger ci
         env:
+          DEBUG: "*"
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AZURE_TRANSLATION_SUB_KEY: ${{ secrets.AZURE_TRANSLATION_SUB_KEY }}
