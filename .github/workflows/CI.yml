@@ -1,0 +1,50 @@
+name: CI
+on: pull_request
+
+jobs:
+  local-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: yarn 
+      - run: yarn pull-en
+      - run: yarn docs-sync validate
+
+
+  site-builds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "13.x"
+
+      # Clone this PR, and setup the deps
+      - uses: actions/checkout@v1
+      - run: yarn
+
+      # Clone the TS website
+      - name: Checkout tools repo
+        uses: actions/checkout@v2
+        with:
+          repository: microsoft/TypeScript-Website
+          path: website
+
+      # Both the microsoft/TypeScript-Website & 1 - don't really need to be there, but 
+      # this migrates the translated docs into the website
+      - run: yarn docs-sync pull microsoft/TypeScript-Website 1 --from-cwd . --to-cwd TypeScript-Website
+
+      # Get dependencies for building the ebooks
+      - run: sudo apt-get update
+      - run: sudo apt install calibre
+
+      - run: cd website
+      - run: yarn install
+        env:
+          YARN_CHECKSUM_BEHAVIOR: ignore
+
+      # Verify the website build
+      - run: yarn bootstrap
+      - run: yarn workspace typescriptlang-org build

@@ -1,0 +1,23 @@
+name: Weekly issue updates
+
+on:
+  schedule:
+    # https://crontab.guru/#0_12_*_*_1
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: yarn install
+        env:
+          YARN_CHECKSUM_BEHAVIOR: ignore
+
+      # Update all the translation issues on a nightly basis
+      - run: yarn docs-sync update-issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_BOT_TOKEN }}
