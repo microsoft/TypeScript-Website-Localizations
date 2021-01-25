@@ -32,7 +32,7 @@ No obtendrás ningún error. Sin embargo, si habilitas `checkJs` entonces obtend
 // @allowjs: true
 // @checkjs: true
 // @filename: constants.js
-module.exports.pi = parseFloat(3.124);
+module.expor=seFloat(3.124);
 
 // @filename: index.ts
 import { pi } from "./constants";
