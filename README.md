@@ -56,6 +56,12 @@ When a new language is created, we ask for a few people to become language owner
 
 The TypeScript team generally only know English, and can answer clarifying questions if needed! For quick questions, you can use the `ts-website-translation` channel in the [TypeScript Discord](https://discord.gg/typescript).
 
+#### Well tested
+
+This repo has extensive CI to ensure that you can't accidentally break the TypeScript website. 
+
+There are local, fast checks that it won't break via `yarn test` and then the full TypeScript website test suite runs with the changes, and a website build is generated to ensure that nothing breaks.
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

@@ -18,6 +18,6 @@ jobs:
           YARN_CHECKSUM_BEHAVIOR: ignore
 
       # Update all the translation issues on a nightly basis
-      - run: yarn docs-sync update-issues
+      - run: yarn docs-sync update-github-issues microsoft/TypeScript-Website-Localizations
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_BOT_TOKEN }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}

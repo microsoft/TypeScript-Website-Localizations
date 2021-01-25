@@ -7,7 +7,8 @@
   "scripts": {
     "pull-en": "docs-sync get-en microsoft/TypeScript-Website#v2",
     "pull-others": "docs-sync yarn get-en microsoft/TypeScript-Website#v2 --all",
-    "validate-paths": "docs-sync validate-against-en"
+    "validate-paths": "docs-sync validate-against-en",
+    "test": "yarn validate-paths"
   },
   "dependencies": {
     "@oss-docs/sync": "*"
