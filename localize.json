@@ -1,7 +1,15 @@
 {
   "app": "microsoft/TypeScript-Website#v2",
   "issues": {
-    "pt": 1
+    "pt": 1,
+    "ja": 3,
+    "es": 4,
+    "zn": 5,
+    "ko": 6,
+    "id": 7,
+    "uk": 8,
+    "pl": 9,
+    "it": 10
   },
   "docsRoots": [
     { "name": "Playground", "from": "packages/playground-examples/copy/", "to": "docs/playground" },
