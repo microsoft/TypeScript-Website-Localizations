@@ -54,4 +54,4 @@ jobs:
 
       # Verify the website build
       - run: yarn test
-        working-directory: ./web
+        working-directory: ./website
