@@ -11,8 +11,8 @@
     "test": "yarn validate-paths"
   },
   "dependencies": {
+    "@orta/markdown-translator": "^0.4.2",
     "@oss-docs/sync": "*",
-    "danger": "^10.6.0",
-    "markdown-translator": "^0.4.2"
+    "danger": "^10.6.0"
   }
 }
