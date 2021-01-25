@@ -8,10 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-      - run: yarn 
-      - run: yarn pull-en
-      - run: yarn docs-sync validate
-
+      - run: yarn
+      - run: yarn docs-sync validate-against-en
 
   site-builds:
     runs-on: ubuntu-latest
@@ -52,3 +50,7 @@ jobs:
 
       - run: yarn workspace typescriptlang-org build
         working-directory: ./website
+
+      # Verify the website build
+      - run: yarn test
+        working-directory: ./web
