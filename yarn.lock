@@ -120,6 +120,19 @@
     "@octokit/openapi-types" "^3.2.0"
     "@types/node" ">= 8"
 
+"@orta/markdown-translator@^0.4.2":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@orta/markdown-translator/-/markdown-translator-0.4.3.tgz#3e8e453ce3a0fa6cd77c33333578b4a7877ac1cd"
+  integrity sha512-RM0hjJ9YvtpVKPFi8iWbATofuSlrD4R/7zpbh4Qpb/Jo0s9GY+vR9GiprvLLyxMX86CzfirEJIWaXVjv3ZTypA==
+  dependencies:
+    commander "^5.0.0"
+    lodash.chunk "^4.2.0"
+    lodash.flatten "^4.4.0"
+    lodash.merge "^4.6.1"
+    remark "^12.0.0"
+    request "^2.88.0"
+    unified-stream "^1.0.4"
+
 "@oss-docs/sync@*":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@oss-docs/sync/-/sync-1.0.0.tgz#72bf1a7bd7bee3dd543558d658e32f4928d45601"
@@ -1476,19 +1489,6 @@ markdown-table@^2.0.0:
   integrity sha512-Ezda85ToJUBhM6WGaG6veasyym+Tbs3cMAw/ZhOPqXiYsr0jgocBV3j3nx+4lk47plLlIqjwuTm/ywVI+zjJ/A==
   dependencies:
     repeat-string "^1.0.0"
-
-markdown-translator@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/markdown-translator/-/markdown-translator-0.4.2.tgz#82480ebc6b46be3031bed4fd5f27d489230beb8f"
-  integrity sha512-EVC/eqG32BDnu9onmmaCeOKJoRvvdgdGMezCsbzEBoMwq8WuQ7gotdvjeljdnOeI2/gZwZ4o8MpE2Qo8KTQJ4A==
-  dependencies:
-    commander "^5.0.0"
-    lodash.chunk "^4.2.0"
-    lodash.flatten "^4.4.0"
-    lodash.merge "^4.6.1"
-    remark "^12.0.0"
-    request "^2.88.0"
-    unified-stream "^1.0.4"
 
 mdast-util-compact@^2.0.0:
   version "2.0.1"
