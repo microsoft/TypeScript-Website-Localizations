@@ -8,10 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-      - run: yarn 
-      - run: yarn pull-en
-      - run: yarn docs-sync validate
-
+      - run: yarn
+      - run: yarn docs-sync validate-against-en
 
   site-builds:
     runs-on: ubuntu-latest
@@ -25,7 +23,8 @@ jobs:
       - uses: actions/checkout@v1
       - run: yarn
 
-      # Clone the TS website
+      # Clone the TS website, basically:
+      # git clone https://github.com/microsoft/TypeScript-Website website
       - name: Checkout tools repo
         uses: actions/checkout@v2
         with:
@@ -34,17 +33,25 @@ jobs:
 
       # Both the microsoft/TypeScript-Website & 1 - don't really need to be there, but 
       # this migrates the translated docs into the website
-      - run: yarn docs-sync pull microsoft/TypeScript-Website 1 --from-cwd . --to-cwd TypeScript-Website
+      - run: yarn docs-sync pull microsoft/TypeScript-Website 1 --from-cwd . --to-cwd website
 
       # Get dependencies for building the ebooks
       - run: sudo apt-get update
       - run: sudo apt install calibre
 
-      - run: cd website
       - run: yarn install
         env:
           YARN_CHECKSUM_BEHAVIOR: ignore
+        working-directory: ./website
+
 
       # Verify the website build
       - run: yarn bootstrap
+        working-directory: ./website
+
       - run: yarn workspace typescriptlang-org build
+        working-directory: ./website
+
+      # Verify the website build
+      - run: yarn test
+        working-directory: ./website
