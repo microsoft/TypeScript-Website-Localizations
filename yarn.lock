@@ -3,9 +3,9 @@
 
 
 "@oss-docs/sync@*":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@oss-docs/sync/-/sync-0.4.1.tgz#b5f9aa339cd9d8daf891d1fa4bebd56520d09e2a"
-  integrity sha512-6pjnvUJ6EVAs8AeAKcvAAfFAODzpspgjo5ufuP04jT1Y8IZ9LLOqkPdo3xPMDb/TJPzcinFf1/DjaaZUvaEb3A==
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@oss-docs/sync/-/sync-1.0.0.tgz#72bf1a7bd7bee3dd543558d658e32f4928d45601"
+  integrity sha512-rKPSkfKelzK0/oID5NdwMTQzIyIRpHF0DIU/dZG3vck4biXSU1o//3/rOiJodR/MaJR3j2GGklhCa4W5C1F8Ig==
   dependencies:
     cachedir "^2.3.0"
     chalk "^4.1.0"

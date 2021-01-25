@@ -4,9 +4,9 @@
     "pt": 1
   },
   "docsRoots": [
-    { "from": "packages/playground-examples/copy/", "to": "docs/playground" },
-    { "from": "packages/tsconfig-reference/copy/", "to": "docs/tsconfig" },
-    { "from": "packages/typescriptlang-org/src/copy/", "to": "docs/typescriptlang" },
-    { "from": "packages/documentation/copy/", "to": "docs/documentation" }
+    { "name": "Playground", "from": "packages/playground-examples/copy/", "to": "docs/playground" },
+    { "name": "TSConfig Reference", "from": "packages/tsconfig-reference/copy/", "to": "docs/tsconfig" },
+    { "name": "Website copy", "from": "packages/typescriptlang-org/src/copy/", "to": "docs/typescriptlang" },
+    { "name": "Documentation", "from": "packages/documentation/copy/", "to": "docs/documentation" }
   ]
 }
