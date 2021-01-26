@@ -5,10 +5,14 @@
   "author": "Microsoft",
   "license": "MIT",
   "scripts": {
-    "pull-en": "docs-sync pull-en microsoft/TypeScript-Website#v2",
-    "pull-others": "docs-sync yarn pull-en microsoft/TypeScript-Website#v2 --all"
+    "pull-en": "docs-sync get-en microsoft/TypeScript-Website#v2",
+    "pull-others": "docs-sync yarn get-en microsoft/TypeScript-Website#v2 --all",
+    "validate-paths": "docs-sync validate-against-en",
+    "test": "yarn validate-paths"
   },
   "dependencies": {
-    "@oss-docs/sync": "*"
+    "@orta/markdown-translator": "^0.4.2",
+    "@oss-docs/sync": "*",
+    "danger": "^10.6.0"
   }
 }
