@@ -4,8 +4,11 @@ import {danger, message} from "danger"
 const go = async () => {
   const allMDFiles = [...danger.git.modified_files, ...danger.git.created_files].filter(f => f.endsWith(".md")).filter(f => f.split("/").length > 2)
   console.log(allMDFiles)
+  
   for (const file of allMDFiles) {
     const fileContents = await danger.github.utils.fileContents(file)
+    if (!fileContents) continue
+    
     const translation = await markdownTranslate({
       text: fileContents,
       from: file.split("/")[2],
