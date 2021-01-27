@@ -1,0 +1,64 @@
+# See https://github.com/OSS-Docs-Tools/code-owner-self-merge#readme
+
+# Collaborators for Japanese Translation of the Website
+docs/playground/ja @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
+docs/tsconfig/ja/**/*.md @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
+docs/typescriptlang/ja/**/*.ts @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
+docs/typescriptlang/ja.ts @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
+docs/documentation/ja/**/*.md @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
+
+# Collaborators for Portuguese Translation of the Website
+docs/playground/pt @khaosdoctor @danilofuchs [translation] [pt]
+docs/tsconfig/pt/**/*.md @khaosdoctor @danilofuchs [translation] [pt]
+docs/typescriptlang/pt/**/*.ts @khaosdoctor @danilofuchs [translation] [pt]
+docs/typescriptlang/pt.ts @khaosdoctor @danilofuchs [translation] [pt]
+docs/documentation/pt/**/*.md @khaosdoctor @danilofuchs [translation] [pt]
+
+# Collaborators for Spanish Translation of the Website
+docs/playground/es @KingDarBoja [translation] [es]
+docs/tsconfig/es/**/*.md @KingDarBoja [translation] [es]
+docs/typescriptlang/es/**/*.ts @KingDarBoja [translation] [es]
+docs/typescriptlang/es.ts @KingDarBoja [translation] [es]
+docs/documentation/es/**/*.md @KingDarBoja [translation] [es]
+
+# Collaborators for Chinese Translation of the Website
+docs/playground/zh @Kingwl [translation] [zh]
+docs/tsconfig/zh/**/*.md @Kingwl [translation] [zh]
+docs/typescriptlang/zh/**/*.ts @Kingwl [translation] [zh]
+docs/typescriptlang/zh.ts @Kingwl [translation] [zh]
+docs/documentation/zh/**/*.md @Kingwl [translation] [zh]
+
+# Collaborators for Korean Translation of the Website
+docs/playground/ko @Bumkeyy [translation] [ko]
+docs/tsconfig/ko/**/*.md @Bumkeyy [translation] [ko]
+docs/typescriptlang/ko/**/*.ts @Bumkeyy [translation] [ko]
+docs/typescriptlang/ko.ts @Bumkeyy [translation] [ko]
+docs/documentation/ko/**/*.md @Bumkeyy [translation] [ko]
+
+# Collaborators for Indonesian Translation of the Website
+docs/playground/id @jefrydco @nusendra @mazipan @mandaputtra [translation] [id]
+docs/tsconfig/id/**/*.md @jefrydco @nusendra @mazipan @mandaputtra [translation] [id]
+docs/typescriptlang/id/**/*.ts @jefrydco @nusendra @mazipan @mandaputtra [translation] [id]
+docs/typescriptlang/id.ts @jefrydco @nusendra @mazipan @mandaputtra [translation] [id]
+docs/documentation/id/**/*.md @jefrydco @nusendra @mazipan @mandaputtra [translation] [id]
+
+# Collaborators for Ukrainian Translation of the Website
+docs/playground/uk @AMashoshyna [translation] [uk]
+docs/tsconfig/uk/**/*.md @AMashoshyna [translation] [uk]
+docs/typescriptlang/uk/**/*.ts @AMashoshyna [translation] [uk]
+docs/typescriptlang/uk.ts @AMashoshyna [translation] [uk]
+docs/documentation/uk/**/*.md @AMashoshyna [translation] [uk]
+
+# Collaborators for Polish Translation of the Website
+docs/playground/pl @msieroslawska @TomWebwalker [translation] [pl]
+docs/tsconfig/pl/**/*.md @msieroslawska @TomWebwalker [translation] [pl]
+docs/typescriptlang/pl/**/*.ts @msieroslawska @TomWebwalker [translation] [pl]
+docs/typescriptlang/pl.ts @msieroslawska @TomWebwalker [translation] [pl]
+docs/documentation/pl/**/*.md @msieroslawska @TomWebwalker [translation] [pl]
+
+# Collaborators for Italian Translation of the Website
+docs/playground/it @Nabster101 @BassDrop07 @PyGera [translation] [it]
+docs/tsconfig/it/**/*.md @Nabster101 @BassDrop07 @PyGera [translation] [it]
+docs/typescriptlang/it/**/*.ts @Nabster101 @BassDrop07 @PyGera [translation] [it]
+docs/typescriptlang/it.ts @Nabster101 @BassDrop07 @PyGera [translation] [it]
+docs/documentation/it/**/*.md @Nabster101 @BassDrop07 @PyGera [translation] [it]
