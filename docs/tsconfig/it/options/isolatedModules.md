@@ -56,7 +56,7 @@ declare const enum Numeri {
   Zero = 0,
   Uno = 1,
 }
-console.log(Numbers.Zero + Numbers.Uno);
+console.log(Numeri.Zero + Numeri.Uno);
 ```
 
 Con questo JavaScript:
@@ -68,7 +68,7 @@ declare const enum Numeri {
   Zero = 0,
   Uno = 1,
 }
-console.log(Numbers.Zero + Numbers.Uno);
+console.log(Numeri.Zero + Numeri.Uno);
 ```
 
 Senza la conoscenza del valore di questi membri, gli altri transpilers non possono rimpiazzare il riferimento a `Numeri`, questo comporterebbe un errore di esecuzione se lasciato a se stesso (dal momento in cui non ci sono oggetti di tipo `Numeri` in esecuzione).
