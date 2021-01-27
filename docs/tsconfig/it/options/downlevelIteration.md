@@ -43,7 +43,7 @@ for (const s of str) {
 }
 ```
 
-Puoi utilizzare [tslib](https://www.npmjs.com/package/tslib) via [importHelpers](https://www.typescriptlang.org/tsconfig#importHelpers) in modo da ridurre il numero di righe inline Javascript:
+Puoi utilizzare [tslib](https://www.npmjs.com/package/tslib) via [importHelpers](#importHelpers) in modo da ridurre il numero di righe inline Javascript:
 
 ```ts twoslash
 // @target: ES5
