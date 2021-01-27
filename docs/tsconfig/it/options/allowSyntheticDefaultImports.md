@@ -1,6 +1,6 @@
 ---
 display: "Permetti Import Sintetici Predefiniti"
-oneline: "Permette di importare un modulo x da un modulo y’ quando un modulo non ha un’esportazione standard."
+oneline: "Permette di importare un modulo x da un modulo y’ quando un modulo non ha un’esportazione standard"
 ---
 
 Quando è impostato a true, `allowSyntheticDefaultImports` permette di scrivere un import così:
