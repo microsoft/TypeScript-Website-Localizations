@@ -26,10 +26,10 @@
     is-plain-object "^5.0.0"
     universal-user-agent "^6.0.0"
 
-"@octokit/openapi-types@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-3.2.0.tgz#d62d0ff7147dbf4d218616b2484ee2a5d023055d"
-  integrity sha512-X7yW/fpzF3uTAE+LbPD3HEeeU+/49o0V4kNA/yv8jQ3BDpFayv/osTOhY1y1mLXljW2bOJcOCSGZo4jFKPJ6Vw==
+"@octokit/openapi-types@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-3.3.0.tgz#8797af01feb524e3f4978e1c9bf7bc7c18ef9d25"
+  integrity sha512-s3dd32gagPmKaSLNJ9aPNok7U+tl69YLESf6DgQz5Ml/iipPZtif3GLvWpNXoA6qspFm1LFUZX+C3SqWX/Y/TQ==
 
 "@octokit/plugin-paginate-rest@^1.1.1":
   version "1.1.2"
@@ -113,11 +113,11 @@
     "@types/node" ">= 8"
 
 "@octokit/types@^6.0.3":
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.5.1.tgz#0f1a016ed2220576e94df6ae2bb6a2db8f44829a"
-  integrity sha512-meP0U3ker/Nkzfif/q7JAK2LSOnuV+72F8mgfruwVX4iTQBgkShh5LSrdI9F7aC2hF3a/8AePfYh4SLzu1RuxA==
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.6.0.tgz#165d0e7940d5f910b3373f02336c161dcdf097fe"
+  integrity sha512-nmFoU3HCbw1AmnZU/eto2VvzV06+N7oAqXwMmAHGlNDF+KFykksh/VlAl85xc1P5T7Mw8fKYvXNaImNHCCH/rg==
   dependencies:
-    "@octokit/openapi-types" "^3.2.0"
+    "@octokit/openapi-types" "^3.3.0"
     "@types/node" ">= 8"
 
 "@orta/markdown-translator@^0.4.2":
@@ -549,9 +549,9 @@ cross-spawn@^7.0.1:
     which "^2.0.1"
 
 danger@^10.6.0:
-  version "10.6.0"
-  resolved "https://registry.yarnpkg.com/danger/-/danger-10.6.0.tgz#6fcb10753143aeb60c139065b952dbe783e8ed14"
-  integrity sha512-cN9skuxtkgfnV4CQpF20L3Yt3VhMlBvvWAoh2QashDepI420gwcxoCRpxdCF7GP3aVJuh5LuI9ObrDvAxpnCFA==
+  version "10.6.1"
+  resolved "https://registry.yarnpkg.com/danger/-/danger-10.6.1.tgz#b19bd8f15f764b13a4bc3c1cb5b3a74e199f93c4"
+  integrity sha512-uoAhEziWafPq9oCHFFr4d3gMcAmiLaybUT73c1ZEWnATGlwPthGKDOE9DE0TNpr2yMeV9GgpruOD5URivP8LBw==
   dependencies:
     "@babel/polyfill" "^7.2.5"
     "@octokit/rest" "^16.43.1"
