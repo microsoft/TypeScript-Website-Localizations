@@ -15,7 +15,9 @@ yarn
 yarn pull-en
 
 # Optional: Verify your changes will correctly replace the english files
-yarn validate-paths
+yarn lint
+# Alternative: Run the lint watcher
+yarn lint --watch
 ```
 
 That's it, you've got a copy of all the documentation and now can write documentation which follows the existing patterns.
@@ -46,7 +48,8 @@ For example if you wanted to translate a new handbook page you would:
 - Pull in the English files `yarn pull-en` (these will be gitignored)
 - Find your english file: `docs/documentation/en/handbook-v2/Basics.md`
 - Recreate the same folder path in your language: `docs/documentation/it/handbook-v2/Basics.md`
-- Translate the file! 
+- Translate the file!
+- Validate your changes: `yarn lint` (or `yarn lint docs/documentation/it/handbook-v2/Basics.md`)
 - Create a pull request to this repo
 - Once merged, the translation will appear on the next website deploy
 
@@ -56,11 +59,13 @@ When a new language is created, we ask for a few people to become language owner
 
 The TypeScript team generally only know English, and can answer clarifying questions if needed! For quick questions, you can use the `ts-website-translation` channel in the [TypeScript Discord](https://discord.gg/typescript).
 
-#### Well tested
+#### Secure
 
 This repo has extensive CI to ensure that you can't accidentally break the TypeScript website. 
 
 There are local, fast checks that it won't break via `yarn test` and then the full TypeScript website test suite runs with the changes, and a website build is generated to ensure that nothing breaks.
+
+The checks may not seem obvious to an outsider, because the website is complex, so there is a watch mode which you can run via `yarn link --watch` to get instant feedback.
 
 # Contributing
 
