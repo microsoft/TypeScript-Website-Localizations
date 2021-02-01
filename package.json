@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "pull-en": "docs-sync get-en microsoft/TypeScript-Website#v2",
-    "pull-others": "docs-sync yarn get-en microsoft/TypeScript-Website#v2 --all",
+    "pull-others": "docs-sync get-en microsoft/TypeScript-Website#v2 --all",
     "validate-paths": "docs-sync validate-against-en",
     "lint": "node scripts/lint.js",
     "test": "yarn validate-paths && yarn lint"

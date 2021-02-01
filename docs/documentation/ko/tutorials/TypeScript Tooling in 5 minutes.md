@@ -172,7 +172,6 @@ TypeScript의 클래스는 JavaScript에서 자주 사용되는 동일한 프로
 </html>
 ```
 
-
 브라우저에서 `greeter.html`을 열어 첫 번째 간단한 TypeScript 웹 애플리케이션을 실행하세요!
 
 추가로: Visual Studio에서 `greeter.ts`를 열거나, TypeScript playground에 코드를 복사해보세요.
