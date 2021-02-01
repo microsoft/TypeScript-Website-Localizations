@@ -1,9 +1,9 @@
 const markdownTranslate = require('@orta/markdown-translator')
-import {danger, message} from "danger"
+import {danger, markdown} from "danger"
 
 const go = async () => {
   const allMDFiles = [...danger.git.modified_files, ...danger.git.created_files].filter(f => f.endsWith(".md")).filter(f => f.split("/").length > 2)
-  console.log(allMDFiles)
+
   
   for (const file of allMDFiles) {
     const fileContents = await danger.github.utils.fileContents(file)
@@ -17,7 +17,12 @@ const go = async () => {
       region: "eastus"
     })
     
-    message(`## Translation of ${danger.github.utils.fileLinks([file])}\n\n${translation}`)
+    markdown(`<details>
+<summary>Translation of ${danger.github.utils.fileLinks([file])}</summary>
+
+${translation}
+
+</details>`)
   };
 }
 

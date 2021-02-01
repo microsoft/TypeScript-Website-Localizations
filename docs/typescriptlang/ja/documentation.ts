@@ -1,7 +1,4 @@
-import { docCopy as enDocCopy } from "../en/documentation"
-
 export const docCopy = {
-  ...enDocCopy,
   doc_layout_title: "TypeScript学習の第一歩",
   doc_layout_description:
     "TypeScriptスタータープロジェクトを見つけましょう: AngularからReact、Node.js、そしてCLIまで",
