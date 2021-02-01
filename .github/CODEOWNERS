@@ -1,11 +1,11 @@
 # See https://github.com/OSS-Docs-Tools/code-owner-self-merge#readme
 
 # Collaborators for Japanese Translation of the Website
-docs/playground/ja @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
-docs/tsconfig/ja/**/*.md @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
-docs/typescriptlang/ja/**/*.ts @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
-docs/typescriptlang/ja.ts @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
-docs/documentation/ja/**/*.md @sasurau4 @Quramy @Naturalclar @Takepepe [translation] [jp]
+docs/playground/ja @sasurau4 @Quramy @Naturalclar [translation] [jp]
+docs/tsconfig/ja/**/*.md @sasurau4 @Quramy @Naturalclar [translation] [jp]
+docs/typescriptlang/ja/**/*.ts @sasurau4 @Quramy @Naturalclar [translation] [jp]
+docs/typescriptlang/ja.ts @sasurau4 @Quramy @Naturalclar [translation] [jp]
+docs/documentation/ja/**/*.md @sasurau4 @Quramy @Naturalclar [translation] [jp]
 
 # Collaborators for Portuguese Translation of the Website
 docs/playground/pt @khaosdoctor @danilofuchs [translation] [pt]
@@ -29,11 +29,11 @@ docs/typescriptlang/zh.ts @Kingwl [translation] [zh]
 docs/documentation/zh/**/*.md @Kingwl [translation] [zh]
 
 # Collaborators for Korean Translation of the Website
-docs/playground/ko @Bumkeyy [translation] [ko]
-docs/tsconfig/ko/**/*.md @Bumkeyy [translation] [ko]
-docs/typescriptlang/ko/**/*.ts @Bumkeyy [translation] [ko]
-docs/typescriptlang/ko.ts @Bumkeyy [translation] [ko]
-docs/documentation/ko/**/*.md @Bumkeyy [translation] [ko]
+docs/playground/ko @Bumkeyy @yeonjuan @guyeol [translation] [ko]
+docs/tsconfig/ko/**/*.md @Bumkeyy @yeonjuan @guyeol [translation] [ko]
+docs/typescriptlang/ko/**/*.ts @Bumkeyy @yeonjuan @guyeol [translation] [ko]
+docs/typescriptlang/ko.ts @Bumkeyy @yeonjuan @guyeol [translation] [ko]
+docs/documentation/ko/**/*.md @Bumkeyy @yeonjuan @guyeol [translation] [ko]
 
 # Collaborators for Indonesian Translation of the Website
 docs/playground/id @jefrydco @nusendra @mazipan @mandaputtra [translation] [id]
@@ -57,8 +57,8 @@ docs/typescriptlang/pl.ts @msieroslawska @TomWebwalker [translation] [pl]
 docs/documentation/pl/**/*.md @msieroslawska @TomWebwalker [translation] [pl]
 
 # Collaborators for Italian Translation of the Website
-docs/playground/it @Nabster101 @BassDrop07 @PyGera [translation] [it]
-docs/tsconfig/it/**/*.md @Nabster101 @BassDrop07 @PyGera [translation] [it]
-docs/typescriptlang/it/**/*.ts @Nabster101 @BassDrop07 @PyGera [translation] [it]
-docs/typescriptlang/it.ts @Nabster101 @BassDrop07 @PyGera [translation] [it]
-docs/documentation/it/**/*.md @Nabster101 @BassDrop07 @PyGera [translation] [it]
+docs/playground/it @Nabster101 @DeltaPy @PyGera  [translation] [it]
+docs/tsconfig/it/**/*.md @Nabster101 @DeltaPy @PyGera  [translation] [it]
+docs/typescriptlang/it/**/*.ts @Nabster101 @DeltaPy @PyGera  [translation] [it]
+docs/typescriptlang/it.ts @Nabster101 @DeltaPy @PyGera  [translation] [it]
+docs/documentation/it/**/*.md @Nabster101 @DeltaPy @PyGera  [translation] [it]
