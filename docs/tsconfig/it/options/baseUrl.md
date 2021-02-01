@@ -23,4 +23,4 @@ import { ciaoMondo } from "ciao/mondo";
 console.log(ciaoMondo);
 ```
 
-Se ti stanchi sempre di vedere i import come `"../"` o `"./"`. O che devi sempre cambiargli quando sposti i file, questo è un ottimo modo per risolvere il problema.
+Se sei stanco di vedere sempre i import come `"../"` o `"./"`. O che devi sempre cambiargli quando sposti i file, questo è un ottimo modo per risolvere questo problema.
