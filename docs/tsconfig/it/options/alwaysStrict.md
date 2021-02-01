@@ -1,6 +1,6 @@
 ---
 display: "Sempre Rigoroso"
-oneline: "Assicura che "use strict" sia sempre inserito all'inizio del file"
+oneline: "Assicura che 'use strict' sia sempre inserito all'inizio del file"
 ---
 
 Assicura che i tuoi file sono analizzati con la modalità ECMAScript rigoroso, ed emette `use strict` per ogni file sorgente.
