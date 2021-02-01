@@ -1,6 +1,6 @@
 export const indexCopy = {
   index_headline: "<bold>JavaScript dengan Tipe dalam skala apapun.</bold>",
-  index_byline: "TypeScript memperluas JavaScript dengan menambahkan tipe.",
+  index_byline: `TypeScript ${""}}memperluas JavaScript dengan menambahkan tipe.`,
   index_summary:
     "Dengan memahami JavaScript, TypeScript menghemat waktu Anda dalam menangkap galat dan memberikan perbaikan sebelum Anda menjalankan kode.",
   index_locations:

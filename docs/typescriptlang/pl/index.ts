@@ -1,5 +1,5 @@
 export const indexCopy = {
-  index_headline: "<bold>Typowany JavaScript w każdej skali.</bold>",
+  index_headline: `<bold>${""}}Typowany JavaScript w każdej skali.</bold>`,
   index_byline: "TypeScript rozszerza JavaScript poprzez dodatek typów.",
   index_summary:
     "TypeScript rozumie JavaScript, przez co oszczędzaj Twój czas wyłapując błędy i dostarczając rozwiązania problemów zanim uruchomisz kod.",

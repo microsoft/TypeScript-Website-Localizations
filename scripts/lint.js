@@ -186,6 +186,27 @@ function lintTSLanguageFile(file) {
       errors.push( new Error("A root language import can only include imports and an export called 'lang' "));
     }
 
+    if (lastStatementIsDeclaration) {
+      /** @type {import("typescript").VariableDeclarationList} */
+      // @ts-ignore
+      const declarationList = notImportStatements[0].declarationList
+
+      const declaration = declarationList.declarations[0]
+      if (!declaration.initializer) errors.push( new Error(`Something is off with the export in this file`));
+
+      /** @type {import("typescript").CallExpression} */
+      // @ts-ignore
+      const callExpression = declaration.initializer.expression
+      if (callExpression.getText(sourceFile) !== "defineMessages") errors.push( new Error(`The export needs to call define messages`));
+      
+      /** @type {import("typescript").ObjectLiteralExpression} */
+      // @ts-ignore
+      const arg0 = declaration.initializer.arguments[0]
+      arg0.properties.forEach(p => {
+        if (p.kind !== 290) errors.push( new Error(`You can only have spreads (...) in the export`));
+      })
+    }
+
     sourceFile.statements.forEach(s => {
       if (!ts.isImportDeclaration(s)) return
       if (!s.importClause) errors.push( new Error(`The import ${s.moduleSpecifier.getText(sourceFile)} is not importing an object`));
@@ -196,7 +217,6 @@ function lintTSLanguageFile(file) {
       if (!allowed.includes(specifier) && !specifier.startsWith('".')) {
         errors.push( new Error(`The import ${specifier} is not allowlisted ([${allowed.join(", ")}]) nor relative`));
       }
-
     })
 
   } else {
@@ -210,6 +230,32 @@ function lintTSLanguageFile(file) {
   
     if (notDeclarationList) {
       errors.push(new Error("TS files should only look like: `export const somethingCopy = { ... }` "))
+    }
+  // @ts-ignore
+    const lastStatement = sourceFile.statements[0].declarationList
+    if (!ts.isVariableDeclarationList(lastStatement))  {
+      errors.push(new Error("TS files should only look like: `export const somethingCopy = { ... }` "))
+    } else {
+      /** @type {import("typescript").ObjectLiteralExpression} */
+      // @ts-ignore
+      const init = lastStatement.declarations[0].initializer
+      if (!init) {
+        errors.push(new Error("Something is off in the const in that file"))
+      } else {
+        init.properties.forEach(prop => {
+          /** @type {import("typescript").PropertyAssignment} */
+          // @ts-ignore
+          const init = prop.initializer 
+          if (init.kind !== 10 && init.kind !== 14) {
+            if (init.kind === 218) {
+              errors.push(new Error(`The template string at ${prop.name.getText(sourceFile)} can't have evaluated code ( no \${} allowed )`))
+            } else {
+              errors.push(new Error(`The value at ${prop.name.getText(sourceFile)} isn't a string`))
+            }
+          }
+        });
+      }
+      // declarationList.declarations[0]
     }
   }
 
