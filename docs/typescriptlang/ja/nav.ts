@@ -1,7 +1,4 @@
-import { navCopy as enNavCopy } from "../en/nav"
-
 export const navCopy = {
-  ...enNavCopy,
   skip_to_content: "スキップしてメインコンテンツに進む",
   nav_documentation: "ドキュメント",
   nav_documentation_short: "ドキュメント",

@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "pull-en": "docs-sync get-en microsoft/TypeScript-Website#v2",
-    "pull-others": "docs-sync yarn get-en microsoft/TypeScript-Website#v2 --all",
+    "pull-others": "docs-sync get-en microsoft/TypeScript-Website#v2 --all",
     "validate-paths": "docs-sync validate-against-en",
     "lint": "node scripts/lint.js",
     "test": "yarn validate-paths && yarn lint"
@@ -21,6 +21,7 @@
     "chalk": "^4.1.0",
     "gatsby-remark-shiki-twoslash": "^0.7.0",
     "gray-matter": "^4.0.2",
+    "preact": "^10.5.12",
     "remark": "^13.0.0",
     "typescript": "^4.1.3"
   }
