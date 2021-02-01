@@ -12,7 +12,7 @@
 
 const chalk = require("chalk");
 const { readFileSync, watch } = require("fs");
-const { join, basename, sep } = require("path");
+const { join, basename, sep, dirname } = require("path");
 const readline = require('readline')
 
 const ts = require("typescript");
@@ -54,23 +54,23 @@ if (filterString === "--watch") {
   validateAtPaths(toValidate);
 }
 
-/** @param {string[]} mdDocs */
-function validateAtPaths(mdDocs) {
+/** @param {string[]} docs */
+function validateAtPaths(docs) {
   let errorReports = [];
 
-  mdDocs.forEach((docAbsPath, i) => {
+  docs.forEach((docAbsPath, i) => {
     const docPath = docAbsPath;
     const filename = basename(docPath);
 
     let lintFunc = undefined;
 
-    if (docAbsPath.endsWith(".ts")) {
+    if (docAbsPath.includes("typescriptlang") && docAbsPath.endsWith(".ts")) {
       lintFunc = lintTSLanguageFile;
     } else if (docAbsPath.endsWith(".md")) {
       lintFunc = lintMarkdownFile;
     }
 
-    const isLast = i === mdDocs.length - 1;
+    const isLast = i === docs.length - 1;
     const suffix = isLast ? "" : ", ";
 
     if (!lintFunc) {
@@ -130,7 +130,7 @@ function lintMarkdownFile(docPath) {
   const lang = relativePath.split(sep)[2];
 
   if (docType === "documentation") {
-    if (!greyMD.data.display) {
+    if (!greyMD.data.title) {
       errors.push(new Error("Did not have a 'display' property in the YML header"));
     }
 
@@ -138,7 +138,7 @@ function lintMarkdownFile(docPath) {
       errors.push(new Error("Expected 'layout: docs' in the YML header"));
     }
 
-    if (greyMD.data.permalink.startsWith("/" + lang)) {
+    if (!greyMD.data.permalink.startsWith("/" + lang)) {
       errors.push(new Error(`Expected 'permalink:' in the YML header to start with '/${lang}'`));
     }
   } else if (docType === "tsconfig") {
@@ -158,7 +158,7 @@ function lintMarkdownFile(docPath) {
 
 /** @param {string} file */
 function lintTSLanguageFile(file) {
-  /** @type {{ path: string, error: Error }[]} */
+  /** @type {Error[]} */
   const errors = [];
 
   const content = readFileSync(file, "utf8");
@@ -170,22 +170,50 @@ function lintTSLanguageFile(file) {
     ts.ScriptKind.TS
   );
 
-  const tooManyStatements = sourceFile.statements.length > 1;
-  const notDeclarationList = sourceFile.statements[0].kind !== 232;
+  
+  const filename = basename(file, ".ts")
+  const lastDir = dirname(file).split(sep).pop()
 
-  if (tooManyStatements) {
-    errors.push({
-      path: file,
-      error: new Error("TS files had more than one statement (e.g. more than `export const somethingCopy = { ... }` "),
-    });
+  const isRootImport = filename === lastDir
+  if (isRootImport) {
+    // This is the import for the language which pulls in all the existing messages
+    //
+    const notImportStatements = sourceFile.statements.filter(f => f.kind !== 261)
+    const lastStatementIsDeclaration = sourceFile.statements[0].kind !== 232;
+    const onlyImportsAndOneExport = lastStatementIsDeclaration && notImportStatements.length === 1
+    
+    if (!onlyImportsAndOneExport) {
+      errors.push( new Error("A root language import can only include imports and an export called 'lang' "));
+    }
+
+    sourceFile.statements.forEach(s => {
+      if (!ts.isImportDeclaration(s)) return
+      if (!s.importClause) errors.push( new Error(`The import ${s.moduleSpecifier.getText(sourceFile)} is not importing an object`));
+      
+      const allowed = ['"react-intl"']
+      const specifier = s.moduleSpecifier.getText(sourceFile)
+
+      if (!allowed.includes(specifier) && !specifier.startsWith('".')) {
+        errors.push( new Error(`The import ${specifier} is not allowlisted ([${allowed.join(", ")}]) nor relative`));
+      }
+
+    })
+
+  } else {
+    // This should just be a simple lint that it only has a declaration
+    const tooManyStatements = sourceFile.statements.length > 1;
+    const notDeclarationList = sourceFile.statements.length > 0 && sourceFile.statements[0].kind !== 232;
+  
+    if (tooManyStatements) {
+      errors.push( new Error("TS files had more than one statement (e.g. more than `export const somethingCopy = { ... }` "));
+    }
+  
+    if (notDeclarationList) {
+      errors.push(new Error("TS files should only look like: `export const somethingCopy = { ... }` "))
+    }
   }
 
-  if (notDeclarationList) {
-    errors.push({
-      path: file,
-      error: new Error("TS files should only look like: `export const somethingCopy = { ... }` "),
-    });
-  }
 
-  return errors;
+  return errors.map((e) => ({ path: file, error: e }));
+
 }
