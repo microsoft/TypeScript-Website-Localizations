@@ -100,7 +100,7 @@ interface HTMLElementTagNameMap {
 
 固有のプロパティを持たない要素は`HTMLElement`を返すだけですが、そうでない型は、(`HTMLElement`を拡張あるいは実装した)特定のインターフェースを返します。
 
-さて、`createElement`定義の残りの部分、`(tagName: K, options?: ElementCreationOptions): HTMLElementTagNameMap[K]`についてですが、第一引数 `tagName`はジェネリクスパラメータ`K`として定義されています。TypeScriptのインタープリタは、十分に精度が高いのでこの引数からジェネリクスパラメータを _推測_ することができます。開発者がこのメソッドを使うときには、実際にはジェネリクスパラメータを指定する必要がない、ということです。`tagName`引数に渡された値がなんであれ、`K`として推測され、定義の残りの部分を通してずっと使用することができます。その結果次のようなことが起こります。戻り値`HTMLElementTagNameMap[K]`は`tagName`引数を取り、それを使って対応する型を返します。この定義によって、前述のコードスニペットの`p`変数は`HTMLParagraphElement`型を取得します。また、もしコードが`document.createElement('a')`であったならば、`HTMLAnchorElement`型の要素となっていました。
+さて、`createElement`定義の残りの部分、`(tagName: K, options?: ElementCreationOptions): HTMLElementTagNameMap[K]`についてですが、第一引数 `tagName`はジェネリクスパラメータ`K`として定義されています。TypeScriptのインタープリタは、賢いのでこの引数からジェネリクスパラメータを _推論_ することができます。開発者がこのメソッドを使うときには、実際にはジェネリクスパラメータを指定する必要がない、ということです。`tagName`引数に渡された値がなんであれ、`K`として推測され、定義の残りの部分を通してずっと使用することができます。その結果次のようなことが起こります。戻り値`HTMLElementTagNameMap[K]`は`tagName`引数を取り、それを使って対応する型を返します。この定義によって、前述のコードスニペットの`p`変数は`HTMLParagraphElement`型を取得します。また、もしコードが`document.createElement('a')`であったならば、`HTMLAnchorElement`型の要素を返します。
 
 ## `Node`インターフェース
 
