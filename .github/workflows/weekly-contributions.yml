@@ -1,0 +1,31 @@
+name: Update Attributions Weekly
+
+on:
+    schedule:
+      # https://crontab.guru/#0_6_*_*_*
+      - cron: '0 6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+        registry-url: https://registry.npmjs.org/
+
+    # Updates the attribution.json file in git    
+    - uses: OSS-Docs-Tools/create-attribution-json@master
+      with:
+        glob: "docs/documentation/*.md"
+    
+    - name: Configure git and update attribution.json
+      run: |
+        git config user.email "bot@github.com"
+        git config user.name "GitHub Bot"
+        git add -f attribution.json
+        if git commit -m "Update attribution.json"; then
+          git push
+        fi
