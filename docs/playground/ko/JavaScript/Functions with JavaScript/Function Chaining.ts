@@ -6,8 +6,8 @@
 // 코드를 집중시킬 수 있습니다.
 
 // 체이닝으로 동작하는 흔한 API는 jQuery입니다.
-// 여기에 DefinitelyTyped의 타입과 함께 사용한
-// jQuery 예시가 있습니다:
+// DefinitelyTyped의 타입과 함께 사용한
+// jQuery 예시입니다.:
 
 import $ from "jquery";
 
