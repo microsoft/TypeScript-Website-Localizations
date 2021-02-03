@@ -1,6 +1,6 @@
 //// { compiler: {  noImplicitAny: false }, order: 2 }
 
-// TypeScript 3.7 버전에 있는 '사용 빈도 수에 따른(infer from usage)' 코드 수정은 
+// TypeScript 3.7 버전에 있는 '사용법에서 추론한' 코드 수정은
 // 더욱 똑똑해졌습니다. 이제부터는 알려진 중요한 
 // 타입(문자열, 숫자, 배열, 프로미스)의 리스트로 사용되며, 
 // 이러한 객체의 API와 일치하는 타입의 사용에 따라
@@ -22,7 +22,7 @@ function awaitPromise(promise) {
   promise.then((value) => console.log(value));
 }
 
-// 함수를 유추하고, 다음은 반환 타입입니다:
+// 함수와 반환 타입을 유추합니다:
 
 function inferAny(app) {
   const result = app.use("hi");

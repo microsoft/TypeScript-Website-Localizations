@@ -3,11 +3,9 @@ display: "jsxImportSource"
 oneline: "Specify module specifier used to import the JSX factory functions when using `jsx: react-jsx*`.`"
 ---
 
-Typescript 4.1 버전에 소개 된 [jsx](#jsx)를 `"react-jsx"` 또는 `"react-jsxdev"`로 
-사용 할 때, `jsx` 와 `jsxs` 내장 함수를 import하여 사용하는 
-모듈 지정자(module specifier)를 선언합니다. 
+Typescript 4.1 버전에 소개된 [jsx](#jsx)를 `"react-jsx"` 또는 `"react-jsxdev"`로 사용할 때, `jsx` 와 `jsxs` 팩터리 함수를 import 하는데 사용할 모듈 지정자를 선언합니다.
 
-[React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)에서, 라이브러리는 독립 된 import를 통하여 새로운 형태의 JSX 변환을 지원해줍니다.
+[React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)에서, 라이브러리는 독립된 import를 통하여 새로운 형태의 JSX 변환을 지원해 줍니다.
 
 예를 들어: 
 
