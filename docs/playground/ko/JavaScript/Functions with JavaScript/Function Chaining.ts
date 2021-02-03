@@ -1,9 +1,9 @@
 //// { order: 2, compiler: { esModuleInterop: true } }
 
-// 함수 체이닝 API는 JavaScript의 흔한 패턴입니다.
-// 이는 여러분의 코드를 
-// 중간값을 덜 포함함으로써 집중시킬 수 있고
-// JavaScript 중첩 특성 덕분에 더 읽기 쉽게 만들 수 있습니다.
+// 함수 체이닝 API는 JavaScript에서 흔한 패턴으로,
+// JavaScript 의 중첩 특성으로 인해
+// 중간값을 줄이고 가독성을 높혀
+// 코드를 집중시킬 수 있습니다.
 
 // 체이닝으로 동작하는 실제로 흔한 API는 jQuery입니다.
 // 여기에 DefinitelyTyped의 타입과 함께 사용한
