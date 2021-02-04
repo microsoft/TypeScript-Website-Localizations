@@ -3,7 +3,8 @@ display: "List Files"
 oneline: "Print all of the files read during the compilation."
 ---
 
-컴파일 일부의 파일 이름을 출력합니다. 이 기능은 TypeScript에 예상한 파일이 포함되어 있는지 확실하지 않을 때 유용합니다.
+컴파일하는 파일 이름을 출력합니다. 
+이 기능은 TypeScript에 예상한 파일이 포함되어 있는지 확실하지 않을 때 유용합니다.
 
 예를들면:
 
