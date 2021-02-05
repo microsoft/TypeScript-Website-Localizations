@@ -17,7 +17,7 @@ const go = async () => {
       region: "eastus"
     })
     
-    markdown(`<details open>
+    markdown(`<details>
 <summary>Translation of ${danger.github.utils.fileLinks([file])}</summary>
 
 ${translation}

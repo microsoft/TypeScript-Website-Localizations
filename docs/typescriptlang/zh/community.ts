@@ -20,9 +20,5 @@ export const comCopy = {
   com_online_typed_available_for: "可用的通用库和框架",
   com_person: "亲身参与",
   com_conferences: "会议",
-  com_conferences_alt_img: "标识",
-  nav_: {
-    id: "foo",
-    defaultMessage: "foo",
-  },
+  com_conferences_alt_img: "标识"
 }
