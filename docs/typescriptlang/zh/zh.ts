@@ -8,7 +8,7 @@ import { indexCopy } from "./index"
 import { comCopy } from "./community"
 import { handbookCopy } from "./handbook"
 
-export const messages = {
+export const lang = defineMessages({
   ...englishMessages,
   ...navCopy,
   ...docCopy,
@@ -17,6 +17,4 @@ export const messages = {
   ...playCopy,
   ...comCopy,
   ...handbookCopy,
-}
-
-export const lang = defineMessages(messages)
+})
