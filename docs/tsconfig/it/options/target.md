@@ -9,8 +9,8 @@ Puoi scegliere di impostare un target inferiore se il tuo codice viene eseguito 
 La configurazione del `target` cambierà quali caratteristiche di JS verranno declassate e quali rimarranno intatte.
 Per esempio, una funzione a freccia `() => this` verrà trasformata in un'espressione `function` equivalente se il `target` è ES5 o inferiore.
 
-Cambiando il `target` cambia anche il valore predfinito di [`lib`](#lib).
-E' possibile "mescolare ed abbinare" le impostazioni di `target` e `lib` come si desidera, ma è possibile semplicemente impostare il `target`, per comodità.
+Cambiando il `target` cambia anche il valore predefinito di [`lib`](#lib).
+È possibile "mescolare ed abbinare" le impostazioni di `target` e `lib` come si desidera, ma è possibile semplicemente impostare il `target`, per comodità.
 
 Se si sta utilizzando soltanto Node.js, si consiglia la versione di `target` sviluppata specificamente per Node:
 
