@@ -3,7 +3,7 @@ display: "Directory dichiarazioni"
 oneline: "Definisce la directory principale per i file .d.ts"
 ---
 
-Offre una maniera di configurare la directory root in cui salvare i file di dichiarazione.
+Offre una modo di configurare la directory root in cui salvare i file di dichiarazione.
 
 ```
 esempio
