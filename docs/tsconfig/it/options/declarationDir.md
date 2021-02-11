@@ -23,7 +23,7 @@ con questo `tsconfig.json`:
 }
 ```
 
-Inserira i file `d.ts` per `index.ts` in una cartella `tipi`:
+Inserirà i file `d.ts` per `index.ts` in una cartella `tipi`:
 
 ```
 esempio
