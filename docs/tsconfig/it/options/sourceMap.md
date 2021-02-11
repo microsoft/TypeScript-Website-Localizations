@@ -1,6 +1,6 @@
 ---
 display: "Source Map"
-oneline: "Cria mapas de código para os arquivos JavaScript emitidos"
+oneline: "Source Map del codice JavaScript generato"
 
 ---
 
