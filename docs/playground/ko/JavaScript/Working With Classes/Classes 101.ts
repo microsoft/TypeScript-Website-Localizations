@@ -49,7 +49,7 @@ class FoodTruck extends Vendor {
 const nameOnlyTruck = new FoodTruck("Salome's Adobo");
 
 // 매개변수 2개를 정확하게 전달하면
-// FoodTruck의 새로운 인스턴스를 생성할 수 있음:
+// FoodTruck의 새로운 인스턴스를 생성할 수 있습니다:
 
 const truck = new FoodTruck("Dave's Doritos", "junk");
 console.log(truck.greet());
