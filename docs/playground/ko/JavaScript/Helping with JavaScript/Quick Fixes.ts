@@ -7,7 +7,7 @@
 
 const eulersNumber = 2.7182818284;
 eulersNumber.toStrang();
-//           ^______^ - 전구를 보기 위해 이것을 선택하세요
+//           ^______^ - 빛나는 전구 아이콘을 보기 위해 이것을 선택하세요
 
 class ExampleClass {
   method() {
