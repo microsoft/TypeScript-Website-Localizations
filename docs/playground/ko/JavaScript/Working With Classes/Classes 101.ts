@@ -42,7 +42,7 @@ class FoodTruck extends Vendor {
   }
 }
 
-// 우리는 새로운 FoodTruck을 생성하기 위하여
+// 새로운 FoodTruck을 생성하기 위하여
 // 매개변수 2개가 필요하다고 나타냈기 때문에
 // TypeScript는 매개변수를 오직 하나만 사용할 경우, 에러를 표시:
 
