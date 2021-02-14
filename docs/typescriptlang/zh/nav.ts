@@ -3,7 +3,7 @@ export const navCopy = {
   nav_documentation: "文档",
   nav_documentation_short: "文档",
   nav_download: "下载",
-  nav_community: "联系我们",
+  nav_community: "社区",
   nav_tools: "工具链",
   nav_search_placeholder: "搜索文档",
   nav_search_aria: "搜索 TypeScript 网站",
