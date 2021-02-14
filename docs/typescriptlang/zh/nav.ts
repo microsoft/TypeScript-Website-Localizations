@@ -9,7 +9,7 @@ export const navCopy = {
   nav_search_aria: "搜索 TypeScript 网站",
   // let me know if you can't make this work in your lang:
   // TypeScript X.Y [stable][between?]Z.Y[beta/rc]
-  nav_playground: "游乐场",
+  nav_playground: "演练场",
   nav_playground_short: "尝试",
   nav_handbook: "手册",
   nav_this_page_in_your_lang: "当前页面有适用于您语言的翻译版本",
