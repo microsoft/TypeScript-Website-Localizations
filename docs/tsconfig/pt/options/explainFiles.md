@@ -46,7 +46,7 @@ index.ts
 
 A saída acima mostra:
 
-- The initial lib.d.ts lookup based on [`target`](#include), and the chain of `.d.ts` files which are referenced
-- The `index.ts` file located via the default pattern of [`include`](#include)
+- A busca lib.d.ts inicial baseada em [`target`](#include), e a cadeia de arquivos `.d.ts` que são referenciados
+- O arquivo `index.ts` localizado através do pattern padrão de [`include`](#include)
 
 Esta opção é destinada à depurar como um arquivo se tornou parte de sua compilação.
