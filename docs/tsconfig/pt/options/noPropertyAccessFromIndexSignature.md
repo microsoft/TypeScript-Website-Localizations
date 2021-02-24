@@ -39,7 +39,7 @@ Ativar esta flag irá gerar um erro porque o campo desconhecido usa a sintaxe po
 // @errors: 4111
 // @noPropertyAccessFromIndexSignature
 declare function obterConfiguracoes(): configuracoesDoJogo;
-interface configuracoesDoJogo {
+interface ConfiguracoesDoJogo {
   velocidade: "rápido" | "médio" | "lento";
   qualidade: "alta" | "baixa";
   [chave: string]: string;
