@@ -11,7 +11,7 @@ Sem esta flag, o Typescript irá permitir que você use a sintaxe de ponto para 
 // @errors: 4111
 declare function obterConfiguracoes(): configuracoesDoJogo;
 // ---cut---
-interface configuracoesDoJogo {
+interface ConfiguracoesDoJogo {
   // Propriedades diretamente conhecidas
   velocidade: "rápido" | "médio" | "lento";
   qualidade: "alta" | "baixa";
