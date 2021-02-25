@@ -9,7 +9,7 @@ Sem esta flag, o Typescript irá permitir que você use a sintaxe de ponto para 
 
 ```ts twoslash
 // @errors: 4111
-declare function obterConfiguracoes(): configuracoesDoJogo;
+declare function obterConfiguracoes(): ConfiguracoesDoJogo;
 // ---cut---
 interface ConfiguracoesDoJogo {
   // Propriedades diretamente conhecidas
