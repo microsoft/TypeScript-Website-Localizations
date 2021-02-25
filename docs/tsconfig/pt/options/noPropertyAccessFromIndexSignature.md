@@ -38,7 +38,7 @@ Ativar esta flag irá gerar um erro porque o campo desconhecido usa a sintaxe po
 ```ts twoslash
 // @errors: 4111
 // @noPropertyAccessFromIndexSignature
-declare function obterConfiguracoes(): configuracoesDoJogo;
+declare function obterConfiguracoes(): ConfiguracoesDoJogo;
 interface ConfiguracoesDoJogo {
   velocidade: "rápido" | "médio" | "lento";
   qualidade: "alta" | "baixa";
