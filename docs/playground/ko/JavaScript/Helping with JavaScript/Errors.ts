@@ -27,8 +27,8 @@ myStringOrObject = {};
 
 // 여기에서 더 자세히 읽어볼 수 있습니다: example:jsdoc-support
 
-// 다음 오류를 무시하기 위해 TypeScript에 알려서
-// 실패를 중요하지 않다고 선언할 수 있습니다:
+// TypeScript 에 다음 오류를 무시하도록 하여
+// 오류를 중요하지 않다고 선언할 수 있습니다:
 
 let myIgnoredError = "123";
 // @ts-ignore
