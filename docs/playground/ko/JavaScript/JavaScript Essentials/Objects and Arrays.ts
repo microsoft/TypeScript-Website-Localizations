@@ -36,10 +36,10 @@ console.log(purchaseOrder.item.type);
 //
 //   purchaseOrder.item.type
 
-// TypeScript는 이 파일에서 어떤 JavaScript 오브젝트가
-// 사용 가능한지에 대한 피드백을 playground에 제공하며, 오타를 방지할 수 있게 해주고
+// TypeScript는 이 파일에서 사용 가능한 JavaScript 오브젝트에 대한 피드백을
+// playground에 제공하며, 오타를 방지할 수 있게 해주고
 // 다른 곳에서 찾아볼 필요 없이
-// 추가 정보를 확인해볼 수 있도록 합니다.
+// 추가 정보를 제공해줍니다.
 
 // TypeScript는 배열에도 동일한 기능을 제공합니다.
 // 여기에 구매 주문만 포함된 배열이 있습니다.
