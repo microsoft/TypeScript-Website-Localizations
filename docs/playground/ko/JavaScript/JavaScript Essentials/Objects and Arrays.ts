@@ -29,7 +29,7 @@ const purchaseOrder = {
 console.log(purchaseOrder.item.type);
 
 // () 사이에 있는 코드의 각 부분에 마우스로 호버해보면,
-// 각 부분에 관련된 더 많은 정보를 제공하는 TypeScript를 확인해볼 수 있습니다.
+// TypeScript가 각 부분에 대해 더 많은 정보를 제공하는 것을 확인할 수 있습니다.
 // 아래에 다시 작성해보세요:
 
 // 문자별로 다음 줄에 이것을 복사해보세요:
