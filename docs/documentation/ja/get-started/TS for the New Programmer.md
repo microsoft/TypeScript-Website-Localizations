@@ -1,65 +1,65 @@
 ---
-title: TypeScript for the New Programmer
-short: TS for the New Programmer
+title: 新米プログラマーのための TypeScript
+short: 新米プログラマーのための TS
 layout: docs
-permalink: /docs/handbook/typescript-from-scratch.html
-oneline: Learn TypeScript from scratch
+permalink: /ja/docs/handbook/typescript-from-scratch.html
+oneline: ゼロから TypeScript を学ぶ
 ---
 
-Congratulations on choosing TypeScript as one of your first languages — you're already making good decisions!
+初めての言語のひとつとして TypeScript を選んだこと、おめでとうございます -- 良い選択をしましたね！
 
-You've probably already heard that TypeScript is a "flavor" or "variant" of JavaScript.
-The relationship between TypeScript (TS) and JavaScript (JS) is rather unique among modern programming languages, so learning more about this relationship will help you understand how TypeScript adds to JavaScript.
+おそらく TypeScript が JavaScript"風"だとか"亜種"だとかはすでに聞いたことがあるでしょう。
+TypeScript(TS) と JavaScript(JS) の関係は、モダンなプログラミング言語の中ではとてもユニークなものなので、これらの関係を学ぶことで TypeScript が JavaScript をどのように強力にしたのか理解することができます。
 
-## What is JavaScript? A Brief History
+## JavaScript とは？簡潔な歴史
 
-JavaScript (also known as ECMAScript) started its life as a simple scripting language for browsers.
-At the time it was invented, it was expected to be used for short snippets of code embedded in a web page — writing more than a few dozen lines of code would have been somewhat unusual.
-Due to this, early web browsers executed such code pretty slowly.
-Over time, though, JS became more and more popular, and web developers started using it to create interactive experiences.
+JavaScript(別名 ECMAScript) は、ブラウザ用のシンプルなスクリプト言語として生まれました。
+この言語が発明された当時は、Web ページに埋め込まれた短いコードのスニペットとして使われることが期待されていました - 数十行以上のコードを書くことはややまれだったでしょう。
+そのため、初期の Web ブラウザではそのようなコードの実行はとても遅いものでした。
+しかし、時が経つにつれ、JS の人気はいよいよ増していき、Web 開発者はインタラクティブな体験を作るために使いはじめます。
 
-Web browser developers responded to this increased JS usage by optimizing their execution engines (dynamic compilation) and extending what could be done with it (adding APIs), which in turn made web developers use it even more.
-On modern websites, your browser is frequently running applications that span hundreds of thousands of lines of code.
-This is long and gradual growth of "the web", starting as a simple network of static pages, and evolving into a platform for rich _applications_ of all kinds.
+Web ブラウザの開発者は、JS の使用量の増大に対して、実行エンジンの最適化(動的コンパイル)や JS でできることの拡張(API の追加)によって対応し、これによって Web 開発者はさらに JS を使うようになりました。
+モダンな Web サイトでは、ブラウザは何十万行にも及ぶコードのアプリケーションを頻繁に実行しています。
+これが、静的なページのシンプルなネットワークとしてはじまり、あらゆる種類のリッチな _アプリケーション_ のためのプラットフォームへと進化していく"Web"の長く緩やかな成長過程です。
 
-More than this, JS has become popular enough to be used outside the context of browsers, such as implementing JS servers using node.js.
-The "run anywhere" nature of JS makes it an attractive choice for cross-platform development.
-There are many developers these days that use _only_ JavaScript to program their entire stack!
+それ以上に、JS は node.js を使った JS サーバーの実装など、ブラウザのコンテキストの外側でも使えるほど普及してきました。
+"どこでも実行できる"という JS の性質は、クラスプラットフォーム開発にとって魅力的な選択肢です。
+今日では、スタック全体をプログラムするために JavaScript _だけ_ を使う開発者もたくさんいます。
 
-To summarize, we have a language that was designed for quick uses, and then grew to a full-fledged tool to write applications with millions of lines.
-Every language has its own _quirks_ — oddities and surprises, and JavaScript's humble beginning makes it have _many_ of these. Some examples:
+要約すると、手早く使用するために設計された言語があり、それが何百万行ものアプリケーションを記述するための本格的なツールとして成長した、ということです。
+どんな言語でも、独自の _癖_ (特異性や意外性) がありますが、JavaScript にはその謙虚なはじまりゆえに、とくに _たくさん_ 癖があります。いくつか例を見てみましょう:
 
-- JavaScript's equality operator (`==`) _coerces_ its arguments, leading to unexpected behavior:
+- JavaScript の等価演算子(`==`)は、引数を _型強制_ しますが、これは予期しないふるまいを引き起こします:
 
   ```js
   if ("" == 0) {
-    // It is! But why??
+    // これは等価です！ でもなぜ？？
   }
   if (1 < x < 3) {
-    // True for *any* value of x!
+    // x が "どのような" 値であっても True です！
   }
   ```
 
-- JavaScript also allows accessing properties which aren't present:
+- JavaScript では、存在しないプロパティにアクセスすることもできます:
 
   ```js
   const obj = { width: 10, height: 15 };
-  // Why is this NaN? Spelling is hard!
+  // なぜこれが NaN なのか？正しくスペルを打つのが難しい！
   const area = obj.width * obj.heigth;
   ```
 
-Most programming languages would throw an error when these sorts of errors occur, some would do so during compilation — before any code is running.
-When writing small programs, such quirks are annoying but manageable; when writing applications with hundreds or thousands of lines of code, these constant surprises are a serious problem.
+ほとんどのプログラミング言語は、こういったエラーが起こった時にはエラーをスローしてくれます。コンパイル中、つまりコードの実行前にエラーのスローを行う言語もあります。
+小さなプログラムを書いているときはこういった癖は迷惑ですが、なんとかなります。対して、何百、何千行といったコードのアプリケーションを書いているときは、こうした癖が次々と表出し、深刻な問題となります。
 
-## TypeScript: A Static Type Checker
+## TypeScript: 静的な型チェッカー
 
-We said earlier that some languages wouldn't allow those buggy programs to run at all.
-Detecting errors in code without running it is referred to as _static checking_.
-Determining what's an error and what's not based on the kinds of values being operated on is known as static _type_ checking.
+いくつかの言語ではこういったバグだらけのプログラムを実行することはできないと前述しました。
+コードを実行せずにエラーを検出することを、 _静的チェック_ と言います。
+何がエラーで何がエラーでないのか、操作されている値の種類に基づいて検出することは、静的な _型_ チェックと呼ばれています。
 
-TypeScript checks a program for errors before execution, and does so based on the _kinds of values_, it's a _static type checker_.
-For example, the last example above has an error because of the _type_ of `obj`.
-Here's the error TypeScript found:
+TypeScript は、実行前にプログラムのエラーがないかチェックしますが、これは _値の種類_ に基づいて行われるので _静的な型チェッカー_ と言えます。
+例えば、前述の最後の例では`obj`の _型_ が原因でエラーが出ています。
+以下は、TypeScript が検出したエラーです:
 
 ```ts twoslash
 // @errors: 2551
@@ -67,60 +67,60 @@ const obj = { width: 10, height: 15 };
 const area = obj.width * obj.heigth;
 ```
 
-### A Typed Superset of JavaScript
+### JavaScript の型付きスーパーセット
 
-How does TypeScript relate to JavaScript, though?
+ところで、TypeScript は JavaScript とどんな関係にあるのでしょうか？
 
-#### Syntax
+#### 構文
 
-TypeScript is a language that is a _superset_ of JavaScript: JS syntax is therefore legal TS.
-Syntax refers to the way we write text to form a program.
-For example, this code has a _syntax_ error because it's missing a `)`:
+TypeScript は JavaScript の _スーパーセット_ である言語です。したがって JS の構文は正しい TS です。
+構文とは、プログラムを形成するテキストの書き方のことを言います。
+例えば、以下のコードには`)`がないので _構文_ エラーになります。
 
 ```ts twoslash
 // @errors: 1005
 let a = (4
 ```
 
-TypeScript doesn't consider any JavaScript code to be an error because of its syntax.
-This means you can take any working JavaScript code and put it in a TypeScript file without worrying about exactly how it is written.
+TypeScript は、どんな JavaScript コードであっても、構文が原因でエラーになるとは考えません。
+つまり、JavaScript がいったいどのように書かれているのかについては気にする必要はなく、動作する JavaScript コードであれば何でも TypeScript のファイルに入れることができるということです。
 
-#### Types
+#### 型
 
-However, TypeScript is a _typed_ superset, meaning that it adds rules about how different kinds of values can be used.
-The earlier error about `obj.heigth` was not a _syntax_ error: it is an error of using some kind of value (a _type_) in an incorrect way.
+しかし、TypeScript は _型付き_ のスーパーセットです。つまり、異なる種類の値がどのように使われることができるかといったルールを追加するという言語であるということです。
+前述の`obj.heigth`のエラーは _構文_ のエラーではありません。ある種の値(_型_)を間違った方法で使ったことによるエラーです。
 
-As another example, this is JavaScript code that you can run in your browser, and it _will_ log a value:
+別の例として、以下はブラウザで実行でき、値をログに出力するであろう JavaScript コードです。
 
 ```js
 console.log(4 / []);
 ```
 
-This syntactically-legal program logs `Infinity`.
-TypeScript, though, considers division of number by an array to be a nonsensical operation, and will issue an error:
+これは構文的に正しいプログラムで、`Infinity`と出力します。
+しかし、TypeScript は配列による数値の除算を意味のない操作だとみなし、エラーを出すでしょう。
 
 ```ts twoslash
 // @errors: 2363
 console.log(4 / []);
 ```
 
-It's possible you really _did_ intend to divide a number by an array, perhaps just to see what happens, but most of the time, though, this is a programming mistake.
-TypeScript's type checker is designed to allow correct programs through while still catching as many common errors as possible.
-(Later, we'll learn about settings you can use to configure how strictly TypeScript checks your code.)
+何が起こるのか単に確かめるために、配列で数値を割ろうとした可能性もありますが、たいていの場合はプログラミング上のミスでしょう。
+TypeScript の型チェッカーは、正しいプログラムは通過させ、同時に可能な限り、よくあるエラーをキャッチできるように設計されています。
+(後ほど、TypeScript がコードをチェックする厳しさの度合いを調節する設定について学びます。)
 
-If you move some code from a JavaScript file to a TypeScript file, you might see _type errors_ depending on how the code is written.
-These may be legitimate problems with the code, or TypeScript being overly conservative.
-Throughout this guide we'll demonstrate how to add various TypeScript syntax to eliminate such errors.
+JavaScript ファイルから TypeScript ファイルにコードを移した場合、コードの記述方法によっては _型エラー_ が表示されるかもしれません。
+これらはコードにある理にかなった問題かもしれませんし、TypeScript が過度に保守的になっているのかもしれません。
+本ガイドでは、このようなエラーを排除するための様々な TypeScript 構文を追加する方法について説明します。
 
-#### Runtime Behavior
+#### 実行中の動作
 
-TypeScript is also a programming language that preserves the _runtime behavior_ of JavaScript.
-For example, dividing by zero in JavaScript produces `Infinity` instead of throwing a runtime exception.
-As a principle, TypeScript **never** changes the runtime behavior of JavaScript code.
+TypeScript は JavaScript の _実行中の動作_ を維持するプログラミング言語でもあります。
+例えば、JavaScript では 0 で除算すると実行時の例外が発生するのではなく、`Infinity`が生成されます。
+原則として、TypeScript は JavaScript コードの実行時の動作を **決して** 変更しません。
 
-This means that if you move code from JavaScript to TypeScript, it is **guaranteed** to run the same way, even if TypeScript thinks that the code has type errors.
+つまり、JavaScript から TypeScript にコードを移行した場合、TypeScript がコードに型エラーを検出したとしても、同じように実行されることが **保証** されています。
 
-Keeping the same runtime behavior as JavaScript is a foundational promise of TypeScript because it means you can easily transition between the two languages without worrying about subtle differences that might make your program stop working.
+JavaScript と同じ実行時の動作を維持することは、TypeScript の基本的な約束です。というのも、これはプログラムが動作しなくなる可能性があるようなささいな違いについて気にすることなく、2 つの言語間を簡単に移行できることを意味するからです。
 
 <!--
 Missing subsection on the fact that TS extends JS to add syntax for type
@@ -128,16 +128,16 @@ specification.  (Since the immediately preceding text was raving about
 how JS code can be used in TS.)
 -->
 
-#### Erased Types
+#### 型の削除
 
-Roughly speaking, once TypeScript's compiler is done with checking your code, it _erases_ the types to produce the resulting "compiled" code.
-This means that once your code is compiled, the resulting plain JS code has no type information.
+大ざっぱに言ってしまえば、いったん TypeScript のコンパイラがコードのチェックを終えると、"コンパイルされた"コードを生成するために型を _削除_ します。
+つまり、ひとたびコードがコンパイルされれば、結果として生じる JS コードには型情報が含まれないということです。
 
-This also means that TypeScript never changes the _behavior_ of your program based on the types it inferred.
-The bottom line is that while you might see type errors during compilation, the type system itself has no bearing on how your program works when it runs.
+これはまた、TypeScript が推測した型に基づいてプログラムの _動作_ を変更することは決してないということを意味します。
+要するに、コンパイル中に型エラーが表示されるかもしれませんが、型システム自体はプログラムの実行中の動作とは関係がないということです。
 
-Finally, TypeScript doesn't provide any additional runtime libraries.
-Your programs will use the same standard library (or external libraries) as JavaScript programs, so there's no additional TypeScript-specific framework to learn.
+そして最後に、TypeScript はランタイムライブラリを追加しません。
+あなたのプログラムは JavaScript プログラムと同じ標準ライブラリ(または外部ライブラリ)を使用するので、学習が必要な TypeScript 特有のフレームワークが追加されるということはありません。
 
 <!--
 Should extend this paragraph to say that there's an exception of
@@ -147,25 +147,25 @@ with an example --- something like `?.` would be good in showing readers
 that this document is maintained.)
 -->
 
-## Learning JavaScript and TypeScript
+## JavaScript と TypeScript の学習
 
-We frequently see the question "Should I learn JavaScript or TypeScript?".
+"JavaScript と TypeScript、どちらを学ぶべきか？"という質問をよく目にします。
 
-The answer is that you can't learn TypeScript without learning JavaScript!
-TypeScript shares syntax and runtime behavior with JavaScript, so anything you learn about JavaScript is helping you learn TypeScript at the same time.
+答えとしては、JavaScript を学ばずして TypeScript を学ぶことはできません！
+TypeScript は JavaScript と構文および実行中の動作を共有しているので、JavaScript を学ぶことは、同時に TypeScript を学ぶことにもつながります。
 
-There are many, many resources available for programmers to learn JavaScript; you should _not_ ignore these resources if you're writing TypeScript.
-For example, there are about 20 times more StackOverflow questions tagged `javascript` than `typescript`, but _all_ of the `javascript` questions also apply to TypeScript.
+プログラマが JavaScript を学ぶための資料はとてもたくさんあります。TypeScript を書いているのであれば、こうした資料は無視できません。
+例えば、StackOverflow には`javascript`のタグが付いた質問は`typescript`の約 20 倍ありますが、`javascript`の質問は _すべて_ TypeScript にも当てはまります。
 
-If you find yourself searching for something like "how to sort a list in TypeScript", remember: **TypeScript is JavaScript's runtime with a compile-time type checker**.
-The way you sort a list in TypeScript is the same way you do so in JavaScript.
-If you find a resource that uses TypeScript directly, that's great too, but don't limit yourself to thinking you need TypeScript-specific answers for everyday questions about how to accomplish runtime tasks.
+もし"TypeScript でリストをソートする方法"といったものを検索していることに気づいたら、**TypeScript はコンパイル時の型チェッカーを備えた JavaScript のランタイム** であることを思い出してください。
+TypeScript でリストをソートする方法は、JavaScript で行う方法と同じです。
+TypeScript を直接使用している資料を見つけた場合は、それは素晴らしいことですが、実行時のタスクを達成する方法についてのありふれた質問に対して、TypeScript 特有の答えが必要だと、思考を制限しないようにしてください。
 
 ---
 
-From here, we'd recommend learning some of the JavaScript fundamentals (the [JavaScript guide at the Mozilla Web Docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide) is a good starting point.)
+ここからは JavaScript の基礎を学ぶことをおすすめします。([Mozilla Web Docs の JavaScript ガイド](https://developer.mozilla.org/docs/Web/JavaScript/Guide)は良いスタート地点です。)
 
-Once you're feeling comfortable, you can come back to read [TypeScript for JavaScript Programmers](/docs/handbook/typescript-in-5-minutes.html), then start on [the handbook](/docs/handbook/intro.html) or explore the [Playground examples](/play#show-examples).
+慣れてきたら、[JavaScript プログラマのための TypeScript](/docs/handbook/typescript-in-5-minutes.html)や、その後に[ハンドブック](/docs/handbook/intro.html)あるいは[Playground 例](/play#show-examples)を読んでみてください。
 
 <!-- Note: I'll be happy to write the following... -->
 <!--

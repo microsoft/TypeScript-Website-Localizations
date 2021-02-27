@@ -1,86 +1,86 @@
 ---
-title: TypeScript for Java/C# Programmers
-short: TS for Java/C# Programmers
+title: Java/C# プログラマのための TypeScript
+short: Java/C# プログラマのための TS
 layout: docs
-permalink: /docs/handbook/typescript-in-5-minutes-oop.html
-oneline: Learn TypeScript if you have a background in object-oriented languages
+permalink: /ja/docs/handbook/typescript-in-5-minutes-oop.html
+oneline: オブジェクト指向言語のバックグラウンドから TypeScript を学ぶ
 ---
 
-TypeScript is a popular choice for programmers accustomed to other languages with static typing, such as C# and Java.
+TypeScript は、C# や Java といった静的型付けを持つ他の言語に慣れているプログラマに人気の選択肢です。
 
-TypeScript's type system offers many of the same benefits, such as better code completion, earlier detection of errors, and clearer communication between parts of your program.
-While TypeScript provides many familiar features for these developers, it's worth stepping back to see how JavaScript (and therefore TypeScript) differ from traditional OOP languages.
-Understanding these differences will help you write better JavaScript code, and avoid common pitfalls that programmers who go straight from C#/Java to TypeScript may fall in to.
+TypeScript の型システムには、コードの補完性の向上、エラーの早期発見、プログラムの各部分間のコミュニケーションの明確化など、多くの利点があります。
+TypeScript は C#や Java の開発者にとってはおなじみの機能を多く提供していますが、JavaScript(そして、それ故に TypeScript)が従来のオブジェクト指向プログラミング言語とどのように異なるのか、一歩引いて見てみる価値があります。
+これらの違いを理解することで、より良い JavaScript コードを書くことができ、C#/Java から TypeScript に直行するプログラマが陥りがちな落とし穴を避けることができます。
 
-## Co-learning JavaScript
+## JavaScript との相互学習
 
-If you're familiar with JavaScript already but are primarily a Java or C# programmer, this introductory page can help explain some of the common misconceptions and pitfalls you might be susceptible to.
-Some of the ways that TypeScript models types are quite different from Java or C#, and it's important to keep these in mind when learning TypeScript.
+JavaScript にはすでに慣れているが、本来 Java や C# のプログラマである場合、本入門ページは陥りやすいよくある誤解や落とし穴について理解する助けになるでしょう。
+TypeScript が型をモデル化する方法の中には、Java や C# とは全く異なるものがあり、TypeScript を学ぶ際にはこうした点に留意しておくことが重要です。
 
-If you're a Java or C# programmer that is new to JavaScript in general, we recommend learning a little bit of JavaScript _without_ types first to understand JavaScript's runtime behaviors.
-Because TypeScript doesn't change how your code _runs_, you'll still have to learn how JavaScript works in order to write code that actually does something!
+あなたが Java や C# のプログラマで、全般的に JavaScript に不慣れである場合は、JavaScript の実行時の動作を理解するために型の _ない_ JavaScript を最初に少しだけ学ぶことをおすすめします。
+TypeScript はコードの _動作_ を変更しないため、実際に何かを行うコードを書くためには、やはり JavaScript がどのように動作するのかについて学ぶ必要があるからです！
 
-It's important to remember that TypeScript uses the same _runtime_ as JavaScript, so any resources about how to accomplish specific runtime behavior (converting a string to a number, displaying an alert, writing a file to disk, etc.) will always apply equally well to TypeScript programs.
-Don't limit yourself to TypeScript-specific resources!
+TypeScript は JavaScript と同じ _ランタイム_ を使用しているため、特定の実行時の動作(文字列を数値に変換する、アラートを表示する、ファイルをディスクに書き込むなど)を実現する手段はどんなものでも、常に TypeScript プログラムにも等しく適用されるということを覚えておくことが重要です。
+TypeScript 特有の方法に思考を制限しないようにしましょう！
 
-## Rethinking the Class
+## クラスの再考
 
-C# and Java are what we might call _mandatory OOP_ languages.
-In these languages, the _class_ is the basic unit of code organization, and also the basic container of all data _and_ behavior at runtime.
-Forcing all functionality and data to be held in classes can be a good domain model for some problems, but not every domain _needs_ to be represented this way.
+C# と Java は、_強制オブジェクト指向プログラミング_ 言語と呼ばれるものです。
+これらの言語では、 _クラス_ はコード編成の基本的な単位であり、すべてのデータ _および_ 実行時の動作の基本的なコンテナでもあります。
+すべての機能とデータを強制的にクラスに保持させることは、問題を解決するためには適したドメインモデルとなることもありますが、すべてのドメインがこのように表現される _必要_ はありません。
 
-### Free Functions and Data
+### 自由関数とデータ
 
-In JavaScript, functions can live anywhere, and data can be passed around freely without being inside a pre-defined `class` or `struct`.
-This flexibility is extremely powerful.
-"Free" functions (those not associated with a class) working over data without an implied OOP hierarchy tends to be the preferred model for writing programs in JavaScript.
+JavaScript では、関数はどこにでも存在できますし、また、データは事前に定義された`class`や`struct`の中に入ることなく、自由に渡すことができます。
+この柔軟性は非常に強力です。
+"自由"関数(クラスに関連付けられていない関数)は、暗黙的なオブジェクト指向プログラミングの階層構造を持たないデータ上で動作するため、JavaScript でプログラムを記述する際には多くのケースで好ましいモデルとなります。
 
-### Static Classes
+### 静的クラス
 
-Additionally, certain constructs from C# and Java such as singletons and static classes are unnecessary in TypeScript.
+さらに、シングルトンや静的クラスといった C# と Java の構造体は TypeScript では不要です。
 
-## OOP in TypeScript
+## TypeScript でのオブジェクト指向プログラミング
 
-That said, you can still use classes if you like!
-Some problems are well-suited to being solved by a traditional OOP hierarchy, and TypeScript's support for JavaScript classes will make these models even more powerful.
-TypeScript supports many common patterns such as implementing interfaces, inheritance, and static methods.
+とは言え、クラスを使用することもできます。
+伝統的なオブジェクト指向プログラミングの階層構造で解決するのに適した問題もあり、TypeScript の JavaScript クラスのサポートにより、こうしたモデルをさらに強力なものになります。
+TypeScript は、インターフェースの実装や静的メソッドなどの多くの一般的なパターンをサポートします。
 
-We'll cover classes later in this guide.
+クラスについては本ガイドの後半で説明します。
 
-## Rethinking Types
+## 型の再考
 
-TypeScript's understanding of a _type_ is actually quite different from C# or Java's.
-Let's explore some differences.
+TypeScript における _型_ の理解は、C# や Java のそれとは実際大きく違います。
+いくつか違いを探ってみましょう。
 
-### Nominal Reified Type Systems
+### 名目具体化型システム
 
-In C# or Java, any given value or object has one exact type - either `null`, a primitive, or a known class type.
-We can call methods like `value.GetType()` or `value.getClass()` to query the exact type at runtime.
-The definition of this type will reside in a class somewhere with some name, and we can't use two classes with similar shapes in lieu of each other unless there's an explicit inheritance relationship or commonly-implemented interface.
+C# や Java では、与えられた値やオブジェクトは`null`、プリミティブ、あるいは既知のクラス型のいずれかの厳密な型を持ちます。
+`value.GetType()`や`value.getClass()`といったメソッドを呼び出し、実行時にその厳密な型を問い合わせることができます。
+この型の定義はある名前でクラスのどこかに存在しており、明示的な継承関係あるいは共通に実装されたインターフェースがない限り、似たような形をしていようとも 2 つのクラスをお互いに代用して使うことができません。
 
-These aspects describe a _reified, nominal_ type system.
-The types we wrote in the code are present at runtime, and the types are related via their declarations, not their structures.
+これは _具体化、名目的_ 型システムの特徴を表しています。
+コードに記述した型はランタイムに存在し、型は構造体ではなく宣言を通して関連付けられています。
 
-### Types as Sets
+### 集合体としての型
 
-In C# or Java, it's meaningful to think of a one-to-one correspondence between runtime types and their compile-time declarations.
+C# や Java では、ランタイムの型とコンパイル時の宣言の間に一対一の対応関係があると考えることに意味があります。
 
-In TypeScript, it's better to think of a type as a _set of values_ that share something in common.
-Because types are just sets, a particular value can belong to _many_ sets at the same time.
+TypeScript では、型は何かしらの共通点がある _値の集合体_ として考える方が良いでしょう。
+型は単なる集合体なので、特定の値は同時に _多くの_ 集合に属することができます。
 
-Once you start thinking of types as sets, certain operations become very natural.
-For example, in C#, it's awkward to pass around a value that is _either_ a `string` or `int`, because there isn't a single type that represents this sort of value.
+型を集合体と考えるようになると、特定の操作がとても自然に受け入れられるようになります。
+例えば、C# では、`string`や`int`のうち _どちらか_ である値を渡すのは不自然です。なぜならこの種の値を表す単一の型が存在しないからです。
 
-In TypeScript, this becomes very natural once you realize that every type is just a set.
-How do you describe a value that either belongs in the `string` set or the `number` set?
-It simply belongs to the _union_ of those sets: `string | number`.
+TypeScript では、すべての型は単なる集合体であると理解すると、この操作はとても自然なことになります。
+では、`string`の集合あるいは`number`の集合、どちらかに属する値はどのように記述すれば良いでしょう？
+この値は単に 2 つの集合の _Union_ (`string | number`)に属しています。
 
-TypeScript provides a number of mechanisms to work with types in a set-theoretic way, and you'll find them more intuitive if you think of types as sets.
+TypeScript は、集合理論的な方法で型を扱うメカニズムを多く提供しており、型を集合であると考えると、直感的に使用できるようになるでしょう。
 
-### Erased Structural Types
+### 削除される構造的型
 
-In TypeScript, objects are _not_ of a single exact type.
-For example, if we construct an object that satisfies an interface, we can use that object where that interface is expected even though there was no declarative relationship between the two.
+TypeScript では、オブジェクトは単一の厳密な型では _ありません_。
+例えば、あるインターフェースを満たすオブジェクトを構築した場合、2 つの間に宣言的な関係がなかったとしても、そのインターフェースが期待される場所でオブジェクトを使用することができます。
 
 ```ts twoslash
 interface Pointlike {
@@ -109,70 +109,70 @@ logPoint(obj);
 logName(obj);
 ```
 
-TypeScript's type system is _structural_, not nominal: We can use `obj` as a `Pointlike` because it has `x` and `y` properties that are both numbers.
-The relationships between types are determined by the properties they contain, not whether they were declared with some particular relationship.
+TypeScript の型システムは _構造的_ であり名目的ではありません。つまり、`obj`は`x`と`y`プロパティを持ち、どちらも数値であるため、`Pointlike`として使用することができます。
+型と型の関係は、特定の関係で宣言されたかどうかではなく、それらの型に含まれる含まれるプロパティによって決定されます。
 
-TypeScript's type system is also _not reified_: There's nothing at runtime that will tell us that `obj` is `Pointlike`.
-In fact, the `Pointlike` type is not present _in any form_ at runtime.
+TypeScript の型システムは、_具体化的_ でもありません。実行時に`obj`が`Pointlike`であることを教えてくれるものは何もありません。
+実際に、`Pointlike`型は実行時には _どのような形でも_ 存在することはありません。
 
-Going back to the idea of _types as sets_, we can think of `obj` as being a member of both the `Pointlike` set of values and the `Named` set of values.
+_集合としての型_ という考えに戻ると、`obj`は`Pointlike`という値の集合と`Named`という値の集合の両方の構成要素であると考えることができます。
 
-### Consequences of Structural Typing
+### 構造的型付けの結果
 
-OOP programmers are often surprised by two particular aspects of structural typing.
+オブジェクト指向のプログラマは、構造的型付けの 2 つの独特な側面にしばしば驚かされます。
 
-#### Empty Types
+#### 空の型
 
-The first is that the _empty type_ seems to defy expectation:
+1 つ目は _空の型_ が予想に反しているように見えることです:
 
 ```ts twoslash
 class Empty {}
 
 function fn(arg: Empty) {
-  // do something?
+  // 何かを行う
 }
 
-// No error, but this isn't an 'Empty' ?
+// エラーが出ませんが、これは'Empty'ではないのでは？
 fn({ k: 10 });
 ```
 
-TypeScript determines if the call to `fn` here is valid by seeing if the provided argument is a valid `Empty`.
-It does so by examining the _structure_ of `{ k: 10 }` and `class Empty { }`.
-We can see that `{ k: 10 }` has _all_ of the properties that `Empty` does, because `Empty` has no properties.
-Therefore, this is a valid call!
+TypeScript は、与えられた引数が有効な`Empty`であるかどうか調べることで、ここでの`fn`の呼び出しが有効なものかどうかを判断します。
+これは、`{ k: 10 }`と`class Empty { }`の _構造_ を調べることで分かります。
+`Empty`にはプロパティがないため、`{ k: 10 }`は`Empty`が持つプロパティを _すべて_ 持っていると考えることができます。
+したがって、これは有効な呼び出しとなるのです！
 
-This may seem surprising, but it's ultimately a very similar relationship to one enforced in nominal OOP languages.
-A subclass cannot _remove_ a property of its base class, because doing so would destroy the natural subtype relationship between the derived class and its base.
-Structural type systems simply identify this relationship implicitly by describing subtypes in terms of having properties of compatible types.
+これは驚くことに思えるかもしれませんが、結果的には名目オブジェクト指向のプログラミング言語で強制されるものと非常によく似ています。
+部分型は基底クラスのプロパティを _削除_ することはできません。というのも、そうしてしまうと派生クラスは基底クラスの部分型であるという当たり前の関係を壊してしまうからです。
+構造的型システムは、互換性のある型のプロパティを持つという観点から部分型を記述することで、この関係を暗黙的に確認しています。
 
-#### Identical Types
+#### 一致する型
 
-Another frequent source of surprise comes with identical types:
+もう一つのよくある驚きの原因は型同士が一致することによるものです:
 
 ```ts
 class Car {
   drive() {
-    // hit the gas
+    // 車を飛ばす
   }
 }
 class Golfer {
   drive() {
-    // hit the ball far
+    // ボールを遠くまで飛ばす
   }
 }
 
-// No error?
+// エラーにならない？
 let w: Car = new Golfer();
 ```
 
-Again, this isn't an error because the _structures_ of these classes are the same.
-While this may seem like a potential source of confusion, in practice, identical classes that shouldn't be related are not common.
+繰り返しになりますが、これらのクラスの _構造体_ は同じなのでエラーになりません。
+混乱のもとになりそうだと思うかもしれませんが、実際には関連するはずのないクラスが一致することは一般的ではありません。
 
-We'll learn more about how classes relate to each other in the Classes chapter.
+クラスがどのように相互に関連しているのかについては、クラスの章で詳しく学びます。
 
-### Reflection
+### リフレクション
 
-OOP programmers are accustomed to being able to query the type of any value, even a generic one:
+オブジェクト指向のプログラマは、ジェネリクスであっても任意の値の型を問い合わせることができることに馴染みがあります。
 
 ```csharp
 // C#
@@ -181,11 +181,11 @@ static void LogType<T>() {
 }
 ```
 
-Because TypeScript's type system is fully erased, information about e.g. the instantiation of a generic type parameter is not available at runtime.
+TypeScript の型は完全に消去されるので、ジェネリクスの型パラメータのインスタンス化などの情報は実行時には利用できません。
 
-JavaScript does have some limited primitives like `typeof` and `instanceof`, but remember that these operators are still working on the values as they exist in the type-erased output code.
-For example, `typeof (new Car())` will be `"object"`, not `Car` or `"Car"`.
+JavaScript には`typeof`と`instanceof`のような限定的なプリミティブがありますが、これらの演算子は型が削除された出力コードに存在する値を扱うことに注意してください。
+例えば、`typeof (new Car())`は、`"object"`となり、`Car`や`"Car"`とはなりません。
 
 ---
 
-This is an overview, from here you should read [through the handbook](/docs/handbook/intro.html) or explore the [Playground examples](/play#show-examples)
+本ガイドは概要です。ここから[ハンドブック](/docs/handbook/intro.html)や[Playground 例](/play#show-examples)に進んでみてください。
