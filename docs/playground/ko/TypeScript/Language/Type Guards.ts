@@ -23,7 +23,7 @@ type PossibleOrders = TelephoneOrder | InternetOrder | undefined;
 declare function getOrder(): PossibleOrders;
 const possibleOrder = getOrder();
 
-// 특정 키가 유니온을 좁히기 위한 오브젝트에 있는지 확인하는
+// 특정 키가 유니언을 좁히기 위한 오브젝트에 있는지 확인하는
 // "in" 연산자를 사용할 수 있습니다.
 // ("in"은 오브젝트 키를 검사하기 위한 JavaScript 연산자입니다.)
 
