@@ -47,7 +47,6 @@ interface ArtistsData {
 type ArtworksResponse = ArtworksData & ErrorHandling;
 type ArtistsResponse = ArtistsData & ErrorHandling;
 
-// For example:
 // 예를 들어:
 
 const handleArtistsResponse = (response: ArtistsResponse) => {
