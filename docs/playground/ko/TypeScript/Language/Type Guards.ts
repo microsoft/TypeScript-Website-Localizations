@@ -43,7 +43,7 @@ if (possibleOrder instanceof TelephoneOrderClass) {
   const mustBeTelephoneOrder = possibleOrder;
 }
 
-// 유니온을 좁을 좁히기 위해
+// 유니언을 좁을 좁히기 위해
 // JavaScript "typeof" 연산자를 사용할 수 있습니다.
 // JavaScript 내의 기본형(문자열, 오브젝트, 숫자 같은)만 동작합니다.
 
