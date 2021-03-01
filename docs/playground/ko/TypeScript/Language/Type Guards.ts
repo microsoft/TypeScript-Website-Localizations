@@ -1,5 +1,5 @@
 // 타입 가드는 코드를 통해 코드 흐름 분석에 영향을 주는 용어입니다.
-// TypeScript는 런타임에서 오브젝트가 유효한지 판단하는 
+// TypeScript는 런타임에서 객체가 유효한지 판단하는 
 // 기존의 JavaScript 동작을 이용해서 코드 흐름에 영향을 줄 수 있습니다.
 // 이 예시는 여러분이 다음 예제를 읽어봤다고 가정하겠습니다:code-flow
 
@@ -23,9 +23,9 @@ type PossibleOrders = TelephoneOrder | InternetOrder | undefined;
 declare function getOrder(): PossibleOrders;
 const possibleOrder = getOrder();
 
-// 특정 키가 유니언을 좁히기 위한 오브젝트에 있는지 확인하는
+// 특정 키가 유니언을 좁히기 위한 객체에 있는지 확인하는
 // "in" 연산자를 사용할 수 있습니다.
-// ("in"은 오브젝트 키를 검사하기 위한 JavaScript 연산자입니다.)
+// ("in"은 객체 키를 검사하기 위한 JavaScript 연산자입니다.)
 
 if ("email" in possibleOrder) {
   const mustBeInternetOrder = possibleOrder;
@@ -45,7 +45,7 @@ if (possibleOrder instanceof TelephoneOrderClass) {
 
 // 유니언을 좁을 좁히기 위해
 // JavaScript "typeof" 연산자를 사용할 수 있습니다.
-// JavaScript 내의 기본형(문자열, 오브젝트, 숫자 같은)만 동작합니다.
+// JavaScript 내의 기본형(문자열, 객체, 숫자 같은)만 동작합니다.
 
 if (typeof possibleOrder === "undefined") {
   const definitelyNotAnOder = possibleOrder;
@@ -55,7 +55,7 @@ if (typeof possibleOrder === "undefined") {
 // 확인할 수 있습니다: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/typeof
 
 // JavaScript 연산자를 사용하는 것은 여러분을 여기까지만 도달할 수 있게 만듭니다.
-// 자체 오브젝트 타입을 검사하고 싶다면,
+// 자체 객체 타입을 검사하고 싶다면,
 // 타입 서술어 함수를 사용할 수 있습니다.
 
 // 타입 서술어 함수는
