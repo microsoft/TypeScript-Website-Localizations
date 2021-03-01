@@ -23,7 +23,7 @@ assert(typeof maybeStringOrNumber === "string");
 // 코드가 무엇인지 알아내기 위해
 // 이런 함수의 종류를 사용할 수 있습니다.
 // 아래의 변수를 호버해보면 - 하나의 문자열 또는 숫자에서
-// 단지 하나의 문자열로 좁혀진 것을 확인할 수 있습니다.
+// 하나의 문자열로 좁혀진 것을 확인할 수 있습니다.
 
 maybeStringOrNumber;
 
@@ -31,7 +31,7 @@ maybeStringOrNumber;
 // 단언 함수를 사용할 수 있습니다.
 // 예를 들어 TypeScript는 위에 assert 선언을 통해
 // 파라미터에 타입을 추가할 필요 없이
-// 이 함수가 숫자를 반환한다는 것을 알고 있습니다.
+// 함수가 숫자를 반환한다는 것을 알고 있습니다.
 
 function multiply(x: any, y: any) {
   assert(typeof x === "number");
