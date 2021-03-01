@@ -44,7 +44,7 @@ function multiply(x: any, y: any) {
 // 예시: 타입 가드는 함수를 통해 제어 흐름이 계속 동작할 때,
 // 제어 흐름에 영향을 준다는 것을 제외합니다.
 
-// 예를 들어, 시간이 지나도 enum 좁히기 위해
+// 예를 들어, 시간이 지나도 enum을 좁히기 위해
 // 단언 함수를 사용할 수 있습니다:
 
 declare const oneOfFirstFiveNumbers: 1 | 2 | 3 | 4 | 5;
