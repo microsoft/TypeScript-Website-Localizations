@@ -16,7 +16,7 @@ type AMessyUnion = "hello" | 156 | { error: true };
 // 결정하는 방법을 알아낼 것입니다.
 
 // 예를 들어, 유니언은 가끔 타입을
-// 여러 개 사용함으로써 훼손될 수 있습니다:
+// 여러 개 사용함으로써 기존 의도와 달라질 수 있습니다:
 
 type WindowStates = "open" | "closed" | "minimized" | string;
 
