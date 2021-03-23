@@ -19,7 +19,7 @@ Repare que se o pacote npm já inclui seu arrquivo de declaração como descrito
 ## Consumindo
 
 A partir daí, você poderá usar lodash em seu código TypeScript sem problemas.
-Isso funciona para ambos os módulos e código global.
+Isso funciona para ambos módulos e código global.
 
 Por exemplo, uma vez que você tenha instalado suas declaração de tipo, você pode usar importações e escrever 
 
