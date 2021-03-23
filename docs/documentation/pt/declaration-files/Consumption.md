@@ -28,7 +28,7 @@ import * as _ from "lodash";
 _.padStart("Hello TypeScript!", 20, " ");
 ```
 
-ou se você não estiver usando módulos, você pode apenas usar a variaável global `_`.
+Ou, se você não estiver usando módulos, você pode apenas usar a variável global `_`.
 
 ```ts
 _.padStart("Hello TypeScript!", 20, " ");
