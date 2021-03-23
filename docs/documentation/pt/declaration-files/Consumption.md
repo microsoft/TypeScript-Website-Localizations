@@ -39,5 +39,5 @@ _.padStart("Hello TypeScript!", 20, " ");
 A maioria das vezes, pacotes de declaração de tipo devem sempre ter o mesmo nome que o nome do pacote `npm`, mas prefixado com `@types/`,
 mas se você precisar, você pode verificar isso através da [Pesquisa de Tipo](https://aka.ms/types) para achar o pacote da sua biblioteca favorita.
 
-> Nota: Se a declaração do arquivo que você está pesquisando não estiver presente, você pode sempre contribuir de volta e ajudar o próximo desenvolvedor que estiver procurando por isso.
+> Nota: Se a declaração do arquivo que você está pesquisando não estiver presente, você sempre pode contribuir de volta e ajudar o próximo desenvolvedor que estiver procurando por isso.
 > Por favor consulte o DefinitelyTyped [página de guia de contribuição](http://definitelytyped.org/guides/contributing.html) para detalhes.
