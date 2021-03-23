@@ -14,7 +14,8 @@ Como um exemplo, obter as declarações para uma biblioteca como lodash não req
 ```cmd
 npm install --save-dev @types/lodash
 ```
-Repare que se o pacote npm já inclui seu arrquivo de declaração como descrito em [Publicando](/docs/handbook/declaration-files/publishing.html), baixar o pacote `@types` correspondente não é necessário.
+
+Repare que se o pacote npm já inclui seu arquivo de declaração como descrito em ["Publicando"](/docs/handbook/declaration-files/publishing.html), baixar o pacote `@types` correspondente não é necessário.
 
 ## Consumindo
 
