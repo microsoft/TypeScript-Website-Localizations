@@ -20,7 +20,7 @@ const passingResponse: [string, number] = ["{}", 200];
 
 // 배열의 순서가 중요하지 않을 때,
 // 모든 인덱스에 있는 요소는 문자열 또는 숫자가 될 수 있습니다.
-// 튜플에서 순서와 길이는 보장됩니다.
+// 하지만 튜플에서는 순서와 길이가 보장됩니다.
 
 if (passingResponse[1] === 200) {
   const localInfo = JSON.parse(passingResponse[0]);
