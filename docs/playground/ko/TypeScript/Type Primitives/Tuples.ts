@@ -10,7 +10,7 @@
 
 const failingResponse = ["Not Found", 404];
 
-// 하지만 튜플로서 배열의 타입을 선언할 필요가 있을 것입니다.
+// 또한 튜플에 타입 선언이 필요할 수 있습니다.
 
 const passingResponse: [string, number] = ["{}", 200];
 
