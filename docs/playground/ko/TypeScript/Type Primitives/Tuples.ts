@@ -34,7 +34,7 @@ if (passingResponse[1] === 200) {
 passingResponse[2];
 
 // 튜플은 적은 양의 연결된 데이터
-// 또는 고정된 데이터를 위한 좋은 패턴처럼 느껴질 수 있습니다.
+// 또는 고정된 데이터 타입을 위한 좋은 패턴처럼 느껴질 수 있습니다.
 
 type StaffAccount = [number, string, string, string?];
 
@@ -46,8 +46,8 @@ const staff: StaffAccount[] = [
 
 // 튜플의 시작에서 알려진 타입의 집합을
 // 가지고 나서 길이를 알 수 없을 때,
-// 길이에 상관없고 추가 인덱스가 특정한 타입이 된다는 것을
-// 나타내기 위해 전개 연산자를 사용할 수 있습니다:
+// 전개 연산자를 사용해 길이에 상관없이
+// 나머지를 특정한 타입으로 나타낼 수 있습니다:
 
 type PayStubs = [StaffAccount, ...number[]];
 
@@ -61,8 +61,8 @@ const monthOnePayments = payStubs[0][1] + payStubs[1][1] + payStubs[2][1];
 const monthTwoPayments = payStubs[1][2] + payStubs[2][2];
 const monthThreePayments = payStubs[2][2];
 
-// 타입을 가진 매개변수 중 정의되지 않은 숫자를 사용하는
-// 함수를 설명하기 위해 튜플을 사용할 수 있습니다:
+// 튜플을 사용하면 개수를 알 수 없는
+// 매개변수 타입을 선언할 수 있습니다:
 
 declare function calculatePayForEmployee(id: number, ...args: [...number[]]): number;
 
