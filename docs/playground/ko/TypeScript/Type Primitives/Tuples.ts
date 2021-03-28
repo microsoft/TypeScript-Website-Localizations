@@ -27,7 +27,7 @@ if (passingResponse[1] === 200) {
   console.log(localInfo);
 }
 
-// 이는 TypeScript가 올바른 인덱스에서 올바른 타입을 제공하고,
+// 이는 TypeScript가 올바른 인덱스에 올바른 타입을 제공하고,
 // 선언되지 않은 인덱스에 있는 객체에 접근하면
 // 에러가 발생한다는 것을 의미합니다.
 
