@@ -1,12 +1,12 @@
 //// { order: 3 }
 
-// This example is mostly in TypeScript, because it is much
-// easier to understand this way first. At the end we'll
-// cover how to create the same class but using JSDoc instead.
+// 먼저 이 방식으로 이해하는 게 훨씬 쉬우므로
+// 예시는 대부분 TypeScript로 작성했습니다.
+// 마지막에는 JSDoc을 사용하여 동일한 클래스를 만드는 방법을 다룰 겁니다.
 
-// Generic Classes are a way to say that a particular type
-// depends on another type. For example, here is a drawer
-// which can hold any sort of object, but only one type:
+// 제네릭 클래스는 특정 타입이 다른 타입에 따라 동작한다는 것을 보여주는 하나의 방식입니다.
+// 예를 들어, 여기에는 한 종류만 있지만
+// 여러 가지 물건을 담을 수 있는 하나의 서랍이 있습니다:
 
 class Drawer<ClothingType> {
   contents: ClothingType[] = [];
@@ -20,8 +20,8 @@ class Drawer<ClothingType> {
   }
 }
 
-// In order to use a Drawer, you will need another
-// type to work with:
+// Drawer를 사용하기 위해서
+// 또 다른 타입이 필요합니다:
 
 interface Sock {
   color: string;
@@ -31,31 +31,31 @@ interface TShirt {
   size: "s" | "m" | "l";
 }
 
-// We can create a Drawer just for socks by passing in the
-// type Sock when we create a new Drawer:
+// 새로운 Drawer를 만들 때 Sock 타입을 전달하여
+// 양말 전용의 새로운 Drawer를 만들 수 있습니다:
 const sockDrawer = new Drawer<Sock>();
 
-// Now we can add or remove socks to the drawer:
+// 이제 양말을 서랍에 추가하거나 삭제할 수 있습니다:
 sockDrawer.add({ color: "white" });
 const mySock = sockDrawer.remove();
 
-// As well as creating a drawer for TShirts:
+// 티셔츠를 위한 서랍도 만들 수 있습니다:
 const tshirtDrawer = new Drawer<TShirt>();
 tshirtDrawer.add({ size: "m" });
 
-// If you're a bit eccentric, you could even create a drawer
-// which mixes Socks and TShirts by using a union:
+// 여러분이 조금 별나신 편이라면,
+// 유니언을 사용하여 양말과 티셔츠가 섞인 서랍을 만들 수도 있습니다
 
 const mixedDrawer = new Drawer<Sock | TShirt>();
 
-// Creating a class like Drawer without the extra TypeScript
-// syntax requires using the template tag in JSDoc. In this
-// example we define the template variable, then provide
-// the properties on the class:
+// 추가 TypeScript 구문 없이 Drawer와 같은 클래스를 만드는 것은
+// JSDoc에서 템플릿 태그 사용을 요구합니다.
+// 이 예시에서 템플릿 변수를 정의하고,
+// 클래스에 프로퍼티를 제공할 것입니다:
 
-// To have this work in the playground, you'll need to change
-// the settings to be a JavaScript file, and delete the
-// TypeScript code above
+// playground에서 작업하기 위해서,
+// 여러분은 JavaScript 파일이 되도록 설정을 변경하고
+// 위에 있는 TypeScript 코드를 제거해야 합니다
 
 /**
  * @template {{}} ClothingType
@@ -77,16 +77,16 @@ class Dresser {
   }
 }
 
-// Then we create a new type via JSDoc:
+// 그러고 나서 JSDoc을 통해 새로운 타입을 만듭니다:
 
 /**
- * @typedef {Object} Coat An item of clothing
- * @property {string} color The colour for coat
+ * @typedef {Object} Coat 의류 아이템
+ * @property {string} color 코트 색상
  */
 
-// Then when we create a new instance of that class
-// we use @type to assign the variable as a Dresser
-// which handles Coats.
+// Dresser 클래스의 새로운 인스턴스를 생성할 때
+// 코트를 다루는 Dresser로
+// 변수를 할당하기 위해 @type을 사용합니다.
 
 /** @type {Dresser<Coat>} */
 const coatDresser = new Dresser();
