@@ -8,17 +8,17 @@ translatable: true
 
 ## 概览
 
-当目录中出现了 `tsconfig.json` 文件，说明该目录是 Typescript 项目的根目录。`tsconfig.json` 文件指定了编译项目所需的根目录下的文件以及编译选项。
+当目录中出现了 `tsconfig.json` 文件，则说明该目录是 TypeScript 项目的根目录。`tsconfig.json` 文件指定了编译项目所需的根目录下的文件以及编译选项。
 
-JavaScript 项目可以使用 `jsconfig.json` 文件代替，它的作用与 `tsconfig.json` 基本相同，只是默认启用了一些 JavaScript 相关的编译选项。
+JavaScript 项目可以使用 `jsconfig.json` 文件，它的作用与 `tsconfig.json` 基本相同，只是默认启用了一些 JavaScript 相关的编译选项。
 
-一个项目将以下列之一的方式编译:
+一个项目将以下列之一的方式编译：
 
 ## 使用 `tsconfig.json` 或者 `jsconfig.json`
 
-- 调用 tsc 命令并且没有其它输入文件参数时，在这种情况下编译器会搜索 `tsconfig.json` 文件，从当前目录开始搜索，一直搜寻到父级目录。
+- 在调用 tsc 命令并且没有其它输入文件参数时，编译器将由当前目录开始向父级目录寻找包含 tsconfig 文件的目录。
 
-- 调用 tsc 命令并且没有其他输入文件参数，使用 `--project` （或者只是 `-p`）的命令行选项来指定包含了 `tsconfig.json` 的目录，或者包含有效配置的 `.json` 文件路径。
+- 调用 tsc 命令并且没有其他输入文件参数，可以使用 `--project` （或者只是 `-p`）的命令行选项来指定包含了 `tsconfig.json` 的目录，或者包含有效配置的 `.json` 文件路径。
 
 当命令行中指定了输入文件参数， `tsconfig.json` 文件会被忽略。
 
@@ -72,13 +72,12 @@ JavaScript 项目可以使用 `jsconfig.json` 文件代替，它的作用与 `ts
   }
   ```
 
-## TSConfig 基础
+## 基本的 TSConfig
 
-根据你想要执行代码的 JavaScript 运行时环境，可能有一个基本配置，你可以参考[github.com/tsconfig/bases](https://github.com/tsconfig/bases/)来使用。
-这些你的项目扩展的 `tsconfig.json` 文件，它通过运行时的支持来简化你的 `tsconfig.json` 文件配置。
+根据你要在其中运行代码的不同的 JavaScript 运行时环境，你可以在 [github.com/tsconfig/bases](https://github.com/tsconfig/bases/) 上寻找一个合适的基本配置。
+你可以通过扩展这些已经处理过不同的 JavaScript 运行时环境的 `tsconfig.json` 文件来简化你项目中的 `tsconfig.json`。
 
-<!-- 这些是你的项目扩展的""文件，它通过处理运行时支持简化你的“” -->
-举个例子，如果你的项目是基于 Node.js 12.x 写的，那么你可以使用 npm 依赖：[`@tsconfig/node12`](https://www.npmjs.com/package/@tsconfig/node12):
+举个例子，如果你的项目是基于 Node.js 12.x 写的，那么你可以使用 npm 模块：[`@tsconfig/node12`](https://www.npmjs.com/package/@tsconfig/node12)：
 
 ```json tsconfig
 {
@@ -93,7 +92,7 @@ JavaScript 项目可以使用 `jsconfig.json` 文件代替，它的作用与 `ts
 }
 ```
 
-这使你的 `tsconfig.json` 专注在你自己选择的项目环境上，而不是所有的运行时环境。现在已经有了一些 tsconfig 基础配置，我们希望社区能够为不同的环境添加更多的内容。
+这使你的 `tsconfig.json` 专注在你的项目的目标环境上，而不是所有可能的运行时环境。现在已经有了一些 tsconfig 基础配置，我们希望社区能够为不同的环境添加更多的内容。
 
 - [推荐配置](https://www.npmjs.com/package/@tsconfig/recommended)
 - [Node 10](https://www.npmjs.com/package/@tsconfig/node10)
@@ -105,12 +104,12 @@ JavaScript 项目可以使用 `jsconfig.json` 文件代替，它的作用与 `ts
 
 ## 细节
 
-当`"compilerOptions"` 属性忽略的时候，会使用编译器的默认配置。请参考我们支持的[编译器选项](/tsconfig)列表
+当`"compilerOptions"` 属性忽略时，会使用编译器的默认配置。请参考我们支持的[编译器选项](/tsconfig)列表。
 
 ## TSConfig 参考
 
-想要了解更多的配置选项的信息，请访问 [TSConfig Reference](/tsconfig)
+想要了解更多的配置选项的信息，请访问 [TSConfig Reference](/tsconfig)。
 
-## 模式
+## 协议
 
-`tsconfig.json` 的模式可以在这里找到 [the JSON Schema Store](http://json.schemastore.org/tsconfig).
+`tsconfig.json` 的协议可以在这里找到 [the JSON Schema Store](http://json.schemastore.org/tsconfig)。
