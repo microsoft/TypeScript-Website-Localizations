@@ -54,7 +54,7 @@ const mixedDrawer = new Drawer<Sock | TShirt>();
 // 클래스에 프로퍼티를 제공할 것입니다:
 
 // playground에서 작업하기 위해서,
-// 여러분은 JavaScript 파일이 되도록 설정을 변경하고
+// JavaScript 파일로 설정을 변경하고
 // 위에 있는 TypeScript 코드를 제거해야 합니다
 
 /**
