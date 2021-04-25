@@ -1,60 +1,60 @@
 ---
 title: The Basics
 layout: docs
-permalink: /docs/handbook/2/basic-types.html
+permalink: /ko/docs/handbook/2/basic-types.html
 oneline: "Step one in learning TypeScript: The basic types."
 preamble: >
-  <p>Welcome to the first page of the handbook, if this is your first experience with TypeScript - you may want to start at one of the '<a href='https://www.typescriptlang.org/docs/handbook/intro.html#get-started'>Getting Started</a>' guides</a>
+  <p>핸드북의 첫번째 장에 오신 것을 환영하며, 만약 TypeScript를 처음 경험하신다면 '<a href='https://www.typescriptlang.org/ko/docs/handbook/intro.html#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-get-started'>시작하기</a>' 가이드 문서 중 하나를 먼저 읽는 것을 추천합니다.</p>
 ---
 
-Each and every value in JavaScript has a set of behaviors you can observe from running different operations.
-That sounds abstract, but as a quick example, consider some operations we might run on a variable named `message`.
+JavaScript의 모든 값은 저마다 다양한 동작들을 내장하고 있으며 이는 다양한 연산(Operation)을 실행하여 확인할 수 있습니다.
+이는 다소 추상적으로 들릴 수 있는데, 간단한 예시로 `message`라는 이름의 변수에 대하여 실행할 수 있는 몇몇 연산들을 살펴보겠습니다.
 
 ```js
-// Accessing the property 'toLowerCase'
-// on 'message' and then calling it
+// 'message'의 프로퍼티 'toLowerCase'에 접근한 뒤
+// 이를 호출합니다
 message.toLowerCase();
 
-// Calling 'message'
+// 'message'를 호출합니다
 message();
 ```
 
-If we break this down, the first runnable line of code accesses a property called `toLowerCase` and then calls it.
-The second one tries to call `message` directly.
+위 코드를 분석해보면, 우선 첫번째 실행 코드 줄에서는 `toLowerCase`라는 프로퍼티에 접근한 뒤 이를 호출합니다.
+두번째 줄에서는 `message`를 직접 호출하려 하고 있습니다.
 
-But assuming we don't know the value of `message` - and that's pretty common - we can't reliably say what results we'll get from trying to run any of this code.
-The behavior of each operation depends entirely on what value we had in the first place.
+하지만 `message`의 값이 무엇인지 모른다면 - 일반적으로 그렇습니다 - 위 코드의 실행 결과가 무엇인지 확실히 말할 수 없습니다.
+각 연산의 동작은 최초에 어떤 값을 가졌는지에 따라 완전히 달라집니다.
 
-- Is `message` callable?
-- Does it have a property called `toLowerCase` on it?
-- If it does, is `toLowerCase` even callable?
-- If both of these values are callable, what do they return?
+- `message`가 호출 가능한가?
+- `toLowerCase`라는 프로퍼티를 가지는가?
+- 만약 가진다면, `toLowerCase` 또한 호출 가능한가?
+- 만약 두 값이 모두 호출 가능하다면, 각각이 무엇을 반환하는가?
 
-The answers to these questions are usually things we keep in our heads when we write JavaScript, and we have to hope we got all the details right.
+이 질문들은 우리가 JavaScript로 코드를 작성할 때 흔히 고민하게 되는 것들이며, 우리는 이와 관련된 세세한 부분들을 전부 놓치지 않고 있기를 늘 바라게 됩니다.
 
-Let's say `message` was defined in the following way.
+`message`가 아래와 같이 정의되었다고 해봅시다.
 
 ```js
 const message = "Hello World!";
 ```
 
-As you can probably guess, if we try to run `message.toLowerCase()`, we'll get the same string only in lower-case.
+익히 짐작하셨겠지만 여기서 `message.toLowerCase()`를 실행하면, 우리는 동일한 문자열이 소문자로만 이루어져 있는 값을 얻을 것입니다.
 
-What about that second line of code?
-If you're familiar with JavaScript, you'll know this fails with an exception:
+그렇다면 앞서 본 코드의 두번째 라인은 어떨까요?
+JavaScript가 익숙하시다면, 예외와 함께 실행이 되지 않을 것을 아실 겁니다.
 
 ```txt
 TypeError: message is not a function
 ```
 
-It'd be great if we could avoid mistakes like this.
+이와 같은 실수를 미리 방지할 수 있다면 참 좋을 것 같습니다.
 
-When we run our code, the way that our JavaScript runtime chooses what to do is by figuring out the _type_ of the value - what sorts of behaviors and capabilities it has.
-That's part of what that `TypeError` is alluding to - it's saying that the string `"Hello World"` cannot be called as a function.
+JavaScript 런타임은 코드가 실행될 때 자신이 무엇을 해야할 지 결정하기 위하여 값의 _타입_, 즉 해당 값이 어떤 동작과 능력을 가지고 있는지를 확인합니다.
+이것이 바로 `TypeError`가 암시하는 바입니다. 위 예시에서는 문자열인 `"Hello World"`가 함수로서 호출될 수 없다고 말하고 있는 것이죠.
 
-For some values, such as the primitives `string` and `number`, we can identify their type at runtime using the `typeof` operator.
-But for other things like functions, there's no corresponding runtime mechanism to identify their types.
-For example, consider this function:
+일부 값들, 이를테면 `string`과 `number`과 같은 원시 타입의 값의 경우 `typeof` 연산자를 사용하면 각 값들의 타입을 실행 시점에 알 수 있습니다.
+하지만 그 밖의 값들, 이를테면 함수값의 경우, 앞서 언급된 방식과 같이 해당 값의 타입을 실행 시점의 메커니즘은 존재하지 않습니다.
+예를 들어, 아래와 같은 함수를 살펴보겠습니다.
 
 ```js
 function fn(x) {
@@ -62,29 +62,29 @@ function fn(x) {
 }
 ```
 
-We can _observe_ by reading the code that this function will only work if given an object with a callable `flip` property, but JavaScript doesn't surface this information in a way that we can check while the code is running.
-The only way in pure JavaScript to tell what `fn` does with a particular value is to call it and see what happens.
-This kind of behavior makes it hard to predict what code will do before it runs, which means it's harder to know what your code is going to do while you're writing it.
+위 코드를 보면, 인자로 전달된 객체가 호출 가능한 프로터티인 `flip`을 가져야만 위 함수가 잘 작동할 것이라는 것을 우리는 코드를 읽음으로써 _알 수 있습니다._ 하지만 JavaScript는 우리가 알고 있는 이러한 정보를 코드가 실행되는 동안 알지 못합니다.
+순수 JavaScript에서 `fn`가 특정 값과 어떤 동작을 수행하는지 알 수 있는 유일한 방법은 호출하고 무슨 일이 벌어지는지 보는 것입니다.
+이와 같은 동작은 코드 실행 전에 예측을 어렵게 만듭니다. 다시 말해 코드가 어떤 동작 결과를 보일지 코드를 작성하는 동안에는 알기 어렵습니다.
 
-Seen in this way, a _type_ is the concept of describing which values can be passed to `fn` and which will crash.
-JavaScript only truly provides _dynamic_ typing - running the code to see what happens.
+이런 측면에서 볼 때, _타입_이란 어떤 값이 `fn`으로 전달될 수 있고, 어떤 값은 실행에 실패할 것임을 설명하는 개념입니다.
+JavaScript는 오직 _동적_ 타입만을 제공하며, 코드를 실행해야만 어떤 일이 벌어지는지 비로소 확인할 수 있습니다.
 
-The alternative is to use a _static_ type system to make predictions about what code is expected _before_ it runs.
+이에 대한 대안은 _정적_ 타입 시스템을 사용하여 코드가 실행되기 _전에_ 코드에 대하여 예측하는 것입니다.
 
-## Static type-checking
+## 정적 타입 검사
 
-Think back to that `TypeError` we got earlier from trying to call a `string` as a function.
-_Most people_ don't like to get any sorts of errors when running their code - those are considered bugs!
-And when we write new code, we try our best to avoid introducing new bugs.
+앞서 살펴본, `string`을 함수로서 호출하고자 했을 때 얻은 `TypeError`의 이야기로 돌아가봅시다.
+_대부분의 사람들은_ 코드를 실행했을 때 오류를 보고 싶지 않습니다. 그것은 버그로 여겨집니다!
+그리고 새로운 코드를 작성할 때 우리는 새로운 버그를 만들어내지 않도록 최선을 다합니다.
 
-If we add just a bit of code, save our file, re-run the code, and immediately see the error, we might be able to isolate the problem quickly; but that's not always the case.
-We might not have tested the feature thoroughly enough, so we might never actually run into a potential error that would be thrown!
-Or if we were lucky enough to witness the error, we might have ended up doing large refactorings and adding a lot of different code that we're forced to dig through.
+여기서 만약 약간의 코드를 추가하고 파일을 저장한 뒤, 코드를 다시 실행했을 때 바로 오류가 확인된다면, 문제를 신속하게 격리시킬 수 있을 것입니다. 하지만 항상 그렇게 되는 것은 아닙니다.
+기능을 충분히 테스트하지 않아서, 잠재적인 오류를 미처 발견하지 못할 수도 있습니다!
+또는 운좋게 오류를 발견했더라도, 결국 상당한 규모의 리팩토링을 거치고 새 코드를 추가하면서 의도치 않게 코드를 깊게 파헤치게 될 수도 있습니다.
 
-Ideally, we could have a tool that helps us find these bugs _before_ our code runs.
-That's what a static type-checker like TypeScript does.
-_Static types systems_ describe the shapes and behaviors of what our values will be when we run our programs.
-A type-checker like TypeScript uses that information and tells us when things might be going off the rails.
+이상적으로는, 코드를 실행하기 _전에_ 이러한 버그를 미리 발견할 수 있는 도구가 있다면 좋을 것입니다.
+TypeScript와 같은 정적 타입 검사기의 역할이 바로 그것입니다.
+_정적 타입 시스템_은 우리가 작성한 프로그램에서 사용된 값들의 형태와 동작을 설명합니다.
+TypeScript와 같은 타입 검사기는 이 정보를 활용하여 프로그램이 제대로 작동하지 않을 때 우리에게 알려줍니다.
 
 ```ts twoslash
 // @errors: 2349
@@ -93,16 +93,16 @@ const message = "hello!";
 message();
 ```
 
-Running that last sample with TypeScript will give us an error message before we run the code in the first place.
+위의 마지막 예시를 TypeScript로 실행하면, 코드가 실행되기에 앞서 우선 오류 메시지를 확인하게 됩니다.
 
-## Non-exception Failures
+## 예외가 아닌 실행 실패
 
-So far we've been discussing certain things like runtime errors - cases where the JavaScript runtime tells us that it thinks something is nonsensical.
-Those cases come up because [the ECMAScript specification](https://tc39.github.io/ecma262/) has explicit instructions on how the language should behave when it runs into something unexpected.
+지금까지 런타임 오류에 대하여 다루었습니다. 이는 JavaScript 런타임이 무언가 이상하다고 우리에게 직접 말해주는 경우에 해당합니다.
+이러한 오류는 예기치 못한 문제가 발생했을 때 JavaScript가 어떻게 대응해야 하는지 [ECMAScript 명세](https://tc39.github.io/ecma262/)에서 명시적인 절차를 제공하기 때문에 발생하는 것입니다.
 
-For example, the specification says that trying to call something that isn't callable should throw an error.
-Maybe that sounds like "obvious behavior", but you could imagine that accessing a property that doesn't exist on an object should throw an error too.
-Instead, JavaScript gives us different behavior and returns the value `undefined`:
+예를 들어, 명세에 따르면 호출 가능하지 않은 것에 대하여 호출을 시도할 경우 오류가 발생합니다.
+이는 "당연한 동작"처럼 들릴 수 있겠으나, 누군가는 객체에 존재하지 않는 프로퍼티에 접근을 시도했을 때에도 역시 오류를 던져야 한다고 생각할 수 있습니다.
+하지만 그 대신 JavaScript는 전혀 다르게 반응하며 `undefined`를 반환합니다.
 
 ```js
 const user = {
@@ -110,11 +110,11 @@ const user = {
   age: 26,
 };
 
-user.location; // returns undefined
+user.location; // undefined 를 반환
 ```
 
-Ultimately, a static type system has to make the call over what code should be flagged as an error in its system, even if it's "valid" JavaScript that won't immediately throw an error.
-In TypeScript, the following code produces an error about `location` not being defined:
+궁극적으로, 정적 타입 시스템은 어떤 코드가 오류를 발생시키지 않는 "유효한" JavaScript 코드일지라도, 정적 타입 시스템 내에서 오류로 간주되는 경우라면 이를 알려주어야 합니다.
+TypeScript에서는, 아래의 코드는 `location`이 정의되지 않았다는 오류를 발생시킵니다.
 
 ```ts twoslash
 // @errors: 2339
@@ -126,35 +126,35 @@ const user = {
 user.location;
 ```
 
-While sometimes that implies a trade-off in what you can express, the intent is to catch legitimate bugs in our programs.
-And TypeScript catches _a lot_ of legitimate bugs.
+비록 때로는 이로 인하여 표현의 유연성을 희생해야 하겠지만, 이렇게 함으로서 명시적인 버그는 아니지만 버그로 타당히 간주되는 경우를 잡아내는 데에 그 목적이 있습니다.
+그리고 TypeScript는 이러한 겉으로 드러나지 않는 버그를 _꽤 많이_ 잡아냅니다.
 
-For example: typos,
+예를 들어, 오타,
 
 ```ts twoslash
 // @noErrors
 const announcement = "Hello World!";
 
-// How quickly can you spot the typos?
+// 바로 보자마자 오타인지 아실 수 있나요?
 announcement.toLocaleLowercase();
 announcement.toLocalLowerCase();
 
-// We probably meant to write this...
+// 아마 아래와 같이 적으려 했던 것이겠죠...
 announcement.toLocaleLowerCase();
 ```
 
-uncalled functions,
+호출되지 않은 함수,
 
 ```ts twoslash
 // @noUnusedLocals
 // @errors: 2365
 function flipCoin() {
-  // Meant to be Math.random()
+  // 본래 의도는 Math.random()
   return Math.random < 0.5;
 }
 ```
 
-or basic logic errors.
+또는 기본적인 논리 오류 등이 있습니다.
 
 ```ts twoslash
 // @errors: 2367
@@ -162,20 +162,20 @@ const value = Math.random() < 0.5 ? "a" : "b";
 if (value !== "a") {
   // ...
 } else if (value === "b") {
-  // Oops, unreachable
+  // 이런, 이 블록은 실행되지 않겠군요
 }
 ```
 
-## Types for Tooling
+## 프로그래밍 도구로서의 타입
 
-TypeScript can catch bugs when we make mistakes in our code.
-That's great, but TypeScript can _also_ prevent us from making those mistakes in the first place.
+TypeScript는 우리가 코드 상에서 실수를 저질렀을 때 버그를 잡아줍니다.
+그거 좋죠, 그런데 TypeScript는 _여기서 더 나아가서_ 우리가 실수를 저지르는 바로 그 순간 이를 막아줍니다.
 
-The type-checker has information to check things like whether we're accessing the right properties on variables and other properties.
-Once it has that information, it can also start _suggesting_ which properties you might want to use.
+타입 검사기는 우리가 변수 또는 다른 프로퍼티 상의 올바른 프로퍼티에 접근하고 있는지 여부를 검사할 수 있도록 관련 정보들을 가지고 있습니다.
+이 정보를 활용하면 타입 검사기는 우리가 사용할 수 있는 프로퍼티를 _제안_할 수 있게 됩니다.
 
-That means TypeScript can be leveraged for editing code too, and the core type-checker can provide error messages and code completion as you type in the editor.
-That's part of what people often refer to when they talk about tooling in TypeScript.
+즉, TypeScript는 코드 수정에 활용될 수 있고, 우리가 코드를 입력할 때 오류 메시지를 제공하거나 코드 완성 기능을 제공할 수 있습니다.
+이는 TypeScript에서 도구(Tooling)를 논할 때에 흔히 언급되는 내용입니다.
 
 <!-- prettier-ignore -->
 ```ts twoslash
@@ -192,63 +192,63 @@ app.get("/", function (req, res) {
 app.listen(3000);
 ```
 
-TypeScript takes tooling seriously, and that goes beyond completions and errors as you type.
-An editor that supports TypeScript can deliver "quick fixes" to automatically fix errors, refactorings to easily re-organize code, and useful navigation features for jumping to definitions of a variable, or finding all references to a given variable.
-All of this is built on top of the type-checker and is fully cross-platform, so it's likely that [your favorite editor has TypeScript support available](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
+TypeScript는 프로그래밍 도구를 중요하게 생각하며, 여기에는 코드 완성 및 오류 메시지 기능 이외에도 다양한 것이 포함됩니다.
+TypeScript를 지원하는 코드 편집기는 오류를 자동으로 고쳐주는 "Quick Fixes", 코드를 간편하게 재조직하는 리팩토링, 변수의 정의로 빠르게 이동하는 유용한 네비게이션, 주어진 변수에 대한 모든 참조 검색 등의 기능들을 제공합니다.
+이 모든 기능들은 타입 검사기를 기반으로 하며 완전히 크로스 플랫폼으로 동작하므로, [여러분이 주로 사용하는 코드 편집기가 TypeScript를 지원](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support)할 확률이 높습니다.
 
-## `tsc`, the TypeScript compiler
+## `tsc`, TypeScript 컴파일러
 
-We've been talking about type-checking, but we haven't yet used our type-_checker_.
-Let's get acquainted with our new friend `tsc`, the TypeScript compiler.
-First we'll need to grab it via npm.
+지금까지 계속 타입 검사에 대하여 이야기했지만, 아직 타입 _검사기_를 사용하지 않았습니다.
+우리의 새로운 친구 `tsc`, TypeScript 컴파일러와 첫인사를 나누도록 합시다.
+우선, npm을 사용하여 설치하도록 하겠습니다.
 
 ```sh
 npm install -g typescript
 ```
 
-> This installs the TypeScript Compiler `tsc` globally.
-> You can use `npx` or similar tools if you'd prefer to run `tsc` from a local `node_modules` package instead.
+> 위 코드를 실행하면 TypeScript 컴파일러 `tsc`가 전역 설치됩니다.
+> `tsc`를 로컬 `node_modules` 패키지로부터 실행하고자 한다면 `npx` 또는 유사한 도구를 사용하면 됩니다.
 
-Now let's move to an empty folder and try writing our first TypeScript program: `hello.ts`:
+이제 빈 폴더로 이동하여 첫번째 TypeScript 프로그램인 `hello.ts`를 작성해보도록 하겠습니다.
 
 ```ts twoslash
-// Greets the world.
+// 세상을 맞이하세요.
 console.log("Hello world!");
 ```
 
-Notice there are no frills here; this "hello world" program looks identical to what you'd write for a "hello world" program in JavaScript.
-And now let's type-check it by running the command `tsc` which was installed for us by the `typescript` package.
+코드 상에 아무런 밑줄도 그어지지 않았음에 유의하세요. 이 "hello world" 프로그램은 JavaScript로 작성하는 "hello world" 프로그램과 동일한 모습을 가집니다.
+그리고 이제 `typescript` 패키지와 함께 설치된 `tsc` 명령어를 실행하여 타입 검사를 수행합니다.
 
 ```sh
 tsc hello.ts
 ```
 
-Tada!
+짜잔!
 
-Wait, "tada" _what_ exactly?
-We ran `tsc` and nothing happened!
-Well, there were no type errors, so we didn't get any output in our console since there was nothing to report.
+잠깐, 정확히 _무엇_이 "짜잔"하고 나왔다는 것이죠?
+`tsc`를 실행했지만 아무 일도 일어나지 않았습니다!
+뭐, 타입 오류가 없었으니, 아무 것도 보고될 것이 없고 그래서 콘솔에도 아무런 출력이 나타나지 않았습니다.
 
-But check again - we got some _file_ output instead.
-If we look in our current directory, we'll see a `hello.js` file next to `hello.ts`.
-That's the output from our `hello.ts` file after `tsc` _compiles_ or _transforms_ it into a plain JavaScript file.
-And if we check the contents, we'll see what TypeScript spits out after it processes a `.ts` file:
+하지만 다시 확인해보면, 우리는 그 대신 _파일_ 출력을 얻었습니다.
+현재 디렉토리를 보면, `hello.ts` 파일 옆에 `hello.js` 파일이 있는 것을 볼 수 있습니다.
+이것이 `tsc`가 우리의 `hello.ts` 파일을 JavaScript 파일로 _컴파일_ 또는 _변형_한 결과물입니다.
+그리고 그 내용을 확인해보면, TypeScript가 `.ts` 파일을 처리한 뒤 뱉어낸 내용을 확인할 수 있습니다.
 
 ```js
-// Greets the world.
+// 세상을 맞이하세요.
 console.log("Hello world!");
 ```
 
-In this case, there was very little for TypeScript to transform, so it looks identical to what we wrote.
-The compiler tries to emit clean readable code that looks like something a person would write.
-While that's not always so easy, TypeScript indents consistently, is mindful of when our code spans across different lines of code, and tries to keep comments around.
+위 경우, TypeScript가 변형해야 할 내용은 극히 적었고, 따라서 우리가 처음에 작성한 것과 동일한 결과물이 나왔습니다.
+컴파일러는 사람이 작성한 듯이 깔끔하고 읽을 수 있는 코드를 만들어내고자 시도합니다.
+물론 그것이 항상 쉬운 것은 아니지만, TypeScript는 일관성있게 들여쓰기를 수행하고, 여러 줄에 걸쳐 코드가 작성되는 것을 감안하고, 코드 주변에 작성된 주석도 잘 배치해둡니다.
 
-What about if we _did_ introduce a type-checking error?
-Let's rewrite `hello.ts`:
+만약 타입 검사 오류가 _주어지면_ 어떨까요?
+`hello.ts`를 다시 작성해보겠습니다.
 
 ```ts twoslash
 // @noErrors
-// This is an industrial-grade general-purpose greeter function:
+// 아래는 실무 수준에서 범용적으로 쓰이는 환영 함수입니다
 function greet(person, date) {
   console.log(`Hello ${person}, today is ${date}!`);
 }
@@ -256,18 +256,20 @@ function greet(person, date) {
 greet("Brendan");
 ```
 
-If we run `tsc hello.ts` again, notice that we get an error on the command line!
+여기서 `tsc hello.ts`를 다시 실행하면, 커맨드 라인 상에서 오류를 얻게 된다는 점에 유의하세요!
 
 ```txt
 Expected 2 arguments, but got 1.
 ```
 
-TypeScript is telling us we forgot to pass an argument to the `greet` function, and rightfully so.
-So far we've only written standard JavaScript, and yet type-checking was still able to find problems with our code.
-Thanks TypeScript!
+TypeScript는 `greet` 함수에 인자를 전달하는 것을 깜빡했다고 말해주고 있으며, 실제로 그렇습니다.
+지금까지 우리는 오직 표준적인 JavaScript만을 작성했을 뿐인데, 여전히 타입 검사를 통하여 코드 상의 문제를 발견해낼 수 있었습니다.
+고마워, TypeScript!
 
-### Emitting with Errors
+### 오류 발생
 
+여러분이 이전 예시에서 미처 눈치채지 못했을 수도 있는 부분은 바로 우리의 `hello.js` 파일이 또 한번 바뀌었다는 것입니다.
+만약 해당 파일을 열어보면 ~~
 One thing you might not have noticed from the last example was that our `hello.js` file changed again.
 If we open that file up then we'll see that the contents still basically look the same as our input file.
 That might be a bit surprising given the fact that `tsc` reported an error about our code, but this is based on one of TypeScript's core values: much of the time, _you_ will know better than TypeScript.
