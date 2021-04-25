@@ -104,7 +104,7 @@ JavaScript 项目可以使用 `jsconfig.json` 文件，它的作用与 `tsconfig
 
 ## 细节
 
-当`"compilerOptions"` 属性忽略时，会使用编译器的默认配置。请参考我们支持的[编译器选项](/tsconfig)列表。
+当没有指定 `"compilerOptions"` 时，会使用编译器的默认配置。请参考我们支持的[编译器选项](/tsconfig)列表。
 
 ## TSConfig 参考
 
