@@ -1,7 +1,7 @@
 ---
 title: Análise profunda
 layout: docs
-permalink: /docs/handbook/declaration-files/deep-dive.html
+permalink: /pt/docs/handbook/declaration-files/deep-dive.html
 oneline: "Como arquivos d.ts funcionam, uma análise profunda"
 ---
 
