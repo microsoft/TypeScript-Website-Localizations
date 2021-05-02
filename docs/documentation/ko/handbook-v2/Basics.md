@@ -289,11 +289,11 @@ tsc --noEmitOnError hello.ts
 
 `hello.js`가 하나도 수정되지 않는다는 것을 확인할 수 있습니다.
 
-## Explicit Types
+## 명시적 타입
 
-Up until now, we haven't told TypeScript what `person` or `date` are.
-Let's edit the code to tell TypeScript that `person` is a `string`, and that `date` should be a `Date` object.
-We'll also use the `toDateString()` method on `date`.
+지금까지는 아직 TypeScript에게 `person` 또는 `date`가 무엇인지 알려주지 않았습니다.
+코드를 수정하여 TypeScript가 `person`이 `string`이고 `date`가 `Date` 객체이어야 한다는 것을 알려주도록 하죠.
+또한 `date`의 `toDateString()` 메서드를 사용하겠습니다.
 
 ```ts twoslash
 function greet(person: string, date: Date) {
@@ -301,11 +301,11 @@ function greet(person: string, date: Date) {
 }
 ```
 
-What we did was add _type annotations_ on `person` and `date` to describe what types of values `greet` can be called with.
-You can read that signature as "`greet` takes a `person` of type `string`, and a `date` of type `Date`".
+방금 우리는 `person`과 `date`에 대하여 _타입 표기_를 수행하여 `greet`가 호출될 때 함께 사용될 수 있는 값들의 타입을 설명했습니다.
+해당 시그니처는 "`greet`는 `string` 타입의 `person`과 `Date` 타입의 `date`을 가진다"고 해석할 수 있습니다.
 
-With this, TypeScript can tell us about other cases where we might have been called incorrectly.
-For example...
+이것이 있다면, TypeScript는 우리가 해당 함수를 올바르지 못하게 사용했을 경우 이를 알려줄 수 있게 됩니다.
+예를 들어...
 
 ```ts twoslash
 // @errors: 2345
@@ -316,13 +316,13 @@ function greet(person: string, date: Date) {
 greet("Maddison", Date());
 ```
 
-Huh?
-TypeScript reported an error on our second argument, but why?
+어?
+TypeScript가 두번째 인자에 대하여 오류를 보고했는데요, 왜 그랬을까요?
 
-Perhaps surprisingly, calling `Date()` in JavaScript returns a `string`.
-On the other hand, constructing a `Date` with `new Date()` actually gives us what we were expecting.
+아마도 놀랍게도, JavaScript에서 `Date()`를 호출하면 `string`을 반환합니다.
+반면, `new Date()`를 사용하여 `Date` 타입을 생성해야 비로소 처음 기대했던 결과를 반환받을 수 있게 됩니다.
 
-Anyway, we can quickly fix up the error:
+어쨌든, 이 오류는 아주 빠르게 고칠 수 있습니다.
 
 ```ts twoslash {4}
 function greet(person: string, date: Date) {
@@ -332,22 +332,22 @@ function greet(person: string, date: Date) {
 greet("Maddison", new Date());
 ```
 
-Keep in mind, we don't always have to write explicit type annotations.
-In many cases, TypeScript can even just _infer_ (or "figure out") the types for us even if we omit them.
+명시적인 타입 표기를 항상 작성할 필요는 없다는 것을 꼭 기억해두세요.
+많은 경우, TypeScript는 생략된 타입 정보를 _추론할 수_ (또는 "알아낼 수") 있습니다.
 
 ```ts twoslash
 let msg = "hello there!";
 //  ^?
 ```
 
-Even though we didn't tell TypeScript that `msg` had the type `string` it was able to figure that out.
-That's a feature, and it's best not to add annotations when the type system would end up inferring the same type anyway.
+`msg`가 `string` 타입을 가진다는 사실을 TypeScript에게 알려주지 않았더라도 TypeScript는 이를 알아낼 수 있습니다.
+이는 기본 기능이며, 타입 시스템이 알아서 올바른 타입을 어떻게든 잘 알아낼 수 있다면 타입 표기를 굳이 적지 않는 것이 가장 좋습니다.
 
-> Note: the message bubble inside the code sample above. That is what your editor would show if you had hovered over the word.
+> 참고: 바로 위 코드의 말풍선은 에디터에서 해당 코드를 작성했을 때, 해당 변수에 마우스 호버시 화면에 나타나는 내용입니다.
 
-## Erased Types
+## 지워진 타입
 
-Let's take a look at what happens when we compile the above function `greet` with `tsc` to output JavaScript:
+앞서 작성한 함수 `greet`을 `tsc`로 컴파일하여 JavaScript 출력을 얻었을 때 어떤 일이 일어나는지 보도록 하겠습니다.
 
 ```ts twoslash
 // @showEmit
@@ -359,17 +359,17 @@ function greet(person: string, date: Date) {
 greet("Maddison", new Date());
 ```
 
-Notice two things here:
+여기서 두 가지를 알 수 있습니다.
 
-1. Our `person` and `date` parameters no longer have type annotations.
-2. Our "template string" - that string that used backticks (the `` ` `` character) - was converted to plain strings with concatenations (`+`).
+1. `person`과 `date` 인자는 더 이상 타입 표기를 가지지 않습니다.
+2. "템플릿 문자열" - 백틱(`` ` `` 문자)을 사용하여 작성된 문장 - 은 연결 연산자(`+`)로 이루어진 일반 문자열로 변환되었습니다.
 
-More on that second point later, but let's now focus on that first point.
-Type annotations aren't part of JavaScript (or ECMAScript to be pedantic), so there really aren't any browsers or other runtimes that can just run TypeScript unmodified.
-That's why TypeScript needs a compiler in the first place - it needs some way to strip out or transform any TypeScript-specific code so that you can run it.
-Most TypeScript-specific code gets erased away, and likewise, here our type annotations were completely erased.
+두번째 항목에 대하여서는 이후 자세히 다로도록 하고 우선 첫번째 항목에 초점을 두도록 하겠습니다.
+타입 표기는 JavaScript(또는 엄밀히 말하여 ECMAScript)의 일부가 아니므로, TypeScript를 수정 없이 그대로 실행할 수 있는 브라우저나 런타임을 현재 존재하지 않습니다.
+이것이 TypeScript를 사용하고자 할 때 다른 무엇보다도 컴파일러가 필요한 이유입니다. TypeScript 전용 코드를 제거하거나 변환하여 실행할 수 있도록 만들 방법이 필요합니다.
+TypeScript 전용 코드의 대부분은 제거되며, 마찬가지로 타입 표기 또한 완전히 지워집니다.
 
-> **Remember**: Type annotations never change the runtime behavior of your program.
+> **기억하세요**: 타입 표기는 프로그램의 런타임 동작을 전혀 수정하지 않습니다.
 
 ## Downleveling
 
