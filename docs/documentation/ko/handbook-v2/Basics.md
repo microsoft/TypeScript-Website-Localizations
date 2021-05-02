@@ -2,7 +2,7 @@
 title: The Basics
 layout: docs
 permalink: /ko/docs/handbook/2/basic-types.html
-oneline: "Step one in learning TypeScript: The basic types."
+oneline: "TypeScript를 배우는 첫 걸음: 기본 타입."
 preamble: >
   <p>핸드북의 첫번째 장에 오신 것을 환영하며, 만약 TypeScript를 처음 경험하신다면 '<a href='https://www.typescriptlang.org/ko/docs/handbook/intro.html#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-get-started'>시작하기</a>' 가이드 문서 중 하나를 먼저 읽는 것을 추천합니다.</p>
 ---
