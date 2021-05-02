@@ -266,30 +266,28 @@ TypeScript는 `greet` 함수에 인자를 전달하는 것을 깜빡했다고 �
 지금까지 우리는 오직 표준적인 JavaScript만을 작성했을 뿐인데, 여전히 타입 검사를 통하여 코드 상의 문제를 발견해낼 수 있었습니다.
 고마워, TypeScript!
 
-### 오류 발생
+### 오류 발생시키기
 
-여러분이 이전 예시에서 미처 눈치채지 못했을 수도 있는 부분은 바로 우리의 `hello.js` 파일이 또 한번 바뀌었다는 것입니다.
-만약 해당 파일을 열어보면 ~~
-One thing you might not have noticed from the last example was that our `hello.js` file changed again.
-If we open that file up then we'll see that the contents still basically look the same as our input file.
-That might be a bit surprising given the fact that `tsc` reported an error about our code, but this is based on one of TypeScript's core values: much of the time, _you_ will know better than TypeScript.
+앞서 살펴 본 예시에서 눈치 채셨는지 모르겠지만, `hello.js` 파일의 내용이 또 한번 수정되었습니다.
+파일을 열어보면, 입력으로 사용된 코드 파일과 실질적으로 동일하다는 것을 알 수 있습니다.
+우리 코드를 보고 `tsc`가 오류를 발생시켰다는 점을 감안하면 다소 놀랍게 느껴질 수도 있지만, 이는 TypeScript의 핵심 가치 중 하나에 기반한 동작입니다. 그것은 바로, 대부분의 경우 *당신이* TypeScript보다 더 잘 알고 있을 것이라는 생각입니다.
 
-To reiterate from earlier, type-checking code limits the sorts of programs you can run, and so there's a tradeoff on what sorts of things a type-checker finds acceptable.
-Most of the time that's okay, but there are scenarios where those checks get in the way.
-For example, imagine yourself migrating JavaScript code over to TypeScript and introducing type-checking errors.
-Eventually you'll get around to cleaning things up for the type-checker, but that original JavaScript code was already working!
-Why should converting it over to TypeScript stop you from running it?
+앞에서도 말씀드렸듯이 코드에 대한 타입 검사는 프로그램이 실행할 수 있는 동작을 제한합니다. 따라서 타입 검사가 허용 또는 제한하는 동작의 범위에는 어느 정도 절충과 타협이 존재합니다.
+대부분의 경우 문제가 발생하지 않지만, 타입 검사가 방해가 되는 시나리오 또한 존재합니다.
+예를 들어, JavaScript로 작성된 코드를 TypeScript로 마이그레이션하는 과정에서 타입 검사 오류가 발생하는 경우를 떠올려보세요.
+결국에는 타입 검사를 통과하도록 코드를 수정해나가겠지만, 사실 원본 JavaScript 코드는 이미 제대로 잘 작동하고 있는 상태였습니다!
+TypeScript로 변환하는 작업 때문에 코드 실행이 중단되어야 할 이유가 있을까요?
 
-So TypeScript doesn't get in your way.
-Of course, over time, you may want to be a bit more defensive against mistakes, and make TypeScript act a bit more strictly.
-In that case, you can use the `--noEmitOnError` compiler option.
-Try changing your `hello.ts` file and running `tsc` with that flag:
+그래서 TypeScript는 당신을 방해하지 않습니다.
+물론, 시간이 흐름에 따라 좀 더 실수에 방어적으로 대응하고, TypeScript가 보다 엄격하게 동작하기를 원할 수도 있습니다.
+이 경우 `--noEmitOnError` 컴파일러 옵션을 사용하면 됩니다.
+`hello.ts` 파일을 수정한 뒤 위 플래그 옵션을 사용하여 `tsc`를 실행해보세요.
 
 ```sh
 tsc --noEmitOnError hello.ts
 ```
 
-You'll notice that `hello.js` never gets updated.
+`hello.js`가 하나도 수정되지 않는다는 것을 확인할 수 있습니다.
 
 ## Explicit Types
 
