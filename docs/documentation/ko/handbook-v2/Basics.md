@@ -367,34 +367,34 @@ greet("Maddison", new Date());
 두번째 항목에 대하여서는 이후 자세히 다로도록 하고 우선 첫번째 항목에 초점을 두도록 하겠습니다.
 타입 표기는 JavaScript(또는 엄밀히 말하여 ECMAScript)의 일부가 아니므로, TypeScript를 수정 없이 그대로 실행할 수 있는 브라우저나 런타임을 현재 존재하지 않습니다.
 이것이 TypeScript를 사용하고자 할 때 다른 무엇보다도 컴파일러가 필요한 이유입니다. TypeScript 전용 코드를 제거하거나 변환하여 실행할 수 있도록 만들 방법이 필요합니다.
-TypeScript 전용 코드의 대부분은 제거되며, 마찬가지로 타입 표기 또한 완전히 지워집니다.
+대부분의 TypeScript 전용 코드는 제거되며, 마찬가지로 타입 표기 또한 완전히 지워집니다.
 
 > **기억하세요**: 타입 표기는 프로그램의 런타임 동작을 전혀 수정하지 않습니다.
 
-## Downleveling
+## 다운레벨링
 
-One other difference from the above was that our template string was rewritten from
+앞서 언급된 또 다른 차이점은, 바로 템플릿 문자열이 아래의 내용에서,
 
 ```js
 `Hello ${person}, today is ${date.toDateString()}!`;
 ```
 
-to
+아래의 내용으로 다시 작성되었다는 점입니다.
 
 ```js
 "Hello " + person + ", today is " + date.toDateString() + "!";
 ```
 
-Why did this happen?
+왜 이러한 일이 생겼을까요?
 
-Template strings are a feature from a version of ECMAScript called ECMAScript 2015 (a.k.a. ECMAScript 6, ES2015, ES6, etc. - _don't ask_).
-TypeScript has the ability to rewrite code from newer versions of ECMAScript to older ones such as ECMAScript 3 or ECMAScript 5 (a.k.a. ES3 and ES5).
-This process of moving from a newer or "higher" version of ECMAScript down to an older or "lower" one is sometimes called _downleveling_.
+템플릿 문자열은 ECMAScript 2015(a.k.a. ECMAScript 6, ES2015, ES6, 등. _더 묻지 마세요_)라고 불리는 버전의 ECMAScript에서 등장한 기능입니다.
+TypeScript는 새 버전의 ECMAScript의 코드를 ECMAScript 3 또는 ECMAScript 5와 같은 보다 예전 버전의 것들로 다시 작성해줍니다.
+새로운 또는 "상위" 버전의 ECMAScript를 예전의 또는 "하위" 버전의 것으로 바꾸는 과정을 _다운레벨링_이라 부르기도 합니다.
 
-By default TypeScript targets ES3, an extremely old version of ECMAScript.
-We could have chosen something a little bit more recent by using the `--target` flag.
-Running with `--target es2015` changes TypeScript to target ECMAScript 2015, meaning code should be able to run wherever ECMAScript 2015 is supported.
-So running `tsc --target es2015 input.ts` gives us the following output:
+TypeScript는 ES3라는 아주 구버전의 ECMAScript를 타겟으로 동작하는 것이 기본 동작입니다.
+`--target` 플래그를 설정하면 보다 최근 버전을 타겟으로 변환을 수행할 수도 있습니다.
+`--target es2015`를 실행하면 TypeScript가 ECMAScript 2015를 타겟으로 동작할 수 있으며, 이는 ECMAScript 2015가 지원되는 런타임이기만 하면 해당 코드가 실행될 수 있도록 변환된다는 의미입니다.
+따라서 `tsc --target es2015 input.ts`를 실행하면 아래와 같은 출력을 얻게 됩니다.
 
 ```js
 function greet(person, date) {
@@ -403,38 +403,38 @@ function greet(person, date) {
 greet("Maddison", new Date());
 ```
 
-> While the default target is ES3, the great majority of current browsers support ES2015.
-> Most developers can therefore safely specify ES2015 or above as a target, unless compatibility with certain ancient browsers is important.
+> 타겟 버전의 기본값은 ES3이지만, 현존하는 대다수의 브라우저들은 ES2015를 지원하고 있습니다.
+> 따라서 특정 구버전 브라우저에 대한 호환성 유지가 주요 이슈가 아니라면, 대부분의 경우 안심하고 ES2015 또는 그 이상을 컴파일러 타겟으로 지정할 수 있습니다.
 
-## Strictness
+## 엄격도
 
-Different users come to TypeScript looking for different things in a type-checker.
-Some people are looking for a more loose opt-in experience which can help validate only some parts of their program, and still have decent tooling.
-This is the default experience with TypeScript, where types are optional, inference takes the most lenient types, and there's no checking for potentially `null`/`undefined` values.
-Much like how `tsc` emits in the face of errors, these defaults are put in place to stay out of your way.
-If you're migrating existing JavaScript, that might be a desirable first step.
+TypeScript의 타입 검사기를 사용하는 목적은 사용자마다 다양합니다.
+누군가는 프로그램 일부만 타입 검사를 수행하는 느슨한 수준을 유지하면서도, 유용한 프로그래밍 도구로서의 기능은 온전히 활용하고 싶을 수 있습니다.
+이는 TypeScript를 사용할 때 기본으로 제공하고자 하는 경험입니다. 타입 검사는 선택 사항이며, 타입 추론은 가장 관대한 기준으로 이루어지고, 잠재적인 `null`/`undefined` 값에 대한 검사는 이루어지지 않습니다.
+이러한 기본 경험은 개발 경험을 방해하지 않는 방향으로 이루어집니다. 앞서 언급하였던, 오류 발생 시 `tsc`가 오류를 처리하는 방식과 유사합니다.
+기존의 JavaScript에서 마이그레이션을 하는 입장이라면, 이는 첫발을 디디기 위한 적당한 수준이라고 볼 수 있습니다.
 
-In contrast, a lot of users prefer to have TypeScript validate as much as it can straight away, and that's why the language provides strictness settings as well.
-These strictness settings turn static type-checking from a switch (either your code is checked or not) into something closer to a dial.
-The further you turn this dial up, the more TypeScript will check for you.
-This can require a little extra work, but generally speaking it pays for itself in the long run, and enables more thorough checks and more accurate tooling.
-When possible, a new codebase should always turn these strictness checks on.
+이와 반대로, 대다수의 사용자들은 TypeScript가 최대한으로 타입 검사를 수행해주기를 선호합니다. 이것이 TypeScript에서 엄격도 설정을 제공하는 이유이기도 합니다.
+이러한 엄격도 설정을 활용하면 정적 타입 검사기를 마치 (코드 검사가 이루어졌는지 여부만을 단순히 따지는) 스위치 수준의 장치에서 마치 다이얼에 가까운 장치로 만들 수 있습니다.
+다이얼을 더 멀리 돌릴수록, TypeScript는 더 많은 것을 검사해줄 겁니다.
+그러면 할 일이 조금 더 생기겠지만, 길게 봤을 때 분명 그만한 가치가 있으며, 보다 철저한 검사와 정밀한 도구 기능을 사용할 수 있게 됩니다.
+가능하다면, 새로 작성하는 코드에서는 항상 엄격도를 활성화해야 합니다.
 
-TypeScript has several type-checking strictness flags that can be turned on or off, and all of our examples will be written with all of them enabled unless otherwise stated.
-The `--strict` flag in the CLI, or `"strict": true` in a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) toggles them all on simultaneously, but we can opt out of them individually.
-The two biggest ones you should know about are `noImplicitAny` and `strictNullChecks`.
+TypeScript에는 켜고 끌 수 있는 타입 검사 엄격도 플래그가 몇 가지 존재하며, 앞으로 사용되는 모든 예시 코드는 별도 설명이 없다면 모든 플래그를 활성화한 상태로 작성됩니다.
+CLI에서 `--strict` 플래그를 설정하거나 [`tsconfig.json`](https://www.typescriptlang.org/ko/docs/handbook/tsconfig-json.html)에 `"strict": true`를 추가하면 모든 플래그를 동시에 활성화하게 되지만, 각각의 플래그를 개별적으로 끌 수도 있습니다.
+반드시 알아야 하는 두 가지 가장 주요한 옵션은 `noImplicitAny`와 `strictNullChecks`입니다.
 
 ### `noImplicitAny`
 
-Recall that in some places, TypeScript doesn't try to infer any types for us and instead falls back to the most lenient type: `any`.
-This isn't the worst thing that can happen - after all, falling back to `any` is just the plain JavaScript experience anyway.
+몇몇 경우에서 TypeScript는 값의 타입을 추론하지 않고 가장 관대한 타입인 `any`로 간주한다는 사실을 기억하시기 바랍니다.
+이는 최악의 경우는 아닙니다. 어쨌든, 타입을 `any`로 간주하는 것은 일반적인 JavaScript에서는 당연한 일이기도 합니다.
 
-However, using `any` often defeats the purpose of using TypeScript in the first place.
-The more typed your program is, the more validation and tooling you'll get, meaning you'll run into fewer bugs as you code.
-Turning on the `noImplicitAny` flag will issue an error on any variables whose type is implicitly inferred as `any`.
+하지만, `any`를 사용하면 애초에 TypeScript를 사용하는 이유가 무색해지는 경우가 많습니다.
+프로그램에서 타입을 더 구체적으로 사용할수록, 더 많은 유효성 검사와 도구 기능을 사용할 수 있으며, 이는 곧 코드 상에서 보다 적은 버그를 만나게 된다는 의미입니다.
+`noImplicitAny` 플래그를 활성화하면 타입이 `any`로 암묵적으로 추론되는 변수에 대하여 오류를 발생시킵니다.
 
 ### `strictNullChecks`
 
-By default, values like `null` and `undefined` are assignable to any other type.
-This can make writing some code easier, but forgetting to handle `null` and `undefined` is the cause of countless bugs in the world - some consider it a [billion dollar mistake](https://www.youtube.com/watch?v=ybrQvs4x0Ps)!
-The `strictNullChecks` flag makes handling `null` and `undefined` more explicit, and _spares_ us from worrying about whether we _forgot_ to handle `null` and `undefined`.
+`null`과 `undefined`와 같은 값은 다른 타입의 값에 할당할 수 있는 것이 기본 동작입니다.
+이는 코드 작성을 쉽게 만들어주지만, `null`과 `undefined`의 처리를 잊는 것은 세상의 샐 수 없이 많은 버그들의 원인입니다. 혹자는 이를 [백만 불 짜리 실수](https://www.youtube.com/watch?v=ybrQvs4x0Ps)라고 일컫기도 합니다!
+`strictNullChecks` 플래그는 `null`과 `undefined`를 보다 명시적으로 처리하며, `null` 및 `undefined` 처리를 _잊었는지_ 여부를 걱정하는 데에서 우리를 _해방시켜_ 줍니다.
