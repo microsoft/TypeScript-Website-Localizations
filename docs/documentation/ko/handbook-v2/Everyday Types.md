@@ -2,15 +2,17 @@
 title: Everyday Types
 layout: docs
 permalink: /docs/handbook/2/everyday-types.html
-oneline: "The language primitives."
+oneline: "언어의 기본 구성 요소."
 ---
 
-In this chapter, we'll cover some of the most common types of values you'll find in JavaScript code, and explain the corresponding ways to describe those types in TypeScript.
-This isn't an exhaustive list, and future chapters will describe more ways to name and use other types.
+이번 장에서는 JavaScript 코드에서 찾아볼 수 있는 가장 흔한 타입들을 다루고, 이 타입들을 TypeScript에서 어떻게 기술하는지 각각의 대응하는 방식들에 대하여 설명하겠습니다.
+이 문서에서 빠짐없이 전부 다루고자 하는 것이 아니며, 타입을 만들고 사용하는 더 많은 방법들은 이후 이어지는 장에서 다룰 것입니다.
 
-Types can also appear in many more _places_ than just type annotations.
-As we learn about the types themselves, we'll also learn about the places where we can refer to these types to form new constructs.
+타입은 단지 타입 표기 이외에 훨씬 다양한 _위치_에 나타날 수 있습니다.
+타입 자체에 대하여 배우는 것과 더불어, 새로운 구조체를 만들고자 할 때 타입을 참조하는 경우들에 대하여 알아볼 것입니다.
 
+우선 JavaScript 또는 TypeScript 코드를 작성할 때 가장 기본적이면서 흔히 만날 수 있는 타입들을 다시 살펴보는 데에서 시작해보겠습니다.
+이는 이후에 보다 복잡한 타입을 이해하기 위한 ?????핵심 구성 요소가 되어 줄 겁니다.?????
 We'll start by reviewing the most basic and common types you might encounter when writing JavaScript or TypeScript code.
 These will later form the core building blocks of more complex types.
 
