@@ -2,31 +2,29 @@
 title: Everyday Types
 layout: docs
 permalink: /docs/handbook/2/everyday-types.html
-oneline: "언어의 기본 구성 요소."
+oneline: "언어의 원시 타입들."
 ---
 
 이번 장에서는 JavaScript 코드에서 찾아볼 수 있는 가장 흔한 타입들을 다루고, 이 타입들을 TypeScript에서 어떻게 기술하는지 각각의 대응하는 방식들에 대하여 설명하겠습니다.
 이 문서에서 빠짐없이 전부 다루고자 하는 것이 아니며, 타입을 만들고 사용하는 더 많은 방법들은 이후 이어지는 장에서 다룰 것입니다.
 
-타입은 단지 타입 표기 이외에 훨씬 다양한 _위치_에 나타날 수 있습니다.
+타입은 단지 타입 표기 이외에도 훨씬 다양한 _위치_에 나타날 수 있습니다.
 타입 자체에 대하여 배우는 것과 더불어, 새로운 구조체를 만들고자 할 때 타입을 참조하는 경우들에 대하여 알아볼 것입니다.
 
 우선 JavaScript 또는 TypeScript 코드를 작성할 때 가장 기본적이면서 흔히 만날 수 있는 타입들을 다시 살펴보는 데에서 시작해보겠습니다.
-이는 이후에 보다 복잡한 타입을 이해하기 위한 ?????핵심 구성 요소가 되어 줄 겁니다.?????
-We'll start by reviewing the most basic and common types you might encounter when writing JavaScript or TypeScript code.
-These will later form the core building blocks of more complex types.
+이 타입들은 이후에 다루는 보다 복잡한 타입을 이루는 핵심 구성 요소입니다.
 
-## The primitives: `string`, `number`, and `boolean`
+## 원시 타입 : `string`, `number`, 그리고 `boolean`
 
-JavaScript has three very commonly used [primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive): `string`, `number`, and `boolean`.
-Each has a corresponding type in TypeScript.
-As you might expect, these are the same names you'd see if you used the JavaScript `typeof` operator on a value of those types:
+JavaScript에는 아주 흔하게 사용되는 세 가지의 [원시 타입](https://developer.mozilla.org/ko/docs/Glossary/Primitive)으로 `string`, `number`, 그리고 `boolean`이 존재합니다.
+이 타입들은 TypeScript에서 각자 대응하는 타입이 존재합니다.
+아마도 예상하셨듯이, 이 타입들은 JavaScript에서 각 타입 별 값에 `typeof` 연산자를 사용하였을 때 얻을 수 있는 것과 동일한 이름을 가집니다.
 
-- `string` represents string values like `"Hello, world"`
-- `number` is for numbers like `42`. JavaScript does not have a special runtime value for integers, so there's no equivalent to `int` or `float` - everything is simply `number`
-- `boolean` is for the two values `true` and `false`
+- `string`은 `"Hello, world"`와 같은 문자열 값을 나타냅니다
+- `number`은  `42`와 같은 숫자를 나타냅니다. JavaScript는 정수를 위한 런타임 값을 별도로 가지지 않으므로, `int` 또는 `float`과 같은 것은 존재하지 않습니다. 모든 수는 단순히 `number`입니다
+- `boolean`은 `true`와 `false`라는 두 가지 값만을 가집니다
 
-> The type names `String`, `Number`, and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. _Always_ use `string`, `number`, or `boolean` for types.
+> `String`, `Number`, `Boolean` 이라는 (대문자로 시작하는) 타입은 유효하지만, 코드 상에서 이와 같은 특수한 내장 타입을 사용하는 경우는 극히 드물 것입니다. _항상_ `string`, `number`, `boolean` 타입을 사용하세요.
 
 ## Arrays
 
