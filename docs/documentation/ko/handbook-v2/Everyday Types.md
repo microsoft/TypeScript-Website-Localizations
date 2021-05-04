@@ -16,7 +16,7 @@ oneline: "언어의 원시 타입들."
 
 ## 원시 타입 : `string`, `number`, 그리고 `boolean`
 
-JavaScript에는 아주 흔하게 사용되는 세 가지의 [원시 타입](https://developer.mozilla.org/ko/docs/Glossary/Primitive)으로 `string`, `number`, 그리고 `boolean`이 존재합니다.
+JavaScript에서 아주 흔하게 사용되는 세 가지의 [원시 타입](https://developer.mozilla.org/ko/docs/Glossary/Primitive)으로 `string`, `number`, 그리고 `boolean`이 있습니다.
 이 타입들은 TypeScript에서 각자 대응하는 타입이 존재합니다.
 아마도 예상하셨듯이, 이 타입들은 JavaScript에서 각 타입 별 값에 `typeof` 연산자를 사용하였을 때 얻을 수 있는 것과 동일한 이름을 가집니다.
 
@@ -24,27 +24,27 @@ JavaScript에는 아주 흔하게 사용되는 세 가지의 [원시 타입](htt
 - `number`은  `42`와 같은 숫자를 나타냅니다. JavaScript는 정수를 위한 런타임 값을 별도로 가지지 않으므로, `int` 또는 `float`과 같은 것은 존재하지 않습니다. 모든 수는 단순히 `number`입니다
 - `boolean`은 `true`와 `false`라는 두 가지 값만을 가집니다
 
-> `String`, `Number`, `Boolean` 이라는 (대문자로 시작하는) 타입은 유효하지만, 코드 상에서 이와 같은 특수한 내장 타입을 사용하는 경우는 극히 드물 것입니다. _항상_ `string`, `number`, `boolean` 타입을 사용하세요.
+> `String`, `Number`, `Boolean`와 같은 (대문자로 시작하는) 타입은 유효한 타입이지만, 코드 상에서 이러한 특수 내장 타입을 사용하는 경우는 극히 드뭅니다. _항상_ `string`, `number`, `boolean` 타입을 사용하세요.
 
-## Arrays
+## 배열
 
-To specify the type of an array like `[1, 2, 3]`, you can use the syntax `number[]`; this syntax works for any type (e.g. `string[]` is an array of strings, and so on).
-You may also see this written as `Array<number>`, which means the same thing.
-We'll learn more about the syntax `T<U>` when we cover _generics_.
+`[1, 2, 3]`과 같은 배열의 타입을 지정할 때 `number[]` 구문을 사용할 수 있습니다. 이 구문은 모든 타입에서 사용할 수 있습니다(예를 들어, `string[]`은 문자열의 배열입니다).
+위 타입은 `Array<number>`과 같은 형태로 적힐 수 있으며, 동일한 의미를 가집니다.
+`T<U>` 구문에 대한 내용은 _제네릭_을 다룰 때 좀 더 알아보겠습니다.
 
-> Note that `[number]` is a different thing; refer to the section on _tuple types_.
+> `[number]`는 전혀 다른 의미를 갖비니다. _튜플 타입_ 부분을 참조하세요.
 
 ## `any`
 
-TypeScript also has a special type, `any`, that you can use whenever you don't want a particular value to cause typechecking errors.
+TypeScript는 또한 `any`라고 불리는 특별한 타입을 가지고 있으며, 특정 값으로 인하여 타입 검사 오류가 발생하는 것을 원하지 않을 때에 사용할 수 있습니다.
 
-When a value is of type `any`, you can access any properties of it (which will in turn be of type `any`), call it like a function, assign it to (or from) a value of any type, or pretty much anything else that's syntactically legal:
+어떤 값의 타입이 `any`이면, 해당 값에 대하여 임의의 속성에 접근할 수 있고(이 때 반환되는 값의 타입도 `any`입니다), 함수인 것처럼 호출할 수 있고, 다른 임의의 타입의 값에 할당하거나(받거나), 그 밖에도 구문적으로 유효한 것이라면 무엇이든 할 수 있습니다.
 
 ```ts twoslash
 let obj: any = { x: 0 };
-// None of the following lines of code will throw compiler errors.
-// Using `any` disables all further type checking, and it is assumed 
-// you know the environment better than TypeScript.
+// 아래 이어지는 코드들은 모두 오류 없이 정상적으로 실행됩니다.
+// `any`를 사용하면 추가적인 타입 검사가 비활성화되며,
+// 당신이 TypeScript보다 상황을 더 잘 이해하고 있다고 가정합니다.
 obj.foo();
 obj();
 obj.bar = 100;
@@ -52,73 +52,77 @@ obj = "hello";
 const n: number = obj;
 ```
 
+`any` 타입은 특정 코드에 문제가 없다고 TypeScript가 믿게
+
+단지 코드 상의 특정 라인에 문제가 없다고 TypeScript가 믿게 하고자 긴 타입을 작성해야 하는 것이 마음에 들지 않는다면, 
+단지 TypeScript로 하여금 특정 라인이 문제가 없다고 믿게 
 The `any` type is useful when you don't want to write out a long type just to convince TypeScript that a particular line of code is okay.
 
 ### `noImplicitAny`
 
-When you don't specify a type, and TypeScript can't infer it from context, the compiler will typically default to `any`.
+타입을 지정되지 않은 값에 대하여 TypeScript가 문맥으로부터 그 타입을 추론해낼 수 없다면, 컴파일러는 `any` 타입을 부여하는 것이 기본 동작입니다.
 
-You usually want to avoid this, though, because `any` isn't type-checked.
-Use the compiler flag [`noImplicitAny`](/tsconfig#noImplicitAny) to flag any implicit `any` as an error.
+하지만 이런 상황은 보통 선호되지 않습니다. 왜냐하면 `any`는 타입 검사가 이루어지지 않기 때문입니다.
+컴파일러 플래그 [`noImplicitAny`](/tsconfig#noImplicitAny)를 사용하면 암묵적으로 `any`로 간주되는 모든 경우에 오류를 발생시킵니다.
 
-## Type Annotations on Variables
+## 변수에 대한 타입 표기
 
-When you declare a variable using `const`, `var`, or `let`, you can optionally add a type annotation to explicitly specify the type of the variable:
+`const`, `var`, 또는 `let` 등을 사용하여 변수를 선언할 때, 변수의 타입을 명시적으로 지정하기 위하여 타입 표기를 추가할 수 있으며 이는 선택 사항입니다.
 
 ```ts twoslash
 let myName: string = "Alice";
-//        ^^^^^^^^ Type annotation
+//        ^^^^^^^^ 타입 표기
 ```
 
-> TypeScript doesn't use "types on the left"-style declarations like `int x = 0;`
-> Type annotations will always go _after_ the thing being typed.
+> TypeScript는 `int x = 0;`과 같이 "타입을 왼쪽에 쓰는" 식의 표기법을 사용하지 않습니다.
+> 타입 표기는 항상 타입의 대상 _뒤쪽에_ 위치합니다.
 
-In most cases, though, this isn't needed.
-Wherever possible, TypeScript tries to automatically _infer_ the types in your code.
-For example, the type of a variable is inferred based on the type of its initializer:
+하지만 대부분의 경우, 타입 표기는 필요하지 않습니다.
+가능하다면 TypeScript는 자동으로 코드 내의 있는 타입들을 _추론_하고자 시도합니다.
+예를 들어, 변수의 타입은 해당 변수의 초기값의 타입을 바탕으로 추론됩니다.
 
 ```ts twoslash
-// No type annotation needed -- 'myName' inferred as type 'string'
+// 타입 표기가 필요하지 않습니다. 'myName'은 'string' 타입으로 추론됩니다.
 let myName = "Alice";
 ```
 
-For the most part you don't need to explicitly learn the rules of inference.
-If you're starting out, try using fewer type annotations than you think - you might be surprised how few you need for TypeScript to fully understand what's going on.
+대부분의 경우 추론 규칙을 명시적으로 학습하지 않아도 됩니다.
+이제 막 TypeScript를 시작하는 단계라면, 가능한 타입 표기를 적게 사용하도록 해보세요. 코드 흐름을 완전히 파악하는 데에 타입이 그다지 많이 필요햐지 않다는 사실에 놀라실 겁니다.
 
-## Functions
+## 함수
 
-Functions are the primary means of passing data around in JavaScript.
-TypeScript allows you to specify the types of both the input and output values of functions.
+함수는 JavaScript에서 데이터를 주고 받는 주요 수단입니다.
+TypeScript에서는 함수의 입력 및 출력의 타입을 지정할 수 있습니다.
 
-### Parameter Type Annotations
+### 매개변수 타입 표기
 
-When you declare a function, you can add type annotations after each parameter to declare what types of parameters the function accepts.
-Parameter type annotations go after the parameter name:
+함수를 선언할 때, 함수가 허용할 매개변수 타입을 선언하기 위하여 각 매개변수 뒤에 타입을 표기할 수 있습니다.
+매개변수 타입은 매개변수 이름 뒤에 표기합니다.
 
 ```ts twoslash
-// Parameter type annotation
+// 매개변수 타입 표기
 function greet(name: string) {
   //                 ^^^^^^^^
   console.log("Hello, " + name.toUpperCase() + "!!");
 }
 ```
 
-When a parameter has a type annotation, arguments to that function will be checked:
+매개변수에 타입을 표기했다면, 해당 함수에 대한 인자는 검사가 이루어집니다.
 
 ```ts twoslash
 // @errors: 2345
 declare function greet(name: string): void;
-// ---cut---
-// Would be a runtime error if executed!
+// ---셍략---
+// 만약 실행되면 런타임 오류가 발생하게 됩니다!
 greet(42);
 ```
 
-> Even if you don't have type annotations on your parameters, TypeScript will still check that you passed the right number of arguments.
+> 매개변수에 타입을 표기하지 않았더라도, 여전히 TypeScript는 올바른 개수의 인자가 전달되었는지 여부를 검사합니다.
 
-### Return Type Annotations
+### 반환 타입 표기
 
-You can also add return type annotations.
-Return type annotations appear after the parameter list:
+반환 타입 또한 표기할 수 있습니다.
+반환 타입은 매개변수 목록 뒤에 표기합니다.
 
 ```ts twoslash
 function getFavoriteNumber(): number {
@@ -126,6 +130,7 @@ function getFavoriteNumber(): number {
   return 26;
 }
 ```
+
 
 Much like variable type annotations, you usually don't need a return type annotation because TypeScript will infer the function's return type based on its `return` statements.
 The type annotation in the above example doesn't change anything.
