@@ -186,50 +186,50 @@ printCoord({ x: 3, y: 7 });
 각 프로퍼티의 타입 표기 또한 선택 사항입니다.
 만약 타입을 지정하지 않는다면, 해당 프로퍼티는 `any` 타입으로 간주됩니다.
 
-### Optional Properties
+### 옵셔널 프로퍼티
 
-Object types can also specify that some or all of their properties are _optional_.
-To do this, add a `?` after the property name:
+객체 타입은 일부 또는 모든 프로퍼티의 타입을 선택적인 타입, 즉 _옵셔널_로 지정할 수 있습니다.
+프로퍼티 이름 뒤에 `?`를 붙이면 됩니다.
 
 ```ts twoslash
 function printName(obj: { first: string; last?: string }) {
   // ...
 }
-// Both OK
+// 둘 다 OK
 printName({ first: "Bob" });
 printName({ first: "Alice", last: "Alisson" });
 ```
 
-In JavaScript, if you access a property that doesn't exist, you'll get the value `undefined` rather than a runtime error.
-Because of this, when you _read_ from an optional property, you'll have to check for `undefined` before using it.
+JavaScript에서는 존재하지 않는 프로퍼티에 접근하였을 때, 런타임 오류가 발생하지 않고 `undefined` 값을 얻게 됩니다.
+이 때문에 옵셔널 프로퍼티를 _읽었을_ 때, 해당 값을 사용하기에 앞서 `undefined`인지 여부를 확인해야 합니다.
 
 ```ts twoslash
 // @errors: 2532
 function printName(obj: { first: string; last?: string }) {
-  // Error - might crash if 'obj.last' wasn't provided!
+  // 오류 - `obj.last`의 값이 제공되지 않는다면 프로그램이 멈추게 됩니다!
   console.log(obj.last.toUpperCase());
   if (obj.last !== undefined) {
     // OK
     console.log(obj.last.toUpperCase());
   }
 
-  // A safe alternative using modern JavaScript syntax:
+  // 최신 JavaScript 문법을 사용하였을 때 또다른 안전한 코드
   console.log(obj.last?.toUpperCase());
 }
 ```
 
-## Union Types
+## 유니언 타입
 
-TypeScript's type system allows you to build new types out of existing ones using a large variety of operators.
-Now that we know how to write a few types, it's time to start _combining_ them in interesting ways.
+TypeScript의 타입 시스템에서는 기존의 타입을 기반으로 다양한 연산자를 사용하여 새로운 타입을 만들 수 있습니다.
+몇몇 타입들을 사용하는 법을 알았으니, 이제 이 타입들을 _조합하여_ 흥미로운 방식으로 사용해볼 시간입니다.
 
-### Defining a Union Type
+### 유니언 타입 정의하기
 
-The first way to combine types you might see is a _union_ type.
-A union type is type formed from two or more other types, representing values that may be _any one_ of those types.
-We refer to each of these types as the union's _members_.
+타입을 조합하는 첫 번째 방법은 _유니언_ 타입을 사용하는 것입니다.
+유니언 타입은 서로 다른 두 개 이상의 타입들을 사용하여 만드는 것으로, 유니언 타입의 값은 타입 조합에 사용된 타입 중 _무엇이든 하나_를 타입으로 가질 수 있습니다.
+조합에 사용된 각 타입을 유니언 타입의 _멤버_라고 부릅니다.
 
-Let's write a function that can operate on strings or numbers:
+문자열 또는 숫자를 받을 수 있는 함수를 작성해보겠습니다.
 
 ```ts twoslash
 // @errors: 2345
@@ -240,17 +240,17 @@ function printId(id: number | string) {
 printId(101);
 // OK
 printId("202");
-// Error
+// 오류
 printId({ myID: 22342 });
 ```
 
-### Working with Union Types
+### 유니언 타입 사용하기
 
-It's easy to _provide_ a value matching a union type - simply provide a type matching any of the union's members.
-If you _have_ a value of a union type, how do you work with it?
+유니언 타입에 맞는 값을 _제공하는_ 것은 간단합니다. 유니언 타입의 멤버 중 하나에 해당하는 타입을 제공하면 됩니다.
+유니언 타입인 값이 코드 상에 _존재할 때_, 이를 어떻게 사용해아 할까요?
 
-TypeScript will only allow you to do things with the union if that thing is valid for _every_ member of the union.
-For example, if you have the union `string | number`, you can't use methods that are only available on `string`:
+TypeScript에서 유니언을 다룰 때에는 해당 유니언 타입의 _모든_ 멤버에 대하여 유효한 작업일 때에만 허용됩니다.
+예를 들어 `string | number`라는 유니언 타입의 경우, `string` 타입에만 유효한 메서드는 사용할 수 없습니다.
 
 ```ts twoslash
 // @errors: 2339
@@ -259,63 +259,64 @@ function printId(id: number | string) {
 }
 ```
 
-The solution is to _narrow_ the union with code, the same as you would in JavaScript without type annotations.
-_Narrowing_ occurs when TypeScript can deduce a more specific type for a value based on the structure of the code.
+이를 해결하려면 코드 상에서 유니언을 _좁혀야_ 하는데, 이는 타입 표기가 없는 JavaScript에서 벌어지는 일과 동일합니다.
+_좁히기_란 TypeScript가 코드 구조를 바탕으로 어떤 값을 보다 구체적인 타입으로 추론할 수 있을 때에 발생합니다.
 
-For example, TypeScript knows that only a `string` value will have a `typeof` value `"string"`:
+예를 들어, TypeScript는 오직 `string` 값만이 `typeof` 연산의 결과값으로 `"string"`을 가질 수 있다는 것을 알고 있습니다.
 
 ```ts twoslash
 function printId(id: number | string) {
   if (typeof id === "string") {
-    // In this branch, id is of type 'string'
+    // 이 분기에서 id는 `string` 타입을 가집니다
     console.log(id.toUpperCase());
   } else {
-    // Here, id is of type 'number'
+    // 여기에서 id는 'number' 타입을 가집니다
     console.log(id);
   }
 }
 ```
 
+또다른 예시는 `Array.isArray`와 같은 함수를 사용하는 것입니다.
 Another example is to use a function like `Array.isArray`:
 
 ```ts twoslash
 function welcomePeople(x: string[] | string) {
   if (Array.isArray(x)) {
-    // Here: 'x' is 'string[]'
+    // 여기에서 'x'는 'string[]' 타입입니다
     console.log("Hello, " + x.join(" and "));
   } else {
-    // Here: 'x' is 'string'
+    // 여기에서 'x'는 'string' 타입입니다
     console.log("Welcome lone traveler " + x);
   }
 }
 ```
 
-Notice that in the `else` branch, we don't need to do anything special - if `x` wasn't a `string[]`, then it must have been a `string`.
+`else` 분기문에서는 별도 처리를 하지 않아도 된다는 점에 유의하시기 바랍니다. `x`의 타입이 `string[]`가 아니라면, `x`의 타입은 반드시 `string`일 것입니다.
 
-Sometimes you'll have a union where all the members have something in common.
-For example, both arrays and strings have a `slice` method.
-If every member in a union has a property in common, you can use that property without narrowing:
+때로는 유니언의 모든 멤버가 무언가 공통점을 가지는 경우도 있습니다.
+에를 들어, 배열과 문자열은 둘 다 `slice` 메서드를 내장합니다.
+유니언의 모든 멤버가 어떤 프로퍼티를 공통으로 가진다면, 좁히기 없이도 해당 프로퍼티를 사용할 수 있게 됩니다.
 
 ```ts twoslash
-// Return type is inferred as number[] | string
+// 반환 타입은 number[] | string 으로 추론됩니다
 function getFirstThree(x: number[] | string) {
   return x.slice(0, 3);
 }
 ```
 
-> It might be confusing that a _union_ of types appears to have the _intersection_ of those types' properties.
-> This is not an accident - the name _union_ comes from type theory.
-> The _union_ `number | string` is composed by taking the union _of the values_ from each type.
-> Notice that given two sets with corresponding facts about each set, only the _intersection_ of those facts applies to the _union_ of the sets themselves.
-> For example, if we had a room of tall people wearing hats, and another room of Spanish speakers wearings hats, after combining those rooms, the only thing we know about _every_ person is that they must be wearing a hat.
+> 유니언은 의미 상 _합집합_을 뜻하는데, 실제로는 유니언 타입이 프로퍼티들의 _교집합_을 가리키는 것처럼 보여 헷갈리게 느낄 수 있습니다.
+> 이는 지극히 우연이 아닙니다. _유니언_이라는 명칭은 타입 이론에서 비롯된 것입니다.
+> `number | string` _유니언_ 타입은 각각의 타입을 가지는 _값들에 대하여_ 합집합을 취하여 구성됩니다.
+> 두 집합과 각각의 집합에 대한 특성이 주어졌을 때, 두 집합의 _유니언_에는 각각의 특성들의 _교집합_만이 적용된다는 점에 유의하시기 바랍니다.
+> 예를 들어, 한 방에는 모자를 쓰고 키가 큰 사람들이 있고 다른 방에는 모자를 쓰고 스페인어를 사용하는 사람들이 있다고 합시다. 이때 두 방을 합친다면, _모든_ 사람들에 대하여 우리가 알 수 있는 사실은 바로 누구나 반드시 모자를 쓰고 있다는 것입니다.
 
-## Type Aliases
+## 타입 별칭
 
-We've been using object types and union types by writing them directly in type annotations.
-This is convenient, but it's common to want to use the same type more than once and refer to it by a single name.
+지금까지는 객체 타입과 유니언 타입을 사용할 때 직접 해당 타입을 표기하였습니다.
+이는 편리하지만, 똑같은 타입을 한 번 이상 재사용하거나 또다른 이름으로 가리키고 싶은 경우도 존재합니다.
 
-A _type alias_ is exactly that - a _name_ for any _type_.
-The syntax for a type alias is:
+_타입 별칭_은 바로 이런 경우를 위하여 존재하며, _타입_을 위한 _이름_을 제공합니다.
+타입 별칭의 구문은 아래와 같습니다.
 
 ```ts twoslash
 type Point = {
@@ -323,7 +324,7 @@ type Point = {
   y: number;
 };
 
-// Exactly the same as the earlier example
+// 앞서 사용한 예제와 동일한 코드입니다
 function printCoord(pt: Point) {
   console.log("The coordinate's x value is " + pt.x);
   console.log("The coordinate's y value is " + pt.y);
@@ -332,37 +333,37 @@ function printCoord(pt: Point) {
 printCoord({ x: 100, y: 100 });
 ```
 
-You can actually use a type alias to give a name to any type at all, not just an object type.
-For example, a type alias can name a union type:
+타입 별칭을 사용하면 단지 객체 타입뿐이 아닌 모든 타입에 대하여 새로운 이름을 부여할 수 있습니다.
+예를 들어, 아래와 같이 유니언 타입에 대하여 타입 별칭을 부여할 수도 있습니다. 
 
 ```ts twoslash
 type ID = number | string;
 ```
 
-Note that aliases are _only_ aliases - you cannot use type aliases to create different/distinct "versions" of the same type.
-When you use the alias, it's exactly as if you had written the aliased type.
-In other words, this code might _look_ illegal, but is OK according to TypeScript because both types are aliases for the same type:
+타입 별칭은 _단지_ 별칭에 지나지 않는다는 점에 유의하시기 바랍니다. 즉, 타입 별칭을 사용하여도 동일 타입에 대하여 각기 구별되는 "여러 버전"을 만드는 것은 아닙니다.
+별칭을 사용하는 것은, 별도로 이름붙인 타입을 새로 작성하는 것입니다.
+다시 말해, 아래 코드는 틀린 것처럼 _보일 수_ 있지만, TypeScript에서는 이것이 정상인데 그 이유는 각각의 타입들이 동일 타입에 대한 별칭들이기 때문입니다.
 
 ```ts twoslash
 declare function getInput(): string;
 declare function sanitize(str: string): string;
-// ---cut---
+// ---중간 생략---
 type UserInputSanitizedString = string;
 
 function sanitizeInput(str: string): UserInputSanitizedString {
   return sanitize(str);
 }
 
-// Create a sanitized input
+// 보안 처리를 마친 입력을 생성
 let userInput = sanitizeInput(getInput());
 
-// Can still be re-assigned with a string though
+// 물론 새로운 문자열을 다시 대입할 수도 있습니다
 userInput = "new input";
 ```
 
-## Interfaces
+## 인터페이스
 
-An _interface declaration_ is another way to name an object type:
+_인터페이스 선언_은 객체 타입을 만드는 또다른 방법입니다.
 
 ```ts twoslash
 interface Point {
@@ -378,9 +379,9 @@ function printCoord(pt: Point) {
 printCoord({ x: 100, y: 100 });
 ```
 
-Just like when we used a type alias above, the example works just as if we had used an anonymous object type.
-TypeScript is only concerned with the _structure_ of the value we passed to `printCoord` - it only cares that it has the expected properties.
-Being concerned only with the structure and capabilities of types is why we call TypeScript a _structurally typed_ type system.
+앞서 타입 별칭을 사용한 것과 마찬가지로, 위 예시 코드는 타입이 부여되지 않은 임의의 객체를 사용한 것과 동일하게 작동합니다.
+TypeScript는 오직 `printCoord`에 전달된 값의 _구조_에만 관심을 가집니다. 즉, 예측된 프로퍼티를 가지고 있는지 여부만을 따집니다.
+이처럼, 타입이 가지는 구조와 능력에만 관심을 가진다는 점은 TypeScript가 _구조적_ 타입 시스템이라고 불리는 이유입니다.
 
 ### Differences Between Type Aliases and Interfaces
 
