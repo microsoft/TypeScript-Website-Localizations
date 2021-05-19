@@ -52,11 +52,7 @@ obj = "hello";
 const n: number = obj;
 ```
 
-`any` 타입은 특정 코드에 문제가 없다고 TypeScript가 믿게
-
-단지 코드 상의 특정 라인에 문제가 없다고 TypeScript가 믿게 하고자 긴 타입을 작성해야 하는 것이 마음에 들지 않는다면, 
-단지 TypeScript로 하여금 특정 라인이 문제가 없다고 믿게 
-The `any` type is useful when you don't want to write out a long type just to convince TypeScript that a particular line of code is okay.
+`any` 타입은 코드 상의 특정 라인에 문제가 없다고 TypeScript를 안심시킨다는 목적 단지 하나 때문에 긴 타입을 새로 정의하고 싶지 않을 때 유용하게 사용할 수 있습니다.
 
 ### `noImplicitAny`
 
@@ -131,50 +127,51 @@ function getFavoriteNumber(): number {
 }
 ```
 
+변수의 타입 표기와 마찬가지로, 반환 타입은 표기하지 않아도 되는 것이 일반적입니다. 왜냐하면 TypeScript가 해당 함수에 들어있는 `return` 문을 바탕으로 반환 타입을 추론할 것이기 때문입니다.
+위 예시에서 사용된 타입 표기는 큰 의미를 갖지 않습니다.
+경우에 따라 문서화를 목적으로, 또는 코드의 잘못된 수정을 미연에 방지하고자, 혹은 지극히 개인적인 선호에 의하여 명시적인 타입 표기를 수행하는 코드도 존재합니다.
 
-Much like variable type annotations, you usually don't need a return type annotation because TypeScript will infer the function's return type based on its `return` statements.
-The type annotation in the above example doesn't change anything.
-Some codebases will explicitly specify a return type for documentation purposes, to prevent accidental changes, or just for personal preference.
+### 익명 함수
 
-### Anonymous Functions
+익명 함수는 함수 선언과는 조금 다릅니다.
+함수가 코드 상에서 위치한 곳을 보고 해당 함수가 어떻게 호출될지 알아낼 수 있다면, TypeScript는 해당 함수의 매개 변수에 자동으로 타입을 부여합니다.
 
-Anonymous functions are a little bit different from function declarations.
-When a function appears in a place where TypeScript can determine how it's going to be called, the parameters of that function are automatically given types.
+아래는 그 예시입니다.
 
 Here's an example:
 
 ```ts twoslash
 // @errors: 2551
-// No type annotations here, but TypeScript can spot the bug
+// 아래 코드에는 타입 표기가 전혀 없지만, TypeScript는 버그를 감지할 수 있습니다.
 const names = ["Alice", "Bob", "Eve"];
 
-// Contextual typing for function
+// 함수에 대한 문맥적 타입 부여
 names.forEach(function (s) {
   console.log(s.toUppercase());
 });
 
-// Contextual typing also applies to arrow functions
+// 화살표 함수에도 문맥적 타입 부여는 적용됩니다
 names.forEach((s) => {
   console.log(s.toUppercase());
 });
 ```
 
-Even though the parameter `s` didn't have a type annotation, TypeScript used the types of the `forEach` function, along with the inferred type of the array, to determine the type `s` will have.
+매개 변수 `s`에는 타입이 표기되지 않았음에도 불구하고, TypeScript는 `s`의 타입을 알아내기 위하여 배열의 추론된 타입과 더불어 `forEach` 함수의 타입을 활용하였습니다.
 
-This process is called _contextual typing_ because the _context_ that the function occurred in informed what type it should have.
-Similar to the inference rules, you don't need to explicitly learn how this happens, but understanding that it _does_ happen can help you notice when type annotations aren't needed.
-Later, we'll see more examples of how the context that a value occurs in can affect its type.
+이 과정은 _문맥적 타입 부여_라고 불리는데, 왜냐하면 함수가 실행되는 _문맥_을 통하여 해당 함수가 가져야 하는 타입을 알 수 있기 때문입니다.
+추론 규칙과 비슷하게, 이 과정이 어떻게 일어나는지를 명시적으로 배울 필요는 없지만, 이것이 _실제로 일어나는 과정_이라는 것을 이해하면 타입 표기가 불필요한 경우를 구분하는 데에 도움이 됩니다.
+값이 발생하는 문맥이 해당 값의 타입에 영향을 끼치는 예시들은 이후에 살펴보도록 하겠습니다.
 
-## Object Types
+## 객체 타입
 
-Apart from primitives, the most common sort of type you'll encounter is an _object type_.
-This refers to any JavaScript value with properties, which is almost all of them!
-To define an object type, we simply list its properties and their types.
+원시 타입을 제외하고 가장 많이 마주치는 타입은 _객체 타입_입니다.
+객체는 프로퍼티를 가지는 JavaScript 값을 말하는데, 거의 대부분의 경우가 이에 해당하죠!
+객체 타입을 정의하려면, 해당 객체의 프로퍼티들과 각 프로퍼티들의 타입들을 나열하기만 하면 됩니다.
 
-For example, here's a function that takes a point-like object:
+예를 들어, 아래 함수는 좌표로 보이는 객체를 받고 있습니다.
 
 ```ts twoslash
-// The parameter's type annotation is an object type
+// 매개 변수의 타입은 객체로 표기되고 있습니다.
 function printCoord(pt: { x: number; y: number }) {
   //                      ^^^^^^^^^^^^^^^^^^^^^^^^
   console.log("The coordinate's x value is " + pt.x);
@@ -183,11 +180,11 @@ function printCoord(pt: { x: number; y: number }) {
 printCoord({ x: 3, y: 7 });
 ```
 
-Here, we annotated the parameter with a type with two properties - `x` and `y` - which are both of type `number`.
-You can use `,` or `;` to separate the properties, and the last separator is optional either way.
+위에서 매개변수는 `x`와 `y`라는 두 개의 프로퍼티로 이루어진 타입으로 표기되고 있는데, 두 값은 모두 `number` 타입입니다.
+각 프로퍼티를 구분할 때 `,` 또는 `;`를 사용할 수 있고, 가장 마지막에 위치한 구분자의 표기는 선택 사항입니다.
 
-The type part of each property is also optional.
-If you don't specify a type, it will be assumed to be `any`.
+각 프로퍼티의 타입 표기 또한 선택 사항입니다.
+만약 타입을 지정하지 않는다면, 해당 프로퍼티는 `any` 타입으로 간주됩니다.
 
 ### Optional Properties
 
