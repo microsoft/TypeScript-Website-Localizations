@@ -23,8 +23,8 @@ const callbackWithIndex = (callback: (i: number) => void) => {
   callback(i);
 };
 
-// 함수 인터페이스를 임베딩하는 것은
-// 모든 화살표와 함께 읽기가 조금 어려울 수 있습니다.
+// 함수 인터페이스를 임베딩하면
+// 화살표 때문에 읽기 어려울 수 있습니다.
 // 타입 별칭을 사용하여 함수 매개변수에 이름을 지정하게 합니다.
 
 type NumberCallback = (i: number) => void;
