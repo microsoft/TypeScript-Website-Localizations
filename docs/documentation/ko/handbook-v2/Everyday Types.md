@@ -379,24 +379,24 @@ function printCoord(pt: Point) {
 printCoord({ x: 100, y: 100 });
 ```
 
-앞서 타입 별칭을 사용한 것과 마찬가지로, 위 예시 코드는 타입이 부여되지 않은 임의의 객체를 사용한 것과 동일하게 작동합니다.
+타입 별칭을 사용한 경우와 마찬가지로, 위 예시 코드는 마치 타입이 없는 임의의 익명 객체를 사용하는 것처럼 동작합니다.
 TypeScript는 오직 `printCoord`에 전달된 값의 _구조_에만 관심을 가집니다. 즉, 예측된 프로퍼티를 가지고 있는지 여부만을 따집니다.
 이처럼, 타입이 가지는 구조와 능력에만 관심을 가진다는 점은 TypeScript가 _구조적_ 타입 시스템이라고 불리는 이유입니다.
 
-### Differences Between Type Aliases and Interfaces
+### 타입 별칭과 인터페이스의 차이점
 
-Type aliases and interfaces are very similar, and in many cases you can choose between them freely.
-Almost all features of an `interface` are available in `type`, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
+타입 별칭과 인터페이스는 매우 유사하며, 대부분의 경우 둘 중 하나를 자유롭게 선택하여 사용할 수 있습니다.
+`interface`가 가지는 대부분의 기능은 `type`에서도 동일하게 사용 가능합니다. 이 둘의 가장 핵심적인 차이는, 타입은 새 프로퍼티를 추가하도록 개방될 수 없는 반면, 인터페이스의 경우 항상 확장될 수 있다는 점입니다.
 
 <table class='full-width-table'>
   <tbody>
     <tr>
-      <th><code>Interface</code></th>
-      <th><code>Type</code></th>
+      <th><code>인터페이스</code></th>
+      <th><code>타입</code></th>
     </tr>
     <tr>
       <td>
-        <p>Extending an interface</p>
+        <p>인터페이스 확장하기</p>
         <code><pre>
 interface Animal {
   name: string
@@ -410,7 +410,7 @@ bear.honey
         </pre></code>
       </td>
       <td>
-        <p>Extending a type via intersections</p>
+        <p>교집합을 통하여 타입 확장하기</p>
         <code><pre>
 type Animal = {
   name: string
@@ -426,7 +426,7 @@ bear.honey;
     </tr>
     <tr>
       <td>
-        <p>Adding new fields to an existing interface</p>
+        <p>기존의 인터페이스에 새 필드를 추가하기</p>
         <code><pre>
 interface Window {
   title: string
@@ -439,7 +439,7 @@ window.ts.transpileModule(src, {});
         </pre></code>
       </td>
       <td>
-        <p>A type cannot be changed after being created</p>
+        <p>타입은 생성된 뒤에는 달라질 수 없다</p>
         <code><pre>
 type Window = {
   title: string
@@ -454,78 +454,78 @@ type Window = {
     </tbody>
 </table>
 
-You'll learn more about these concepts in later chapters, so don't worry if you don't understand all of these right away.
+위 개념에 대하여서는 이후에 이어지는 장에서 좀 더 자세히 배우므로, 지금 위 내용을 잘 이해하지 못하였더라도 걱정하지 마세요.
 
-- Prior to TypeScript version 4.2, type alias names [_may_ appear in error messages](/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWZWhfYAjABMAMwALA+gbsVjoADqgjKESytQPxCHghAByXigYgBfr8LAsYj8aQMUASbDQcRSExCeCwFiIQh+AKfAYyBiQFgOPyIaikSGLQo0Zj-aazaY+dSaXjLDgAGXgAC9CKhDqAALxJaw2Ib2RzOISuDycLw+ImBYKQflCkWRRD2LXCw6JCxS1JCdJZHJ5RAFIbFJU8ADKC3WzEcnVZaGYE1ABpFnFOmsFhsil2uoHuzwArO9SmAAEIsSFrZB-GgAjjA5gtVN8VCEc1o1C4Q4AGlR2AwO1EsBQoAAbvB-gJ4HhPgB5aDwem-Ph1TCV3AEEirTp4ELtRbTPD4vwKjOfAuioSQHuDXBcnmgACC+eCONFEs73YAPGGZVT5cRyyhiHh7AAON7lsG3vBggB8XGV3l8-nVISOgghxoLq9i7io-AHsayRWGaFrlFauq2rg9qaIGQHwCBqChtKdgRo8TxRjeyB3o+7xAA), sometimes in place of the equivalent anonymous type (which may or may not be desirable). Interfaces will always be named in error messages.
-- Type aliases may not participate [in declaration merging, but interfaces can](/play?#code/PTAEEEDtQS0gXApgJwGYEMDGjSfdAIx2UQFoB7AB0UkQBMAoEUfO0Wgd1ADd0AbAK6IAzizp16ALgYM4SNFhwBZdAFtV-UAG8GoPaADmNAcMmhh8ZHAMMAvjLkoM2UCvWad+0ARL0A-GYWVpA29gyY5JAWLJAwGnxmbvGgALzauvpGkCZmAEQAjABMAMwALLkANBl6zABi6DB8okR4Jjg+iPSgABboovDk3jjo5pbW1d6+dGb5djLwAJ7UoABKiJTwjThpnpnGpqPBoTLMAJrkArj4kOTwYmycPOhW6AR8IrDQ8N04wmo4HHQCwYi2Waw2W1S6S8HX8gTGITsQA).
-- Interfaces may only be used to [declare the shapes of object, not re-name primitives](/play?#code/PTAEAkFMCdIcgM6gC4HcD2pIA8CGBbABwBtIl0AzUAKBFAFcEBLAOwHMUBPQs0XFgCahWyGBVwBjMrTDJMAshOhMARpD4tQ6FQCtIE5DWoixk9QEEWAeV37kARlABvaqDegAbrmL1IALlAEZGV2agBfampkbgtrWwMAJlAAXmdXdy8ff0Dg1jZwyLoAVWZ2Lh5QVHUJflAlSFxROsY5fFAWAmk6CnRoLGwmILzQQmV8JmQmDzI-SOiKgGV+CaYAL0gBBdyy1KCQ-Pn1AFFplgA5enw1PtSWS+vCsAAVAAtB4QQWOEMKBuYVUiVCYvYQsUTQcRSBDGMGmKSgAAa-VEgiQe2GLgKQA).
-- Interface names will [_always_ appear in their original form](/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWY2Q-YAjABMAMwALA+gbsVjNXW8yxySoAADaAA0CCaZbPh1XYqXgOIY0ZgmcK0AA0nyaLFhhGY8F4AHJmEJILCWsgZId4NNfIgGFdcIcUTVfgBlZTOWC8T7kAJ42G4eT+GS42QyRaYbCgXAEEguTzeXyCjDBSAAQSE8Ai0Xsl0K9kcziExDeiQs1lAqSE6SyOTy0AKQ2KHk4p1V6s1OuuoHuzwArMagA) in error messages, but _only_ when they are used by name.
+- TypeScript 4.2 이전 버전에서는, 타입 별칭 이름이 오류 메시지에 [나타날 수 있고](/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWZWhfYAjABMAMwALA+gbsVjoADqgjKESytQPxCHghAByXigYgBfr8LAsYj8aQMUASbDQcRSExCeCwFiIQh+AKfAYyBiQFgOPyIaikSGLQo0Zj-aazaY+dSaXjLDgAGXgAC9CKhDqAALxJaw2Ib2RzOISuDycLw+ImBYKQflCkWRRD2LXCw6JCxS1JCdJZHJ5RAFIbFJU8ADKC3WzEcnVZaGYE1ABpFnFOmsFhsil2uoHuzwArO9SmAAEIsSFrZB-GgAjjA5gtVN8VCEc1o1C4Q4AGlR2AwO1EsBQoAAbvB-gJ4HhPgB5aDwem-Ph1TCV3AEEirTp4ELtRbTPD4vwKjOfAuioSQHuDXBcnmgACC+eCONFEs73YAPGGZVT5cRyyhiHh7AAON7lsG3vBggB8XGV3l8-nVISOgghxoLq9i7io-AHsayRWGaFrlFauq2rg9qaIGQHwCBqChtKdgRo8TxRjeyB3o+7xAA), 때로는 동등한 익명 타입을 대신하여 나타날 수 있습니다(이는 경우에 따라 바람직할 수도 있고 아닐 수도 있습니다). 인터페이스는 항상 오류 메시지에 이름이 나타납니다.
+- 타입 별칭은 [선언 병합에 포함될 수 없지만, 인터페이스는 포함될 수 있습니다](/play?#code/PTAEEEDtQS0gXApgJwGYEMDGjSfdAIx2UQFoB7AB0UkQBMAoEUfO0Wgd1ADd0AbAK6IAzizp16ALgYM4SNFhwBZdAFtV-UAG8GoPaADmNAcMmhh8ZHAMMAvjLkoM2UCvWad+0ARL0A-GYWVpA29gyY5JAWLJAwGnxmbvGgALzauvpGkCZmAEQAjABMAMwALLkANBl6zABi6DB8okR4Jjg+iPSgABboovDk3jjo5pbW1d6+dGb5djLwAJ7UoABKiJTwjThpnpnGpqPBoTLMAJrkArj4kOTwYmycPOhW6AR8IrDQ8N04wmo4HHQCwYi2Waw2W1S6S8HX8gTGITsQA).
+- 인터페이스는 [오직 객체의 모양을 선언하는 데에만 사용되며, 기존의 원시 타입에 별칭을 부여하는 데에는 사용할 수는 없습니다](/play?#code/PTAEAkFMCdIcgM6gC4HcD2pIA8CGBbABwBtIl0AzUAKBFAFcEBLAOwHMUBPQs0XFgCahWyGBVwBjMrTDJMAshOhMARpD4tQ6FQCtIE5DWoixk9QEEWAeV37kARlABvaqDegAbrmL1IALlAEZGV2agBfampkbgtrWwMAJlAAXmdXdy8ff0Dg1jZwyLoAVWZ2Lh5QVHUJflAlSFxROsY5fFAWAmk6CnRoLGwmILzQQmV8JmQmDzI-SOiKgGV+CaYAL0gBBdyy1KCQ-Pn1AFFplgA5enw1PtSWS+vCsAAVAAtB4QQWOEMKBuYVUiVCYvYQsUTQcRSBDGMGmKSgAAa-VEgiQe2GLgKQA).
+- 인터페이스의 이름은 [항상 있는 그대로](/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWY2Q-YAjABMAMwALA+gbsVjNXW8yxySoAADaAA0CCaZbPh1XYqXgOIY0ZgmcK0AA0nyaLFhhGY8F4AHJmEJILCWsgZId4NNfIgGFdcIcUTVfgBlZTOWC8T7kAJ42G4eT+GS42QyRaYbCgXAEEguTzeXyCjDBSAAQSE8Ai0Xsl0K9kcziExDeiQs1lAqSE6SyOTy0AKQ2KHk4p1V6s1OuuoHuzwArMagA) 오류 메시지에 나타납니다. 단, 이는 _오직_ 코드 상에서 해당 인터페이스가 이름으로 사용되었을 때에만 해당합니다.
 
-For the most part, you can choose based on personal preference, and TypeScript will tell you if it needs something to be the other kind of declaration. If you would like a heuristic, use `interface` until you need to use features from `type`.
+대부분의 경우 개인적 선호에 따라 인터페이스와 타입 중에서 선택할 수 있으며, 필요시 TypeScript가 다른 선택을 제안할 것입니다. 잘 모르겠다면, 우선 `interface`를 사용하고 이후 문제가 발생하였을 때 `type`을 사용하기 바랍니다.
 
-## Type Assertions
+## 타입 단언
 
-Sometimes you will have information about the type of a value that TypeScript can't know about.
+때로는 TypeScript보다 당신이 어떤 값의 타입에 대한 정보를 더 잘 아는 경우도 존재합니다.
 
-For example, if you're using `document.getElementById`, TypeScript only knows that this will return _some_ kind of `HTMLElement`, but you might know that your page will always have an `HTMLCanvasElement` with a given ID.
+예를 들어 코드 상에서 `document.getElementById`가 사용되는 경우, TypeScript는 이때 `HTMLElement` 중에 _무언가_가 반환된다는 것만을 알 수 있는 반면, 당신은 페이지 상에서 사용되는 ID로는 언제나 `HTMLCanvasElement`가 반환된다는 사실을 이미 알고 있을 수도 있습니다.
 
-In this situation, you can use a _type assertion_ to specify a more specific type:
+이런 경우, _타입 단언_을 사용하면 타입을 좀 더 구체적으로 명시할 수 있습니다.
 
 ```ts twoslash
 const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
 ```
 
-Like a type annotation, type assertions are removed by the compiler and won't affect the runtime behavior of your code.
+타입 표기와 마찬가지로, 타입 단언은 컴파일러에 의하여 제거되며 코드의 런타임 동작에는 영향을 주지 않습니다.
 
-You can also use the angle-bracket syntax (except if the code is in a `.tsx` file), which is equivalent:
+꺾쇠 괄호를 사용하는 것 또한 (코드가 `.tsx` 파일이 아닌 경우) 가능하며, 이는 동일한 의미를 가집니다.
 
 ```ts twoslash
 const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
 ```
 
-> Reminder: Because type assertions are removed at compile-time, there is no runtime checking associated with a type assertion.
-> There won't be an exception or `null` generated if the type assertion is wrong.
+> 기억하세요: 타입 단언은 컴파일 시간에 제거되므로, 타입 단언에 관련된 검사는 런타임 중에 이루어지지 않습니다.
+> 타입 단언이 틀렸더라도 예외가 발생하거나 `null`이 생성되지 않을 것입니다.
 
-TypeScript only allows type assertions which convert to a _more specific_ or _less specific_ version of a type.
-This rule prevents "impossible" coercions like:
+TypeScript에서는 _보다 구체적인_ 또는 _덜 구체적인_ 버전의 타입으로 변환하는 타입 단언만이 허용됩니다.
+이러한 규칙은 아래와 같은 "불가능한" 강제 변환을 방지합니다.
 
 ```ts twoslash
 // @errors: 2352
 const x = "hello" as number;
 ```
 
-Sometimes this rule can be too conservative and will disallow more complex coercions that might be valid.
-If this happens, you can use two assertions, first to `any` (or `unknown`, which we'll introduce later), then to the desired type:
+이 규칙이 때로는 지나치게 보수적으로 작용하여, 복잡하기는 하지만 유효할 수 있는 강제 변환이 혀용되지 않기도 합니다.
+이런 경우, 두 번의 단언을 사용할 수 있습니다. `any`(또는 이후에 소개할 `unknown`)로 우선 변환한 뒤, 그 다음 원하는 타입으로 변환하면 됩니다.
 
 ```ts twoslash
 declare const expr: any;
 type T = { a: 1; b: 2; c: 3 };
-// ---cut---
+// ---중간 생략---
 const a = (expr as any) as T;
 ```
 
-## Literal Types
+## 리터럴 타입
 
-In addition to the general types `string` and `number`, we can refer to _specific_ strings and numbers in type positions.
+`string`과 `number`와 같은 일반적인 타입 이외에도, _구체적인_ 문자열과 숫자값을 타입 위치에서 지정할 수 있습니다.
 
-One way to think about this is to consider how JavaScript comes with different ways to declare a variable. Both `var` and `let` allow for changing what is held inside the variable, and `const` does not. This is reflected in how TypeScript creates types for literals.
+이를 이해하려면, JavaScript에서 변수 선언에 제공되는 다양한 방법들을 떠올려보시기 바랍니다. `var`와 `let` 모두 변수에 저장 가능한 값의 종류를 변경할 수 있으며, `const`는 이것이 불가능합니다. 이러한 특징들은 TypeScript가 리터럴 값을 위한 타입을 생성하는 방식에 그대로 반영됩니다.
 
 ```ts twoslash
 let changingString = "Hello World";
 changingString = "Olá Mundo";
-// Because `changingString` can represent any possible string, that
-// is how TypeScript describes it in the type system
+// 변수 `changingString`은 어떤 문자열이든 모두 나타낼 수 있으며,
+// 이는 TypeScript의 타입 시스템에서 문자열 타입 변수를 다루는 방식과 동일합니다.
 changingString;
 // ^?
 
 const constantString = "Hello World";
-// Because `constantString` can only represent 1 possible string, it
-// has a literal type representation
+// 변수 `constantString`은 오직 단 한 종류의 문자열만 나타낼 수 있으며,
+// 이는 리터럴 타입의 표현 방식입니다.
 constantString;
 // ^?
 ```
 
-By themselves, literal types aren't very valuable:
+리터럴 타입은 그 자체만으로는 그다지 유의미하지 않습니다.
 
 ```ts twoslash
 // @errors: 2322
@@ -536,9 +536,9 @@ x = "hello";
 x = "howdy";
 ```
 
-It's not much use to have a variable that can only have one value!
+단 하나의 값만을 가질 수 있는 변수는 그다지 쓸모가 없죠!
 
-But by _combining_ literals into unions, you can express a much more useful concept - for example, functions that only accept a certain set of known values:
+하지만 리터럴을 유니언과 _함께 사용하면_, 보다 유용한 개념들을 표현할 수 있게 됩니다. 예를 들어, 특정 종류의 값들만을 인자로 받을 수 있는 함수를 정의하는 경우가 있습니다.
 
 ```ts twoslash
 // @errors: 2345
@@ -549,7 +549,7 @@ printText("Hello, world", "left");
 printText("G'day, mate", "centre");
 ```
 
-Numeric literal types work the same way:
+숫자 리터럴 타입 또한 동일한 방식으로 사용할 수 있습니다.
 
 ```ts twoslash
 function compare(a: string, b: string): -1 | 0 | 1 {
@@ -557,7 +557,7 @@ function compare(a: string, b: string): -1 | 0 | 1 {
 }
 ```
 
-Of course, you can combine these with non-literal types:
+물론, 리터럴이 아닌 타입과도 함께 사용할 수 있습니다.
 
 ```ts twoslash
 // @errors: 2345
@@ -572,9 +572,9 @@ configure("auto");
 configure("automatic");
 ```
 
-There's one more kind of literal type: boolean literals.
-There are only two boolean literal types, and as you might guess, they are the types `true` and `false`.
-The type `boolean` itself is actually just an alias for the union `true | false`.
+또 하나의 리터럴 타입이 있습니다. 바로 불 리터럴 타입입니다.
+불 리터럴에는 오직 두 개의 타입만이 존재하며, 이는 익히 예상하셨듯이 `true`와 `false`입니다.
+`boolean` 타입 자체는 사실 단지 `true | false` 유니언 타입의 별칭입니다.
 
 ### Literal Inference
 
