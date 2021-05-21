@@ -34,6 +34,24 @@ const todo2 = updateTodo(todo1, {
 });
 ```
 
+## `Required<Type>`
+
+`Type` 집합의 모든 프로퍼티를 필수로 설정한 타입을 생성합니다. [`Partial`](#partialtype)의 반대입니다.
+
+##### 예제
+
+```ts twoslash
+// @errors: 2741
+interface Props {
+  a?: number;
+  b?: string;
+}
+
+const obj: Props = { a: 5 };
+
+const obj2: Required<Props> = { a: 5 };
+```
+
 ## `Readonly<Type>`
 
  `Type` 집합의 모든 프로퍼티`읽기 전용(readonly)`으로 설정한 타입을 생성합니다, 즉 생성된 타입의 프로퍼티는 재할당될 수 없습니다.
@@ -279,24 +297,6 @@ type T4 = InstanceType<Function>;
 //    ^?
 ```
 
-## `Required<Type>`
-
-필요한 `T`집합의 모든 프로퍼티로 구성된 타입을 생성합니다.  [`Partial`](#partialtype) 의 반대쪽.
-
-##### 예제
-
-```ts twoslash
-// @errors: 2741
-interface Props {
-  a?: number;
-  b?: string;
-}
-
-const obj: Props = { a: 5 };
-
-const obj2: Required<Props> = { a: 5 };
-```
-
 ## `ThisParameterType<Type>`
 
 함수 타입의 [this](/docs/handbook/functions.html#this-parameters) 매개변수의 타입, 또는 함수 타입에 `this`매개변수가 없을 경우 [unknown](/docs/handbook/release-notes/typescript-3-0.html#new-unknown-top-type) 을 추출합니다.
@@ -369,4 +369,13 @@ obj.moveBy(5, 5);
 
 ## 내장 문자열 조작 타입
 
-템플릿 문자열 리터럴 주변의 문자열 조작을 돕기 위해, TypeScript는 타입 시스템 내에서 문자열 조작에 사용할 수 있는 타입 집합이 포함되어 있습니다. 할 수 있어요
+### `Uppercase<StringType>`
+
+### `Lowercase<StringType>`
+
+### `Capitalize<StringType>`
+
+### `Uncapitalize<StringType>`
+
+템플릿 문자열 리터럴에서의 문자열 조작을 돕기 위해, TypeScript는 타입 시스템 내에서 문자열 조작에 사용할 수 있는 타입 집합이 포함되어 있습니다. 
+[이 링크](/docs/handbook/2/template-literal-types.html#intrinsic-string-manipulation-types)에서 예제를 확인하세요.
