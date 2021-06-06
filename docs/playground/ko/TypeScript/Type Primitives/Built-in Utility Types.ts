@@ -1,9 +1,9 @@
 //// { order: 3, compiler: { strictNullChecks: true } }
 
-// 대부분의 코드에서 특정한 타입이 유용하다고 느낄 때,
+// 대부분 코드에서 특정한 타입이 유용하다고 느낄 때,
 // TypeScript에 추가해서
 // 누구나 사용할 수 있게 하여
-// 가용성을 지속적으로 의존할 수 있습니다
+// 가용성을 지속해서 의존할 수 있습니다
 
 // Partial<Type>
 
@@ -73,7 +73,7 @@ type HomeNavigationPages = Exclude<NavigationPages, "home">;
 
 // Extract<Type, MatchUnion>
 
-// MatchUnion하고 겹칠 경우 포함되는
+// MatchUnion하고 겹칠 때 포함되는
 // Type 프로퍼티의 모든 프로퍼티 타입을 만드세요.
 
 type DynamicPages = Extract<NavigationPages, "home" | "stickers">;
@@ -114,7 +114,7 @@ type AccessiblePageInfo = Required<PageInfo>;
 // ThisType<Type>
 
 // 다른 타입과 다르게, ThisType은 새로운 타입을 반환하지 않는 대신에
-// 함수의 내부의 this의 정의를 조작합니다.
+// 함수의 내부 this의 정의를 조작합니다.
 // TSConfig에서 noImplicitThis를 실행시켰을 때
 // ThisType만 사용할 수 있습니다.
 
