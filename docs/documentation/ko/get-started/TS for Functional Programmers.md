@@ -144,7 +144,7 @@ anys.map(anys[1]); // 오 안되죠, "oh no" 함수가 아닙니다.
 let sepsis = anys[0] + anys[1]; // 어떤 의미로도 가능합니다.
 ```
 
-TypeScript는 `any`를 제공할 때 에러가 발생되면,
+TypeScript가 `any`를 제공할 때 에러를 발생시키려면,
 `tsconfig.json`에서 `"noImplicitAny": true` 또는 `"strict": true`를 설정해야 합니다.
 
 ## 구조적인 타이핑 (Structural typing)
