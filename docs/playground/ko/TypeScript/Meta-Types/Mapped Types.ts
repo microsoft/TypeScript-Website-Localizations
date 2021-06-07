@@ -1,7 +1,7 @@
 // 매핑된 타입은 다른 타입 기반의 새로운 타입을 만드는 방법입니다.
-// 이것은 효과적인 변형 타입입니다.
+// 또한 효과적인 변형 타입입니다.
 
-// 매핑된 타입을 사용하는 일반적인 경우는
+// 매핑된 타입을 사용하는 일반적인 케이스는
 // 기존 타입의 부분적인 하위집합을 다루는 것입니다.
 // 예를 들어 API는 Artist를 반환할 수 있습니다:
 
@@ -36,15 +36,15 @@ type MyPartialType<Type> = {
 type MappedArtistForEdit = MyPartialType<Artist>;
 
 // 완벽에 가깝지만,
-// id가 절대 일어나지 않아야만 하는 null이 될 수 있게 해줍니다.
+// id가 절대 발생하면 안되는 null이 될 수 있게 해줍니다.
 // 그래서 교집합 타입을 사용하여 빠르게 하나를 개선해 봅시다.
-// (예시를 볼 수 있습니다:union-and-intersection-types)
+// (예시를 살펴보세요:union-and-intersection-types)
 
 type MyPartialTypeForEdit<Type> = {
   [Property in keyof Type]?: Type[Property];
 } & { id: number };
 
-// 매핑된 타입의 부분적인 결과를 가지고
+// 매핑된 타입의 부분적인 결과를 가지며
 // id: number set를 가진 객체와 병합합니다.
 // 효과적으로 id를 강제로 타입 안에 넣어줍니다.
 
