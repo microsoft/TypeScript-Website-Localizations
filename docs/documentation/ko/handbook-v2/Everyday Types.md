@@ -267,7 +267,8 @@ _좁히기_란 TypeScript가 코드 구조를 바탕으로 어떤 값을 보다 
 ```ts twoslash
 function printId(id: number | string) {
   if (typeof id === "string") {
-    // 이 분기에서 id는 `string` 타입을 가집니다
+    // 이 분기에서 id는 'string' 타입을 가집니다
+
     console.log(id.toUpperCase());
   } else {
     // 여기에서 id는 'number' 타입을 가집니다
@@ -658,7 +659,8 @@ function doSomething(x: string | undefined) {
 }
 ```
 
-### Null 아님 단언 연산자 (접두사 `!`)
+### Null 아님 단언 연산자 (접미사 `!`)
+
 
 TypeScript에서는 명시적인 검사를 하지 않고도 타입에서 `null`과 `undefined`를 제거할 수 있는 특별한 구문을 제공합니다.
 표현식 뒤에 `!`를 작성하면 해당 값이 `null` 또는 `undefined`가 아니라고 타입 단언하는 것입니다.
