@@ -31,7 +31,7 @@ type StickerFromAPI = Readonly<Sticker>;
 // KeysFrom의 프로퍼티 리스트를 사용하는 타입을 만들고
 // Type의 값을 전달하세요.
 
-// List which keys come from:
+// 키로 사용할 리스트:
 type NavigationPages = "home" | "stickers" | "about" | "contact";
 
 // 각각의 ^에 대한 데이터의 형태가 필요합니다:
