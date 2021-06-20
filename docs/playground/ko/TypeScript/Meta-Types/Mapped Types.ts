@@ -21,7 +21,7 @@ interface ArtistForEdit {
   bio?: string;
 }
 
-// 위에 Artist와 같지 않을 수도 있습니다.
+// 위에 Artist 타입과 같지 않을 수도 있습니다.
 // 매핑된 타입으로 기존 타입에서
 // 변화를 만들어 낼 수 있습니다.
 
