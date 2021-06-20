@@ -22,7 +22,7 @@ interface ArtistForEdit {
 }
 
 // 위에 Artist 타입과 같지 않을 수도 있습니다.
-// 매핑된 타입으로 기존 타입에서
+// 매핑된 타입은 기존 타입에서
 // 변화를 만들어 낼 수 있습니다.
 
 type MyPartialType<Type> = {
