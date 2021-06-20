@@ -12,7 +12,7 @@ interface Artist {
 }
 
 // 그러나, Artist의 하위집합만 변경하기 위해
-// 수정사항을 보냈었다면
+// API를 수정해야 한다면
 // 일반적으로 추가 타입을 만들어야만 했습니다:
 
 interface ArtistForEdit {
