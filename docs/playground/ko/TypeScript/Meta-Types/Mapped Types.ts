@@ -35,7 +35,7 @@ type MyPartialType<Type> = {
 // 매핑된 타입을 사용할 수 있습니다:
 type MappedArtistForEdit = MyPartialType<Artist>;
 
-// 완벽에 가깝지만,
+// 완벽해 보이지만,
 // id가 절대 발생하면 안되는 null이 될 수 있게 해줍니다.
 // 그래서 교집합 타입을 사용하여 빠르게 하나를 개선해 봅시다.
 // (예시를 살펴보세요:union-and-intersection-types)
