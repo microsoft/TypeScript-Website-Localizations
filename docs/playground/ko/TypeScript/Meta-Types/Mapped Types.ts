@@ -31,7 +31,7 @@ type MyPartialType<Type> = {
   [Property in keyof Type]?: Type[Property];
 };
 
-// 이제 edit 인터페이스를 만드는 대신에
+// 이제 수정하는 인터페이스를 추가로 만드는 대신에
 // 매핑된 타입을 사용할 수 있습니다:
 type MappedArtistForEdit = MyPartialType<Artist>;
 
