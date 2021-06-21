@@ -1,7 +1,7 @@
 ---
 title: 日常类型
 layout: docs
-permalink: /docs/handbook/2/everyday-types.html
+permalink: /zh/docs/handbook/2/everyday-types.html
 oneline: "The language primitives."
 ---
 
