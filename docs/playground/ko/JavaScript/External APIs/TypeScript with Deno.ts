@@ -23,7 +23,7 @@ function makeLoud(x: string) {
 
 const greetLoudly = compose(makeLoud, greet);
 
-// "HELLO, WORLD!" 출력
+// "HELLO, WORLD!." 출력
 greetLoudly("world");
 
 import concat from "https://deno.land/x/denofun/lib/concat.ts";
