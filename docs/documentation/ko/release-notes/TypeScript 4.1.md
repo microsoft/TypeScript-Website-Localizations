@@ -201,7 +201,7 @@ type Options = {
 //       strictFunctionTypes?: boolean
 //   };
 ```
-또는, 다른 객체 타입을 바탕으로 새로운 객체 타입들을 생성할 수 있다. 
+또는, 다른 객체 타입을 바탕으로 새로운 객체 타입들을 생성할 수 있습니다.
 
 ```ts
 /// 'Partial<T>'가 'T'와 같지만, 각 프로퍼티는 선택 사항으로 표시되어 있음.
@@ -405,7 +405,6 @@ function screamLines(strs: string[]) {
 이 플래그는 out-of-bounds(범위 초과) 에러를 잡는데 유용할 수 있지만, 코드의 길이가 길어집니다. 따라서, `--string` 플래그를 통해 자동적으로 활성화되지 않습니다; 하지만, 이 기능에 관심이 있다면, 자유롭게 시도하여, 팀의 코드베이스에 적합한지 판단해 보세요.
 
 [보충 pull request](https://github.com/microsoft/TypeScript/pull/39560)를 통해 더 자세히 배울 수 있습니다.
-You can learn more [at the implementing pull request](https://github.com/microsoft/TypeScript/pull/39560).
 
 ## `baseUrl`없는 `paths` (`paths` without `baseUrl`)
 
@@ -468,7 +467,7 @@ JSDoc 태그 `@see` 태그는 TypeScript와 JavaScript에서 이제 더욱 강�
 
 따라서 태그 뒤에 점으로 표시된 이름에 정의로 이동과 같은 기능을 사용할 수 있습니다.
 
-예를 들어, JSDco 코멘트에 `first`나 `C`의 정으로 이동하는 것은 다음 예제와 같이 동작합니다.
+예를 들어, JSDco 코멘트에 `first`나 `C`의 정로 이동하는 것은 다음 예제와 같이 동작합니다.
 
 ```ts
 // @filename: first.ts
