@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@orta/markdown-translator": "^0.4.2",
-    "@oss-docs/sync": "1.1.2",
+    "@oss-docs/sync": "1.1.3",
     "danger": "^10.6.0"
   },
   "devDependencies": {
