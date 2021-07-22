@@ -13,13 +13,13 @@
   },
   "dependencies": {
     "@orta/markdown-translator": "^0.4.2",
-    "@oss-docs/sync": "*",
+    "@oss-docs/sync": "1.1.2",
     "danger": "^10.6.0"
   },
   "devDependencies": {
     "@typescript/twoslash": "^1.1.3",
     "chalk": "^4.1.0",
-    "gatsby-remark-shiki-twoslash": "^0.7.0",
+    "gatsby-remark-shiki-twoslash": "^3.0.14",
     "gray-matter": "^4.0.2",
     "preact": "^10.5.12",
     "remark": "^13.0.0",
