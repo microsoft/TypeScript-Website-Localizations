@@ -105,6 +105,3 @@ dist
 
 # Related to @oss-docs/sync
 docs/**/en
-
-# VS Code option folder
-.vscode/
