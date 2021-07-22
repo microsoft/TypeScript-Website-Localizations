@@ -20,7 +20,7 @@ yarn lint
 yarn lint --watch
 ```
 
-That's it, you've got a copy of all the documentation and now can write documentation which follows the existing patterns.
+That's it, you've got a copy of all the documentation and now can write documentation which follows the existing patterns. There's a longer intro [in `welcome.md`](./welcome.md).
 
 ### How translations work 
 
