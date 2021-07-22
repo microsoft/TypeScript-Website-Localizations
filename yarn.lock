@@ -164,7 +164,7 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
 
-"@typescript/twoslash@1.1.4", "@typescript/twoslash@^1.1.3":
+"@typescript/twoslash@1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@typescript/twoslash/-/twoslash-1.1.4.tgz#e5693334ae39a90aae43d747f902eb0bebd47640"
   integrity sha512-u5/V/Z3e9nMJ/TIKzyLfudUQrNa7ctjHxQ7NS05VveQPLJNlc/7hbhuuRy101BF54xy0KiYpQ0h/Ha5J7SKehg==
@@ -173,10 +173,26 @@
     debug "^4.1.1"
     lz-string "^1.4.4"
 
+"@typescript/twoslash@^1.1.3":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@typescript/twoslash/-/twoslash-1.1.7.tgz#9fc5709f37940f2deda396b74e503c6c33c54d6e"
+  integrity sha512-+oASPajHbUpmwsZgf0/ioBn9vjIodAO4c0na2nMLWxBKDMGAo16m8uEFtxjIrEYp6l+h3rBvHchSFucv1/qcNQ==
+  dependencies:
+    "@typescript/vfs" "1.3.4"
+    debug "^4.1.1"
+    lz-string "^1.4.4"
+
 "@typescript/vfs@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.3.2.tgz#4a9f207a74b93e63b255740ca9683d7eb09ee670"
   integrity sha512-1moNIcxUtDextSNvhGtJcmNZX8gZgRBcea2UlRmKI7TX3fRZ4lHCharaDQUQeguk1rrqxCfOifFZg+Rx/Mi7Lw==
+  dependencies:
+    debug "^4.1.1"
+
+"@typescript/vfs@1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.3.4.tgz#07f89d2114f6e29255d589395ed7f3b4af8a00c2"
+  integrity sha512-RbyJiaAGQPIcAGWFa3jAXSuAexU4BFiDRF1g3hy7LmRqfNpYlTQWGXjcrOaVZjJ8YkkpuwG0FcsYvtWQpd9igQ==
   dependencies:
     debug "^4.1.1"
 
@@ -656,10 +672,17 @@ debug@^3.1.0:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.0, debug@^4.1.1:
+debug@^4.0.0:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+  dependencies:
+    ms "2.1.2"
+
+debug@^4.1.1:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
   dependencies:
     ms "2.1.2"
 
@@ -2555,10 +2578,15 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-typescript@*, typescript@^4.1.3:
+typescript@*:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
   integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
+
+typescript@^4.1.3:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 unherit@^1.0.4:
   version "1.1.3"
