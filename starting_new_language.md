@@ -12,7 +12,7 @@ Things you need before:
 1. Go to `localize.json` and add your new language
 1. Add the new owner to `CODEOWNERS`
 
-Send a PR with those changes, here's an example with French: [PR]
+Send a PR with those changes, here's an example with French: [PR #101](https://github.com/microsoft/TypeScript-Website-Localizations/pull/101).
 
 ## **In Discord**
 
