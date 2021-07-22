@@ -14,3 +14,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: OSS-Docs-Tools/code-owner-self-merge@master
+        with:
+          if_no_maintainers_add_label: 'maintainers'
+          if_no_maintainers_assign: '@orta'
