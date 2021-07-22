@@ -62,3 +62,10 @@ docs/tsconfig/it/**/*.md @Nabster101 @DeltaPy @PyGera  [translation] [it]
 docs/typescriptlang/it/**/*.ts @Nabster101 @DeltaPy @PyGera  [translation] [it]
 docs/typescriptlang/it.ts @Nabster101 @DeltaPy @PyGera  [translation] [it]
 docs/documentation/it/**/*.md @Nabster101 @DeltaPy @PyGera  [translation] [it]
+
+# Collaborators for French Translation of the Website
+docs/playground/fr @ManuSquall  [translation] [fr]
+docs/tsconfig/fr/**/*.md @ManuSquall  [translation] [fr]
+docs/typescriptlang/fr/**/*.ts @ManuSquall  [translation] [fr]
+docs/typescriptlang/fr.ts @ManuSquall  [translation] [fr]
+docs/documentation/fr/**/*.md @ManuSquall  [translation] [fr]
