@@ -6,7 +6,7 @@ oneline: Comment utiliser une nightly build de TypeScript
 translatable: true
 ---
 
-Une Nightly Builds de la branche [TypeScript's `main`](https://github.com/Microsoft/TypeScript/tree/main) est publiée avant minuit PST à npm.
+Une Nightly Builds de la branche [Typescript `main`](https://github.com/Microsoft/TypeScript/tree/main) est publiée avant minuit PST sur npm.
 Voici comment vous pouvez l'obtenir et l'utiliser avec vos outils.
 
 ## En utilisant npm
