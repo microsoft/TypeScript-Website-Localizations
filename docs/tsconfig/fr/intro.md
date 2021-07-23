@@ -11,7 +11,7 @@ Cette page couvre toutes les différentes options disponibles dans un fichier TS
 - Un aperçu catégorisé de tous les aspects du compilateur
 - Les [root fields](#Project_Files_0) pour indiquer à TypeScript quels fichiers sont disponibles
 - Les champs [`compilerOptions`](#compilerOptions), c'est la majorité du document
-- Les champs [`watchOptions`](#watchOptions), pour peaufiner le mode montre
+- Les champs [`watchOptions`](#watchOptions), pour peaufiner le mode "watch" (rafraichissement automatique)
 - Les champs [`typeAcquisition`](#typeAcquisition), pour peaufiner la façon dont les types sont ajoutés aux projets JavaScript
 
 Si vous démarrez un TSConfig à partir de zéro, vous pouvez envisager d'utiliser `tsc --init` pour amorcer ou utiliser une [base TSConfig](https://github.com/tsconfig/bases#centralized-recommendations-for-tsconfig-bases).
