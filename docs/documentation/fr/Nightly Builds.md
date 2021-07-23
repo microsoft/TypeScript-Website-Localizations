@@ -36,7 +36,7 @@ Plus d'informations sont disponibles sur la [documentation VSCode](https://code.
 
 ### Sublime Text
 
-UMettez à jour le fichier `Paramètres - Utilisateur` avec les éléments suivants :
+Mettez à jour le fichier `Paramètres - Utilisateur` avec les éléments suivants :
 
 ```json
 "typescript_tsdk": "<chemin vers votre dossier>/node_modules/typescript/lib"
