@@ -31,7 +31,7 @@ Mettez à jour `.vscode/settings.json` avec les éléments suivants :
 "typescript.tsdk": "<chemin vers votre dossier>/node_modules/typescript/lib"
 ```
 
-Plus d'informations sont disponibles sur [documentation VSCode](https://code.visualstudio.com/Docs/languages/typescript#_using-newer-typescript-versions).
+Plus d'informations sont disponibles sur la [documentation VSCode](https://code.visualstudio.com/Docs/languages/typescript#_using-newer-typescript-versions).
 
 
 ### Sublime Text
