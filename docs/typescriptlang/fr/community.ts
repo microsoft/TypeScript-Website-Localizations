@@ -13,7 +13,7 @@ export const comCopy = {
   com_online_discord_desc:
     "Discutez avec d'autres utilisateurs TypeScript dans le Chat communautaire TypeScript.",
   com_online_github_desc:
-    'Vous avez trouvé un bug, ou souhaitez donner du feebdack constructif ?',
+    'Vous avez trouvé un bug, ou souhaitez nous donner un feebdack constructif ?',
   com_online_github_href: 'Dites nous sur GitHub',
   com_online_twitter_desc: 'Restez à jour. Suivez-nous sur Twitter',
   com_online_blog_desc:
