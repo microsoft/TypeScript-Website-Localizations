@@ -1,11 +1,9 @@
 //// { compiler: {  }, order: 1 }
 
-// New to 3.7 is the ability to quickly convert
-// a const variable to a let when the value
-// has been re-assigned.
+// La version 3.7 apporte la capacité à convertir rapidement une déclaration
+// const en let quand elle est ré-assignée.
 
-// You can try this by highlighting the below error
-// and choosing to run the quick-fix.
+// Vous pouvez essayer ceci en surlignant l'erreur ci dessous et en éxecutant la correction automatique.
 
 const displayName = "Andrew";
 
