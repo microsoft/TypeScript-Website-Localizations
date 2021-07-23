@@ -6,7 +6,7 @@ oneline: Comment utiliser une nightly build de TypeScript
 translatable: true
 ---
 
-Une Nightly Builds de la branche [Typescript `main`](https://github.com/Microsoft/TypeScript/tree/main) est publiée avant minuit PST sur npm.
+Une nightly build de la branche [Typescript `main`](https://github.com/Microsoft/TypeScript/tree/main) est publiée avant minuit PST sur npm.
 Voici comment vous pouvez l'obtenir et l'utiliser avec vos outils.
 
 ## En utilisant npm
@@ -15,9 +15,9 @@ Voici comment vous pouvez l'obtenir et l'utiliser avec vos outils.
 npm install -g typescript@next
 ```
 
-## Mettre à jour votre IDE pour utiliser les Nightly Builds
+## Mettre à jour votre IDE pour utiliser les nightly builds
 
-Vous pouvez également mettre à jour votre IDE pour utiliser la Nightly Builds.
+Vous pouvez également mettre à jour votre IDE pour utiliser la nightly build.
 Vous devrez d'abord installer le package via npm.
 Vous pouvez soit installer le package npm globalement, soit dans un dossier local `node_modules`.
 
