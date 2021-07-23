@@ -8,7 +8,7 @@
     {
       "name": "TypeScript",
       "id": "TypeScript",
-      "subtitle": "Explorez comment TypeScript étend JavaScript en ajoutant de la sécuritée et des outils à votre code."
+      "subtitle": "Explorez comment TypeScript étend JavaScript en ajoutant de la sécurité et des outils à votre code."
     },
     {
       "name": "3.7",
@@ -68,7 +68,7 @@
     // Examples
     "Syntaxe et messages",
     "Types et flux de code",
-    "Fixits",
+    "Correction automatique",
     // Playground
     "Configuration",
     "Outillage",
