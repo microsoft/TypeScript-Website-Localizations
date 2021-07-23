@@ -1,35 +1,34 @@
 //// { compiler: {  target: 99 }, order: 1 }
 
-// Did you know there is a limit to how big of a number you
-// can represent in JavaScript when writing ?
+// Saviez vous qu'il existe une limite à la taille des nombres qu'il est possible
+// de représenter en JavaScript ?
 
 const maxHighValue = 9007199254740991;
 const maxLowValue = -9007199254740991;
 
-// If you go one over/below these numbers
-// then you start to get into dangerous territory.
+// Si vous augmentez / diminuez d'une unité ces nombres vous commencez a courir un
+// risque.
 
 const oneOverMax = 9007199254740992;
 const oneBelowMin = -9007199254740992;
 
-// The solution for handling numbers of this size
-// is to convert these numbers to BigInts instead
-// of a number:
+// La solution pour manipuler des nombres de cette taille est de les convertir en
+// BigInts:
 //
-// https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+// https://developer.mozilla.org/fr/docs/orphaned/Web/JavaScript/Reference/Global_Objects/BigInt
 
-// TypeScript will now offer a fixit for number
-// literals which are above 2^52 (positive / negative)
-// which adds the suffix "n" which informs JavaScript
-// that the type should be BigInt.
+// TypeScript désormais propose une correction automatique, pour des nombres
+// supérieurs à 2^52 (positif / negatif).
+// Cette correction automatique ajoute le suffixe "n", ce qui informe JavaScript
+// que le type doit être BigInt.
 
-// Number literals
+// Nombres
 9007199254740993;
 -9007199254740993;
 9007199254740994;
 -9007199254740994;
 
-// Hex numbers
+// Nombres hexadécimaux
 0x19999999999999;
 -0x19999999999999;
 0x20000000000000;
