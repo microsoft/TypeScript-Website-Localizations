@@ -1,7 +1,7 @@
 ---
 title: Angular
 layout: docs
-permalink: /docs/handbook/angular.html
+permalink: /fr/docs/handbook/angular.html
 oneline: Utiliser Angular avec TypeScript
 deprecated: true
 ---
