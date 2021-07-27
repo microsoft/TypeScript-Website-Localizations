@@ -6,7 +6,7 @@ oneline: Liens pour en savoir plus sur TypeScript et React
 translatable: true
 ---
 
-TypeScript prend en charge [JSX](/docs/handbook/jsx.html) et peut modéliser correctement les modèles utilisés dans les bases de code React comme `useState`.
+TypeScript prend en charge [JSX](/docs/handbook/jsx.html) et peut modéliser correctement les conventions utilisées dans les bases de code React comme `useState`.
 
 ### Mise en place d'un projet React
 
