@@ -27,7 +27,7 @@ interface Artwork {
 // 응답을 변경할 때 ArtworkSearchResponse의 artworks 부분과
 // Artwork가 동기화되지 않을 수 있습니다.
 
-// 이에 대한 수정사항은 JavaScript가 문자열을 통해
+// 이에 대한 해결책은 JavaScript가 문자열을 통해
 // 프로퍼티에 접근하는 방법을 복제하는 색인 된 타입입니다.
 
 type InferredArtwork = ArtworkSearchResponse["artists"][0]["artworks"][0];
