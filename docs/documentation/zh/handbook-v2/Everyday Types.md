@@ -1,5 +1,5 @@
 ---
-title: 日常类型
+title: 常见类型
 layout: docs
 permalink: /zh/docs/handbook/2/everyday-types.html
 oneline: "The language primitives."
