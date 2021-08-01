@@ -49,7 +49,7 @@ const mixedDrawer = new Drawer<Sock | TShirt>();
 // 使用 JSDoc 中的模板（template）标记。在此示例中，我们定义了模板
 // 变量，然后定义类的属性：
 
-// 要在游乐场上实验这项功能，您需要将设置更改为 JavaScript 文件，
+// 要在演练场上实验这项功能，您需要将设置更改为 JavaScript 文件，
 // 然后删除上面的的 TypeScript 代码。
 
 /**
