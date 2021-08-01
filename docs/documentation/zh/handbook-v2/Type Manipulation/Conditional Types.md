@@ -5,8 +5,8 @@ permalink: /zh/docs/handbook/2/conditional-types.html
 oneline: "Create types which act like if statements in the type system."
 ---
 
-在大多数有用的程序的核心，我们必须根据输入做出决定。
-JavaScript 程序也没有什么不同，但是考虑到值可以很容易地反思的事实，这些决定也是基于输入的类型。
+大多数有效程序的核心是，我们必须依据输入做出一些决定。
+JavaScript 程序也是如此，但是由于值可以很容易地被内省，这些决定也是基于输入的类型。
 _条件类型_ 有助于描述输入和输出类型之间的关系。
 
 ```ts twoslash
@@ -24,7 +24,7 @@ type Example2 = RegExp extends Animal ? number : string;
 //   ^?
 ```
 
-条件类型的形式看起来有点像 JavaScript 中的条件表达式（`条件 ? true 表达式 : false 表达式`）：
+条件类型看起来有点像 JavaScript 中的条件表达式（`条件 ? true 表达式 : false 表达式`）：
 
 ```ts twoslash
 type SomeType = any;
@@ -38,7 +38,7 @@ type Stuff =
 
 当 `extends` 左边的类型可以赋值给右边的类型时，你将获得第一个分支（"true" 分支）中的类型；否则你将获得后一个分支（"false" 分支）中的类型。
 
-从上面的例子中，条件类型可能看起来不会立即有用 - 我们可以告诉自己是否 `Dog extends Animal` 并选择 `number` 或 `string`！
+从上面的例子中，条件类型可能不会立即显得很有用 - 我们可以告诉自己是否 `Dog extends Animal` 并选择 `number` 或 `string`！
 但是条件类型的威力来自于将它们与泛型一起使用。
 
 让我们以下面的 `createLabel` 函数为例:
@@ -64,7 +64,7 @@ function createLabel(nameOrId: string | number): IdLabel | NameLabel {
 1. 如果一个库不得不在其 API 中一遍又一遍地做出相同的选择，这就变得很麻烦。
 2. 我们必须创建三个重载：一种用于我们 _确定_ 类型时的每种情况（一个用于 `string`，一个用于 `number`），一个用于最一般的情况（接受一个 `string | number`）。对于 `createLabel` 可以处理的每个新类型，重载的数量都会呈指数增长。
 
-相反，我们可以将该逻辑编码为条件类型：
+相反，我们可以将该逻辑转换为条件类型：
 
 ```ts twoslash
 interface IdLabel {
@@ -118,8 +118,8 @@ let c = createLabel(Math.random() ? "hello" : 42);
 type MessageOf<T> = T["message"];
 ```
 
-在本例中，TypeScript 错误是因为 `T` 不知道有一个名为 `message` 的属性。
-我们可以限制 `T`，TypeScript 也不会再抱怨了：
+在本例中，TypeScript 产生错误是因为不知道 `T` 有一个名为 `message` 的属性。
+我们可以约束 `T`，TypeScript 也不会再抱怨了：
 
 ```ts twoslash
 type MessageOf<T extends { message: unknown }> = T["message"];
@@ -136,7 +136,7 @@ type EmailMessageContents = MessageOf<Email>;
 //   ^?
 ```
 
-然而，如果我们希望 `MessageOf` 采用任何类型，并且在 `message` 属性不可用的情况下缺省为 `never` 之类的类型，该怎么办呢？
+然而，如果我们希望 `MessageOf` 接受任何类型，并且在 `message` 属性不可用的情况下默认为 `never` 之类的类型，我们应该怎么做呢？
 我们可以通过移出约束并引入条件类型来实现这一点：
 
 ```ts twoslash
@@ -178,7 +178,7 @@ type Num = Flatten<number>;
 
 ### 在条件类型中推断
 
-我们只是发现自己使用条件类型来应用约束，然后提取出类型。
+我们发现自己使用条件类型来应用约束，然后提取出类型。
 这最终成为一种非常常见的操作，条件类型使其变得更容易。
 
 条件类型为我们提供了一种使用 `infer` 关键字从 true 分支中与之进行比较的类型中进行推断的方法。
@@ -209,7 +209,7 @@ type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>;
 //   ^?
 ```
 
-当从具有多个调用签名的类型（如重载函数的类型）进行推断时，将从 _最后一个_ 签名进行推断（这大概是最允许的捕获所有的情况）。无法基于参数类型列表执行重载解析。
+当从具有多个调用签名的类型（如重载函数的类型）进行推断时，将从 _最后一个_ 签名进行推断（这也许是最宽松的万能情况）。无法基于参数类型列表执行重载决议。
 
 ```ts twoslash
 declare function stringOrNum(x: string): number;
@@ -222,14 +222,14 @@ type T1 = ReturnType<typeof stringOrNum>;
 
 ## 分配条件类型
 
-当条件类型作用于泛型类型时，它们在给定联合类型时成为 _分配类型_ 。
+当传入的类型参数为联合类型时，他们会被 _分配类型_ 。
 以下面的例子为例：
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
 ```
 
-如果我们将联合类型插入 `ToArray`，则条件类型将应用于该联合类型的每个成员。
+如果我们将联合类型传入 `ToArray`，则条件类型将应用于该联合类型的每个成员。
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
@@ -255,7 +255,7 @@ type StrArrOrNumArr =
   ToArray<string> | ToArray<number>;
 ```
 
-所以我们只剩下：
+所以我们得到：
 
 ```ts twoslash
 type StrArrOrNumArr =
