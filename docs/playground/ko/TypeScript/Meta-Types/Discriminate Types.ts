@@ -35,7 +35,7 @@ const handleEvent = (event: TimingEvent) => {
 // 숫자와 같습니다.
 
 // 이 예제에서,
-// 식별된 유니언과 처리하기 위한 추가 오류 상태가 있습니다.
+// 식별된 유니언과 처리해야 하는 추가 오류 상태가 있습니다.
 
 type APIResponses = { version: 0; msg: string } | { version: 1; message: string; status: number } | { error: string };
 
