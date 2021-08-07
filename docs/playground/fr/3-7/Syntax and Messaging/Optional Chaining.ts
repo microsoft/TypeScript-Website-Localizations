@@ -8,7 +8,8 @@
 // Accès aux propriétés d'un objet
 
 // Imaginons que nous ayons un album où l'artiste, et sa bio, puissent ne pas
-// être present dans les données. Par exemple, une compilation pourrait n'aurait pas un seul artiste.
+// être present dans les données. Par exemple, une compilation pourrait ne pas
+// avoir qu'un seul artiste.
 
 type AlbumAPIResponse = {
   title: string;
