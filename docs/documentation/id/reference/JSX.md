@@ -35,7 +35,7 @@ Anda dapat menetapkan mode ini menggunakan _flag_ baris perintah `--jsx` atau op
 
 > \*Catatan: Anda dapat menentukan fungsi _factory_ JSX yang akan digunakan saat menargetkan react JSX _emit_ dengan opsi `--jsxFactory` (nilai bawaan ke `React.createElement`)
 
-## Opeartor `as`
+## Operator `as`
 
 Ingat bagaimana menulis penegasan tipe:
 
