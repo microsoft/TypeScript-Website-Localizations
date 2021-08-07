@@ -1,23 +1,23 @@
 //// { compiler: {  }, order: 3 }
 
-// TypeScript's error messages can sometimes be a tad verbose...
-// With 3.7, we've taken a few cases which could be particularly
-// egregious.
+// Les messages d'erreur TypeScript peuvent être un peu verbeux...
+// Avec la version 3.7, nous avons corrigé quelques cas qui
+// généraient des messages d'erreurs très longs.
 
-// Nested Properties
+// Propriétés imbriquées
 
 let a = { b: { c: { d: { e: "string" } } } };
 let b = { b: { c: { d: { e: 12 } } } };
 
 a = b;
 
-// Before, it was 2 lines of code per nested property, which
-// quickly meant people learned to read error messages by
-// reading the first and then last line of an error message.
+// Auparavant, c'était deux lignes de code par propriété imbriquée, ce qui
+// a rapidement amené les gens à lire
+// uniquement la première et dernière ligne des messages d'erreur.
 
-// Now they're inline. :tada:
+// Maintenant elles sont en ligne. :tada:
 
-// Previously in 3.6:
+// Auparavant avec la version 3.6:
 //
 // Type '{ b: { c: { d: { e: number; }; }; }; }' is not assignable to type '{ b: { c: { d: { e: string; }; }; }; }'.
 //   Types of property 'b' are incompatible.
@@ -29,8 +29,8 @@ a = b;
 //               Types of property 'e' are incompatible.
 //                 Type 'number' is not assignable to type 'string'
 
-// This can handle working through different types of objects,
-// to still give a useful and concise error message.
+// Ça peut aussi marcher avec des objets de types différents
+// et toujours donner un message d'erreur utile et concis.
 
 class ExampleClass {
   state = "ok";
@@ -44,7 +44,7 @@ let x = { a: { b: { c: { d: { e: { f: ExampleClass } } } } } };
 let y = { a: { b: { c: { d: { e: { f: OtherClass } } } } } };
 x = y;
 
-// Previously in 3.6:
+// Auparavant avec la version 3.6:
 //
 // Type '{ a: { b: { c: { d: { e: { f: typeof OtherClass; }; }; }; }; }; }' is not assignable to type '{ a: { b: { c: { d: { e: { f: typeof ExampleClass; }; }; }; }; }; }'.
 //   Types of property 'a' are incompatible.

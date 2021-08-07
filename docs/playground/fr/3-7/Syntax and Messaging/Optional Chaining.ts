@@ -1,15 +1,14 @@
 //// { compiler: {  }, order: 1 }
 
-// Optional chaining reached TC39 Stage 3 consensus during
-// 3.7's development. Optional Chaining allows you to write
-// code which can immediately stop running expressions when
-// it hits a null or undefined.
+// Le chaînage optionnel a atteint l'étape 3 du TC39 pendant le development
+// de la version 3.7. Le chaînage optionnel permet d'écrire du code qui va
+// interrompre l'execution des expressions dès qu'il atteint une valeur
+// null ou undefined.
 
-// Property Access
+// Accès aux propriétés d'un objet
 
-// Let's imagine we have an album where the artist, and the
-// artists bio might not be present in the data. For example
-// a compilation may not have a single artist.
+// Imaginons que nous ayons un album où l'artiste, et sa bio, puissent ne pas
+// être present dans les données. Par exemple, une compilation pourrait n'aurait pas un seul artiste.
 
 type AlbumAPIResponse = {
   title: string;
@@ -22,40 +21,40 @@ type AlbumAPIResponse = {
 
 declare const album: AlbumAPIResponse;
 
-// With optional chaining, you can write
-// code like this:
+// Avec le chaînage optionnel,
+// vous pouvez écrire le code suivant:
 
 const artistBio = album?.artist?.bio;
 
-// Instead of:
+// A la place de:
 
 const maybeArtistBio = album.artist && album.artist.bio;
 
-// In this case ?. acts differently than the &&s since &&
-// will act differently on "falsy" values (e.g. an empty string,
-// 0, NaN, and, well, false).
+// Dans ce cas ?. agit différemment que le ET logique (&&) car ce dernier traite
+// les valeur fausses (e.g. une chaîne de caractères vide, 0, Nan et false) de
+// façon différente.
 
-// Optional chaining will only take null or undefined as
-// a signal to stop and return an undefined.
+// Le chaînage optionnel va seulement arrêter l'évaluation et retourner undefined
+// si la valeur est null ou undefined.
 
-// Optional Element Access
+// Accès à un élément optionnel
 
-// Property access is via the . operator, the optional chaining
-// also works with the [] operators when accessing elements.
+// Acceder à une propriété se fait avec l'opérateur ., et le chaînage optionnel
+// marche aussi avec l'opérateur [] pour acceder à des éléments.
 
 const maybeArtistBioElement = album?.["artist"]?.["bio"];
 
 const maybeFirstPreviousAlbum = album?.artist?.previousAlbums?.[0];
 
-// Optional Calls
+// Appel optionnel
 
-// When dealing with functions which may or may not exist at
-// runtime, optional chaining supports only calling a function
-// if it exists. This can replace code where you would traditionally
-// write something like: if (func) func()
+// Quand il s'agit d'appeler des fonctions qui peuvent être définies ou non définies,
+// le chaînage optionnel permet d'appeler la fonction uniquement si elle existe.
+// Cela peut remplacer le code où l'on écrirait traditionnellement quelque chose comme:
+// if (func) func()
 
-// For example here's an optional call to the callback from
-// an API request:
+// Par example le chaînage optionnel pour appeler un callback après une requête
+// vers une API:
 
 const callUpdateMetadata = (metadata: any) => Promise.resolve(metadata); // Fake API call
 
@@ -65,6 +64,6 @@ const updateAlbumMetadata = async (metadata: any, callback?: () => void) => {
   callback?.();
 };
 
-// You can read more about optional chaining in the 3.7 blog post:
+// Plus de détails sur le chaînage optionnel dans la version 3.7 sur le blog:
 //
 // https://devblogs.microsoft.com/typescript/announcing-typescript-3-7/
