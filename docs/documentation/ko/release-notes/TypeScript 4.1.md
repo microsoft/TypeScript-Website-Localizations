@@ -291,7 +291,7 @@ deepFlatten([[1], [2, 3]]);
 deepFlatten([[1], [[2]], [[[3]]]]);
 ```
 
-비슷하게, Typescript 4.1에서는 `Awaited`의 타입을 사용함으로서, `Promise`를 풀어 헤칠 수 있습니다.
+비슷하게, TypeScript 4.1에서는 `Awaited`의 타입을 사용함으로서, `Promise`를 풀어 헤칠 수 있습니다.
 
 ```ts
 type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T;
