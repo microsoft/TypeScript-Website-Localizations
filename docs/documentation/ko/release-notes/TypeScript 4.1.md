@@ -496,7 +496,7 @@ function related() {}
 `abstract`로 표시된 멤버들은 더 이상 `async`로 표시되지 않습니다.
 여기서 호출자들은 반환 타입에만 관심이 있으므로`async` 키워드를 제거 했습니다.
 
-### `any`/`unknown`의 잘못된 위치로의 전파 (`any`/`unknow` Are Propagated in Falsy Positions)
+### `any`/`unknown`의 잘못된 위치로의 전개 (`any`/`unknow` Are Propagated in Falsy Positions)
 
 예전에는 `foo`의 타입이 `any`또는 `unknown`인 `foo && somethingElse`의 타입이 `somethingElse`의 타입으로 결정되었습니다.
 
@@ -579,7 +579,7 @@ new Promise<void>((resolve) => {
 
 TypeScript 4.1은 이 문제를 해결하는 데 도움이 되는 빠른 해결 방법을 제공합니다.
 
-### 조건부 전파가 선택적인 프로퍼티를 만듦 (Conditional Spreads Create Optional Properties)
+### 조건부 전개가 선택적인 프로퍼티를 만듦 (Conditional Spreads Create Optional Properties)
 
 JavaScript에서는 `{ ... foo}`와 같은 객체 분산이 잘못된 값에 대해서는 수행되지 않습니다.
 따라서 이 코드에서 `{ ... foo}`와 `foo` 값이 만약 `null`이거나 `undefined`이면 건너뜁니다.
@@ -615,7 +615,7 @@ function copyOwner(pet?: Animal) {
 }
 ```
 
-여기 만약에, `pet`이 선언되었다면 `pet.owner`의 프로퍼티들이 전파될 것입니다. 그렇지 않으면, 반환된 객체에 프로퍼티가 전파되지 않습니다.
+여기 만약에, `pet`이 선언되었다면 `pet.owner`의 프로퍼티들이 전개될 것입니다. 그렇지 않으면, 반환된 객체에 프로퍼티가 전개되지 않습니다.
 
 `copyOwner`의 반환 타입은 예전에 각 분산에 기반한 유니온 타입이였습니다.
 
