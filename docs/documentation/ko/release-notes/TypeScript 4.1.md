@@ -574,7 +574,6 @@ new Promise<void>((resolve) => {
 ```
 
 TypeScript 4.1은 이 문제를 해결하는 데 도움이 되는 빠른 해결 방법을 제공합니다.
-TypeScript 4.1 ships with a quick fix to help fix this break.
 
 ### 조건부 전파가 선택적인 프로퍼티를 만듦 (Conditional Spreads Create Optional Properties)
 
