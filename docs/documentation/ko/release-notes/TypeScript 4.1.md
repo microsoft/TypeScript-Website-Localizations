@@ -246,7 +246,7 @@ type LazyPerson = Getters<Person>;
 //   ^?
 ```
 
-그리고 `never`를 생성함으로서 키들을 탐색할 수 있습니다.
+그리고 `never`를 생성함으로써 키들을 필터링할 수 있습니다.
 따라서, 몇몇 경우에서 추가로 `Omit` helper 타입을 사용할 필요가 없습니다. 
 
 ```ts twoslash
