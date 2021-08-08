@@ -567,6 +567,7 @@ new Promise<number>((resolve) => {
 하지만 가끔 `resolve()`가 인자 없이 호출되어야 할 때가 존재합니다.
 이 상황에서는 `Promise`에 명시적인 `void` 제네릭 타입 인자를 넘겨 줄 수 있습니다. (예시. `Promise<void>`처럼 작성하기)
 TypeScript 4.1의 이 새로운 기능에서 잠재적으로 `void` 전달 파라미터는 선택 사항이 될 수 있습니다. 
+
 ```ts
 new Promise<void>((resolve) => {
   //     ^^^^^^
