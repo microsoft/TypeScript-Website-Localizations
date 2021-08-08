@@ -27,6 +27,7 @@ setVerticalAlignment("middel");
 
 
 
+
 또한 매핑된 타입에서 프로퍼티 이름으로서 string 리터럴을 사용할 수 있다는 점에서도 장점을 가집니다.
 
 이러한 면에서, string 리터럴을 건축 블럭(building blocks)들처럼 사용할 수 있습니다.
