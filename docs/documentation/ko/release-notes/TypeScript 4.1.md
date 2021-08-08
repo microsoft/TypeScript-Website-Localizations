@@ -7,7 +7,7 @@ oneline: TypeScript 4.1 Release Notes
 
 ## 템플릿 리터럴 타입 (Template Literal Types)
 
-Typescript에서 string 리터럴 타입은 특정한 문자열의 집합을 예상하는 함수들과 API들을 모델링할 수 있게 합니다.
+TypeScript에서 string 리터럴 타입은 특정한 문자열의 집합을 예상하는 함수들과 API들을 모델링할 수 있게 합니다.
 
 ```ts twoslash
 // @errors: 2345
