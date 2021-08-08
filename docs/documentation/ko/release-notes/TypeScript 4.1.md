@@ -546,7 +546,6 @@ error TS2554: Expected 1 arguments, but got 0.
 ```
 
 이것은 `resolve`가 더 이상 선택적 파라미터를 받지 않기 때문입니다. 그래서 기본적으로 이것은 이제 값을 전달해야 합니다.
-Often this catches legitimate bugs with using `Promise`s.
 종종 이것은 `Promise`를 사용하면서 정상적인 버그를 잡습니다.
 이것을 해결하기 위한 흔한 방법은, 정확한 인자를 넘겨주거나, 명시적인 타입 인자를 넘겨주는 것입니다.
 
