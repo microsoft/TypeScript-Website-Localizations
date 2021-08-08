@@ -173,7 +173,7 @@ person.on("ageChanged", newAge => {
 ```
 
 제네릭 메소드에서 `on`을 만들어냈습니다.
-`on` 메소드가 `"firstNameChanged"`와 같이 호출되면, Typescript는 `K`와 일치하는 타입인지 추론할 것 입니다.
+`on` 메소드가 `"firstNameChanged"`와 같이 호출되면, TypeScript는 `K`와 일치하는 타입인지 추론할 것 입니다.
 이를 위해서, TypeScript는 `K`와 `"Changed"`를 대조할 것이고, `"firstName"` string을 유추하게 될것입니다.
 Typescript가 파악하고 나면, `on`메소드는 원본 객체에서 `firstName`의 타입을 가져 올 것입니다. (이 경우의 타입은 `string` 입니다.)
 비슷하게, `"ageChanged"`와 같이 호출된다면, `age`프로퍼티의 타입을 찾아낼 것입니다. (이 경우의 타입은 `number` 입니다.)
