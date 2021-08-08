@@ -101,6 +101,7 @@ person.on("firstNameChanged", () => {
 여기서 on 메소드는 `"firstName"`가 아닌 `"firstNameChanged"` 이벤트에 대기(listen)한다는 점에 유의하세요.
 
 어떻게 on 메소드의 타입을 정할 수 있을까요?
+
 ```ts twslash
 type PropEventSource<T> = {
     on(eventName: `${string & keyof T}Changed`, callback: () => void): void;
