@@ -37,7 +37,7 @@ type Options = {
 ```
 하지만 저 string 리터럴 타입들을 건축 블럭처럼 사용할 수 있는 다른 경우가 있습니다: 다른 string 리터럴 타입들을 만들어낼 때
 
-위같은 이유로, Typescript 4.1에서는 template 리터럴 string 타입을 추가했습니다. 
+위 같은 이유로, Typescript 4.1에서는 template 리터럴 string 타입을 추가했습니다. 
 이것은 [template literal strings in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)과 같은 문법을 가지고 있습니다.
 하지만 이와 달리 template 리터럴 string 타입은 타입을 정의하는 위치에서 사용됩니다.
 이것을 구체적인 리터럴 타입들과 사용한다면, 이것은 두 값들을 합쳐서 새로운 string 리터럴 타입을 생성합니다.
