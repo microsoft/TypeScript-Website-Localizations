@@ -110,6 +110,7 @@ person.on("firstNameChanged", () => {
 
 
 
+
 ```ts twslash
 type PropEventSource<T> = {
     on(eventName: `${string & keyof T}Changed`, callback: () => void): void;
@@ -268,8 +269,8 @@ type KindlessCircle = RemoveKindField<Circle>;
 ## 재귀적 조건 타입 (Recursive Conditional Types)
 
 JavaScript에서 임의적 수준에서 컨테이너 타입들을 평탄화하고, 만들어낼 수 있는 함수는 흔합니다.
-예를들면, `Promise`인스턴스에 존재하는 `.then()` 메소드를 생각해봅시다.
-`.then(...)`은 "promise답지 않은"값을 찾을 때 까지 각 promise를 풀어 헤치고, 그 값을 callback 함수로 넘깁니다.  
+예를 들면, `Promise`인스턴스에 존재하는 `.then()` 메서드를 생각해 봅시다.
+`.then(...)`은 "promise답지 않은"값을 찾을 때 까지 각 promise를 풀어 헤치고, 그 값을 콜백 함수로 넘깁니다.  
 또한, `Array`의 평탄화하기에 얼마나 깊은 지를 파라미터로 하는 `flat`메소드가 존재합니다.
 
 모든 실용적인 의도와 목적에서 TypeScript의 타입 시스템에서 이를 설명하는 것은 불가능합니다.
@@ -307,7 +308,7 @@ declare function customThen<T, U>(
 
 
 먼저, 이러한 재귀적 타입들은 많은 작업을 수행하게 하고, 따라서 타입 확인 시간을 늘어나게 합니다.
-콜라츠 추측과, 피보나치 수열의 숫자들을 모델링하는 것은 재미있겠지만, 절대로 npm의 `.d.ts`파일에서는 하지마세요.
+콜라츠 추측과, 피보나치 수열의 숫자들을 모델링하는 것은 재미있겠지만, 절대로 npm의 `.d.ts`파일에서는 하지 마세요.
 
 또한 계산 집약적인 것을 떠나서, 이러한 타입들은 충분히 복잡한 입력에 대한 내부 재귀 깊이 한계에 도달할 수 있습니다.
 재귀 한계에 도달하면, compile-time 에러가 발생하게 됩니다. 
@@ -569,6 +570,7 @@ new Promise<number>((resolve) => {
 하지만 가끔 `resolve()`가 인자 없이 호출되어야 할 때가 존재합니다.
 이 상황에서는 `Promise`에 명시적인 `void` 제네릭 타입 인자를 넘겨 줄 수 있습니다. (예시. `Promise<void>`처럼 작성하기)
 TypeScript 4.1의 이 새로운 기능에서 잠재적으로 `void` 전달 파라미터는 선택 사항이 될 수 있습니다. 
+
 
 
 ```ts
