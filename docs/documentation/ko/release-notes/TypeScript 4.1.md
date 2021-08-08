@@ -108,6 +108,7 @@ person.on("firstNameChanged", () => {
 어떻게 on 메소드의 타입을 정할 수 있을까요?
 
 
+
 ```ts twslash
 type PropEventSource<T> = {
     on(eventName: `${string & keyof T}Changed`, callback: () => void): void;
