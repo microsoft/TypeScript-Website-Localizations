@@ -26,6 +26,7 @@ setVerticalAlignment("middel");
 
 
 
+
 또한 매핑된 타입에서 프로퍼티 이름으로서 string 리터럴을 사용할 수 있다는 점에서도 장점을 가집니다.
 
 이러한 면에서, string 리터럴을 건축 블럭(building blocks)들처럼 사용할 수 있습니다.
@@ -107,6 +108,7 @@ person.on("firstNameChanged", () => {
 여기서 on 메소드는 `"firstName"`가 아닌 `"firstNameChanged"` 이벤트에 대기(listen)한다는 점에 유의하세요.
 
 어떻게 on 메소드의 타입을 정할 수 있을까요?
+
 
 
 
@@ -305,7 +307,6 @@ declare function customThen<T, U>(
 ```
 
 이러한 재귀적 타입들은 강력하지만 책임감 있고, 적게 사용해야 합니다.
-
 
 먼저, 이러한 재귀적 타입들은 많은 작업을 수행하게 하고, 따라서 타입 확인 시간을 늘어나게 합니다.
 콜라츠 추측과, 피보나치 수열의 숫자들을 모델링하는 것은 재미있겠지만, 절대로 npm의 `.d.ts`파일에서는 하지 마세요.
@@ -570,6 +571,7 @@ new Promise<number>((resolve) => {
 하지만 가끔 `resolve()`가 인자 없이 호출되어야 할 때가 존재합니다.
 이 상황에서는 `Promise`에 명시적인 `void` 제네릭 타입 인자를 넘겨 줄 수 있습니다. (예시. `Promise<void>`처럼 작성하기)
 TypeScript 4.1의 이 새로운 기능에서 잠재적으로 `void` 전달 파라미터는 선택 사항이 될 수 있습니다. 
+
 
 
 
