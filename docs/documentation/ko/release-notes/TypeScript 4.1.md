@@ -158,7 +158,7 @@ let person = makeWatchedObject({
     location: "Springfield",
 });
 
-//작동합니다! 'newName'의 타입은 'string'입니다.
+// 작동합니다! 'newName'의 타입은 'string'입니다.
 person.on("firstNameChanged", newName => {
     // 'newName'의 타입은 'fistName'의 타입과 같습니다. 
     console.log(`new name is ${newName.toUpperCase()}`);
