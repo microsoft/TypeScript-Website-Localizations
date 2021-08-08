@@ -114,6 +114,7 @@ person.on("firstNameChanged", () => {
 
 
 
+
 ```ts twslash
 type PropEventSource<T> = {
     on(eventName: `${string & keyof T}Changed`, callback: () => void): void;
