@@ -602,7 +602,7 @@ function copyOwner(pet?: Animal) {
   };
 }
 
-// 또한 optional chaning을 사용할 수 있음
+// optional chaning을 사용할 수도 있음
 
 function copyOwner(pet?: Animal) {
   return {
