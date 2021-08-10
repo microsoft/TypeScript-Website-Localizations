@@ -9,7 +9,8 @@
     "id": 7,
     "uk": 8,
     "pl": 9,
-    "it": 10
+    "it": 10,
+    "fr": 100
   },
   "docsRoots": [
     { "name": "Playground", "from": "packages/playground-examples/copy/", "to": "docs/playground" },
@@ -25,7 +26,8 @@
       "docs/typescriptlang/pl/pl.ts",
       "docs/typescriptlang/pt/pt.ts",
       "docs/typescriptlang/vo/vo.ts",
-      "docs/typescriptlang/zh/zh.ts"
+      "docs/typescriptlang/zh/zh.ts",
+      "docs/typescriptlang/fr/fr.ts"
     ]
   }
 }

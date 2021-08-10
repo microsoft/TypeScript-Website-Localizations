@@ -105,3 +105,6 @@ dist
 
 # Related to @oss-docs/sync
 docs/**/en
+
+# Then you can set this up yourself
+.vscode

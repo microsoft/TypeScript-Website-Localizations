@@ -1,5 +1,5 @@
 export const playCopy = {
-  play_subnav_title: "游乐场",
+  play_subnav_title: "演练场",
   play_subnav_settings: "设置",
   play_settings_tabs_settings: "侧边栏选项",
   play_sidebar_plugins: "插件",
@@ -11,8 +11,8 @@ export const playCopy = {
   play_sidebar_err_blurb: "展示您完整的编译错误",
   play_sidebar_run_title: "在浏览器中运行 JavaScript",
   play_sidebar_run_blurb: "展示在编辑器中的 JavaScript 的运行结果",
-  play_sidebar_plugins_title: "管理游乐场插件",
-  play_sidebar_plugins_blurb: "向游乐场添加/删除第三方插件",
+  play_sidebar_plugins_title: "管理演练场插件",
+  play_sidebar_plugins_blurb: "向演练场添加/删除第三方插件",
   play_sidebar_ast_title: "[开发中] 展示 AST",
   play_sidebar_ast_blurb: "检查 TypeScript AST",
   play_subnav_config: "配置",
@@ -46,7 +46,7 @@ export const playCopy = {
   play_sidebar_plugins_plugin_dev_option:
     "访问 <code>localhost:5000/index.js</code>",
   play_sidebar_plugins_plugin_dev_copy:
-    "在开发模式下自动尝试连接到游乐场的插件。你可以在<a href='/dev/playground-plugins/' title='链接到游乐场插件的相关页面'>这里开始创建一个插件</a>。",
+    "在开发模式下自动尝试连接到演练场的插件。你可以在<a href='/dev/playground-plugins/' title='链接到演练场插件的相关页面'>这里开始创建一个插件</a>。",
   play_export_report_issue: "为 TypeScript 提交 Github issue。",
   play_export_copy_md: "复制为 Markdown 格式的 issue 模板",
   play_export_copy_link: "复制为 Markdown 格式的链接",
@@ -59,7 +59,7 @@ export const playCopy = {
   play_run_js: "已执行 JavaScript",
   play_run_ts: "已执行编译后的 TypeScript",
   play_run_js_fail: "执行 JavaScript 失败:",
-  play_default_code_sample: `// 欢迎来到 TypeScript 游乐场，
+  play_default_code_sample: `// 欢迎来到 TypeScript 演练场，
 // 这是一个给你提供编写，分享和学习 TypeScript 的网站。
 
 // 您可以以如下三种方式使用它：
@@ -72,7 +72,7 @@ const anExampleVariable = "Hello World"
 console.log(anExampleVariable)
 
 // 可以点击上方的 “示例” 或 “新闻”，以了解更多关于语言的信息。"
-// 或者删除这些注释并且开始使用，整个游乐场的世界都属于你。
+// 或者删除这些注释并且开始使用，整个演练场的世界都属于你。
   `,
 
   // Notes:

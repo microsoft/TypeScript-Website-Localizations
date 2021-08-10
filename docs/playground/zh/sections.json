@@ -21,9 +21,9 @@
       "subtitle": "查看<a href='https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/'>版本更新说明</a>。"
     },
     {
-      "name": "游乐场 V3",
-      "id": "游乐场",
-      "subtitle": "了解游乐场有哪些变化。"
+      "name": "演练场 V3",
+      "id": "演练场",
+      "subtitle": "了解演练场有哪些变化。"
     }
   ],
   "sortedSubSections": [

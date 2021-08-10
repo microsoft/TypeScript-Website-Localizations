@@ -13,7 +13,7 @@ export const docCopy = {
   doc_headline_handbook_title: "手册",
   doc_headline_handbook_blurb: "TypeScript 语言参考",
   doc_headline_examples_title: "示例",
-  doc_headline_examples_blurb: "全面的游乐场实践教程",
+  doc_headline_examples_blurb: "全面的演练场实践教程",
   doc_start_a_project: "开始一个项目",
   doc_start_a_project_desc:
     "由于 TypeScript 是 JavaScript 的超集，所以它没有默认的模板——他们太多了。相反，其他项目在他们自己的环境中具有自己的 TypeScript 引导模板。这些项目提供了包含 TypeScript 支持的模板。",
@@ -41,7 +41,7 @@ export const docCopy = {
   doc_react_gatsby_blurb: "帮助开发者构建高效的网站和应用",
   doc_react_next_blurb: "一个 React 框架",
   doc_react_razzle_blurb: "无需配置，为应用添加通用的服务端渲染",
-  doc_react_toolchains_title: "建议的工具链",
+  doc_react_toolchains_title: "建议的工具",
   doc_react_toolchains_blurb: "来自 React 团队的建议",
   doc_apps: "构建应用",
   doc_apps_electron_blurb: "一个命令构建一个现代 web 应用",

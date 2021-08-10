@@ -1,13 +1,13 @@
 export const comCopy = {
-  com_layout_title: "TypeScriptのセットアップ方法",
+  com_layout_title: "TypeScript のセットアップ方法",
   com_layout_description:
     "TypeScriptユーザーとオンライン、オフラインでつながる",
   com_headline: "Connect with us",
   com_connect_online: "オンライン",
   com_connect_online_description:
-    "うまくいっていること、新機能や改善点を私達に教えてください。そして、新しいアップデートを見つけましょう。",
+    "うまくいっていること、新機能や改善点を私たちに教えてください。そして、新しいアップデートを見つけましょう。",
   com_online_stack_overflow_desc:
-    "'typescript'タグを使って仲間とつながったり、TypeScriptについての質問をしましょう",
+    "「typescript」タグを使って仲間とつながったり、TypeScriptについての質問をしましょう",
   com_online_stack_overflow_tag: "",
   com_online_discord_header: "チャット",
   com_online_discord_desc:
