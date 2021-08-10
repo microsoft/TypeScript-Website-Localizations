@@ -36,7 +36,7 @@ const validateUserInput = (input: string) => {
   return simpleValidatedInput as ValidatedInputString;
 };
 
-// 이제 새로운 명목적 타입이고 일반 문자열 타입이 아닌 것만
+// 이제 일반 문자열 타입이 아닌 새로운 명목적 타입만
 // 허용하는 함수를 만들 수 있습니다.
 
 const printName = (name: ValidatedInputString) => {
