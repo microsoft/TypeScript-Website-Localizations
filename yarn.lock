@@ -133,10 +133,10 @@
     request "^2.88.0"
     unified-stream "^1.0.4"
 
-"@oss-docs/sync@1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@oss-docs/sync/-/sync-1.1.3.tgz#13647923e9c297c273be4a0cf2ec09b803875966"
-  integrity sha512-UJ3iZPdiAxYMpC8K9bXjwHCi3L7BBr08FF9GSczw2usb7cJ5MqaIOdnxBh16/LAVzgCrJiDyKfGugUWW+k8ohg==
+"@oss-docs/sync@1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@oss-docs/sync/-/sync-1.1.4.tgz#7b1de679a67b3be96cbd04aeb358c5688d8de7e6"
+  integrity sha512-lCbnRABxvQCSRrxyfuwRFU5K5eGiBHGIUevQzGArcTv3A0kxorVpmH5FZgVP9Iw2G4+UoWr8L6egcpy6Ar0tyw==
   dependencies:
     cachedir "^2.3.0"
     chalk "^4.1.0"
