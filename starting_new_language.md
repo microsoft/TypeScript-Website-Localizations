@@ -14,6 +14,21 @@ Things you need before:
 
 Send a PR with those changes, here's an example with French: [PR #101](https://github.com/microsoft/TypeScript-Website-Localizations/pull/101).
 
+## **In TypeScript-Website**
+
+1. Ask for the following translations ASAP:
+
+```
+en: {
+    shorthand: "In En",
+    body: "This page is available in English",
+    open: "Go",
+    cancel: "Don't ask again",
+  },
+```
+1. Add that to: https://github.com/microsoft/TypeScript-website/blob/v2/packages/typescriptlang-org/src/copy/inYourLanguage.ts#L1
+
+
 ## **In Discord**
 
 1. Create a new room: `#localize-[shortcode]`
