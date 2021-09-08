@@ -1,31 +1,30 @@
 ---
 title: JS Projects Utilizing TypeScript
 layout: docs
-permalink: /docs/handbook/intro-to-js-ts.html
-oneline: How to add type checking to JavaScript files using TypeScript
+permalink: /zh/docs/handbook/intro-to-js-ts.html
+oneline: 如何使用 TypeScript 给 JavaScript 文件添加类型检查
 translatable: true
 ---
 
-The type system in TypeScript has different levels of strictness when working with a codebase:
+在不同代码库中，TypeScript 的类型系统有不同级别的严格性：
+- 仅基于 JavaScript 代码推断的类型系统
+- 在 JavaScript 中 [通过 JSDoc](/docs/handbook/jsdoc-supported-types.html) 增加类型
+- 在 JavaScript 文件中使用 `// @ts-check`
+- TypeScript 代码
+- TypeScript 代码，其 [`strict`](/tsconfig#strict) 设置为开启
 
-- A type-system based only on inference with JavaScript code
-- Incremental typing in JavaScript [via JSDoc](/docs/handbook/jsdoc-supported-types.html)
-- Using `// @ts-check` in a JavaScript file
-- TypeScript code
-- TypeScript with [`strict`](/tsconfig#strict) enabled
+每一步都代表着向更安全的类型系统的迈进，但并非每个项目都需要这种级别的验证。
+## 使用 JavaScript 的 TypeScript
 
-Each step represents a move towards a safer type-system, but not every project needs that level of verification.
+就是当你使用的一个编辑器，它使用 TypeScript 来提供如自动补全，标识跳转的工具，还有像重命名这样的重构工具。
+在 [首页](/) 有一个自带 TypeScript 插件的编辑器清单。
 
-## TypeScript with JavaScript
+## 在 JS 中通过 JSDoc 提供类型提示
 
-This is when you use an editor which uses TypeScript to provide tooling like auto-complete, jump to symbol and refactoring tools like rename.
-The [homepage](/) has a list of editors which have TypeScript plugins.
-
-## Providing Type Hints in JS via JSDoc
-
-In a `.js` file, types can often be inferred. When types can't be inferred, they can be specified using JSDoc syntax.
+在一个 `.js` 文件中，类型时通常是可以被推断的。当类型不能被推断时，他们也可以使用 JSDoc 语法加以指定。
 
 JSDoc annotations come before a declaration will be used to set the type of that declaration. For example:
+JSDoc 注释出现在声明之前，将用于设置该声明的类型。例如：
 
 ```js twoslash
 /** @type {number} */
@@ -35,12 +34,13 @@ x = 0; // OK
 x = false; // OK?!
 ```
 
-You can find the full list of supported JSDoc patterns [in JSDoc Supported Types](/docs/handbook/jsdoc-supported-types.html).
+您可以在 [受 JSDoc 支持的类型](/docs/handbook/jsdoc-supported-types.html) 中找到 JSDoc 所支持的模式的完整清单。
 
 ## `@ts-check`
 
-The last line of the previous code sample would raise an error in TypeScript, but it doesn't by default in a JS project.
-To enable errors in your JavaScript files add: `// @ts-check` to the first line in your `.js` files to have TypeScript raise it as an error.
+上面代码示例中的最后一行，在 TypeScript 中会引发的报错，不过默认在 JS 项目中却不会。
+要使其在您的 JavaScript 中也报错，请添加： `// @ts-check` 到您的 `.js` 文件的第一行，让 TypeScript 去引发该错误的触发。
+
 
 ```js twoslash
 // @ts-check
@@ -52,10 +52,11 @@ x = 0; // OK
 x = false; // Not OK
 ```
 
-If you have a lot of JavaScript files you want to add errors to then you can switch to using a [`jsconfig.json`](/docs/handbook/tsconfig-json.html).
-You can skip checking some files by adding a `// @ts-nocheck` comment to files.
+如果您有大量的 JavaScript 文件，您若想添加错误提示，那么您可以转为使用 [`jsconfig.json`](/docs/handbook/tsconfig-json.html)。
+您可以通过给文件添加 `// @ts-nocheck` 注释来跳过个别文件的检查。
 
-TypeScript may offer you errors which you disagree with, in those cases you can ignore errors on specific lines by adding `// @ts-ignore` or `// @ts-expect-error` on the preceding line.
+TypeScript 有时会有您意料之外的报错，这种情形下您可以通过在上一行添加 `// @ts-ignore` 或者 `// @ts-expect-error` 来忽略这些报错。
+
 
 ```js twoslash
 // @ts-check
@@ -67,4 +68,4 @@ x = 0; // OK
 x = false; // Not OK
 ```
 
-To learn more about how JavaScript is interpreted by TypeScript read [How TS Type Checks JS](/docs/handbook/type-checking-javascript-files.html)
+要学习有关如何使用 TypeScript 解释 JavaScript，请参阅 [TS 类型如何检查 JS](/docs/handbook/type-checking-javascript-files.html)
