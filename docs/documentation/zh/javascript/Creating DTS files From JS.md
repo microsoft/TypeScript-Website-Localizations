@@ -1,34 +1,34 @@
 ---
 title: Creating .d.ts Files from .js files
 layout: docs
-permalink: /docs/handbook/declaration-files/dts-from-js.html
-oneline: "How to add d.ts generation to JavaScript projects"
+permalink: /zh/docs/handbook/declaration-files/dts-from-js.html
+oneline: "如何生成并添加 .d.ts 到 JavaScript 项目"
 translatable: true
 ---
 
-[With TypeScript 3.7](/docs/handbook/release-notes/typescript-3-7.html#--declaration-and---allowjs),
-TypeScript added support for generating .d.ts files from JavaScript using JSDoc syntax.
+[使用 TypeScript 3.7](/docs/handbook/release-notes/typescript-3-7.html#--declaration-and---allowjs),
+TypeScript 新增了对使用 JSDoc 语法的 JavaScript，生成 .d.ts 文件的支持。
 
-This set up means you can own the editor experience of TypeScript-powered editors without porting your project to TypeScript, or having to maintain .d.ts files in your codebase.
-TypeScript supports most JSDoc tags, you can find [the reference here](/docs/handbook/type-checking-javascript-files.html#supported-jsdoc).
+这种设置意味着，您可以拥有 TypeScript 支持的编辑器的编辑器体验，而无需将项目移植到TypeScript，也无需在代码库中维护.d.ts文件。
 
-## Setting up your Project to emit .d.ts files
+TypeScript 支持绝大多数的 JSDoc 标签，您可以参考 [这里的手册](/docs/handbook/type-checking-javascript-files.html#supported-jsdoc)。
 
-To add creation of .d.ts files in your project, you will need to do up-to four steps:
+## 配置您的项目去输出 .d.ts 文件
 
-- Add TypeScript to your dev dependencies
-- Add a `tsconfig.json` to configure TypeScript
-- Run the TypeScript compiler to generate the corresponding d.ts files for JS files
-- (optional) Edit your package.json to reference the types
+要在项目中添加 .d.ts 文件的构建，最多需要执行四个步骤：
 
-### Adding TypeScript
+- 添加 TypeScript 到您的开发依赖
+- 添加一个 `tsconfig.json` 来配置 TypeScript
+- 运行 TypeScript 编译器来生成 JS 文件的 d.ts 文件
+- (可选) 编辑 package.json 来指定类型文件
 
-You can learn how to do this in our [installation page](/download).
+### 添加 TypeScript
+
+您可以在我们的 [安装页面](/download) 中学会如何添加。
 
 ### TSConfig
-
-The TSConfig is a jsonc file which configures both your compiler flags, and declare where to find files.
-In this case, you will want a file like the following:
+TSConfig 是一份 jsonc 文件，其中配置了您的编译器标记，已经申明从哪里查找文件。
+在本例中，您将需要一个如下所示的文件：
 
 ```jsonc tsconfig
 {
@@ -52,37 +52,39 @@ In this case, you will want a file like the following:
 }
 ```
 
-You can learn more about the options in the [tsconfig reference](/tsconfig).
-An alternative to using a TSConfig file is the CLI, this is the same behavior as a CLI command.
+您可以在 [tsconfig 参考](/tsconfig) 学习更多配置。
+另一个使用 TSConfig 的选择既是 CLI，它与 CLI 指令的行为一样。
 
 ```sh
 npx -p typescript tsc src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types
 ```
 
-## Run the compiler
+## 运行编译器
 
-You can learn how to do this in our [installation page](/download).
+您可以在我们的 [安装页面](/download) 中学会如何操作。
+
+<!-- FIXME：what's meaning -->
 You want to make sure these files are included in your package if you have the files in your project's `.gitignore`.
 
-## Editing the package.json
+## 编辑 package.json
 
-TypeScript replicates the node resolution for modules in a `package.json`, with an additional step for finding .d.ts files.
-Roughly, the resolution will first check the optional `"types"` field, then the `"main"` field, and finally will try `index.d.ts` in the root.
+TypeScript 复制了 `package.json` 中模块的节点解析，另外还有一个查找 .d.ts 文件的步骤。
+大致上，解析将从一个可选的 `"types"` 开始检查，之后是 `"main"` 字段，之后尝试查找项目根目录下的 `index.d.ts` 。
 
-| Package.json              | Location of default .d.ts      |
+| Package.json              |  .d.ts 的默认位置               |
 | :------------------------ | :----------------------------- |
-| No "types" field          | checks "main", then index.d.ts |
+| 无 "types" 字段            | 检查 "main", 然后是 index.d.ts  |
 | "types": "main.d.ts"      | main.d.ts                      |
 | "types": "./dist/main.js" | ./dist/main.d.ts               |
 
-If absent, then "main" is used
+如果缺失, 就找 "main" 字段
 
-| Package.json             | Location of default .d.ts |
+| Package.json             |  .d.ts 的默认位置          |
 | :----------------------- | :------------------------ |
-| No "main" field          | index.d.ts                |
+| 无 "main" 字段            | index.d.ts                |
 | "main":"index.js"        | index.d.ts                |
 | "main":"./dist/index.js" | ./dist/index.d.ts         |
 
 ## Tips
 
-If you'd like to write tests for your .d.ts files, try [tsd](https://github.com/SamVerschueren/tsd).
+如果您想为您的 .d.ts 文件编写测试，试试这个 [tsd](https://github.com/SamVerschueren/tsd).
