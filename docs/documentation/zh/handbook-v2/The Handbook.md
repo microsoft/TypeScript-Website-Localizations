@@ -1,59 +1,60 @@
 ---
 title: The TypeScript Handbook
 layout: docs
-permalink: /docs/handbook/intro.html
-oneline: Your first step to learn TypeScript
+permalink: /zh/docs/handbook/intro.html
+oneline: 初探 TypeScript
 handbook: "true"
 ---
 
-## About this Handbook
+## 关于这本手册
 
-Over 20 years after its introduction to the programming community, JavaScript is now one of the most widespread cross-platform languages ever created. Starting as a small scripting language for adding trivial interactivity to webpages, JavaScript has grown to be a language of choice for both frontend and backend applications of every size. While the size, scope, and complexity of programs written in JavaScript has grown exponentially, the ability of the JavaScript language to express the relationships between different units of code has not. Combined with JavaScript's rather peculiar runtime semantics, this mismatch between language and program complexity has made JavaScript development a difficult task to manage at scale.
+JavaScript 被引入编程社区 20 多年后，现在已成为有史以来最广泛使用的跨平台语言之一。JavaScript 最初是一种小型脚本语言，用于为网页添加零星的交互性，现在已成为各种规模的前端和后端应用程序的首选语言。随着使用 JavaScript 编写的程序的规模、领域和复杂度指数级增长，其根本不具备能力来表达不同单元代码之间的相关性。再加上 JavaScript 特有的运行时语义，这种语言与程序复杂性之间的不搭调，让 JavaScript 的开发成为了难以进行大规模管理的任务。
 
-The most common kinds of errors that programmers write can be described as type errors: a certain kind of value was used where a different kind of value was expected. This could be due to simple typos, a failure to understand the API surface of a library, incorrect assumptions about runtime behavior, or other errors. The goal of TypeScript is to be a static typechecker for JavaScript programs - in other words, a tool that runs before your code runs (static) and ensures that the types of the program are correct (typechecked).
+程序员写代码最典型的错误可以称为类型错误：一个明确类型的值被用在了期望是别的类型的值的地方。这可能只是一个简单的打字疏误，对库外层 API 的误解，对运行时行为的不当猜测，抑或别的错误。TypeScript 的目的就是成为 JavaScript 程序的静态类型检查器 - 换而言之，是一个在您的代码运行（静态的）之前运行的，以确保程序的类型时正确的工具（已类型检查的）。
 
-If you are coming to TypeScript without a JavaScript background, with the intention of TypeScript being your first language, we recommend you first start reading the documentation on either the [Microsoft Learn JavaScript tutorial](https://docs.microsoft.com/javascript/) or read [JavaScript at the Mozilla Web Docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide).
-If you have experience in other languages, you should be able to pick up JavaScript syntax quite quickly by reading the handbook.
+如果您是在没有 JavaScript 背景下接触 TypeScript 的，意图让 TypeScript 成为您的第一个开发语言，我们推荐您首先阅读这些文档 [Microsoft Learn JavaScript tutorial](https://docs.microsoft.com/javascript/) 或者 [JavaScript at the Mozilla Web Docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide)。
+如果您有其他语言的开发经验，您应该通过阅读本手册就能来非常快速地掌握 JavaScript 语法
 
-## How is this Handbook Structured
+## 本操作手册的结构
 
-The handbook is split into two sections:
+本操作手册分为两个章节：
 
-- **The Handbook**
+- **手册**
 
-  The TypeScript Handbook is intended to be a comprehensive document that explains TypeScript to everyday programmers. You can read the handbook by going from top to bottom in the left-hand navigation.
+  TypeScript 手册有意作为一份综合性的文档，来向日常程序员们解释 TypeScript。您可以在左侧导航栏中从上到下阅读手册。
 
-  You should expect each chapter or page to provide you with a strong understanding of the given concepts. The TypeScript Handbook is not a complete language specification, but it is intended to be a comprehensive guide to all of the language's features and behaviors.
+  你应该期望每一章或每一页都能让你对给定的概念有一个深刻的理解。TypeScript 手册不是一个完整的语言规范，但它旨在全面指导语言的所有特性和行为。
 
-  A reader who completes the walkthrough should be able to:
+  完成演练的读者应能够：
 
-  - Read and understand commonly-used TypeScript syntax and patterns
-  - Explain the effects of important compiler options
-  - Correctly predict type system behavior in most cases
+  - 阅读并理解常用的 TypeScript 语法和模式
+  - 解释重要编译器选项的效果
+  - 在大多数情况下，正确预测类型系统行为
 
-  In the interests of clarity and brevity, the main content of the Handbook will not explore every edge case or minutiae of the features being covered. You can find more details on particular concepts in the reference articles.
+  为了清晰和简洁起见，本手册的主要内容不会探讨所涵盖特征的每一个边缘情况或细节。您可以在参考文章中找到有关特定概念的更多详细信息。
 
-- **Reference Files**
+- **参考文件**
 
-  The reference section below the handbook in the navigation is built to provide a richer understanding of how a particular part of TypeScript works. You can read it top-to-bottom, but each section aims to provide a deeper explanation of a single concept - meaning there is no aim for continuity.
+  导航中手册下方的参考部分旨在更深入地了解 TypeScript 的特定部分是如何工作的。你可以自上而下地阅读，但每一部分的目的都是对一个概念进行更深入的解释——这意味着没有连续性的目标。
 
-### Non-Goals
+### 非目标
 
-The Handbook is also intended to be a concise document that can be comfortably read in a few hours. Certain topics won't be covered in order to keep things short.
+该手册也是一份简明的文件，可以在几个小时内轻松阅读。为了保持简短，某些主题将不会被涵盖。
 
-Specifically, the Handbook does not fully introduce core JavaScript basics like functions, classes, and closures. Where appropriate, we'll include links to background reading that you can use to read up on those concepts.
+具体来说，该手册没有完全介绍核心 JavaScript 基础知识，如函数、类和闭包。在适当的情况下，我们将包括背景阅读的链接，您可以使用这些链接来阅读这些概念。
 
-The Handbook also isn't intended to be a replacement for a language specification. In some cases, edge cases or formal descriptions of behavior will be skipped in favor of high-level, easier-to-understand explanations. Instead, there are separate reference pages that more precisely and formally describe many aspects of TypeScript's behavior. The reference pages are not intended for readers unfamiliar with TypeScript, so they may use advanced terminology or reference topics you haven't read about yet.
+本手册也无意取代语言规范。在某些情况下，边缘案例或行为的正式描述将被跳过，以支持更高层次、更容易理解的解释。相反，有单独的参考页，更精确和正式地描述TypeScript行为的许多方面。参考页不适用于不熟悉TypeScript的读者，因此它们可能会使用您尚未阅读过的高级术语或参考主题。
 
-Finally, the Handbook won't cover how TypeScript interacts with other tools, except where necessary. Topics like how to configure TypeScript with webpack, rollup, parcel, react, babel, closure, lerna, rush, bazel, preact, vue, angular, svelte, jquery, yarn, or npm are out of scope - you can find these resources elsewhere on the web.
+最后，除了必要的地方，本手册不会介绍 TypeScript 如何与其他工具交互。诸如如何使用 webpack、rollup、packet、react、babel、closure、lerna、rush、bazel、preact、vue、angular、svelte、jquery、warn 或 npm 配置 TypeScript 等主题不在讨论范围之内-您可以在web上的其他地方找到这些资源。
 
-## Get Started
+## 入门
+在开始学习[基础知识]（/docs/handbook/2/basic types.html）之前，我们建议先阅读以下介绍页面之一。这些介绍旨在强调 TypeScript 和您喜欢的编程语言之间的关键相似性和差异，并澄清这些语言特有的常见误解。
 
-Before getting started with [The Basics](/docs/handbook/2/basic-types.html), we recommend reading one of the following introductory pages. These introductions are intended to highlight key similarities and differences between TypeScript and your favored programming language, and clear up common misconceptions specific to those languages.
+
 
 - [TypeScript for New Programmers](/docs/handbook/typescript-from-scratch.html)
 - [TypeScript for JavaScript Programmers](/docs/handbook/typescript-in-5-minutes.html)
 - [TypeScript for OOP Programmers](/docs/handbook/typescript-in-5-minutes-oop.html)
 - [TypeScript for Functional Programmers](/docs/handbook/typescript-in-5-minutes-func.html)
 
-Otherwise, jump to [The Basics](/docs/handbook/2/basic-types.html) or grab a copy in [Epub](/assets/typescript-handbook.epub) or [PDF](/assets/typescript-handbook.pdf) form.
+否则跳转至  [The Basics](/docs/handbook/2/basic-types.html) 或者在[Epub](/assets/typescript-handbook.epub) 获取副本或者 [PDF](/assets/typescript-handbook.pdf) 形式。
