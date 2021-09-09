@@ -234,7 +234,7 @@ type StrArrOrNumArr = ToArray<string | number>;
 //   ^?
 ```
 
-然而 `StrArrOrNumArr` 却是这样分配的： 
+然后 `StrArrOrNumArr` 却是这样分配类型的： 
 
 ```ts twoslash
 type StrArrOrNumArr =
@@ -242,7 +242,7 @@ type StrArrOrNumArr =
   string | number;
 ```
 
-把联合类型中的每个成员类型映射进来，这样才能生效：
+需要把联合类型中的每个成员类型都映射进来，这样才能生效：
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
@@ -251,7 +251,7 @@ type StrArrOrNumArr =
   ToArray<string> | ToArray<number>;
 ```
 
-就是这样的：
+就像这样的：
 
 ```ts twoslash
 type StrArrOrNumArr =
