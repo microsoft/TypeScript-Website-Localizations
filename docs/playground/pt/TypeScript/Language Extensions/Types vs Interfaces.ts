@@ -61,7 +61,7 @@ interface Gato {
 }
 
 // Por outro lado tipos não podem ser alterados fora
-// da prórpia declaração.
+// da própria declaração.
 
 type Filhote = {
   cor: string;
