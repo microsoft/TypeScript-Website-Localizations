@@ -5,6 +5,7 @@ permalink: /zh/docs/handbook/2/template-literal-types.html
 oneline: "通过摸板文本字符串生成变更属性的映射类型。"
 ---
 
+<!-- TODO: modify it corresponding zh locale link -->
 模板文本类型基于 [字符串文本类型](/docs/handbook/2/everyday-types.html#literal-types) 创建，并且能够通过联合来扩展多个字符串。
 
 它们和 [JavaScript 中的模版字面量字符串](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) 的语法是一样的，只是用在了做类型。

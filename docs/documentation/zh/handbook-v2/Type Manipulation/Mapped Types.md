@@ -22,7 +22,7 @@ const conforms: OnlyBoolsAndHorses = {
 };
 ```
 
-映射类型是一种泛型类型，它使用 `PropertyKey` 的联合（通常 [通过 `keyof`](/docs/handbook/2/indexed-access-types.html)）来迭代键以创建类型：
+映射类型是一种泛型类型，它使用 `PropertyKey` 的联合（通常 [通过 `keyof`](/zh/docs/handbook/2/indexed-access-types.html)）来迭代键以创建类型：
 
 ```ts twoslash
 type OptionsFlags<Type> = {
@@ -93,6 +93,7 @@ type MappedTypeWithNewProperties<Type> = {
 }
 ```
 
+<!-- TODO: modify it corresponding zh locale link -->
 您可以利用 [模版字面量类型](/docs/handbook/2/template-literal-types.html) 等功能，从以前的属性名称创建新的属性名称：
 
 ```ts twoslash
@@ -129,7 +130,7 @@ type KindlessCircle = RemoveKindField<Circle>;
 
 ### 未来探索
 
-映射类型与此类型操作部分中的其他功能配合得很好，例如，这里有 [使用条件类型的映射类型](/docs/handbook/2/conditional-types.html) 它返回 `true` 或 `false`，这取决于对象是否将属性 `pii` 设置为文字 `true`。
+映射类型与此类型操作部分中的其他功能配合得很好，例如，这里有 [使用条件类型的映射类型](/zh/docs/handbook/2/conditional-types.html) 它返回 `true` 或 `false`，这取决于对象是否将属性 `pii` 设置为文字 `true`。
 
 ```ts twoslash
 type ExtractPII<Type> = {

@@ -1,23 +1,22 @@
 ---
 title: Generics
 layout: docs
-permalink: /docs/handbook/2/generics.html
-oneline: Types which take parameters
+permalink: /zh/docs/handbook/2/generics.html
+oneline: 泛型：带有参数的类型
 ---
 
-A major part of software engineering is building components that not only have well-defined and consistent APIs, but are also reusable.
-Components that are capable of working on the data of today as well as the data of tomorrow will give you the most flexible capabilities for building up large software systems.
+软件工程的一个主要部分是构建组件，这些组件不仅具有定义良好且一致的 API，而且还具有可重用性。
+能够处理现在的数据，也可以处理将来的数据的组件，将使您构建大型软件系统时如虎添翼。
 
-In languages like C# and Java, one of the main tools in the toolbox for creating reusable components is _generics_, that is, being able to create a component that can work over a variety of types rather than a single one.
-This allows users to consume these components and use their own types.
+在类似 C# 和 Java 的语言中，创建可复用性组件的一大法宝就是 _泛型_，也就是说，能够创建可以在多种类型而非单一类型上工作的组件。
+这让用户可以按自己的类型去使用组件。
+## 泛型 Hello World
 
-## Hello World of Generics
+首先，让我们通过 identity 函数做一个泛型的 「hello world」：
+identity 函数是一个返回传入内容的函数。
+您可以将其想象为类似 `echo` 命令的方法。
 
-To start off, let's do the "hello world" of generics: the identity function.
-The identity function is a function that will return back whatever is passed in.
-You can think of this in a similar way to the `echo` command.
-
-Without generics, we would either have to give the identity function a specific type:
+没有泛型的情况下，我们可能必须要给这个 identity 函数指定类型：
 
 ```ts twoslash
 function identity(arg: number): number {
@@ -25,7 +24,7 @@ function identity(arg: number): number {
 }
 ```
 
-Or, we could describe the identity function using the `any` type:
+或者，我们可以用 `any` 类型来表示这个 identity 函数：
 
 ```ts twoslash
 function identity(arg: any): any {
@@ -33,11 +32,11 @@ function identity(arg: any): any {
 }
 ```
 
-While using `any` is certainly generic in that it will cause the function to accept any and all types for the type of `arg`, we actually are losing the information about what that type was when the function returns.
-If we passed in a number, the only information we have is that any type could be returned.
+因为使用 `any` 肯定是宽泛的，这导致该函数的 `arg` 可以接收任何和所有的类型，我们实际上就无法得知该函数返回值的类型信息。
+如果我们传入一个数字，我们仅能得到的信息就是，其可能会返回任意类型。
 
-Instead, we need a way of capturing the type of the argument in such a way that we can also use it to denote what is being returned.
-Here, we will use a _type variable_, a special kind of variable that works on types rather than values.
+相反的，我们需要一种途径去得知参数的类型，从而我们可以利用它去表示将返回何种类型。
+在此，我们将使用一个 _类型变量_ ，它是一种工作在类型系统中的变量，而非一般的值。
 
 ```ts twoslash
 function identity<Type>(arg: Type): Type {
@@ -45,16 +44,16 @@ function identity<Type>(arg: Type): Type {
 }
 ```
 
-We've now added a type variable `Type` to the identity function.
-This `Type` allows us to capture the type the user provides (e.g. `number`), so that we can use that information later.
-Here, we use `Type` again as the return type. On inspection, we can now see the same type is used for the argument and the return type.
-This allows us to traffic that type information in one side of the function and out the other.
+我们刚刚给 identity 函数添加了一个类型变量 `Type`。
+这个 `Type` 允许我们捕获用户传递的参数类型（如 `number`），于是我们待会儿要用到这个信息。
+这里，我们再次使用 `Type` 作为返回类型。通过检查，我们现在可以看到参数和返回类型使用了相同的类型。
+这让我们将类型信息从函数的一侧，传达到其另一侧。
 
-We say that this version of the `identity` function is generic, as it works over a range of types.
-Unlike using `any`, it's also just as precise (ie, it doesn't lose any information) as the first `identity` function that used numbers for the argument and return type.
+我们将这种版本的 `identity` 函数称为泛型，因为它适用于一系列类型。
+与使用 `any` 不一样，这种方式与使用数字作为参数和返回值的那个第一个 `identity` 函数一样精确（如：它不会丢失任何信息）。
 
-Once we've written the generic identity function, we can call it in one of two ways.
-The first way is to pass all of the arguments, including the type argument, to the function:
+当我们写了这个泛型 identity 函数，我们可以通过两种方式去调用它。
+第一种方式是将所有的参数，包括类型的参数，传递给函数：
 
 ```ts twoslash
 function identity<Type>(arg: Type): Type {
@@ -65,9 +64,9 @@ let output = identity<string>("myString");
 //       ^?
 ```
 
-Here we explicitly set `Type` to be `string` as one of the arguments to the function call, denoted using the `<>` around the arguments rather than `()`.
+在这里，我们显式地将 `Type` 设置为 `string`，作为函数调用的参数之一，在参数周围使用 `<>` 表示，而不是使用 `()`。
 
-The second way is also perhaps the most common. Here we use _type argument inference_ -- that is, we want the compiler to set the value of `Type` for us automatically based on the type of the argument we pass in:
+第二种方式也许最常见。这里我们使用 _类型参数推导_ -- 也就是，我们想要编译器通过我们所传参数的类型，去自动为我们设置 `Type` 的值：
 
 ```ts twoslash
 function identity<Type>(arg: Type): Type {
@@ -78,15 +77,14 @@ let output = identity("myString");
 //       ^?
 ```
 
-Notice that we didn't have to explicitly pass the type in the angle brackets (`<>`); the compiler just looked at the value `"myString"`, and set `Type` to its type.
-While type argument inference can be a helpful tool to keep code shorter and more readable, you may need to explicitly pass in the type arguments as we did in the previous example when the compiler fails to infer the type, as may happen in more complex examples.
+注意，我们不必显式地传递类型到单方括号（`<>`）里；编译器会顾及 `"myString"` 的值，并设置 `Type` 为其类型。
+虽然类型参数推断是保持代码更短和更可读的有用工具，但当编译器无法推断类型时，您可能需要显式地传递类型参数，就像我们在上一个示例中所做的那样，这可能发生在更复杂的示例中。
+## 使用泛型类型变量
 
-## Working with Generic Type Variables
+当您开始使用泛型，您将会注意到，当您创建一个像 `identify` 这样的泛型函数时，编译器会强制您在函数体内正确的使用任意的泛型类型参数。
+也就是说，您实际上可以将这些参数视为任何类型。
 
-When you begin to use generics, you'll notice that when you create generic functions like `identity`, the compiler will enforce that you use any generically typed parameters in the body of the function correctly.
-That is, that you actually treat these parameters as if they could be any and all types.
-
-Let's take our `identity` function from earlier:
+让我们回头看一下 `identity` 函数：
 
 ```ts twoslash
 function identity<Type>(arg: Type): Type {
@@ -373,4 +371,4 @@ createInstance(Lion).keeper.nametag;
 createInstance(Bee).keeper.hasMask;
 ```
 
-This pattern is used to power the [mixins](/docs/handbook/mixins.html) design pattern.
+该模式得利于 [mixins](/docs/handbook/mixins.html) 设计模式。
