@@ -68,7 +68,7 @@ You want to make sure these files are included in your package if you have the f
 
 ## 编辑 package.json
 
-TypeScript 复制了 `package.json` 中模块的节点解析，另外还有一个查找 .d.ts 文件的步骤。
+TypeScript 复制了 `package.json` 中模块的节点解析，另外还有一个查找 `.d.ts` 文件的步骤。
 大致上，解析将从一个可选的 `"types"` 开始检查，之后是 `"main"` 字段，之后尝试查找项目根目录下的 `index.d.ts` 。
 
 | Package.json              |  .d.ts 的默认位置               |
