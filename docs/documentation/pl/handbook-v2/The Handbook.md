@@ -35,7 +35,7 @@ Przewodnik po TypeScript podzielony jest na dwie sekcje:
 
 - **Materiały źródłowe**
 
-  Sekcja materiałów źródłowych stworzona została po to, aby pokryć każdą funkcjonalność TypeScript kompleksowym wyjaśnieniem jej działania. Choć oczywiście artykuły te mogą być czytane jak głowna część Przewodnika - od góry do dołu - jednak ze względu na znacznie głębsze opracowanie każdego konceptu, materiały źródłowe nie są od siebie zależne.
+  Sekcja materiałów źródłowych stworzona została po to, aby pokryć każdą funkcjonalność TypeScript kompleksowym wyjaśnieniem jej działania. Choć oczywiście artykuły te mogą być czytane jak główna część Przewodnika - od góry do dołu - jednak ze względu na znacznie głębsze opracowanie każdego konceptu, materiały źródłowe nie są od siebie zależne.
 
 ### Pozostałe cele
 

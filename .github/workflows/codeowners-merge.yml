@@ -1,11 +1,11 @@
 name: Codeowners merging
 on:
-  pull_request_target: { types: [ opened, synchronize, reopened] }
-  issue_comment: { types: created }
-  pull_request_review: { types: submitted }
+  pull_request_target: { types: [opened, synchronize, reopened] }
+  issue_comment: { types: [created] }
+  pull_request_review: { types: [submitted] }
 
 jobs:
-  build:
+  merge-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,3 +14,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: OSS-Docs-Tools/code-owner-self-merge@master
+        with:
+          if_no_maintainers_add_label: 'maintainers'
+          if_no_maintainers_assign: '@orta'

@@ -1,0 +1,85 @@
+{
+  "sections": [
+    {
+      "name": "JavaScript",
+      "id": "JavaScript",
+      "subtitle": "Voyez comment TypeScript facilite le travail du quotidien en JavaScript avec le minimum de syntaxe additionnelle."
+    },
+    {
+      "name": "TypeScript",
+      "id": "TypeScript",
+      "subtitle": "Explorez comment TypeScript étend JavaScript en ajoutant de la sécurité et des outils à votre code."
+    },
+    {
+      "name": "3.7",
+      "id": "3.7",
+      "subtitle": "Voir les <a href='https://devblogs.microsoft.com/typescript/announcing-typescript-3-7/'>notes de version</a>."
+    },
+    {
+      "name": "3.8",
+      "id": "3.8",
+      "subtitle": "Voir les <a href='https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/'>notes de version</a>."
+    },
+    {
+      "name": "4.0",
+      "id": "4.0",
+      "subtitle": "Voir les <a href='https://devblogs.microsoft.com/typescript/announcing-typescript-4-0/'>notes de version</a>."
+    },
+    {
+      "name": "4.1",
+      "id": "4.1",
+      "subtitle": "Voir les <a href='https://devblogs.microsoft.com/typescript/announcing-typescript-4-1/'>notes de version</a>."
+    },
+    {
+      "name": "4.2",
+      "id": "4.2",
+      "subtitle": "Voir les <a href='https://devblogs.microsoft.com/typescript/announcing-typescript-4-2-beta/'>notes de version</a>."
+    },
+    {
+      "name": "4.3",
+      "id": "4.3",
+      "subtitle": "Voir les <a href='https://devblogs.microsoft.com/typescript/announcing-typescript-4-3/'>notes de version</a>."
+    },
+    {
+      "name": "4.4",
+      "id": "4.4",
+      "subtitle": "Voir les <a href='https://devblogs.microsoft.com/typescript/announcing-typescript-4-4-beta/'>notes de version</a>."
+    },
+    {
+      "name": "Playground V3",
+      "id": "Playground",
+      "subtitle": "Voyez ce qui a changé sur ce site."
+    }
+  ],
+  "sortedSubSections": [
+    // JS
+    "Fondamentaux JavaScript",
+    "Les fonctions en JavaScript",
+    "Utiliser les classes",
+    "JavaScript moderne",
+    "APIs externes",
+    "Aide pour le JavaScript",
+    // TS
+    "Primitives",
+    "Types primitifs",
+    "Meta-Types",
+    "Langage",
+    "Extensions du langage",
+    // Examples
+    "Syntaxe et messages",
+    "Types et flux de code",
+    "Correction automatique",
+    // Playground
+    "Configuration",
+    "Outillage",
+    // 3.8
+    "Modifications avec rupture",
+    "Amélioration de JSDoc",
+    // 4.0
+    "Nouvelles fonctionnalités JS",
+    "Nouvelles fonctionnalités TS",
+    "Nouvelles vérifications",
+    // 4.1
+    "Littéraux de gabarits"
+  ]
+}
