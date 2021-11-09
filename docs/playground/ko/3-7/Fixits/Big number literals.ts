@@ -1,4 +1,4 @@
-//// { compiler: {  target: 99 }, order: 1 }
+//// {  "compiler": {    "target": 99  },  "order": 1}
 
 // JavaScript에서 표현할 수 있는 숫자의 크기에 
 // 제한이 있다는 걸 알고 계셨나요?

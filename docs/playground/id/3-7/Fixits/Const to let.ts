@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // Fitur baru yang terdapat pada versi 3.7
 // adalah kemampuan untuk menerjemahkan sebuah

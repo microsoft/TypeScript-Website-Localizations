@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 
 // Pada Typescript versi 4.0, label JSDoc @deprecated ditambahkan
 // pada sistem tipe. Anda dapat menggunakan @deprecated di mana pun

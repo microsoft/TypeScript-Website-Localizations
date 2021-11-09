@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 
 // TypeScript versi 3.8, menambahkan atribut `private`, dimana hal tersebut
 // merupakan sebuah cara untuk mendeklarasikan sebuah atribut kelas

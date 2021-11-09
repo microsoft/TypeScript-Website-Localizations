@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 
 // Kemampuan TypeScript untuk mengekspor ulang menjadi lebih dekat
 // pada kasus tambahan yang terdapat pada ES2018

@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "esModuleInterop": true  }}
 
 // Fungsi berantai merupakan sebuah pola pemrograman 
 // yang umum digunakan di JavaScript, yang dapat membuat

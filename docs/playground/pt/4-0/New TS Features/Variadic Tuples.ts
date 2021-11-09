@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 // Tuplas Variádicas dão às tuplas a abilidate de utilizar o operador rest (...)
 // para passar tipos através do verificador de tipos de uma forma que funciona
 // como generics.

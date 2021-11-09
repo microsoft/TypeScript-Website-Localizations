@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 2 }
+//// {  "compiler": {},  "order": 2}
 
 // L'opérateur de coalescence des nuls (nullish coalescing operator) est une
 // alternative à || qui retourne l'expression de droite si celle de gauche

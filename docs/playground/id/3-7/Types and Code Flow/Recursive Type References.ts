@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 2 }
+//// {  "compiler": {},  "order": 2}
 
 // Memilih antara menggunakan tipe dan antarmuka adalah
 // tentang memilih batasan dari fitur yang ditawarkan keduanya.

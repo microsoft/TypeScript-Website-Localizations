@@ -1,4 +1,4 @@
-//// { order: 1, compiler: { strict: false } }
+//// {  "order": 1,  "compiler": {    "strict": false  }}
 
 //Objetos em JavaScript são coleções de valores agrupados
 //com chaves nomeadas.

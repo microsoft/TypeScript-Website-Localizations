@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 
 // Pada TypeScript versi 3.8, kami menambahkan sintaks baru
 // untuk mengimpor tipe, yang akan terasa familiar bagi

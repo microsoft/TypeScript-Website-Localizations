@@ -1,4 +1,4 @@
-//// { order: 1, target: "es5" }
+//// {  "order": 1,  "target": "es5"}
 
 // JavaScript modern menambahkan sebuah cara untuk menangani _callback_
 // dengan cara yang elegan melalui API berbasis Promise yang memiliki

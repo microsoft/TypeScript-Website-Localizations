@@ -1,4 +1,4 @@
-//// { compilador: { ts: "4.1.0-dev.20201028" } }
+//// {  "compilador": {    "ts": "4.1.0-dev.20201028"  }}
 
 // O TypeScript 4.1 adiciona suporte para as template literals, você pode
 // aprender os conceitos básicos em intro-to-template-literals

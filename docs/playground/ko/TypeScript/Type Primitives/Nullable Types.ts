@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: false } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": false  }}
 
 // JavaScript는 존재하지 않는 값을 선언하는 두 가지 방법을 갖고 있으며,
 // TypeScript는 어떤 대상을 선택적 또는 null 허용으로 선언하기 위해

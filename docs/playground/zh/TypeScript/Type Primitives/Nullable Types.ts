@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: false } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": false  }}
 
 // JavaScript 有两种不同的方法声明不存在的值，TypeScript 添加了额外的
 // 语法，以提供更多方法来声明某些内容声明为可选或可空。

@@ -1,4 +1,4 @@
-//// { compiler: {  noImplicitAny: false }, order: 2 }
+//// {  "compiler": {    "noImplicitAny": false  },  "order": 2}
 
 // Dengan fitur 'infer from usage' yang terdapat pada TypeScript 3.7
 // perbaikan kode program menjadi lebih pintar. Sekarang, fitur perbaikan

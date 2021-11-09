@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // No 3.7, há a nova capacidade de converter rapidamente
 // uma variável const para uma let quando o valor

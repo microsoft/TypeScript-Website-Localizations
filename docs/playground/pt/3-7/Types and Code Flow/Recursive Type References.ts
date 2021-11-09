@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 2 }
+//// {  "compiler": {},  "order": 2}
 
 // A escolha entre o uso de tipo x interface envolve as
 // restrições nos recursos de cada um. Com o 3.7, uma das

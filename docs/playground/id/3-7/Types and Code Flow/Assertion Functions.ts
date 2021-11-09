@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // Karena sifat JavaScript yang fleksibel, menambahkan pemeriksaan
 // tipe data merupakan ide yang bagus untuk memastikan asumsi Anda

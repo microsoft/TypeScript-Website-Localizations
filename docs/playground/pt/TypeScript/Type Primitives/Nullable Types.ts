@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: false } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": false  }}
 
 // No JavaScript existem duas maneiras de declarar valores que não
 // existem, o TypeScript adiciona sintaxe extra que nos proporciona

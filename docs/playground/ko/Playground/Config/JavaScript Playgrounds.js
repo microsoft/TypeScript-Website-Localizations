@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // 이제 플레이그라운드에서 JavaScript 파일을 다룰 수 ​​있습니다.
 

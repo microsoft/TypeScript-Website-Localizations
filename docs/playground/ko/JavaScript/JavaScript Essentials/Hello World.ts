@@ -1,4 +1,4 @@
-//// { order: 0, compiler: { target: 1 } }
+//// {  "order": 0,  "compiler": {    "target": 1  }}
 
 // TypeScript 플레이그라운드에 오신 것을 환영합니다.
 // 이곳은 TypeScript를 웹 브라우저에서 실행하는 환경과 거의 비슷합니다.

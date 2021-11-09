@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { jsx: 2, esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "jsx": 2,    "esModuleInterop": true  }}
 
 // React 是一个流行的创建用户界面的库。它提供了 JavaScript 的抽象，
 // 即被称为 JSX 的 JavaScript 语言扩展来创建界面。

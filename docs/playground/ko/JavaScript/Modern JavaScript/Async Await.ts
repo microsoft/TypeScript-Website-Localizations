@@ -1,4 +1,4 @@
-//// { order: 1, target: "es5" }
+//// {  "order": 1,  "target": "es5"}
 
 // 모던 JavaScript는 특별한 구문의
 // 프로미스(Promise) 기반 API를 추가하여

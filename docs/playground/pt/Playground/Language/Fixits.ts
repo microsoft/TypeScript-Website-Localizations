@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // O TypeScript suporta muitos fixits que ajudam a refatorar
 // seu código. Por exemplo, se você selecionar o texto

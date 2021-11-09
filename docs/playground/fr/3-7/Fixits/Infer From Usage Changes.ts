@@ -1,4 +1,4 @@
-//// { compiler: {  noImplicitAny: false }, order: 2 }
+//// {  "compiler": {    "noImplicitAny": false  },  "order": 2}
 
 // Avec TypeScript 3.7 la correction automatique 'infer from usage'
 // s'améliore. Elle utilisera désormais une liste de types importants

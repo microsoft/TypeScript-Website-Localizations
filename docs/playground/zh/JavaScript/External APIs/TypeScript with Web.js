@@ -1,4 +1,4 @@
-//// { order: 0, isJavaScript: true }
+//// {  "order": 0,  "isJavaScript": true}
 
 // DOM (Document Object Model，文档对象模型) 是一种网页底层的标准
 // 接口规范，而 TypeScript 对这套接口有着相当不错的支持。

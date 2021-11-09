@@ -1,4 +1,4 @@
-//// { order: 1, target: "es5" }
+//// {  "order": 1,  "target": "es5"}
 
 // O JavaScript moderno adicionou um modo de lidar com callbacks
 // de uma maneira elegante adicionando uma API baseada em Promises

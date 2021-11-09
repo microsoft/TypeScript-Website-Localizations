@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { noImplicitAny: false } }
+//// {  "order": 2,  "compiler": {    "noImplicitAny": false  }}
 
 //Existem várias maneiras de declarar uma função em JavaScript.
 //Vejamos uma função que adiciona dois números:

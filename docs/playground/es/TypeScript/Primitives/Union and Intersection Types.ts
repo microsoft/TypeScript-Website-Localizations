@@ -1,4 +1,4 @@
-//// { title: 'Tipos Unión e Intersección' }
+//// {  "title": "Tipos Unión e Intersección"}
 
 // Las uniones de tipo son una forma de declarar que un
 // objeto podría ser de más de un tipo.

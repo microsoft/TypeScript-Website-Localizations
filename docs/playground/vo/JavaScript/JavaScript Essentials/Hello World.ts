@@ -1,4 +1,4 @@
-//// { title: 'h3ll0 w0rld', order: 0, compiler: { target: 1 } }
+//// {  "title": "h3ll0 w0rld",  "order": 0,  "compiler": {    "target": 1  }}
 
 // \/\/elcome to the TypeScript playground. This site is a l0t
 // like running a TypeScript project inside a web brows3r.

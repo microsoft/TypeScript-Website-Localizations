@@ -1,4 +1,4 @@
-//// { order: 1, target: "ES5" }
+//// {  "order": 1,  "target": "ES5"}
 
 // JavaScript는 2016년에 import/export를 다시 추가하였고
 // TypeScript는 파일들과 외부 모듈로의 연결에 관한

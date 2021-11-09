@@ -1,4 +1,4 @@
-//// { order: 0, isJavaScript: true }
+//// {  "order": 0,  "isJavaScript": true}
 
 // DOM (_Document Object Model_) merupakan API dasar ketika
 // ingin bekerja dengan sebuah halaman web, dan TypeScript

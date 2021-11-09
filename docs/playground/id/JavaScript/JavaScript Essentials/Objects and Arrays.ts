@@ -1,4 +1,4 @@
-//// { order: 1, compiler: { strict: false } }
+//// {  "order": 1,  "compiler": {    "strict": false  }}
 
 // Objek JavaScript merupakan kumpulan nilai-nilai yang
 // dibungkus menggunakan kata kunci yang memiliki nama.

@@ -1,4 +1,4 @@
-//// {compiler: { strictFunctionTypes: false } }
+//// {  "compiler": {    "strictFunctionTypes": false  }}
 
 // Sin antecedentes en la teoría de tipos, es poco probable que esté
 // familiarizado con la idea de que un sistema de tipos sea "sólido".

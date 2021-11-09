@@ -1,4 +1,4 @@
-//// { order: 1, compiler: { strict: false } }
+//// {  "order": 1,  "compiler": {    "strict": false  }}
 
 // JavaScript 오브젝트는
 // 이름이 있는 키로 래핑된 값의 모음입니다.

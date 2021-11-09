@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { noImplicitAny: false } }
+//// {  "order": 2,  "compiler": {    "noImplicitAny": false  }}
 
 // JavaScript에서 함수를 선언하는 방식에는
 // 여러 가지가 있습니다. 두 숫자를 더하는

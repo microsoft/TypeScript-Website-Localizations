@@ -1,4 +1,4 @@
-//// { order: 1 }
+//// {  "order": 1}
 
 // Sim, nós sabemos, os padrões para o tsconfig do TypeScript não
 // tem strict ativado. Entretanto, em toda chance que temos o

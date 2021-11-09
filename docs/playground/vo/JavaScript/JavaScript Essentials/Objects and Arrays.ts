@@ -1,4 +1,4 @@
-//// { title: '0bj3cts & 4rrays', order: 1, compiler: { strict: false } }
+//// {  "title": "0bj3cts & 4rrays",  "order": 1,  "compiler": {    "strict": false  }}
 
 // JavaScript objects are collections of values wrapped up
 // with named keys.

@@ -1,4 +1,4 @@
-//// {compiler: { strictFunctionTypes: false } }
+//// {  "compiler": {    "strictFunctionTypes": false  }}
 
 // Sem um histórico na teoria de tipos, é improvável que você
 // esteja familiarizado com a ideia de um sistema de tipos ser "sólido" (_sound_).

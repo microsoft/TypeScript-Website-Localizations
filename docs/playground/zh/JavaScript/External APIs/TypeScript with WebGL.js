@@ -1,4 +1,4 @@
-//// { order: 5, isJavaScript: true }
+//// {  "order": 5,  "isJavaScript": true}
 
 // 该例子通过使用 JavaScript 创建一个基于 WebGL 的 HTML canvas 来渲染一些旋转的彩色纸屑。
 // 我们通过这些代码来了解它是如何工作的，看看 TypeScript 的工具所提供的便利。

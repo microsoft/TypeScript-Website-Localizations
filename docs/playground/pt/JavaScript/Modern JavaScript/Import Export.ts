@@ -1,4 +1,4 @@
-//// { order: 1, target: "ES5" }
+//// {  "order": 1,  "target": "ES5"}
 
 // O JavaScript adicionou import/export à linguagem em 2016
 // e TypeScript tem suporte completo para esse estilo de

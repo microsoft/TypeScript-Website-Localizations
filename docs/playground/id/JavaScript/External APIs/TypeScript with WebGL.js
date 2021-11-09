@@ -1,4 +1,4 @@
-//// { order: 5, isJavaScript: true }
+//// {  "order": 5,  "isJavaScript": true}
 
 // Di bawah ini merupakan contoh pembuata sebuah kanvas HTML
 // yang menggunakan WebGL untuk menghasilkan _confetti_ yang

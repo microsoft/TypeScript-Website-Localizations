@@ -1,4 +1,4 @@
-//// { order: 0, compiler: { target: 1 } }
+//// {  "order": 0,  "compiler": {    "target": 1  }}
 
 // Selamat datang di area bermain TypeScript. Situs ini mirip
 // seperti menjalankan proyek TypeScript di dalam peramban web.

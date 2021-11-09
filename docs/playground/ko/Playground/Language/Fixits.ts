@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // TypeScript는 코드를 자동으로 리팩터링하는
 // 도우미 로서 많은 수정 사항을 지원합니다.

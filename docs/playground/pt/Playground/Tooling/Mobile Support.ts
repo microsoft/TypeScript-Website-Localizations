@@ -1,4 +1,4 @@
-//// { order: 99 }
+//// {  "order": 99}
 
 // Dispositivos pequenos podem não ser muito bons para escrever código,
 // mas são bons para ler nossos exemplos ou fornecer revisões rápidas

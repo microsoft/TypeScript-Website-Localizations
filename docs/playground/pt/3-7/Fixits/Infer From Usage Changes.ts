@@ -1,4 +1,4 @@
-//// { compiler: {  noImplicitAny: false }, order: 2 }
+//// {  "compiler": {    "noImplicitAny": false  },  "order": 2}
 
 // Na versão 3.7 do TypeScript a correção 'dedução por uso'
 // ficou mais inteligente. Ela agora poderá usar uma lista conhecida

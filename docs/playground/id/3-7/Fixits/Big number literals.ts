@@ -1,4 +1,4 @@
-//// { compiler: {  target: 99 }, order: 1 }
+//// {  "compiler": {    "target": 99  },  "order": 1}
 
 // Apakah anda tahu bahwa ada batas untuk seberapa besar bilangan
 // yang dapat direpresentasikan dalam JavaScript ketika menulis kode program?

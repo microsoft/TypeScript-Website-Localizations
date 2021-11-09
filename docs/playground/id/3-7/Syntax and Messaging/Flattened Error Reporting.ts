@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 3 }
+//// {  "compiler": {},  "order": 3}
 
 // Pesan kesalahan yang ditampilkan TypeScript terkadang berlebihan.
 // Dengan TypeScript 3.7, kami telah mengambil beberapa kasus dimana

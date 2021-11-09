@@ -1,4 +1,4 @@
-//// { compiler: {  target: 99 }, order: 1 }
+//// {  "compiler": {    "target": 99  },  "order": 1}
 
 // Você sabia que existe um limite para o maior
 // número que você pode representar enquanto

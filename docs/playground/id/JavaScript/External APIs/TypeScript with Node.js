@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // Node.js adalah sebuah _runtime_ JavaScript populer yang dibangun
 // di atas v8, mesin JavaScript yang diberdayakan oleh Chrome.

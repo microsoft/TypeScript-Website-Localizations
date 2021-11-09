@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 2 }
+//// {  "compiler": {},  "order": 2}
 
 // Null合体演算子は左辺が
 // nullまたはundefinedのときに

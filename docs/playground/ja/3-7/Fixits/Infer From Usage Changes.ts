@@ -1,4 +1,4 @@
-//// { compiler: {  noImplicitAny: false }, order: 2 }
+//// {  "compiler": {    "noImplicitAny": false  },  "order": 2}
 
 // 3.7 で TypeScript 既存の「使用状況からの推論」によるコード修正はよりスマートになりました。
 // 既知の重要な型 (string, number, array, Promise) のリストを用いて、

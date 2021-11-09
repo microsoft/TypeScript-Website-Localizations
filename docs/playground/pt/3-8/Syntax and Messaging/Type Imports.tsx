@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 // Na versão 3.8 nós adicionamos uma nova sintaxe para importar tipos,
 // que seria similar para usuários que vieram do Flow.
 

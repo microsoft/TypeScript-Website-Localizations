@@ -1,4 +1,4 @@
-//// { order: 3 }
+//// {  "order": 3}
 
 // Deno 是一个尚未完成的基于 v8 专注于安全性的
 // JavaScript 和 TypeScript 运行时。
