@@ -1,24 +1,24 @@
 ---
-title: Declaration Reference
+title: 宣言リファレンス
 layout: docs
-permalink: /docs/handbook/declaration-files/by-example.html
-oneline: "How to create a d.ts file for a module"
+permalink: /ja/docs/handbook/declaration-files/by-example.html
+oneline: "モジュール用の.d.tsファイルの作り方"
 ---
 
-The purpose of this guide is to teach you how to write a high-quality definition file.
-This guide is structured by showing documentation for some API, along with sample usage of that API,
-and explaining how to write the corresponding declaration.
+本ガイドの目的は、すぐれた宣言ファイルの書き方を示すことです。
+本ガイドは、ある API の仕様と、その API の使い方の例示で構成されており、
+それに対応する宣言の記述方法について解説しています。
 
-These examples are ordered in approximately increasing order of complexity.
+以下のサンプルは、複雑度がほぼ高い順に並んでいます。
 
-## Objects with Properties
+## プロパティを持つオブジェクト
 
-_Documentation_
+_仕様_
 
-> The global variable `myLib` has a function `makeGreeting` for creating greetings,
-> and a property `numberOfGreetings` indicating the number of greetings made so far.
+> グローバス変数`myLib`は、挨拶を作る`makeGreeting`関数と、
+> これまで作られた挨拶の数を示すプロパティ`numberOfGreetings`を持っています。
 
-_Code_
+_コード例_
 
 ```ts
 let result = myLib.makeGreeting("hello, world");
@@ -27,9 +27,9 @@ console.log("The computed greeting is:" + result);
 let count = myLib.numberOfGreetings;
 ```
 
-_Declaration_
+_宣言_
 
-Use `declare namespace` to describe types or values accessed by dotted notation.
+ドット記法でアクセス可能な型や値を記述するには、`declare namespace`を使います。
 
 ```ts
 declare namespace myLib {
@@ -38,13 +38,13 @@ declare namespace myLib {
 }
 ```
 
-## Overloaded Functions
+## オーバーロードされた関数
 
-_Documentation_
+_仕様_
 
-The `getWidget` function accepts a number and returns a Widget, or accepts a string and returns a Widget array.
+`getWidget`関数は、数値を受け取って Widget を返したり、あるいは文字列を受け取って Widget の配列を返します。
 
-_Code_
+_コード例_
 
 ```ts
 let x: Widget = getWidget(43);
@@ -52,38 +52,38 @@ let x: Widget = getWidget(43);
 let arr: Widget[] = getWidget("all of them");
 ```
 
-_Declaration_
+_宣言_
 
 ```ts
 declare function getWidget(n: number): Widget;
 declare function getWidget(s: string): Widget[];
 ```
 
-## Reusable Types (Interfaces)
+## 再利用可能な型 (インターフェース)
 
-_Documentation_
+_仕様_
 
-> When specifying a greeting, you must pass a `GreetingSettings` object.
-> This object has the following properties:
+> `GreetingSettings`オブジェクトを渡して、挨拶を指定します。
+> このオブジェクトは次のようなプロパティを持っています:
 >
-> 1 - greeting: Mandatory string
+> 1 - greeting: 必須の文字列
 >
-> 2 - duration: Optional length of time (in milliseconds)
+> 2 - duration: 任意の時間の長さ (ミリ秒単位)
 >
-> 3 - color: Optional string, e.g. '#ff00ff'
+> 3 - color: 任意の文字列 (例：　'#ff00ff')
 
-_Code_
+_コード例_
 
 ```ts
 greet({
   greeting: "hello world",
-  duration: 4000
+  duration: 4000,
 });
 ```
 
-_Declaration_
+_宣言_
 
-Use an `interface` to define a type with properties.
+`interface`を使用して、プロパティを持つ型を定義します。
 
 ```ts
 interface GreetingSettings {
@@ -95,13 +95,13 @@ interface GreetingSettings {
 declare function greet(setting: GreetingSettings): void;
 ```
 
-## Reusable Types (Type Aliases)
+## 再利用可能な型 (タイプエイリアス)
 
-_Documentation_
+_仕様_
 
-> Anywhere a greeting is expected, you can provide a `string`, a function returning a `string`, or a `Greeter` instance.
+> 挨拶が期待される場所に対して、`string`、`string`を返す関数、あるいは`Greeter`インスタンスを与えることができます。
 
-_Code_
+_コード例_
 
 ```ts
 function getGreeting() {
@@ -114,9 +114,9 @@ greet(getGreeting);
 greet(new MyGreeter());
 ```
 
-_Declaration_
+_宣言_
 
-You can use a type alias to make a shorthand for a type:
+型の省略表現を作るために、タイプエイリアスを使うことができます:
 
 ```ts
 type GreetingLike = string | (() => string) | MyGreeter;
@@ -124,14 +124,14 @@ type GreetingLike = string | (() => string) | MyGreeter;
 declare function greet(g: GreetingLike): void;
 ```
 
-## Organizing Types
+## 型の整理
 
-_Documentation_
+_仕様_
 
-> The `greeter` object can log to a file or display an alert.
-> You can provide LogOptions to `.log(...)` and alert options to `.alert(...)`
+> `greeter`オブジェクトは、ファイルにログを記録したり、アラートを表示したりすることができます。
+> ログオプションは`.log(...)`に、アラートオプションは`.alert(...)`に与えることができます。
 
-_Code_
+_コード例_
 
 ```ts
 const g = new Greeter("Hello");
@@ -139,9 +139,9 @@ g.log({ verbose: true });
 g.alert({ modal: false, title: "Current Greeting" });
 ```
 
-_Declaration_
+_宣言_
 
-Use namespaces to organize types.
+名前空間を使って型を整理します。
 
 ```ts
 declare namespace GreetingLib {
@@ -156,11 +156,11 @@ declare namespace GreetingLib {
 }
 ```
 
-You can also create nested namespaces in one declaration:
+宣言でネストした名前空間を作ることもできます：
 
 ```ts
 declare namespace GreetingLib.Options {
-  // Refer to via GreetingLib.Options.Log
+  // GreetingLib.Options.Logで参照します
   interface Log {
     verbose?: boolean;
   }
@@ -172,13 +172,13 @@ declare namespace GreetingLib.Options {
 }
 ```
 
-## Classes
+## クラス
 
-_Documentation_
+_仕様_
 
-> You can create a greeter by instantiating the `Greeter` object, or create a customized greeter by extending from it.
+> `Greeter`オブジェクトをインスタンス化して greeter を作成したり、それを拡張してカスタマイズした greeter を作成することができます。
 
-_Code_
+_コード例_
 
 ```ts
 const myGreeter = new Greeter("hello, world");
@@ -192,10 +192,10 @@ class SpecialGreeter extends Greeter {
 }
 ```
 
-_Declaration_
+_宣言_
 
-Use `declare class` to describe a class or class-like object.
-Classes can have properties and methods as well as a constructor.
+クラスやクラスライクなオブジェクトを記述するには、`declare class`を使います。
+クラスはコンストラクタだけではなく、プロパティやメソッドを持つことができます。
 
 ```ts
 declare class Greeter {
@@ -206,46 +206,45 @@ declare class Greeter {
 }
 ```
 
-## Global Variables
+## グローバル変数
 
-_Documentation_
+_仕様_
 
-> The global variable `foo` contains the number of widgets present.
+> グローバル変数`foo`には、存在する widget の数が格納されています。
 
-_Code_
+_コード例_
 
 ```ts
 console.log("Half the number of widgets is " + foo / 2);
 ```
 
-_Declaration_
+_宣言_
 
-Use `declare var` to declare variables.
-If the variable is read-only, you can use `declare const`.
-You can also use `declare let` if the variable is block-scoped.
+変数を宣言するには、`declare var`を使います。
+変数が読み取り専用の場合には、`declare const`を使用することができます。
+また、変数がブロックスコープに制限される場合は、`declare let`を使うこともできます。
 
 ```ts
-/** The number of widgets present */
+/** 存在する widget の数 */
 declare var foo: number;
 ```
 
-## Global Functions
+## グローバル関数
 
-_Documentation_
+_仕様_
 
-> You can call the function `greet` with a string to show a greeting to the user.
+> 文字列を与えて関数`greet`を呼び出すと、ユーザーに挨拶を表示することができます。
 
-_Code_
+_コード例_
 
 ```ts
 greet("hello, world");
 ```
 
-_Declaration_
+_宣言_
 
-Use `declare function` to declare functions.
+関数を宣言するには、`declare function`を使用します。
 
 ```ts
 declare function greet(greeting: string): void;
 ```
-
