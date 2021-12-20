@@ -1,11 +1,11 @@
 # See https://github.com/OSS-Docs-Tools/code-owner-self-merge#readme
 
 # Collaborators for Japanese Translation of the Website
-docs/playground/ja @sasurau4 @Quramy @Naturalclar [translation] [jp]
-docs/tsconfig/ja/**/*.md @sasurau4 @Quramy @Naturalclar [translation] [jp]
-docs/typescriptlang/ja/**/*.ts @sasurau4 @Quramy @Naturalclar [translation] [jp]
-docs/typescriptlang/ja.ts @sasurau4 @Quramy @Naturalclar [translation] [jp]
-docs/documentation/ja/**/*.md @sasurau4 @Quramy @Naturalclar [translation] [jp]
+docs/playground/ja @sasurau4 @Quramy @Naturalclar @uraway [translation] [jp]
+docs/tsconfig/ja/**/*.md @sasurau4 @Quramy @Naturalclar @uraway [translation] [jp]
+docs/typescriptlang/ja/**/*.ts @sasurau4 @Quramy @Naturalclar @uraway [translation] [jp]
+docs/typescriptlang/ja.ts @sasurau4 @Quramy @Naturalclar @uraway [translation] [jp]
+docs/documentation/ja/**/*.md @sasurau4 @Quramy @Naturalclar @uraway [translation] [jp]
 
 # Collaborators for Portuguese Translation of the Website
 docs/playground/pt @khaosdoctor @danilofuchs [translation] [pt]
