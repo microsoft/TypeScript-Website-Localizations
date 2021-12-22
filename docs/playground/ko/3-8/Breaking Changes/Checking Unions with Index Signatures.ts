@@ -22,7 +22,7 @@ let userCache: IdentifierCache | { index: number };
 userCache = { file_one: 5, file_two: "abc" };
 
 // 이 부분은 고쳐졌고,
-// 컴파일러에서 'file_two'에 관한 오류가 발생할 것입니다.
+// 컴파일러에서 'file_two'에 관한 오류가 발생합니다.
 
 // 키가 다른 타입일 때도 고려합니다
 // 예를 들어: ([key: string] 그리고 [key: number])
