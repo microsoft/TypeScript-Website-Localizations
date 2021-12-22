@@ -16,7 +16,7 @@ type IdentifierCache = { [key: string]: number };
 const cacheWithString: IdentifierCache = { file_a: "12343" };
 
 // 그러나, 유니언에 넣을 때는
-// 유효성 검사가 실행되지 않을 것입니다:
+// 유효성 검사가 실행되지 않았습니다:
 
 let userCache: IdentifierCache | { index: number };
 userCache = { file_one: 5, file_two: "abc" };
