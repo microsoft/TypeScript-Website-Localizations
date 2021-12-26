@@ -1,7 +1,7 @@
 ---
 title: Narrowing
 layout: docs
-permalink: /docs/handbook/2/narrowing.html
+permalink: /ko/docs/handbook/2/narrowing.html
 oneline: "프로젝트에서 TypeScript가 어떻게 많은 양의 타입 문법을 제거하기 위해 JavaScript 지식을 사용하는지 이해합니다."
 ---
 
