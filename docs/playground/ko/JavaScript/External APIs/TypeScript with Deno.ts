@@ -1,7 +1,7 @@
 //// { order: 3 }
 
 // Deno는 보안에 중점을 둔 v8 기반의
-// 작업 중에 있는 JavaScript와 TypeScript 런타임입니다.
+// 진행중인 JavaScript와 TypeScript 런타임입니다.
 
 // https://deno.land
 
