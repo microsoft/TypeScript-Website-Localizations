@@ -12,7 +12,7 @@ type AddMax<T extends unknown[]> = [max: number,  ...rest: T];
 //          ^ T를 제한하기 위해 사용한 제네릭
 //                                                ^ 어디에 병합하는지 나타내기 위해 사용한 ...
 
-// 구성을 위해 사용 할 수 있습니다:
+// 합성할 때 사용 할 수 있습니다:
 type MaxMin = AddMax<[min: number]>
 type MaxMinDiameter = AddMax<[min: number, diameter: number]>
 
