@@ -1,4 +1,4 @@
-//// { order: 3 }
+//// { "order": 3 }
 
 // Deno는 보안에 중점을 둔 v8 기반의
 // 진행중인 JavaScript와 TypeScript 런타임입니다.
