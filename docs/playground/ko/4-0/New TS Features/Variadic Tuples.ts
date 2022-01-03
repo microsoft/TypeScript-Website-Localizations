@@ -5,7 +5,7 @@
 // 꽤 고급 주제라서 이해하기 어렵더라도 너무 걱정하지 마세요.
 // example:generic-functions 그리고 example:tuples를 기반으로 합니다.
 
-// 시작해보기 위해, 숫자를 가진 다른 튜플을
+// 먼저 튜플 앞에 항상 숫자를 붙이는
 // 항상 앞에 붙이는 가변 튜플이 있습니다:
 
 type AddMax<T extends unknown[]> = [max: number,  ...rest: T];
