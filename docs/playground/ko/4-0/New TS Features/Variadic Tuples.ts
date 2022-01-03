@@ -6,7 +6,7 @@
 // example:generic-functions 그리고 example:tuples를 기반으로 합니다.
 
 // 먼저 튜플 앞에 항상 숫자를 붙이는
-// 항상 앞에 붙이는 가변 튜플이 있습니다:
+// 가변 튜플이 있습니다.
 
 type AddMax<T extends unknown[]> = [max: number, ...rest: T];
 //          ^ T를 제한하기 위해 사용한 제네릭
