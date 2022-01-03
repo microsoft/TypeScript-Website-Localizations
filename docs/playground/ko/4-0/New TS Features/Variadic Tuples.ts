@@ -31,7 +31,7 @@ function joinWithNullTerminators<T extends unknown[], U extends unknown[]>(t: [.
 const result = joinWithNullTerminators(['variadic', 'types'], ["terminators", 3]);
 
 // 이런 도구를 사용하여 함수형 프로그래밍에서 자주 사용되는 개념인
-// curry 함수처럼 올바르게 입력 할 수 있습니다:
+// curry같은 함수의 타입을 올바르게 지정할 수 있습니다.
 
 function curry<T extends unknown[], U extends unknown[], R>(f: (...args: [...T, ...U]) => R, ...a: T) {
     return (...b: U) => f(...a, ...b);
