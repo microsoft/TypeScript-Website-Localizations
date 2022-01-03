@@ -8,7 +8,7 @@
 // 먼저 튜플 앞에 항상 숫자를 붙이는
 // 항상 앞에 붙이는 가변 튜플이 있습니다:
 
-type AddMax<T extends unknown[]> = [max: number,  ...rest: T];
+type AddMax<T extends unknown[]> = [max: number, ...rest: T];
 //          ^ T를 제한하기 위해 사용한 제네릭
 //                                                ^ 어디에 병합하는지 나타내기 위해 사용한 ...
 
