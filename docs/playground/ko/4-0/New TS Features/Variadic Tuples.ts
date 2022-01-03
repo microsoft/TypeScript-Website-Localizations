@@ -16,7 +16,7 @@ type AddMax<T extends unknown[]> = [max: number,  ...rest: T];
 type MaxMin = AddMax<[min: number]>
 type MaxMinDiameter = AddMax<[min: number, diameter: number]>
 
-// 튜플 이후에도 똑같이 사용 할 수 있습니다:
+// 튜플 뒤에도 동일하게 사용 할 수 있습니다:
 type SuffixDIContext<T extends unknown[]> = [...first: T, context: any];
 type DIContainer = SuffixDIContext<[param: string]>
 
