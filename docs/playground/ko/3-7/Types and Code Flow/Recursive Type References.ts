@@ -17,7 +17,7 @@ type ValueOrArray<T> = T | Array<ValueOrArray<T>>;
 // 타입을 인터페이스와 혼합한 구현은
 // 이렇게 보일 것입니다.
 type ValueOrArray2<T> = T | ArrayOfValueOrArray<T>;
-interface ArrayOfValueOrArray<T> extends Array<ValueOrArray2<T>> {}
+interface ArrayOfValueOrArray<T> extends Array<ValueOrArray2<T>> { }
 
 // 자신을 참조하여 동작하는 JSON의
 // 종합적인 정의를 허용합니다.
