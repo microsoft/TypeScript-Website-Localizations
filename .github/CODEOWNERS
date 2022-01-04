@@ -29,11 +29,11 @@ docs/typescriptlang/zh.ts @Kingwl [translation] [zh]
 docs/documentation/zh/**/*.md @Kingwl [translation] [zh]
 
 # Collaborators for Korean Translation of the Website
-docs/playground/ko @Bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
-docs/tsconfig/ko/**/*.md @Bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
-docs/typescriptlang/ko/**/*.ts @Bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
-docs/typescriptlang/ko.ts @Bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
-docs/documentation/ko/**/*.md @Bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
+docs/playground/ko @bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
+docs/tsconfig/ko/**/*.md @bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
+docs/typescriptlang/ko/**/*.ts @bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
+docs/typescriptlang/ko.ts @bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
+docs/documentation/ko/**/*.md @bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
 
 # Collaborators for Indonesian Translation of the Website
 docs/playground/id @jefrydco @nusendra @mazipan @mandaputtra [translation] [id]
