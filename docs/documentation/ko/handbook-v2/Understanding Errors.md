@@ -2,10 +2,10 @@
 title: Understanding Errors
 layout: docs
 permalink: /ko/docs/handbook/2/understanding-errors.html
-oneline: "타입스크립트에서 오류들을 읽는법."
+oneline: "TypeScript에서 오류를 보는방법."
 ---
 
-# 오류들을 이해하기
+# 오류를 이해하기
 
 타입스크립트는 오류를 찾으면, 무엇이 잘못됐는지 가능한 자세하게 설명하려고 합니다.
 타입스크립트의 타입 시스템은 구조적이기 때문에, 이것은 종종 문제를 발견한 장소에 대한 다소 긴 설명을 제공한다는 것을 의미합니다.
@@ -21,7 +21,7 @@ oneline: "타입스크립트에서 오류들을 읽는법."
 
 이 관계는 이름에서 알 수 있듯이, `t`와 `s`의 유형을 조사하여 할당 `t = s;`의 타당성을 확인하는 데 사용됩니다.
 또한 두 가지 유형이 상호 작용하는 대부분의 다른 위치를 확인하는 데도 사용됩니다.
-예를 들어, 함수를 호출할 때 각 인수의 유형은  매개 변수의 선언된 유형에 _할당할 수_ 있어야합니다.
+예를 들어, 함수를 호출할 때 각 인수의 유형은 매개 변수의 선언된 유형에 _할당할 수_ 있어야합니다.
 
 비공식적으로 `T는 S에 할당할 수 없습니다`라고 하면 타입스크립트는 "_`T`와 `S`는 호환되지 않는다"_.고 말한다고 생각하면됩니다.
 그러나, 이것은 _방향성이 있는_ 관계라는 점에 유의하십시오: `S`가 `T`에 할당될 수 있다고 해서 `T`가 `S`에 할당될 수 있는 것은 아닙니다.
@@ -40,9 +40,9 @@ oneline: "타입스크립트에서 오류들을 읽는법."
 
 ```ts twoslash
 // @errors: 2322
-let a: { m: number[] };
-let b = { m: [""] };
-a = b;
+let a: { m: number[] }
+let b = { m: [""] }
+a = b
 ```
 
 마지막 줄을 확인하는 동안 타입스크립트에서 오류가 발생했습니다.
@@ -57,15 +57,15 @@ a = b;
 
 ```ts twoslash
 // @errors: 2322
-type A = { m: number };
-const a: A = { m: 10, n: "" };
+type A = { m: number }
+const a: A = { m: 10, n: "" }
 ```
 
-### 유니언 할당 (Union Assignments) 
+### 유니언 할당 (Union Assignments)
 
 ```ts twoslash
 // @errors: 2322
-type Thing = "none" | { name: string };
+type Thing = "none" | { name: string }
 
-const a: Thing = { name: 0 };
+const a: Thing = { name: 0 }
 ```
