@@ -2,7 +2,7 @@
 title: Understanding Errors
 layout: docs
 permalink: /ko/docs/handbook/2/understanding-errors.html
-oneline: "TypeScript에서 오류를 보는방법."
+oneline: "TypeScript에서 오류를 보는 방법."
 ---
 
 # 오류를 이해하기
