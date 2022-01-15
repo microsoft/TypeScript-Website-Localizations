@@ -5,7 +5,7 @@ permalink: /ko/docs/handbook/2/understanding-errors.html
 oneline: "TypeScript에서 오류를 보는 방법."
 ---
 
-# 오류를 이해하기
+# 오류를 이해하기 (Understanding Errors)
 
 TypeScript는 오류를 찾으면, 무엇이 잘못됐는지 가능한 자세하게 설명하려고 합니다.
 TypeScript의 타입 시스템은 구조적이기 때문에, 문제를 발견한 위치에 대해 자세한 설명을 제공할 수 있습니다.
