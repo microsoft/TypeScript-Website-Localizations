@@ -3,7 +3,7 @@ title: TypeScript para programadores Java/C#
 short: TS para programadores Java/C#
 layout: docs
 permalink: /pt/docs/handbook/typescript-in-5-minutes-oop.html
-oneline: Learn TypeScript if you have a background in object-oriented languages
+oneline: Aprenda TypeScript se você tem um background com linguagens orientadas a objeto
 ---
 
 TypeScript é uma escolha popular para programadores acostumados com outras linguagens com tipagem estática, como C# e Java.
