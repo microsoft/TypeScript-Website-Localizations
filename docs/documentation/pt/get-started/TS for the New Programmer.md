@@ -23,7 +23,7 @@ Em sites modernos, o seu browser está frequentemente rodando aplicações que c
 Este é o longo e gradual crescimento da web, que iniciou como uma simples rede de páginas estáticas, e evoluiu para uma plataforma para todos os tipos de _aplicações_ ricas.
 
 Mais do que isto, JS se tornou popular o suficiente para ser utilizada fora do contexto dos browsers, como para implementar servidores em JS usando node.js.
-A natureza "rode em qualquer lugar" do JS o fez uma escolha atrativa para o desenvolvimento cross plataforma.
+A natureza "rode em qualquer lugar" do JS o fez uma escolha atrativa para o desenvolvimento entre plataformas.
 Hoje em dia existem muitos desenvolvedores que utilizam _somente_ JavaScript em toda a sua _stack_ de tecnologia!
 
 Para resumir, nós temos uma linguagem que foi projetada para usos rápidos, e que se tornou uma ferramenta completa para escrita de aplicações com milhões de linhas.
