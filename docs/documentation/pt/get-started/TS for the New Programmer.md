@@ -6,7 +6,7 @@ permalink: /pt/docs/handbook/typescript-from-scratch.html
 oneline: Aprenda TypeScript do zero
 ---
 
-Parabéns por escolher o TypeScript como uma das suas primeiras linguagens de programação - você já está começou tomando boas decisões.
+Parabéns por escolher o TypeScript como uma das suas primeiras linguagens de programação - você já começou tomando boas decisões.
 
 Você provavelmente já ouviu falar que TypeScript é um "sabor" ou "variante" do JavaScript.
 
