@@ -36,7 +36,7 @@ let tube: Tube = { diameter: 12, length: 3 };
 tube = ball;
 ball = tube;
 
-// 공은 길이를 갖고 있지 않아서, 튜브 변수에 할당할 수 없습니다.
+// ball은 length를 갖고 있지 않아서, tube 변수에 할당할 수 없습니다.
 // 하지만, Ball의 모든 멤버는
 // 튜브 내부에 속하니 할당할 수 있습니다.
 
