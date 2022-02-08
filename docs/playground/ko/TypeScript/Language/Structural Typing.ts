@@ -24,7 +24,7 @@ ball = sphere;
 
 // Ball과 Sphere의 모든 멤버를
 // 구조적으로 포함하는 타입을 추가하면,
-// 공이나 구체가 되도록 설정할 수도 있습니다.
+// ball이나 sphere가 되도록 설정할 수도 있습니다.
 
 interface Tube {
   diameter: number;
