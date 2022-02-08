@@ -7,7 +7,7 @@
 // example:nominal-typing 를 참고하세요.
 
 // 예를 들어, 구조적 타입 시스템에서
-// 이러한 두 가지 인터페이스는 완전히 이동시킬 수 있습니다:
+// 이러한 두 가지 인터페이스는 서로 양도할 수 있습니다.
 
 interface Ball {
   diameter: number;
