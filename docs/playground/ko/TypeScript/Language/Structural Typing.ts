@@ -82,4 +82,4 @@ createBall = createRedBall;
 createRedBall = createBall;
 
 // 첫 번째 할당은 동작하지만 (둘 다 diameter가 있음),
-// 두 번째는 동작하지 않습니다. (공은 색상이 없음)
+// 두 번째는 동작하지 않습니다. (ball은 color가 없음)
