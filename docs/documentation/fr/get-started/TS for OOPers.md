@@ -3,7 +3,7 @@ title: TypeScript pour les Développeurs Java/C#
 short: TS pour les Développeurs Java/C#
 layout: docs
 permalink: /docs/handbook/typescript-in-5-minutes-oop.html
-oneline: Apprenez TypeScript si vous avez un vécu avec les langages orientés objet
+oneline: Apprenez TypeScript si vous avez de l'expérience avec les langages orientés objet
 ---
 
 TypeScript est un choix populaire pour les développeurs habitués aux autres langages à typage statique, comme le C# et le Java.
@@ -71,16 +71,16 @@ Parce que les types ne sont que des ensembles, une valeur peut appartenir à  _p
 Une fois que vous pensez aux types en tant qu'ensembles, certaines opérations deviennent naturelles.
 Par exemple, en C#, il est bizarre de transmettre une valeur qui est _soit_ un `string` ou `int`, parce qu'il n'existe aucun type les représentant tous les deux.
 
-In TypeScript, ce procédé devient naturel quand vous pensez aux types en tant qu'ensembles.
+En TypeScript, ce procédé devient naturel quand vous pensez aux types en tant qu'ensembles.
 Comment décrire une valeur qui appartient, soit à l'ensemble des `string`, soit à celui des `number` ?
-Elle appartient simplement à l' _union_ de ces valeurs : `string | number`.
+Elle appartient simplement à l'_union_ de ces ensembles : `string | number`.
 
-TypeScript provides a number of mechanisms to work with types in a set-theoretic way, and you'll find them more intuitive if you think of types as sets.
+TypeScript fournit un certain nombre de mécanismes pour travailler avec les types de façons similaires à la théorie des ensembles, et ces façons seront plus intuitives si on pense aux types en tant qu'ensembles.
 
-### Erased Structural Types
+### Types Structurels Effacés
 
-In TypeScript, objects are _not_ of a single exact type.
-For example, if we construct an object that satisfies an interface, we can use that object where that interface is expected even though there was no declarative relationship between the two.
+En TypeScript, les objets n'ont _pas_ de seul et unique type.
+Par exemple, si nous créons un objet qui correspond à une interface, nous pouvons utiliser cet objet là où l'interface est attendue même si aucune relation de déclaration n'existait entre les deux.
 
 ```ts twoslash
 interface Pointlike {
@@ -109,70 +109,70 @@ logPoint(obj);
 logName(obj);
 ```
 
-TypeScript's type system is _structural_, not nominal: We can use `obj` as a `Pointlike` because it has `x` and `y` properties that are both numbers.
-The relationships between types are determined by the properties they contain, not whether they were declared with some particular relationship.
+Le système de types de TypeScript est _structurel_, et non nominal : nous pouvons utiliser `obj` en tant que `Pointlike` parce qu'`obj` a les propriétés `x` et `y` qui sont toutes les deux des nombres.
+Les relations entre types sont déterminées par les propriétés qu'ils contiennent, et non pas avec une relation de déclaration entre eux.
 
-TypeScript's type system is also _not reified_: There's nothing at runtime that will tell us that `obj` is `Pointlike`.
-In fact, the `Pointlike` type is not present _in any form_ at runtime.
+Le système de types de TypeScript n'est également _pas réifié_: rien ne va pouvoir nous dire qu'`obj` est un `Pointlike`, lors de l'exécution.
+D'ailleurs, le type `Pointlike` n'est _même pas présent_ lors de l'exécution.
 
-Going back to the idea of _types as sets_, we can think of `obj` as being a member of both the `Pointlike` set of values and the `Named` set of values.
+Si nous revenons à notre façon de réfléchir aux types _en tant qu'ensemble_, nous pouvons dire qu'`obj` est membre de l'ensemble `Pointlike`, ainsi que de l'ensemble `Named`.
 
-### Consequences of Structural Typing
+### Conséquences du typage structurel
 
-OOP programmers are often surprised by two particular aspects of structural typing.
+Deux aspects particuliers de ce système surprennent souvent les développeurs POO.
 
-#### Empty Types
+#### Types vides
 
-The first is that the _empty type_ seems to defy expectation:
+Le premier est que le _type vide_ a l'air d'agir de manière impromptue :
 
 ```ts twoslash
 class Empty {}
 
 function fn(arg: Empty) {
-  // do something?
+  // fais quelque chose ?
 }
 
-// No error, but this isn't an 'Empty' ?
+// Pas d'erreur, mais ce n'est pas un Empty ?
 fn({ k: 10 });
 ```
 
-TypeScript determines if the call to `fn` here is valid by seeing if the provided argument is a valid `Empty`.
-It does so by examining the _structure_ of `{ k: 10 }` and `class Empty { }`.
-We can see that `{ k: 10 }` has _all_ of the properties that `Empty` does, because `Empty` has no properties.
-Therefore, this is a valid call!
+TypeScript détermine si l'appel à `fn` est valide en déterminant si l'argument fourni est un `Empty` valide.
+Cela est accompli en examinant la _structure_ de `{ k: 10 }` et `class Empty { }`.
+Nous pouvons voir que `{ k: 10 }` a _toutes_ les propriétés d'`Empty` vu qu'`Empty` n'a aucune propriété.
+C'est donc un appel valide !
 
-This may seem surprising, but it's ultimately a very similar relationship to one enforced in nominal OOP languages.
-A subclass cannot _remove_ a property of its base class, because doing so would destroy the natural subtype relationship between the derived class and its base.
-Structural type systems simply identify this relationship implicitly by describing subtypes in terms of having properties of compatible types.
+Cela peut paraître surprenant, mais c'est au final une relation très similaire à celle respectées dans les langages POO nominaux.
+Une sous-classe ne peut pas _retirer_ une propriété de sa classe-mère, parce que faire cela détruirait la relation de sous-type naturelle existant entre la sous-classe et sa classe-mère.
+Les systèmes de type structurels identifient cette relation en décrivant les sous-types de façon à avoir des propriétés à types compatibles.
 
-#### Identical Types
+#### Types identiques
 
-Another frequent source of surprise comes with identical types:
+Les types identiques sont une autre source fréquente de surprises :
 
 ```ts
 class Car {
   drive() {
-    // hit the gas
+    // accélérer
   }
 }
 class Golfer {
   drive() {
-    // hit the ball far
+    // frapper la balle fort
   }
 }
 
-// No error?
+// Pas d'erreur ?
 let w: Car = new Golfer();
 ```
 
-Again, this isn't an error because the _structures_ of these classes are the same.
-While this may seem like a potential source of confusion, in practice, identical classes that shouldn't be related are not common.
+Encore une fois, ceci n'est pas une erreur parce que les _structures_ de ces classes sont les mêmes.
+Cela peut paraître comme une source de confusion, mais en pratique, les classes identiques n'ayant aucun rapport ne sont pas communes.
 
-We'll learn more about how classes relate to each other in the Classes chapter.
+Nous apprendrons plus sur comment les classes sont liées l'une à l'autre dans leur chapitre.
 
-### Reflection
+### Réflexivité
 
-OOP programmers are accustomed to being able to query the type of any value, even a generic one:
+Les développeurs POO ont l'habitude de pouvoir demander le type de n'importe quelle valeur, même générique :
 
 ```csharp
 // C#
@@ -181,14 +181,14 @@ static void LogType<T>() {
 }
 ```
 
-Because TypeScript's type system is fully erased, information about e.g. the instantiation of a generic type parameter is not available at runtime.
+Mais parce que le système de types de TypeScript est complètement effacé, aucune information sur, par exemple, l'instanciation d'un type générique n'est disponible à l'exécution.
 
-JavaScript does have some limited primitives like `typeof` and `instanceof`, but remember that these operators are still working on the values as they exist in the type-erased output code.
-For example, `typeof (new Car())` will be `"object"`, not `Car` or `"Car"`.
+Le JavaScript possède quelques opérateurs comme `typeof` et `instanceof`, mais souvenez-vous que ces opérateurs agissent sur les valeurs, tel qu'elles existent dans le code sans informations de types.
+Par exemple, `typeof (new Car())` va retourner `"object"`, et non `Car` ni `"Car"`.
 
-## Next Steps
+## Prochaines étapes
 
-This was a brief overview of the syntax and tools used in everyday TypeScript. From here, you can:
+C'était un bref résumé de la syntaxe et des outils régulièrement utilisés en TypeScript. À partir de là, vous pourrez :
 
-- Read the full Handbook [from start to finish](/docs/handbook/intro.html) (30m)
-- Explore the [Playground examples](/play#show-examples)
+- Lire le Manuel [du début à la fin](/docs/handbook/intro.html) (30m)
+- Explorer les [exemples du bac à sable](/play#show-examples)
