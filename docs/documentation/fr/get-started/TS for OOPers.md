@@ -2,14 +2,14 @@
 title: TypeScript pour les Développeurs Java/C#
 short: TS pour les Développeurs Java/C#
 layout: docs
-permalink: /docs/handbook/typescript-in-5-minutes-oop.html
+permalink: /fr/docs/handbook/typescript-in-5-minutes-oop.html
 oneline: Apprenez TypeScript si vous avez de l'expérience avec les langages orientés objet
 ---
 
 TypeScript est un choix populaire pour les développeurs habitués aux autres langages à typage statique, comme le C# et le Java.
 
 Le système de types de TypeScript offre la plupart de ces bénéfices : meilleure complétion de code, détection d'erreurs plus précoce, communication plus claire entre les composantes de votre programme.
-TypeScript fournit plusieurs fonctionnalités familières à ces développeurs, mais il est intéressant de prendre un pas en arrière et apprendre comment le JavaScript (et par conséquent, TypeScript) diffère des langages orientés objet traditionnels.
+TypeScript fournit plusieurs fonctionnalités familières à ces développeurs, mais il est intéressant de faire un pas en arrière et apprendre comment le JavaScript (et par conséquent, TypeScript) diffère des langages orientés objet traditionnels.
 Comprendre ces différences vous permettra d'écrire du code JavaScript de meilleure qualité, et d'éviter les pièges communs dans lesquels les développeurs passant de C#/Java à TypeScript peuvent tomber.
 
 ## Apprendre le JavaScript
@@ -17,17 +17,17 @@ Comprendre ces différences vous permettra d'écrire du code JavaScript de meill
 Si vous êtes déjà familier avec le JavaScript, mais vous êtes principalement un développeur Java ou C#, cette page d'introduction peut expliquer certaines idées fausses et pièges auxquels vous seriez susceptible.
 Certaines façons avec lesquelles TypeScript modélise les types sont très différentes du Java ou du C#. Il est important de s'en souvenir en apprenant TypeScript.
 
-Si vous êtes un développeur Java ou C#, et vous êtes nouveau à JavaScript en général, nous recommandons d'apprendre un peu de JavaScript _sans les types_ d'abord, afin de comprendre son comportement lors de l'exécution.
+Si vous êtes un développeur Java ou C#, et vous êtes nouveau avec JavaScript en général, nous recommandons d'apprendre un peu de JavaScript _sans les types_ d'abord, afin de comprendre son comportement lors de l'exécution.
 Vu que TypeScript ne change pas comment votre code _s'exécute_, vous devrez quand même apprendre le JavaScript pour écrire du code qui fait réellement quelque chose !
 
-Il est important de se rappeler que TypeScript utilise le même _runtime_ que le JavaScript, donc toute ressource sur comment accomplir un comportement particulier (conversion d'un string à un nombre, affichage d'une alerte, écriture d'un fichier, etc.) s'appliquera également sur TypeScript.
+Il est important de se rappeler que TypeScript utilise le même _runtime_ que le JavaScript, donc toute ressource sur comment accomplir un comportement particulier (conversion d'un string à un nombre, affichage d'une alerte, écriture d'un fichier, etc.) s'appliquera également en TypeScript.
 Ne vous limitez pas à ce qui est spécifique à TypeScript !
 
 ## Repenser les classes
 
 Le C# et le Java sont ce qu'on pourrait appeler des langages à _POO obligatoire_.
 Dans ces langages, la _classe_ est l'unité basique d'organisation de code, ainsi que le conteneur de base de toutes les données _et_ de la logique à l'exécution.
-Obliger toute la fonctionnalité et toutes les données à être contenues dans des classes peut être un bon modèle de domaine pour certains problèmes, mais pas tous les domaines _doivent_ être représentés de cette façon.
+Obliger toute la fonctionnalité et toutes les données à être contenues dans des classes peut être un bon modèle de domaine pour certains problèmes, mais tous les modèles _ne doivent pas_ être représentés de cette façon.
 
 ### Fonctions et données libres
 
@@ -42,7 +42,7 @@ De plus, certaines structures du C# et du Java, comme les singletons et les clas
 ## POO en TypeScript
 
 Cela dit, vous pouvez quand même utiliser des classes si vous le souhaitez !
-Certains problèmes ont une solution qui correspond à l'approche POO classique, et la capacité de TypeScript à supporter les classes JavaScript rendront ces solutions encore plus puissantes.
+Certains problèmes ont une solution qui correspond à l'approche POO classique, et la capacité de TypeScript à supporter les classes JavaScript rendra ces solutions encore plus puissantes.
 TypeScript supporte plusieurs patterns comme l'implémentation d'interfaces, l'héritage, et les méthodes statiques.
 
 Nous couvrirons les classes plus tard dans ce guide.
@@ -58,15 +58,15 @@ En C# ou Java, toute valeur a exactement un type - `null`, une primitive, ou un 
 Nous pouvons appeler des méthodes comme `value.GetType()` ou `value.getClass()` pour obtenir le type exact à l'exécution.
 La définition de ce type réside dans une certaine classe sous un certain nom, et nous n'avons pas le droit d'utiliser deux classes à formes similaires de façon interchangeable, sauf si une relation explicite d'héritage existe ou une interface en commun est implémentée.
 
-Ces aspects décrivent un système de types _réifié et nominal_.
+Ces aspects décrivent un système _réifié et nominal_ de types.
 Les types qu'on écrit sont présents à l'exécution, et ils sont liés à eux via leurs déclarations, pas leurs structures.
 
-### Types as Sets
+### Types en tant qu'ensembles
 
-En C# ou Java, cela fait sens de faire une correspondance entre un type à l'exécution et sa déclarations à la compilation.
+En C# ou Java, cela a du sens de faire une correspondance entre un type à l'exécution et sa déclarations à la compilation.
 
 En TypeScript, il vaut mieux de penser aux types comme des _ensembles de valeurs_ qui partagent quelque chose en commun.
-Parce que les types ne sont que des ensembles, une valeur peut appartenir à  _plusieurs_ ensembles en même temps.
+Parce que les types ne sont que des ensembles, une valeur peut appartenir à _plusieurs_ ensembles en même temps.
 
 Une fois que vous pensez aux types en tant qu'ensembles, certaines opérations deviennent naturelles.
 Par exemple, en C#, il est bizarre de transmettre une valeur qui est _soit_ un `string` ou `int`, parce qu'il n'existe aucun type les représentant tous les deux.
@@ -183,7 +183,7 @@ static void LogType<T>() {
 
 Mais parce que le système de types de TypeScript est complètement effacé, aucune information sur, par exemple, l'instanciation d'un type générique n'est disponible à l'exécution.
 
-Le JavaScript possède quelques opérateurs comme `typeof` et `instanceof`, mais souvenez-vous que ces opérateurs agissent sur les valeurs, tel qu'elles existent dans le code sans informations de types.
+JavaScript possède quelques opérateurs comme `typeof` et `instanceof`, mais souvenez-vous que ces opérateurs agissent sur les valeurs, tel qu'elles existent dans le code sans informations de types.
 Par exemple, `typeof (new Car())` va retourner `"object"`, et non `Car` ni `"Car"`.
 
 ## Prochaines étapes
