@@ -704,7 +704,7 @@ function getArea(shape: Shape) {
 
 # Exhaustiveness checking
 
-`never` 타입은 모든 타입에 할당할 수 있지만 `never` 자체르 ㄹ제외하고 `never`에 할당할 수 있는 타입은 없습니다. 즉 범위를 좁히거나 switch 구문에서 철저하게 확인할 때 `never`를 사용할 수 있습니다.
+`never` 타입은 모든 타입에 할당할 수 있지만 `never` 자체를 제외하고 `never`에 할당할 수 있는 타입은 없습니다. 즉 범위를 좁히거나 switch 구문에서 철저하게 확인할 때 `never`를 사용할 수 있습니다.
 
 예를 들어, 도형을 `never`에 할당하려는 `getArea` 함수에 `default`를 추가하면 모든 사례가 처리되지 않을 때 동작합니다.
 
