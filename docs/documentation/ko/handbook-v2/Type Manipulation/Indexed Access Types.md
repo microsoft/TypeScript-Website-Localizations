@@ -1,11 +1,11 @@
 ---
 title: Indexed Access Types
 layout: docs
-permalink: /docs/handbook/2/indexed-access-types.html
-oneline: "Using Type['a'] syntax to access a subset of a type."
+permalink: /ko/docs/handbook/2/indexed-access-types.html
+oneline: "Type['a'] 구문을 사용해서 타입의 내부 요소에 접근하기"
 ---
 
-We can use an _indexed access type_ to look up a specific property on another type:
+타입의 특정 프로퍼티를 찾기 위해서 _인덱싱된 접근 타입_ 을 사용할 수 있습니다.
 
 ```ts twoslash
 type Person = { age: number; name: string; alive: boolean };
@@ -13,7 +13,7 @@ type Age = Person["age"];
 //   ^?
 ```
 
-The indexing type is itself a type, so we can use unions, `keyof`, or other types entirely:
+인덱싱된 타입은 그 자체로도 타입이라서 유니언, `keyof` 혹은 타입 전체에 사용할 수 있습니다.
 
 ```ts twoslash
 type Person = { age: number; name: string; alive: boolean };
@@ -29,7 +29,7 @@ type I3 = Person[AliveOrName];
 //   ^?
 ```
 
-You'll even see an error if you try to index a property that doesn't exist:
+존재하지 않는 프로퍼티를 인덱싱하려고 하면 오류가 발생합니다.
 
 ```ts twoslash
 // @errors: 2339
@@ -38,8 +38,8 @@ type Person = { age: number; name: string; alive: boolean };
 type I1 = Person["alve"];
 ```
 
-Another example of indexing with an arbitrary type is using `number` to get the type of an array's elements.
-We can combine this with `typeof` to conveniently capture the element type of an array literal:
+또 다른 예로는 임의의 타입을 `number`로 인덱싱해서 배열 요소의 타입을 가져올 수 있습니다.
+`typeof`와 결합하면 편리하게 배열 리터럴의 요소 타입을 캡쳐할 수 있습니다.
 
 ```ts twoslash
 const MyArray = [
@@ -57,7 +57,8 @@ type Age2 = Person["age"];
 //   ^?
 ```
 
-You can only use types when indexing, meaning you can't use a `const` to make a variable reference:
+인덱싱할 때 변수 참조를 위해 사용된 `const`는 사용할 수 없고, 오로지 타입만 사용 가능합니다.
+
 
 ```ts twoslash
 // @errors: 2538 2749
@@ -67,7 +68,7 @@ const key = "age";
 type Age = Person[key];
 ```
 
-However, you can use a type alias for a similar style of refactor:
+하지만, 비슷한 스타일의 리팩터로 타입 별칭을 사용할 수 있습니다.
 
 ```ts twoslash
 type Person = { age: number; name: string; alive: boolean };
