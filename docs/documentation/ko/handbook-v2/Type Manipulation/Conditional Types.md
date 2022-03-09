@@ -1,13 +1,13 @@
 ---
 title: Conditional Types
 layout: docs
-permalink: /docs/handbook/2/conditional-types.html
-oneline: "Create types which act like if statements in the type system."
+permalink: /ko/docs/handbook/2/conditional-types.html
+oneline: "타입 시스템에서 if문 처럼 동작하는 타입 생성하기."
 ---
 
-At the heart of most useful programs, we have to make decisions based on input.
-JavaScript programs are no different, but given the fact that values can be easily introspected, those decisions are also based on the types of the inputs.
-_Conditional types_ help describe the relation between the types of inputs and outputs.
+대부분 유용한 프로그램의 핵심은, 입력에 따라 결정할 수 있어야 합니다.
+JavaScript 프로그램도 비슷하게 값들이 쉽게 검토될 수 있다는 사실을 고려할 때, 이러한 결정들 또한 입력에 한 종류로 볼 수 있습니다.
+_조건부 타입_ 은 입력과 출력 타입간의 관계를 설명하는 데 도움을 줄 수 있습니다.
 
 ```ts twoslash
 interface Animal {
@@ -24,7 +24,7 @@ type Example2 = RegExp extends Animal ? number : string;
 //   ^?
 ```
 
-Conditional types take a form that looks a little like conditional expressions (`condition ? trueExpression : falseExpression`) in JavaScript:
+조건부 타입은 JavaScript에 있는 삼항 연산자 조건문 (`condition ? trueExpression : falseExpression`) 같은 형태를 가집니다.
 
 ```ts twoslash
 type SomeType = any;
@@ -36,12 +36,12 @@ type Stuff =
   SomeType extends OtherType ? TrueType : FalseType;
 ```
 
-When the type on the left of the `extends` is assignable to the one on the right, then you'll get the type in the first branch (the "true" branch); otherwise you'll get the type in the latter branch (the "false" branch).
+`extends`를 기준으로 왼쪽에 있는 타입이 오른쪽 타입에 할당할 수 있다면 첫 번째 분기(참값 분기)를, 그렇지 않다면 뒤의 분기(거짓값 분기)를 얻게 됩니다.
 
-From the examples above, conditional types might not immediately seem useful - we can tell ourselves whether or not `Dog extends Animal` and pick `number` or `string`!
-But the power of conditional types comes from using them with generics.
+`Dog extends Animal` 에 따라 `number`나 `string`인지 알려주는 것 말곤, 위의 예제에서 조건부 타입은 그다지 유용해 보이지 않습니다!
+하지만 제네릭과 함께 사용될 때 조건부 타입은 강력한 힘을 갖습니다.
 
-For example, let's take the following `createLabel` function:
+예를 들어, 다음 `createLabel` 함수를 살펴보겠습니다.
 
 ```ts twoslash
 interface IdLabel {
@@ -59,12 +59,12 @@ function createLabel(nameOrId: string | number): IdLabel | NameLabel {
 }
 ```
 
-These overloads for createLabel describe a single JavaScript function that makes a choice based on the types of its inputs. Note a few things:
+createLabel의 오버로드들은 입력 타입에 따른 단일 JavaScript 함수를 나타냅니다. 다음을 주목하세요.
 
-1. If a library has to make the same sort of choice over and over throughout its API, this becomes cumbersome.
-2. We have to create three overloads: one for each case when we're _sure_ of the type (one for `string` and one for `number`), and one for the most general case (taking a `string | number`). For every new type `createLabel` can handle, the number of overloads grows exponentially.
+1. 만약 라이브러리가 매번 API 전체에서 비슷한 종류의 함수를 만들어야 한다면 번거로워집니다.
+2. 우린 3가지 오버로드 즉, 각 케이스별로 _확실한_ 타입을 가지거나 (각각 `number`와 `string`) 그리고 일반적인 케이스(`string | number`) 가져야 합니다. `createLabel`의 새로운 타입을 다루기 위해선 오버로드의 수는 기하급수적으로 증가합니다.
 
-Instead, we can encode that logic in a conditional type:
+대신에 조건부 타입으로 로직을 인코딩할 수 있습니다.
 
 ```ts twoslash
 interface IdLabel {
@@ -79,7 +79,7 @@ type NameOrId<T extends number | string> = T extends number
   : NameLabel;
 ```
 
-We can then use that conditional type to simplify our overloads down to a single function with no overloads.
+조건부 타입을 사용하면 단일 함수까지 오버로드 없이 단순화 시킬 수 있습니다.
 
 ```ts twoslash
 interface IdLabel {
@@ -106,20 +106,20 @@ let c = createLabel(Math.random() ? "hello" : 42);
 //  ^?
 ```
 
-### Conditional Type Constraints
+### 조건부 타입으로 제한하기
 
-Often, the checks in a conditional type will provide us with some new information.
-Just like with narrowing with type guards can give us a more specific type, the true branch of a conditional type will further constrain generics by the type we check against.
+종종, 조건부 타입의 검사에서 새로운 정보를 얻을 수 있습니다. 
+타입 가드가 더 구체적인 타입으로 좁혀주듯이, 조건부 타입의 참값 분기는 대조하는 타입에 따라서 제네릭을 더 제한할 수 있습니다.
 
-For example, let's take the following:
+다음 예를 살펴보겠습니다.
 
 ```ts twoslash
 // @errors: 2536
 type MessageOf<T> = T["message"];
 ```
 
-In this example, TypeScript errors because `T` isn't known to have a property called `message`.
-We could constrain `T`, and TypeScript would no longer complain:
+위 에제에서, `T`가 `message` 프로퍼티를 가지고 있는지 알 수 없기 때문에 TypeScript에서 오류가 발생합니다.
+`T`의 타입을 제한해서 TypeScript가 더이상 오류를 내지 않도록 만들 수 있습니다.
 
 ```ts twoslash
 type MessageOf<T extends { message: unknown }> = T["message"];
@@ -132,8 +132,8 @@ type EmailMessageContents = MessageOf<Email>;
 //   ^?
 ```
 
-However, what if we wanted `MessageOf` to take any type, and default to something like `never` if a `message` property isn't available?
-We can do this by moving the constraint out and introducing a conditional type:
+하지만 `MessageOf` 가 아무 타입이나 받을 수 있고, `message` 프로퍼티가 없으면 `never` 타입으로 결정하도록 만들 수 있을까요?
+여기서 제약 조건을 외부로 옮기고, 조건부 타입을 적용하면 가능합니다.
 
 ```ts twoslash
 type MessageOf<T> = T extends { message: unknown } ? T["message"] : never;
@@ -153,9 +153,9 @@ type DogMessageContents = MessageOf<Dog>;
 //   ^?
 ```
 
-Within the true branch, TypeScript knows that `T` _will_ have a `message` property.
+참값 분기내에서는 TypeScript는 `T`가 `message` 프로퍼티를 가지고 _있을 것을_ 알 수 있습니다.
 
-As another example, we could also write a type called `Flatten` that flattens array types to their element types, but leaves them alone otherwise:
+또 다른 예제에서 배열 타입이면 요소 타입으로 평평하게 맞추지만, 배열 타입이 아니면 그대로 유지하는 `Flatten` 타입을 만들 수 있습니다.
 
 ```ts twoslash
 type Flatten<T> = T extends any[] ? T[number] : T;
@@ -169,26 +169,26 @@ type Num = Flatten<number>;
 //   ^?
 ```
 
-When `Flatten` is given an array type, it uses an indexed access with `number` to fetch out `string[]`'s element type.
-Otherwise, it just returns the type it was given.
+`Flatten`에 배열 타입이 주어지면, `number`를 사용한 인덱스 접근을 통해 `string[]`의 요소 타입을 가져올 수 있습니다.
+그렇지 않으면, 주어진 타입을 반환합니다.
 
-### Inferring Within Conditional Types
+### 조건부 타입 내에서 추론하기
 
-We just found ourselves using conditional types to apply constraints and then extract out types.
-This ends up being such a common operation that conditional types make it easier.
+위에서 제약 조건을 가진 조건부 타입을 이용해서 타입을 추출할 수 있다는 점을 살펴봤습니다.
+이 부분은 조건부 타입을 더 쉽게 만드는 평범한 작업이 됩니다.
 
-Conditional types provide us with a way to infer from types we compare against in the true branch using the `infer` keyword.
-For example, we could have inferred the element type in `Flatten` instead of fetching it out "manually" with an indexed access type:
+조건부 타입은 `infer` 키워드를 사용해서 참값 분기에서 비교하는 타입을 추론할 수 있습니다.
+예를 들어, `Flatten`에서 인덱싱된 접근 타입으로 "직접" 추출하지 않고 요소 타입을 추론할 수 있습니다.
 
 ```ts twoslash
 type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
 ```
 
-Here, we used the `infer` keyword to declaratively introduce a new generic type variable named `Item` instead of specifying how to retrieve the element type of `T` within the true branch.
-This frees us from having to think about how to dig through and probing apart the structure of the types we're interested in.
+여기서 참값 분기에서 `T`의 요소 타입을 어떻게 제시할 필요 없이, `infer` 키워드를 새 제네릭 타입 변수 `Item`에 선언적으로 사용했습니다.
+이 방식은 관심 있는 타입의 구조를 깊게 분석하지 않아도 되도록 만들어줍니다.
 
-We can write some useful helper type aliases using the `infer` keyword.
-For example, for simple cases, we can extract the return type out from function types:
+`infer` 키워드를 사용해서 유용한 헬퍼 타입 별칭을 사용할 수 있습니다.
+예를 들어 함수 타입에서 리턴 타입을 추출하는 간단한 케이스를 살펴보겠습니다.
 
 ```ts twoslash
 type GetReturnType<Type> = Type extends (...args: never[]) => infer Return
@@ -205,7 +205,7 @@ type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>;
 //   ^?
 ```
 
-When inferring from a type with multiple call signatures (such as the type of an overloaded function), inferences are made from the _last_ signature (which, presumably, is the most permissive catch-all case). It is not possible to perform overload resolution based on a list of argument types.
+여러 호출 시그니처 (오버로트 함수 타입 같이)를 가진 타입을 추론할 때, _마지막_ 시그니처 (아마, 모든 케이스에 허용되는)로 추론하게 됩니다. 인자 타입의 목록에 기반해서 오버로드들을 처리할 수는 없습니다.
 
 ```ts twoslash
 declare function stringOrNum(x: string): number;
@@ -216,16 +216,16 @@ type T1 = ReturnType<typeof stringOrNum>;
 //   ^?
 ```
 
-## Distributive Conditional Types
+## 분산적인 조건부 타입
 
-When conditional types act on a generic type, they become _distributive_ when given a union type.
-For example, take the following:
+제네릭 타입 위에서 조건부 타입은 유니언 타입을 만나면 _분산적으로_ 동작합니다.
+예를 들어 다음을 보겠습니다.
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
 ```
 
-If we plug a union type into `ToArray`, then the conditional type will be applied to each member of that union.
+`ToArray`에 유니언 타입을 넘기면 조건부 타입은 유니언의 각 멤버에 적용됩니다.
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
@@ -234,7 +234,7 @@ type StrArrOrNumArr = ToArray<string | number>;
 //   ^?
 ```
 
-What happens here is that `StrArrOrNumArr ` distributes on:
+`StrArrOrNumArr`이 동작하는 방식은 다음과 같습니다.
 
 ```ts twoslash
 type StrArrOrNumArr =
@@ -242,7 +242,7 @@ type StrArrOrNumArr =
   string | number;
 ```
 
-and maps over each member type of the union, to what is effectively:
+유니언의 각 멤버 타입은 효율적으로 매핑됩니다.
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
@@ -251,7 +251,7 @@ type StrArrOrNumArr =
   ToArray<string> | ToArray<number>;
 ```
 
-which leaves us with:
+그리고 다음과 같이 결과가 나옵니다.
 
 ```ts twoslash
 type StrArrOrNumArr =
@@ -259,8 +259,7 @@ type StrArrOrNumArr =
   string[] | number[];
 ```
 
-Typically, distributivity is the desired behavior.
-To avoid that behavior, you can surround each side of the `extends` keyword with square brackets.
+일반적으로 분산성이 원하는 동작입니다. 이러한 동작을 방지하려면 `extends`키워드의 양 옆을 대괄호로 감싸면 됩니다.
 
 ```ts twoslash
 type ToArrayNonDist<Type> = [Type] extends [any] ? Type[] : never;
