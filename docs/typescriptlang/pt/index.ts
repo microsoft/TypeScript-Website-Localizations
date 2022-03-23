@@ -1,10 +1,10 @@
 export const indexCopy = {
-  index_headline: "<bold>Javascript Tipado em Qualquer Escala.</bold>",
+  index_headline: "<bold>JavaScript Tipado em Qualquer Escala.</bold>",
   index_byline: "O TypeScript estende o JavaScript adicionando tipos.",
   index_summary:
     "Ao compreender JavaScript, TypeScript economiza seu tempo em detectar erros e fornecer correções antes de executar o código.",
   index_locations:
-    "Qualquer navegador, Qualquer SO, em qualquer lugar onde Javascript rodar. Completamente código aberto.",
+    "Qualquer navegador, Qualquer SO, em qualquer lugar onde JavaScript rodar. Completamente código aberto.",
 
   index_cta_play: "Tente no seu navegador",
   index_cta_install: "Instale localmente",
@@ -13,18 +13,18 @@ export const indexCopy = {
 
   index_what_is_js: "JavaScript e Mais",
   index_what_is_js_copy: `
-<p>TypeScript é uma linguagem código aberto construida em cima do Javascript, uma das ferramentas mais usadas do mundo, adicionando definições de tipagem estáticas</p>
+<p>TypeScript é uma linguagem código aberto construida em cima do JavaScript, uma das ferramentas mais usadas do mundo, adicionando definições de tipagem estáticas</p>
 
 <p>Tipos fornecem um jeito de descrever a forma de um objeto, fornecendo melhor documentação, e permitindo que o TypeScript valide se seu código está funcionando corretamente.</p>
 
-<p>Tipar o seu código pode ser opcional no Typescript, pois a inferência de tipo permite que você obtenha muito poder sem escrever código adicional.</p>`,
+<p>Tipar o seu código pode ser opcional no TypeScript, pois a inferência de tipo permite que você obtenha muito poder sem escrever código adicional.</p>`,
 
   index_trust: "Um Resultado Que Você Pode Confiar",
-  index_trust_copy_a: `Todo código JavaScript válido é também um código Typescript. Você pode obter erros de verificação de tipagem, mas isso não vai impedi-lo de executar o JavaScript resultante. Embora você possa optar por ser mais rígido, isso significa que você ainda está no controle.`,
+  index_trust_copy_a: `Todo código JavaScript válido é também um código TypeScript. Você pode obter erros de verificação de tipagem, mas isso não vai impedi-lo de executar o JavaScript resultante. Embora você possa optar por ser mais rígido, isso significa que você ainda está no controle.`,
   index_trust_copy_b: `Código TypeScript é transformado em código JavaScript através do compilador do TypeScript ou <babel>Babel</babel>. Esse JavaScript é um código limpo e simples que roda em qualquer lugar que o JavaScript possa ser executado: em um navegador, no Node.JS ou em seus aplicativos.`,
   index_standards: "Evoluindo com Padrões",
   index_standards_copy: `
-  <p>O time do TypeScript contribui para o comitê TC39 que ajudam a guiar a evolução do Javascript.</p>
+  <p>O time do TypeScript contribui para o comitê TC39 que ajudam a guiar a evolução do JavaScript.</p>
 
   <p>Quando as novas propostas atingem o estágio 3, eles estão prontos para inclusão no TypeScript.</p>
   
