@@ -155,7 +155,7 @@ type DogMessageContents = MessageOf<Dog>;
 
 참값 분기내에서는 TypeScript는 `T`가 `message` 프로퍼티를 가지고 _있을 것을_ 알 수 있습니다.
 
-또 다른 예제에서 배열 타입이면 요소 타입으로 평평하게 맞추지만, 배열 타입이 아니면 그대로 유지하는 `Flatten` 타입을 만들 수 있습니다.
+또 다른 예제에서 배열 타입이면 배열의 개별 요소 타입으로 평탄화 시키지만, 배열 타입이 아니면 그대로 유지하는 `Flatten` 타입을 만들 수 있습니다.
 
 ```ts twoslash
 type Flatten<T> = T extends any[] ? T[number] : T;
