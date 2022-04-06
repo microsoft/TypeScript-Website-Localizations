@@ -118,7 +118,7 @@ let c = createLabel(Math.random() ? "hello" : 42);
 type MessageOf<T> = T["message"];
 ```
 
-위 에제에서, `T`가 `message` 프로퍼티를 가지고 있는지 알 수 없기 때문에 TypeScript에서 오류가 발생합니다.
+위 예제에서, `T`가 `message` 프로퍼티를 가지고 있는지 알 수 없기 때문에 TypeScript에서 오류가 발생합니다.
 `T`의 타입을 제한해서 TypeScript가 더이상 오류를 내지 않도록 만들 수 있습니다.
 
 ```ts twoslash
