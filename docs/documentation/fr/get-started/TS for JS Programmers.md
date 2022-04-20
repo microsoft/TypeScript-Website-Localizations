@@ -6,13 +6,13 @@ permalink: /fr/docs/handbook/typescript-in-5-minutes.html
 oneline: Apprenez comment TypeScript étend JavaScript
 ---
 
-TypeScript a une relation inhabituelle avec JavaScript. TypeScript offre toutes les fonctionnalités de JavaScript, avec une couche supplémentaire de fonctionnalités : le système de types.
+TypeScript a une relation inhabituelle avec JavaScript. TypeScript offre toutes les fonctionnalités de JavaScript, avec une couche supplémentaire de fonctionnalités : le système de typage.
 
 JavaScript fournit des primitives, comme `string` et `number`, mais aucune vérification n'est faite pour s'assurer que les assignations que vous faites sont correctes. TypeScript le fait.
 
-Cela signifie que votre code JavaScript existant est également du code TypeScript. L'avantage principal de TypeScript est sa capacité à exposer les comportements imprévus dans votre code, diminuant la chance de trouver des bugs.
+Cela signifie que votre code JavaScript existant est également du code TypeScript. L'avantage principal de TypeScript est sa capacité à exposer les comportements imprévus dans votre code, diminuant les risques de bugs.
 
-Ce tutoriel fournira une vue d'ensemble de TypeScript, et va se concentrer sur son système de types.
+Ce tutoriel fournira une vue d'ensemble de TypeScript, et va se concentrer sur son système de typage.
 
 ## Types par Inférence
 
@@ -26,7 +26,7 @@ let helloWorld = "Hello World";
 
 En comprenant comment JavaScript fonctionne, TypeScript peut créer un système qui accepte du code JavaScript, avec des types. Le résultat est un système de types qui n'a pas besoin de déclarations explicites de types dans votre code. C'est comme ça que TypeScript sait que `helloWorld` est un `string` dans l'exemple précédent (TypeScript a _inféré_ le type `string` de `helloWorld`).
 
-Il se peut que vous ayez écrit du JavaScript dans Visual Studio Code, et ayez obtenu de l'autocomplétion de la part de l'éditeur. Visual Studio Code utilise TypeScript dans le capot pour faciliter le travail avec JavaScript.
+Il se peut que vous ayez écrit du JavaScript dans Visual Studio Code, et ayez obtenu de l'autocomplétion de la part de l'éditeur. Visual Studio Code utilise TypeScript en arrière-plan pour faciliter le travail avec JavaScript.
 
 ## Définir des Types
 
