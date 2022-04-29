@@ -22,7 +22,7 @@ Les développeurs de navigateurs Web répondirent à cette croissance de fréque
 Un site web moderne, de nos jours, contient des centaines de milliers de lignes de code. Ceci est en phase avec la façon dont le web a grandi, partant d'un simple ensemble de pages statiques, pour devenir une plateforme d'applications riches pour tout et sur tout.
 
 De plus, le JS est devenu assez populaire pour être utilisé en dehors de navigateurs, Node.js ayant marqué l'implémentation de JS dans un environnement côté serveur.
-Cette capacité à s'exécuter partout a rendu du langage un choix populaire pour le développement d'applications cross-platform.
+Cette capacité à s'exécuter partout a fait du langage un choix populaire pour le développement d'applications cross-platform.
 Il y a beaucoup de développeurs dont le stack technique n'est constitué que de JavaScript !
 
 Pour résumer, ce langage a été créé à l'origine pour répondre à des besoins simples, puis a évolué pour supporter l'exécution de millions de lignes.
@@ -73,7 +73,7 @@ Quel est le rapport entre JavaScript et TypeScript ?
 
 TypeScript est une _surcouche_ de JavaScript : une syntaxe JS légale est donc une syntaxe TS légale.
 La syntaxe définit la façon dont on écrit un programme.
-Par exemple, ce code has une erreur de _syntaxe_ parce qu'il manque un `)` :
+Par exemple, ce code a une erreur de _syntaxe_ parce qu'il manque un `)` :
 
 ```ts twoslash
 // @errors: 1005
@@ -165,7 +165,7 @@ C'était un bref résumé des syntaxes et outils utilisés dans le TypeScript de
 
 - Apprendre des fondamentaux de TypeScript. Nous recommandons :
 
-  - [Les ressources JavaScript de Microsoft](https://docs.microsoft.com/javascript/) or
+  - [Les ressources JavaScript de Microsoft](https://docs.microsoft.com/javascript/) ou
   - [Le guide JavaScript dans les Mozilla Web Docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide)
 
 - Continuer vers la page [TypeScript pour les développeurs JavaScript](/docs/handbook/typescript-in-5-minutes.html)
