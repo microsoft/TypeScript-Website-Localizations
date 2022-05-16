@@ -11,11 +11,11 @@ Chaque valeur en JavaScript a un ensemble de comportements que l'on peut observe
 Cela paraît abstrait, mais considérons cet exemple d'opérations qu'on pourrait lancer sur une variable appelée `message`.
 
 ```js
-// Accessing the property 'toLowerCase'
-// on 'message' and then calling it
+// Accès à la propriété "toLowerCase"
+// de 'message' et appel de cette propriété
 message.toLowerCase();
 
-// Calling 'message'
+// Appel direct de 'message'
 message();
 ```
 
@@ -32,7 +32,7 @@ Le résultat de chaque opération dépend entièrement de la valeur qu'on avait 
 
 Les réponses à toutes ces questions sont normalement des informations qu'on retient en écrivant du JavaScript, tout en espérant que notre mémoire ne nous trahira pas.
 
-Supposons que `message` est défini de cette façon.
+Supposons que `message` soit défini de cette façon.
 
 ```js
 const message = "Hello World!";
@@ -65,39 +65,39 @@ function fn(x) {
 Nous pouvons _observer_ en lisant le code que cette fonction ne fonctionnera que si elle reçoit un objet avec une propriété `flip` appelable, mais JavaScript ne remonte pas cette information pendant que l'on code.
 La seule façon de le savoir, c'est d'appeler la méthode et voir le résultat. Ce type de comportement rend la prédiction de ce que le code va faire difficile.
 
-Seen in this way, a _type_ is the concept of describing which values can be passed to `fn` and which will crash.
-JavaScript only truly provides _dynamic_ typing - running the code to see what happens.
+Vu de cette façon, un _type_ permet de décrire quelles valeurs peuvent être passées à `fn` et quelles valeurs vont provoquer un bug.
+JavaScript ne fournit que du typage _dynamique_ - vérifiable uniquement quand on lance le code.
 
-The alternative is to use a _static_ type system to make predictions about what code is expected _before_ it runs.
+L'alternative est d'utiliser un système de typage _statique_ pour faire des prédictions sur le comportement du code à exécuter _avant_ qu'il se lance.
 
-## Static type-checking
+## Vérification statique de types
 
-Think back to that `TypeError` we got earlier from trying to call a `string` as a function.
-_Most people_ don't like to get any sorts of errors when running their code - those are considered bugs!
-And when we write new code, we try our best to avoid introducing new bugs.
+Nous avons eu un `TypeError` en essayant de nous servir d'un `string` en tant que fonction.
+_La plupart des gens_ n'apprécient pas d'avoir des erreurs dans leur code - ce sont des bugs !
+Et quand on écrit du nouveau code, nous faisons de notre mieux pour éviter les bugs.
 
-If we add just a bit of code, save our file, re-run the code, and immediately see the error, we might be able to isolate the problem quickly; but that's not always the case.
-We might not have tested the feature thoroughly enough, so we might never actually run into a potential error that would be thrown!
-Or if we were lucky enough to witness the error, we might have ended up doing large refactorings and adding a lot of different code that we're forced to dig through.
+Si nous ajoutons un bout de code, sauvegardons notre fichier, relançons notre code, et remarquons une erreur immédiatement, on pourrait isoler le problème assez vite ; mais ce n'est pas toujours le cas.
+Peut-être qu'on n'a pas assez testé notre code, donc il se peut qu'on ne tombe pas sur l'erreur assez tôt !
+Ou alors, si on trouve l'erreur, on pourrait l'avoir trouvée après avoir fait une grosse refonte, ajouté beaucoup de code, et beaucoup creusé pour l'avoir trouvée.
 
-Ideally, we could have a tool that helps us find these bugs _before_ our code runs.
-That's what a static type-checker like TypeScript does.
-_Static types systems_ describe the shapes and behaviors of what our values will be when we run our programs.
-A type-checker like TypeScript uses that information and tells us when things might be going off the rails.
+Idéalement, on aurait un outil qui nous aiderait à trouver ces bugs _avant_ que ce code se lance.
+Et c'est là que TypeScript intervient, avec son système de typage statique.
+Les _systèmes de typage statique_ décrivent les comportements de nos valeurs une fois notre programme lancé.
+Un système de vérification de types comme TypeScript utilise ces informations pour nous dire quand le code risque de se comporter de façon imprévue.
 
 ```ts twoslash
 // @errors: 2349
-const message = "hello!";
+const message = "bonsoir";
 
 message();
 ```
 
-Running that last sample with TypeScript will give us an error message before we run the code in the first place.
+Exécuter cet exemple avec TypeScript va nous remonter une erreur avant même de lancer le code.
 
-## Non-exception Failures
+## Problèmes qui ne crasheront pas le programme
 
-So far we've been discussing certain things like runtime errors - cases where the JavaScript runtime tells us that it thinks something is nonsensical.
-Those cases come up because [the ECMAScript specification](https://tc39.github.io/ecma262/) has explicit instructions on how the language should behave when it runs into something unexpected.
+Jusque-là, nous avons montré des cas où JavaScript indiquera qu'une erreur s'est produite.
+Ces cas apparaissent parce que la [spécification ECMAScript](https://tc39.github.io/ecma262/) possède des instructions précises sur la façon dont JavaScript doit se comporter s'il rencontre un cas inhabituel.
 
 For example, the specification says that trying to call something that isn't callable should throw an error.
 Maybe that sounds like "obvious behavior", but you could imagine that accessing a property that doesn't exist on an object should throw an error too.
