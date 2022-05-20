@@ -99,9 +99,9 @@ Exécuter cet exemple avec TypeScript va nous remonter une erreur avant même de
 Jusque-là, nous avons montré des cas où JavaScript indiquera qu'une erreur s'est produite.
 Ces cas apparaissent parce que la [spécification ECMAScript](https://tc39.github.io/ecma262/) possède des instructions précises sur la façon dont JavaScript doit se comporter s'il rencontre un cas inhabituel.
 
-For example, the specification says that trying to call something that isn't callable should throw an error.
-Maybe that sounds like "obvious behavior", but you could imagine that accessing a property that doesn't exist on an object should throw an error too.
-Instead, JavaScript gives us different behavior and returns the value `undefined`:
+Par exemple, cette spécification dit qu'essayer d'appeler quelque chose qui ne peut pas être appelé provoque une erreur.
+Cela peut paraître comme un comportement évident, mais on aurait pu dire qu'accéder à une propriété qui n'existe pas dans un objet devrait aussi lancer une erreur.
+À la place, JavaScript nous retourne la valeur `undefined` :
 
 ```js
 const user = {
@@ -109,11 +109,11 @@ const user = {
   age: 26,
 };
 
-user.location; // returns undefined
+user.location; // retourne undefined
 ```
 
-Ultimately, a static type system has to make the call over what code should be flagged as an error in its system, even if it's "valid" JavaScript that won't immediately throw an error.
-In TypeScript, the following code produces an error about `location` not being defined:
+Finalement, un système de vérification statique de types devra décider quel code doit être considéré comme une erreur, même s'il est du JavaScript "valide" qui ne retournera pas d'erreur immédiate.
+TypeScript le code suivant lance une erreur à propos de `location` qui n'est pas défini:
 
 ```ts twoslash
 // @errors: 2339
@@ -125,35 +125,35 @@ const user = {
 user.location;
 ```
 
-While sometimes that implies a trade-off in what you can express, the intent is to catch legitimate bugs in our programs.
-And TypeScript catches _a lot_ of legitimate bugs.
+Cela implique parfois de faire des concessions sur ce qu'il est possible de faire avec TypeScript, mais l'intention est de repérer les bugs légitimes dans votre programme.
+Et TypeScript repère _beaucoup_ de bugs légitimes.
 
-For example: typos,
+Par exemple, les fautes d'orthographes :
 
 ```ts twoslash
 // @noErrors
 const announcement = "Hello World!";
 
-// How quickly can you spot the typos?
+// Combien de temps mettrez-vous à repérer l'erreur ?
 announcement.toLocaleLowercase();
 announcement.toLocalLowerCase();
 
-// We probably meant to write this...
+// On a probablement voulu écrire ça à la place...
 announcement.toLocaleLowerCase();
 ```
 
-uncalled functions,
+Les fonctions qui sont pas appelées :
 
 ```ts twoslash
 // @noUnusedLocals
 // @errors: 2365
 function flipCoin() {
-  // Meant to be Math.random()
+  // C'était censé être Math.random()
   return Math.random < 0.5;
 }
 ```
 
-or basic logic errors.
+Ou de simples erreurs de logique.
 
 ```ts twoslash
 // @errors: 2367
@@ -161,7 +161,7 @@ const value = Math.random() < 0.5 ? "a" : "b";
 if (value !== "a") {
   // ...
 } else if (value === "b") {
-  // Oops, unreachable
+  // Oups, impossible de l'atteindre
 }
 ```
 
