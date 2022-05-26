@@ -10,7 +10,7 @@ translatable: true
 
 모던 JavaScript 프로젝트를 만들 때, TypeScript에서 JavaScript 파일로 변환하는 올바른 방법에 대해 고민할 수 있습니다.
 
-많은 경우 그 대답은 프로젝트에 따라 _"~에 달려있다"_ 또는 _"누군가 여러분 대신 결정했을지도 모른다`_ 가 될 것입니다. 만약 [tsdx](https://www.npmjs.com/package/tsdx), [Angular](https://angular.io/), [NestJS](https://nestjs.com/)와 같은 기존 프레임워크 또는 [Getting Started](/docs/home)에 언급된 프레임워크를 사용하여 프로젝트를 만들고 있다면 결정은 여러분 손에 달려있습니다.
+많은 경우 그 대답은 프로젝트에 따라 _"~에 달려있다"_ 또는 _"누군가 여러분 대신 결정했을지도 모른다`_ 가 될 것입니다. 만약 [tsdx](https://www.npmjs.com/package/tsdx), [Angular](https://angular.io/), [NestJS](https://nestjs.com/)와 같은 기존 프레임워크 또는 [Getting Started](/docs/home)에 언급된 프레임워크를 사용하여 프로젝트를 만들고 있다면 이 결정은 여러분을 위해 자동으로 처리됩니다.
 
 하지만, 사용할만한 직관적인 방법은 다음과 같습니다:
 
