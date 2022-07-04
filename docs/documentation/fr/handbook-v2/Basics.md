@@ -165,16 +165,15 @@ if (value !== "a") {
 }
 ```
 
-## Types for Tooling
+## Types dans l'outillage
 
-TypeScript can catch bugs when we make mistakes in our code.
-That's great, but TypeScript can _also_ prevent us from making those mistakes in the first place.
+TypeScript peut capturer les bugs quand on commet des erreurs dans notre code. C'est bien, mais il est également _possible_ de ne pas en faire dès le départ.
 
-The type-checker has information to check things like whether we're accessing the right properties on variables and other properties.
-Once it has that information, it can also start _suggesting_ which properties you might want to use.
+TypeScript possède les informations nécessaires pour faire ses vérifications (on dit qu'il est un _vérificateur de types_, ou _type-checker_) : est-ce que la propriété ou variable à laquelle on tente d'accéder existe, quel est son type, quelles sont les opérations qu'on peut accomplir dessus.
+De ce fait, le langage peut _suggérer_ les propriétés que vous tentez d'utiliser.
 
-That means TypeScript can be leveraged for editing code too, and the core type-checker can provide error messages and code completion as you type in the editor.
-That's part of what people often refer to when they talk about tooling in TypeScript.
+Cela signifie que TypeScript peut être également utilisé dans la modification de code, et le type-checker peut fournir messages d'erreur et autocomplétion pendant que vous écrivez.
+C'est en partie ce qu'il est signifié quand on parle de TypeScript dans l'outillage d'un projet.
 
 <!-- prettier-ignore -->
 ```ts twoslash
@@ -185,87 +184,79 @@ const app = express();
 
 app.get("/", function (req, res) {
   res.sen
-//       ^|
+//       ^ erreur, "sen" n'existe pas. Vouliez-vous dire "send" ?
 });
 
 app.listen(3000);
 ```
 
-TypeScript takes tooling seriously, and that goes beyond completions and errors as you type.
-An editor that supports TypeScript can deliver "quick fixes" to automatically fix errors, refactorings to easily re-organize code, and useful navigation features for jumping to definitions of a variable, or finding all references to a given variable.
-All of this is built on top of the type-checker and is fully cross-platform, so it's likely that [your favorite editor has TypeScript support available](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
+Un éditeur de code qui gère TypeScript peut fournir des "quick fixes" pour corriger automatiquement de petites erreurs, des suggestions de réorganisation, ainsi que des fonctionnalités de navigation pour trouver toutes les références à une variable, ainsi que sa définition initiale.
+Tout cela s'appuie sur le vérificateur de types et est probablement multi-plateformes, il est donc probable que [votre IDE préféré supporte TypeScript](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support).
 
-## `tsc`, the TypeScript compiler
+## `tsc`, le compilateur
 
-We've been talking about type-checking, but we haven't yet used our type-_checker_.
-Let's get acquainted with our new friend `tsc`, the TypeScript compiler.
-First we'll need to grab it via npm.
+On a beaucoup parlé du principe de vérification de types, mais pas du _vérificateur_ de types. Ce vérificateur n'est autre que le compilateur TypeScript, `tsc`.
+Tout d'abord, il faut l'installer depuis npm.
 
 ```sh
 npm install -g typescript
 ```
 
-> This installs the TypeScript Compiler `tsc` globally.
-> You can use `npx` or similar tools if you'd prefer to run `tsc` from a local `node_modules` package instead.
+> Cette commande installe globalement le compilateur `tsc`.
+> Si vous préférez utiliser une version locale de TypeScript, vous pouvez utiliser `npx` ou tout autre outil similaire.
 
-Now let's move to an empty folder and try writing our first TypeScript program: `hello.ts`:
+Créons un dossier vide et un fichier `hello.ts` qui contient :
 
 ```ts twoslash
-// Greets the world.
+// Dit bonjour.
 console.log("Hello world!");
 ```
 
-Notice there are no frills here; this "hello world" program looks identical to what you'd write for a "hello world" program in JavaScript.
-And now let's type-check it by running the command `tsc` which was installed for us by the `typescript` package.
+Rien de fantastique : ce "hello world" est identique à un "hello world" en JavaScript.
+Maintenant, lançons la commande `tsc` qui a été installée avec le package `typescript`.
 
 ```sh
 tsc hello.ts
 ```
 
-Tada!
+Et voilà... voilà quoi, exactement ? A priori, rien ne s'est passé.
+Cela dit, il n'y a eu aucune erreur, donc rien n'a été rapporté depuis la console.
 
-Wait, "tada" _what_ exactly?
-We ran `tsc` and nothing happened!
-Well, there were no type errors, so we didn't get any output in our console since there was nothing to report.
-
-But check again - we got some _file_ output instead.
-If we look in our current directory, we'll see a `hello.js` file next to `hello.ts`.
-That's the output from our `hello.ts` file after `tsc` _compiles_ or _transforms_ it into a plain JavaScript file.
-And if we check the contents, we'll see what TypeScript spits out after it processes a `.ts` file:
+En regardant de plus près, un nouveau fichier a été créé : dans le même dossier, il y a un `hello.js` à côté de `hello.ts`.
+C'est le résultat de la compilation de `hello.ts` en un fichier JavaScript standard.
+Observons le contenu du fichier émis par TypeScript :
 
 ```js
 // Greets the world.
 console.log("Hello world!");
 ```
 
-In this case, there was very little for TypeScript to transform, so it looks identical to what we wrote.
-The compiler tries to emit clean readable code that looks like something a person would write.
-While that's not always so easy, TypeScript indents consistently, is mindful of when our code spans across different lines of code, and tries to keep comments around.
+Ici, TypeScript n'a pas eu grand chose à transformer, donc le code final est identique au code de départ. Le compilateur essaie toujours d'émettre du code qui ressemble à ce qu'écrirait une vraie personne.
+Ce n'est pas toujours facile, mais TypeScript conserve l'indentation, fait attention quand le code s'étend sur beaucoup de lignes, et essaie de conserver les commentaires.
 
-What about if we _did_ introduce a type-checking error?
-Let's rewrite `hello.ts`:
+Essayons d'introduire une erreur de vérification en modifiant `hello.ts` :
 
 ```ts twoslash
 // @noErrors
-// This is an industrial-grade general-purpose greeter function:
+// Fonction de salutation générique et de haut niveau :
 function greet(person, date) {
-  console.log(`Hello ${person}, today is ${date}!`);
+  console.log(`Bonjour ${person}, nous sommes le ${date} !`);
 }
 
 greet("Brendan");
 ```
 
-If we run `tsc hello.ts` again, notice that we get an error on the command line!
+Si on lance `tsc hello.ts` à nouveau, on remarque qu'on a bel et bien une erreur.
 
 ```txt
 Expected 2 arguments, but got 1.
 ```
 
-TypeScript is telling us we forgot to pass an argument to the `greet` function, and rightfully so.
-So far we've only written standard JavaScript, and yet type-checking was still able to find problems with our code.
-Thanks TypeScript!
+TypeScript nous informe qu'on a oublié de passer un argument à la fonction `greet`, à raison.
+Jusque-là nous avons écrit ce qui peut être vu comme du JavaScript valide, et la vérification de types a quand même pu repérer des erreurs.
+Merci TypeScript !
 
-## Emitting with Errors
+## Émissions de fichier avec erreurs
 
 One thing you might not have noticed from the last example was that our `hello.js` file changed again.
 If we open that file up then we'll see that the contents still basically look the same as our input file.
