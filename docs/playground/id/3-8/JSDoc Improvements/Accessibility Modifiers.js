@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" }, isJavaScript: true }
+//// {  "compiler": {    "ts": "3.8.3"  },  "isJavaScript": true}
 // @ts-check
 
 // Dukungan JSDoc terhadap TypeScript telah diperluas untuk

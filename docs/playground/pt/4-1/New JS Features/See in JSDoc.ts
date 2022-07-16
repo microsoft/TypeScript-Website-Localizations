@@ -1,4 +1,4 @@
-//// { compilador: { ts: "4.1.0-beta" } }
+//// {  "compilador": {    "ts": "4.1.0-beta"  }}
 
 // Na versão 4.1 o JSDoc parser no Typescript
 // utilizado tanto em arquivos JavaScript quanto TypeScript

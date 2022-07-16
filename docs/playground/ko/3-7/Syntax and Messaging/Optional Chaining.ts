@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // 선택적 체이닝(Optional chaining)이
 // TC39 3단계에서 합의점에 도달한 내용이 TS 3.7 입니다.

@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // TypeScript 有着非常丰富的 JSDoc 支持，很多情况下您甚至可以不写 .ts 文件
 // 而仅仅使用 JSDoc 注解去创建丰富的开发环境。

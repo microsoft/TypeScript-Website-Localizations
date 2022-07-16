@@ -1,4 +1,4 @@
-//// { title: 'Literales' }
+//// {  "title": "Literales"}
 
 // TypeScript tambien cuenta con algunos casos especiales
 // para los literales en el código fuente.

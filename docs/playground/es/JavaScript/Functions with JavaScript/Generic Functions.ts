@@ -1,4 +1,4 @@
-//// { title: 'Funciones genéricas' }
+//// {  "title": "Funciones genéricas"}
 
 // La genericidad proporciona una forma de utilizar tipos
 // como variables en otros tipos. Meta.

@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 //Como o fluxo de código dentro de nossos arquivos JavaScript podem afetar
 //a tipagem ao longo de nosso programa.

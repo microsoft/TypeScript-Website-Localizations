@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // Terdapat sebuah fitur pada TypeScript versi 3.7,
 // yaitu pemeriksaan pada pernyataan `if` ketika

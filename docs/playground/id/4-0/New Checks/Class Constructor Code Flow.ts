@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 //
 // Pada TypeScript versi 4.0, kami menggunakan analisis
 // alur program untuk menyimpulkan tipe dari sebuah atribut kelas

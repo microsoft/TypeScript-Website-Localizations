@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // Nova na versão 3.7, é uma verificação dentro de blocos 'if'
 // para quando você acidentalmente usa uma função ao invés do valor

@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 
 // Na versão 4.0 a tag JSDoc @deprecated foi adicionada ao
 // sistema de tipos. Você pode usar @deprecated em qualquer

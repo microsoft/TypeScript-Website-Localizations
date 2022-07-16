@@ -1,4 +1,4 @@
-//// { title: 'TypeScript con Deno', order: 3 }
+//// {  "title": "TypeScript con Deno",  "order": 3}
 
 // Deno es un entorno en tiempo de ejecución aún
 // incompleto para JavaScript y TypeScript basado en

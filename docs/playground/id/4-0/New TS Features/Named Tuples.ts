@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 
 // _Tuple_ adalah _array_ dimana urutan elemennya penting bagi
 // sistem tipe, Anda dapat mempelajari lebih lanjut tentang _tuple_

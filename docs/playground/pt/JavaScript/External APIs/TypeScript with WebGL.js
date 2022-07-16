@@ -1,4 +1,4 @@
-//// { order: 5, isJavaScript: true }
+//// {  "order": 5,  "isJavaScript": true}
 
 // Esse exemplo cria um HTML canvas que faz uso do WebGL para
 // renderizar confetes giratórios usando JavaScript. Iremos 

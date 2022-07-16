@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 // JavaScript 文件中的代码流会影响整个程序的类型。
 

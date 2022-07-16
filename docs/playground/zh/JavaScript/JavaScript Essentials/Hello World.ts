@@ -1,4 +1,4 @@
-//// { order: 0, compiler: { target: 1 } }
+//// {  "order": 0,  "compiler": {    "target": 1  }}
 
 // 欢迎来到 TypeScript 演练场，本网站很像在浏览器中运行
 // 一个 TypeScript 项目。

@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.1.0-dev.20201028", jsx: 4 } }
+//// {  "compiler": {    "ts": "4.1.0-dev.20201028",    "jsx": 4  }}
 
 // Na versão 17, o time React introduziu um novo formato
 // para o Javascript emitido pelas transformações JSX.

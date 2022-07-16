@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // Node.js é um ambiente de execução muito popular baseado no v8,
 // a engine JavaScript que da vida ao Chrome. Você pode usa-la

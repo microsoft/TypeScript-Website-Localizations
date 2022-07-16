@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 
 // Dikarenakan JavaScript memperbolehkan untuk menggunakan
 // tipe data apapun, TypeScript tidak mendukung

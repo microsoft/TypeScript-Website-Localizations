@@ -1,4 +1,4 @@
-//// { order: 4 }
+//// {  "order": 4}
 
 // TypeScript가 지원하는 JavaScript에 있는 클래스를 위해
 // 가짜 다중 상속 패턴인 믹스인이 있습니다.

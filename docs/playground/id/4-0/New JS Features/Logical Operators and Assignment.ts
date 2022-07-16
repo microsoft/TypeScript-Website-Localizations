@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 
 // Operator dan deklarasi logika merupakan fitur baru
 // pada JavaScript tahun 2020. Fitur tersebut merupakan

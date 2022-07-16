@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: false } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": false  }}
 
 // JavaScriptでは、存在しない値を宣言する方法が2つあります。
 // TypeScriptでは、optionalやnullableな値を宣言する

@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { noImplicitAny: false } }
+//// {  "order": 2,  "compiler": {    "noImplicitAny": false  }}
 
 // Ada beberapa cara untuk mendeklarasikan fungsi di
 // JavaScript. Mari kita lihat fungsi yang menambahkan dua

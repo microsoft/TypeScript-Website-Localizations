@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // Le chaînage optionnel a atteint l'étape 3 du TC39 pendant le development
 // de la version 3.7. Le chaînage optionnel permet d'écrire du code qui va

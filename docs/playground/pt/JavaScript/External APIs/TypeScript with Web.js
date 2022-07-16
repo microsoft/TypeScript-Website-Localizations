@@ -1,4 +1,4 @@
-//// { order: 0, isJavaScript: true }
+//// {  "order": 0,  "isJavaScript": true}
 
 // O DOM (Document Object Model) é a API essencial para
 // trabalhar com uma página web, e o TypeSctipt tem

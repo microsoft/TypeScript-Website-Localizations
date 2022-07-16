@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // TypeScript secara bawaan tidak memeriksa galat
 // yang ada dalam kode JavaScript. Sebaliknya, perkakas

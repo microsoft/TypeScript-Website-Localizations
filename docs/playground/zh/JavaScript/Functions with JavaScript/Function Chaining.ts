@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "esModuleInterop": true  }}
 
 // 在 JavaScript 中，链式函数是很常见的 API 模式。由于他们
 // 具有嵌套特性，所以可以让您的代码减少中间值，并且增加可读性。

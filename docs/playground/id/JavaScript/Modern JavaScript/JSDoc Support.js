@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // TypeScript memiliki banyak dukungan untuk JSDoc. Bahkan
 // Anda dapat membuat berkas JavaScript biasa dan menggunakan

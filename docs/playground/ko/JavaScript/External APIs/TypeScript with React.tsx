@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { jsx: 2, esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "jsx": 2,    "esModuleInterop": true  }}
 
 // React는 사용자 인터페이스를 만드는 데 널리 사용되는 라이브러리입니다.
 // JSX라는 JavaScript 언어 확장을 사용하여

@@ -1,4 +1,4 @@
-//// { order: 1, target: "ES5" }
+//// {  "order": 1,  "target": "ES5"}
 
 // JavaScript 于 2016 将 import、export 添加到该语言，TypeScript 完全
 // 支持这种在文件和外部模块之间进行连接的风格。TypeScript 还通过允许将

@@ -1,4 +1,4 @@
-//// { order: 2 }
+//// {  "order": 2}
 
 // Quando um método de uma classe é chamado, você geralmente espera
 // que ele se refira a atual instância dessa classe.

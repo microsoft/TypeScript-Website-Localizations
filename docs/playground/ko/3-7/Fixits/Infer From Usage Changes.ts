@@ -1,4 +1,4 @@
-//// { compiler: {  noImplicitAny: false }, order: 2 }
+//// {  "compiler": {    "noImplicitAny": false  },  "order": 2}
 
 // TypeScript 3.7 버전에 있는 '사용법에서 추론한' 코드 수정은
 // 더욱 똑똑해졌습니다. 이제부터는 알려진 중요한 

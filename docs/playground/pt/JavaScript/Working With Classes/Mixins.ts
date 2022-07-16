@@ -1,4 +1,4 @@
-//// { order: 4 }
+//// {  "order": 4}
 
 // Mixins são um falso padrão de herança múltipla para classes
 // em JavaScript para o qual o TypeScript tem suporte. O padrão

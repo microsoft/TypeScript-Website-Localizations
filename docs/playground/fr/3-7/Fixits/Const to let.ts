@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // La version 3.7 apporte la capacité à convertir rapidement une déclaration
 // const en let quand elle est ré-assignée.

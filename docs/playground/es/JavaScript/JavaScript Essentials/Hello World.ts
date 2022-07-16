@@ -1,4 +1,4 @@
-//// { title: 'Hola Mundo', order: 0, compiler: { target: 1 } }
+//// {  "title": "Hola Mundo",  "order": 0,  "compiler": {    "target": 1  }}
 
 // Bienvenido a TypeScript playground. Este sitio se parece
 // mucho a ejecutar un proyecto de TypeScript dentro de un

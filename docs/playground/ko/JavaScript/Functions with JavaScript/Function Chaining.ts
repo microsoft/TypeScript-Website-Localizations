@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "esModuleInterop": true  }}
 
 // 함수 체이닝 API는 JavaScript에서 흔한 패턴으로,
 // JavaScript 의 중첩 특성으로 인해

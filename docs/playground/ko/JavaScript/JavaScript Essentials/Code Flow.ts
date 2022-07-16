@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 // JavaScript 파일 내부의 코드 흐름은
 // 프로그램 전반에 걸쳐 어떻게 타입에 영향을 미칠 수 있는가.

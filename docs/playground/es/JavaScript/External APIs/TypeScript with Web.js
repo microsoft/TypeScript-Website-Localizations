@@ -1,4 +1,4 @@
-//// { title: 'TypeScript con la Web', order: 0, isJavaScript: true }
+//// {  "title": "TypeScript con la Web",  "order": 0,  "isJavaScript": true}
 
 // El DOM (Document Object Model) es la API por detrás del
 // trabajo con una página web, y TypeScript tiene excelente

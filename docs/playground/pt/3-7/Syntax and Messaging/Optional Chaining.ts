@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // O encadeamento opcional alcançou o consenso de estágio 3 no TC39
 // durante o desenvolvimento da versão 3.7. Encadeamento opcional

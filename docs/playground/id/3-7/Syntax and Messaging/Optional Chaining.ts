@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // _Optional Chaining_ mencapai konsesus TC39 Tahap 3 ketika
 // TypeScript 3.7 sedang dikembangkan. _Optional Chaining_

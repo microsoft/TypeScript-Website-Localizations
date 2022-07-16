@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.0-beta" } }
+//// {  "compiler": {    "ts": "4.0.0-beta"  }}
 //
 
 // No 4.0 nós usamos um fluxo de análise para

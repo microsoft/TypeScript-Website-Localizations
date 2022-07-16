@@ -1,4 +1,4 @@
-//// { order: 1, compiler: { strict: false } }
+//// {  "order": 1,  "compiler": {    "strict": false  }}
 
 // JavaScript 对象是用具名键包装的值的集合。
 

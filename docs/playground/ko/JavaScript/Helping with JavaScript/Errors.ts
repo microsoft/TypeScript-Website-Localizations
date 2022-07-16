@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // 기본적으로 TypeScript는 JavaScript 내부에서 오류 메시지를 제공하지 않습니다.
 // 대신에 도구는 에디터를 위해

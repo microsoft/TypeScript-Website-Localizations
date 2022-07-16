@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 // A versão 3.8 adicionou os campos privados, que é uma maneira de declarar
 // que um campo de uma classe é inacessível fora daquela classe, incluindo subclasses.
 
