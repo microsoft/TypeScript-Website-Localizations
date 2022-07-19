@@ -258,15 +258,14 @@ Merci TypeScript !
 
 ## Émissions de fichier avec erreurs
 
-One thing you might not have noticed from the last example was that our `hello.js` file changed again.
-If we open that file up then we'll see that the contents still basically look the same as our input file.
-That might be a bit surprising given the fact that `tsc` reported an error about our code, but this is based on one of TypeScript's core values: much of the time, _you_ will know better than TypeScript.
+Vous n'aurez peut-être pas remarqué que le fichier `hello.js` a encore changé.
+Si vous l'ouvrez à nouveau, vous verrez que son contenu est le même que le fichier source.
+Cela peut surprendre, étant donné que `tsc` a rapporté une erreur, mais ce comportement est concordant avec les valeurs fondamentales de TypeScript : la plupart du temps, _vous_ saurez mieux.
 
-To reiterate from earlier, type-checking code limits the sorts of programs you can run, and so there's a tradeoff on what sorts of things a type-checker finds acceptable.
-Most of the time that's okay, but there are scenarios where those checks get in the way.
-For example, imagine yourself migrating JavaScript code over to TypeScript and introducing type-checking errors.
-Eventually you'll get around to cleaning things up for the type-checker, but that original JavaScript code was already working!
-Why should converting it over to TypeScript stop you from running it?
+La vérification de types limite les sortes de programmes que vous pouvez lancer. Il y a donc un compromis à atteindre sur ce que le vérificateur considère acceptable.
+D'habitude, cela ne pose aucun problème, mais il y a des situations où cette rigueur est contre-productive.
+Par exemple, imaginez que vous migrez du code JavaScript en TypeScript, introduisant de ce fait des erreurs de typage.
+À la fin, vous corrigerez ces erreurs, mais ce code JavaScript fonctionnait déjà. Le convertir en TypeScript ne devrait rien y changer.
 
 So TypeScript doesn't get in your way.
 Of course, over time, you may want to be a bit more defensive against mistakes, and make TypeScript act a bit more strictly.
