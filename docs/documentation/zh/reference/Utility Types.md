@@ -1,5 +1,5 @@
 ---
-title: 多功能类型
+title: 工具类型
 layout: docs
 permalink: /zh/docs/handbook/utility-types.html
 oneline: TypeScript 中全局包含的类型
@@ -119,6 +119,8 @@ todo.title = "Hello";
 
 This utility is useful for representing assignment expressions that will fail at runtime (i.e. when attempting to reassign properties of a [frozen object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)).
 
+此工具对于表示将要在运行时失败的赋值表达式很有用（即，当尝试重新分配 [frozen object] 的属性时(https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)）
+
 ##### `Object.freeze`
 
 ```ts
@@ -129,12 +131,12 @@ function freeze<Type>(obj: Type): Readonly<Type>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.1](/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick)
 
 </blockquote>
 
-Constructs an object type whose property keys are `Keys` and whose property values are `Type`. This utility can be used to map the properties of a type to another type.
+构造一个对象类型，其属性键为“Keys”，其属性值为“Type”。 此工具可用于将一种类型的属性映射到另一种类型。
 
 ##### Example
 
@@ -160,12 +162,12 @@ cats.boris;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.1](/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick)
 
 </blockquote>
 
-Constructs a type by picking the set of properties `Keys` (string literal or union of string literals) from `Type`.
+通过从 `Type` 中选择一组属性 `Keys`（字符串文字或字符串文字的联合）来构造一个类型。
 
 ##### Example
 
@@ -191,12 +193,12 @@ todo;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [3.5](/docs/handbook/release-notes/typescript-3-5.html#the-omit-helper-type)
 
 </blockquote>
 
-Constructs a type by picking all properties from `Type` and then removing `Keys` (string literal or union of string literals).
+通过从 `Type` 中选择所有属性然后删除 `Keys`（字符串文字或字符串文字的联合）来构造类型。
 
 ##### Example
 
@@ -234,12 +236,12 @@ todoInfo;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.8](/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)
 
 </blockquote>
 
-Constructs a type by excluding from `UnionType` all union members that are assignable to `ExcludedMembers`.
+通过从“UnionType”中排除所有可分配给“ExcludedMembers”的联合成员来构造一个类型。
 
 ##### Example
 
@@ -256,12 +258,12 @@ type T2 = Exclude<string | number | (() => void), Function>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.8](/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)
 
 </blockquote>
 
-Constructs a type by extracting from `Type` all union members that are assignable to `Union`.
+通过从 `Type` 中提取所有可分配给 `Union` 的联合成员来构造一个类型。
 
 ##### Example
 
@@ -276,12 +278,12 @@ type T1 = Extract<string | number | (() => void), Function>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.8](/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)
 
 </blockquote>
 
-Constructs a type by excluding `null` and `undefined` from `Type`.
+通过从 `Type` 中排除 `null` 和 `undefined` 来构造一个类型。
 
 ##### Example
 
@@ -296,12 +298,12 @@ type T1 = NonNullable<string[] | null | undefined>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [3.1](https://github.com/microsoft/TypeScript/pull/26243)
 
 </blockquote>
 
-Constructs a tuple type from the types used in the parameters of a function type `Type`.
+从函数类型 `Type` 的参数使用的类型中构造元组类型。
 
 ##### Example
 
@@ -331,12 +333,12 @@ type T7 = Parameters<Function>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [3.1](https://github.com/microsoft/TypeScript/pull/26243)
 
 </blockquote>
 
-Constructs a tuple or array type from the types of a constructor function type. It produces a tuple type with all the parameter types (or the type `never` if `Type` is not a function).
+从构造函数类型的类型构造元组或数组类型。 它生成一个包含所有参数类型的元组类型（如果 `Type` 不是函数，则生成类型 `never`）。
 
 ##### Example
 
@@ -360,12 +362,12 @@ type T4 = ConstructorParameters<Function>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.8](/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)
 
 </blockquote>
 
-Constructs a type consisting of the return type of function `Type`.
+构造一个由函数 `Type` 返回的类型组成的类型。
 
 ##### Example
 
@@ -397,12 +399,12 @@ type T8 = ReturnType<Function>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.8](/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)
 
 </blockquote>
 
-Constructs a type consisting of the instance type of a constructor function in `Type`.
+构造一个类型，该类型由 `Type` 中的构造函数的实例类型组成。
 
 ##### Example
 
@@ -430,12 +432,12 @@ type T4 = InstanceType<Function>;
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [3.3](https://github.com/microsoft/TypeScript/pull/28920)
 
 </blockquote>
 
-Extracts the type of the [this](/docs/handbook/functions.html#this-parameters) parameter for a function type, or [unknown](/docs/handbook/release-notes/typescript-3-0.html#new-unknown-top-type) if the function type has no `this` parameter.
+如果函数类型没有 `this` 参数，则提取函数类型的 [this](/docs/handbook/functions.html#this-parameters) 参数或 [unknown](/docs/handbook/release-notes/typescript-3-0.html# new-unknown-top-type) 类型。
 
 ##### Example
 
@@ -453,12 +455,12 @@ function numberToString(n: ThisParameterType<typeof toHex>) {
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [3.3](https://github.com/microsoft/TypeScript/pull/28920)
 
 </blockquote>
 
-Removes the [`this`](/docs/handbook/functions.html#this-parameters) parameter from `Type`. If `Type` has no explicitly declared `this` parameter, the result is simply `Type`. Otherwise, a new function type with no `this` parameter is created from `Type`. Generics are erased and only the last overload signature is propagated into the new function type.
+从 `Type` 中删除 [`this`](/docs/handbook/functions.html#this-parameters) 参数。 如果 `Type` 没有明确声明 `this` 参数，则结果只是 `Type`。 否则，从 `Type` 创建一个没有 `this` 参数的新函数类型。 泛型被删除后，只有最后一个重载签名被传递到新的函数类型中。
 
 ##### Example
 
@@ -476,12 +478,12 @@ console.log(fiveToHex());
 
 <blockquote class=bg-reading>
 
-Released:  
+发布版本:  
 [2.3](https://github.com/microsoft/TypeScript/pull/14141)
 
 </blockquote>
 
-This utility does not return a transformed type. Instead, it serves as a marker for a contextual [`this`](/docs/handbook/functions.html#this) type. Note that the [`noImplicitThis`](/tsconfig#noImplicitThis) flag must be enabled to use this utility.
+此工具不返回转换后的类型。 相反，它用作上下文 [`this`](/docs/handbook/functions.html#this) 类型的标记。 请注意，必须启用 [`noImplicitThis`](/tsconfig#noImplicitThis) 标志才能使用此工具。
 
 ##### Example
 
@@ -513,9 +515,9 @@ obj.y = 20;
 obj.moveBy(5, 5);
 ```
 
-In the example above, the `methods` object in the argument to `makeObject` has a contextual type that includes `ThisType<D & M>` and therefore the type of [this](/docs/handbook/functions.html#this) in methods within the `methods` object is `{ x: number, y: number } & { moveBy(dx: number, dy: number): number }`. Notice how the type of the `methods` property simultaneously is an inference target and a source for the `this` type in methods.
+在上面的例子中，`makeObject` 参数中的 `methods` 对象有一个包含 `ThisType<D & M>` 的上下文类型，因此 [this](/docs/handbook/functions.html#this ) 在 `methods` 方法中是 `{ x: number, y: number } & { moveBy(dx: number, dy: number): number }`的联合体。 注意 `methods` 属性的类型是如何成为方法中的 `this` 类型的推理目标和源。
 
-The `ThisType<T>` marker interface is simply an empty interface declared in `lib.d.ts`. Beyond being recognized in the contextual type of an object literal, the interface acts like any empty interface.
+`ThisType<T>` 标记接口只是在`lib.d.ts` 中声明的一个空接口。 除了在对象字面量的上下文类型中被识别之外，接口的行为就像任何空接口。
 
 ## Intrinsic String Manipulation Types
 
@@ -527,4 +529,4 @@ The `ThisType<T>` marker interface is simply an empty interface declared in `lib
 
 ### `Uncapitalize<StringType>`
 
-To help with string manipulation around template string literals, TypeScript includes a set of types which can be used in string manipulation within the type system. You can find those in the [Template Literal Types](/docs/handbook/2/template-literal-types.html#uppercasestringtype) documentation.
+TypeScript 包含一组可用于系统内的字符串类型操作的类型，以便于使用模板字符串进行操作。 您可以在 [Template Literal Types](/docs/handbook/2/template-literal-types.html#uppercasestringtype) 文档中找到这些内容。
