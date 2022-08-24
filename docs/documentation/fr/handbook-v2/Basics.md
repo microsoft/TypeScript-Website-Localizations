@@ -267,22 +267,21 @@ D'habitude, cela ne pose aucun problème, mais il y a des situations où cette r
 Par exemple, imaginez que vous migrez du code JavaScript en TypeScript, introduisant de ce fait des erreurs de typage.
 À la fin, vous corrigerez ces erreurs, mais ce code JavaScript fonctionnait déjà. Le convertir en TypeScript ne devrait rien y changer.
 
-So TypeScript doesn't get in your way.
-Of course, over time, you may want to be a bit more defensive against mistakes, and make TypeScript act a bit more strictly.
-In that case, you can use the [`noEmitOnError`](/tsconfig#noEmitOnError) compiler option.
-Try changing your `hello.ts` file and running `tsc` with that flag:
+Bien sûr, avec le temps, vous voudrez peut-être être plus sûr, et faire en sorte que TypeScript vous protège mieux.
+Dans ce cas, vous pouvez utiliser l'option de compilateur [`noEmitOnError`](/tsconfig#noEmitOnError).
+Avec cette option, modifiez `hello.ts` et lancez `tsc` :
 
 ```sh
 tsc --noEmitOnError hello.ts
 ```
 
-You'll notice that `hello.js` never gets updated.
+`hello.js` ne va pas se mettre à jour.
 
-## Explicit Types
+## Types explicites
 
-Up until now, we haven't told TypeScript what `person` or `date` are.
-Let's edit the code to tell TypeScript that `person` is a `string`, and that `date` should be a `Date` object.
-We'll also use the `toDateString()` method on `date`.
+Jusque-là, nous n'avons pas précisé ce que sont `person` ou `date`.
+Modifions notre code, et informons TypeScript que `person` est un `string`, et que `date` doit être un objet `Date`.
+On utilisera aussi la méthode `toDateString()` de `date`.
 
 ```ts twoslash
 function greet(person: string, date: Date) {
@@ -290,10 +289,10 @@ function greet(person: string, date: Date) {
 }
 ```
 
-What we did was add _type annotations_ on `person` and `date` to describe what types of values `greet` can be called with.
-You can read that signature as "`greet` takes a `person` of type `string`, and a `date` of type `Date`".
+Ce qu'on vient d'ajouter s'appelle des _annotations de types_ sur `person` et `date`, pour décrire les valeurs dont `greet` peut se servir.
+Cet exemple peut se lire "`greet` prend une `person` de type `string`, et une `date` de type `Date`".
 
-With this, TypeScript can tell us about other cases where `greet` might have been called incorrectly.
+Armé de cette information, TypeScript peut nous prévenir quand `greet` pourrait être utilisé de façon incorrecte.
 For example...
 
 ```ts twoslash
@@ -305,13 +304,12 @@ function greet(person: string, date: Date) {
 greet("Maddison", Date());
 ```
 
-Huh?
-TypeScript reported an error on our second argument, but why?
+Quoi ?
+TypeScript a rapporté une erreur sur le deuxième argument, mais pourquoi ?
 
-Perhaps surprisingly, calling `Date()` in JavaScript returns a `string`.
-On the other hand, constructing a `Date` with `new Date()` actually gives us what we were expecting.
+Appeler `Date()` en JavaScript retourne un `string`. Mais construire une `Date` avec `new Date()` nous donne ce qu'on attend.
 
-Anyway, we can quickly fix up the error:
+L'erreur peut être rapidement réparée :
 
 ```ts twoslash {4}
 function greet(person: string, date: Date) {
@@ -321,22 +319,22 @@ function greet(person: string, date: Date) {
 greet("Maddison", new Date());
 ```
 
-Keep in mind, we don't always have to write explicit type annotations.
-In many cases, TypeScript can even just _infer_ (or "figure out") the types for us even if we omit them.
+Cela dit, nous ne sommes pas obligés de définir des annotations de types tout le temps.
+Dans plusieurs situations, TypeScript peut simplement _inférer_ (ou "déduire") les types pour nous même si on les omet.
 
 ```ts twoslash
-let msg = "hello there!";
+let msg = "bien le bonjour !";
 //  ^?
 ```
 
-Even though we didn't tell TypeScript that `msg` had the type `string` it was able to figure that out.
-That's a feature, and it's best not to add annotations when the type system would end up inferring the same type anyway.
+Même si on n'a pas dit que `msg` avait le type `string`, TypeScript a su le déduire tout seul.
+C'est une fonctionnalité, et il vaut mieux laisser TypeScript faire le travail d'inférence s'il déduit correctement le type.
 
-> Note: the message bubble inside the code sample above. That is what your editor would show if you had hovered over the word.
+> Note : le message qui s'affiche dans la bulle serait ce que votre éditeur afficherait si vous survolez la variable.
 
-## Erased Types
+## Effacement de Types
 
-Let's take a look at what happens when we compile the above function `greet` with `tsc` to output JavaScript:
+Compilons la méthode `greet` avec `tsc` et observons le résultat :
 
 ```ts twoslash
 // @showEmit
@@ -348,21 +346,21 @@ function greet(person: string, date: Date) {
 greet("Maddison", new Date());
 ```
 
-Notice two things here:
+Remarquons deux points sur le résultat :
 
-1. Our `person` and `date` parameters no longer have type annotations.
-2. Our "template string" - that string that used backticks (the `` ` `` character) - was converted to plain strings with concatenations (`+`).
+1. Les paramètres `person` et `date` n'ont pas d'annotations de types.
+2. Notre "template string" - la chaîne de caractères qui utilise les apostrophes inverses (`` ` ``) - a été convertie en utilisant une concaténation classique (`+`).
 
-More on that second point later, but let's now focus on that first point.
-Type annotations aren't part of JavaScript (or ECMAScript to be pedantic), so there really aren't any browsers or other runtimes that can just run TypeScript unmodified.
-That's why TypeScript needs a compiler in the first place - it needs some way to strip out or transform any TypeScript-specific code so that you can run it.
-Most TypeScript-specific code gets erased away, and likewise, here our type annotations were completely erased.
+Nous parlerons du deuxième point plus tard, mais concentrons-nous sur le premier.
+Les annotations de types ne font pas partie de la spécification JavaScript (ou ECMAScript si on veut chercher la petite bête), donc TypeScript ne peut pas s'exécuter dans un navigateur sans modification préalable.
+C'est tout l'intérêt d'un compilateur TypeScript - il permet de transformer le code et lui permettre de se lancer.
+La plupart du code propre à TypeScript est effacée, y compris nos annotations de types.
 
-> **Remember**: Type annotations never change the runtime behavior of your program.
+> **Souvenez-vous** : Les annotations de type ne doivent jamais changer l'exécution de votre code.
 
-## Downleveling
+## Nivellement par le bas
 
-One other difference from the above was that our template string was rewritten from
+Une autre différence entre le code compilé et code source, la transformation de notre chaîne de caractères :
 
 ```js
 `Hello ${person}, today is ${date.toDateString()}!`;
@@ -374,16 +372,16 @@ to
 "Hello " + person + ", today is " + date.toDateString() + "!";
 ```
 
-Why did this happen?
+Pourquoi cela ?
 
-Template strings are a feature from a version of ECMAScript called ECMAScript 2015 (a.k.a. ECMAScript 6, ES2015, ES6, etc. - _don't ask_).
-TypeScript has the ability to rewrite code from newer versions of ECMAScript to older ones such as ECMAScript 3 or ECMAScript 5 (a.k.a. ES3 and ES5).
-This process of moving from a newer or "higher" version of ECMAScript down to an older or "lower" one is sometimes called _downleveling_.
+Les Template strings sont une fonctionnalité d'ECMAScript appelée ECMAScript 2015 (aussi ECMAScript 6, ES2015, ES6, etc. - _c'est compliqué_).
+TypeScript peut réécrire le code de versions récentes d'ECMAScript vers certaines plus anciennes, tel que ECMAScript 3 ou ECMAScript 5 (ES3 et ES5).
+Le fait de passer d'une version plus récente ou plus neuve d'ECMAScript vers une autre plus basse s'appelle le _nivellement vers le bas_.
 
-By default TypeScript targets ES3, an extremely old version of ECMAScript.
-We could have chosen something a little bit more recent by using the [`target`](/tsconfig#target) option.
-Running with `--target es2015` changes TypeScript to target ECMAScript 2015, meaning code should be able to run wherever ECMAScript 2015 is supported.
-So running `tsc --target es2015 hello.ts` gives us the following output:
+Par défaut, TypeScript vise ES3, une version extrêmement vieille d'ECMAScript.
+Nous aurions pu choisir une version un peu plus récente avec l'option [`target`](/tsconfig#target).
+Compiler avec `--target es2015` compile TypeScript en visant ECMAScript 2015, donc tout environnement supportant ES2015 peut lancer ce code.
+Ce qui nous mène au résultat suivant, quand on lance `tsc --target es2015 hello.ts` :
 
 ```js
 function greet(person, date) {
@@ -392,38 +390,38 @@ function greet(person, date) {
 greet("Maddison", new Date());
 ```
 
-> While the default target is ES3, the great majority of current browsers support ES2015.
-> Most developers can therefore safely specify ES2015 or above as a target, unless compatibility with certain ancient browsers is important.
+> La cible par défaut est ES3, mais tous les navigateurs modernes supportent ES2015.
+> Donc la plupart des développeurs peuvent viser ES2015 ou plus haut, sauf si supporter d'anciens navigateurs est un requis.
 
-## Strictness
+## Degré de rigueur
 
-Different users come to TypeScript looking for different things in a type-checker.
-Some people are looking for a more loose opt-in experience which can help validate only some parts of their program, and still have decent tooling.
-This is the default experience with TypeScript, where types are optional, inference takes the most lenient types, and there's no checking for potentially `null`/`undefined` values.
-Much like how `tsc` emits in the face of errors, these defaults are put in place to stay out of your way.
-If you're migrating existing JavaScript, that might be a desirable first step.
+TypeScript est utilisé pour diverses raisons.
+Certains développeurs veulent une expérience laxiste et volontaire. TypeScript peut valider certaines parties du programme uniquement, tout en laissant ses capacités disponibles.
+C'est l'expérience par défaut avec TypeScript, où le typage est optionnel, l'inférence déduit des types vagues, et aucune valeur `null`/`undefined` n'est vérifiée.
+Tout comme `tsc` émet des fichiers même avec des erreurs, ces comportements par défaut sont en place pour qu'ils ne vous entravent pas.
+Ce serait une première étape désirable si vous migrez du code JavaScript.
 
-In contrast, a lot of users prefer to have TypeScript validate as much as it can straight away, and that's why the language provides strictness settings as well.
-These strictness settings turn static type-checking from a switch (either your code is checked or not) into something closer to a dial.
-The further you turn this dial up, the more TypeScript will check for you.
-This can require a little extra work, but generally speaking it pays for itself in the long run, and enables more thorough checks and more accurate tooling.
-When possible, a new codebase should always turn these strictness checks on.
+D'autres utilisateurs souhaitent que TypeScript valide et soit strict le plus possible, d'où plusieurs options disponibles à cet effet.
+Cees paramètres permettent d'avoir des "niveaux" de rigueur (allant du laxiste au plus strict possible) plutôt que d'avoir deux options binaires (faire de la vérification de code ou pas du tout).
+Plus vous montez en niveaux de rigueur, plus TypeScript vous assistera avec la validation et la vérification.
+Cela peut nécessiter du travail supplémentaire, mais il se rentabilise sur le long terme.
+Si possible, une nouvelle base de code doit toujours avoir ces vérifications strictes activées.
 
-TypeScript has several type-checking strictness flags that can be turned on or off, and all of our examples will be written with all of them enabled unless otherwise stated.
-The [`strict`](/tsconfig#strict) flag in the CLI, or `"strict": true` in a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) toggles them all on simultaneously, but we can opt out of them individually.
-The two biggest ones you should know about are [`noImplicitAny`](/tsconfig#noImplicitAny) and [`strictNullChecks`](/tsconfig#strictNullChecks).
+TypeScript a plusieurs options de rigueur qui peuvent être activées ou pas, et tous nos exemples les suivront, sauf si le contraire est mentionné.
+L'option [`strict`](/tsconfig#strict) dans la ligne de commande, ou `"strict": true` dans le fichier [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) les active toutes ensemble, mais il est passible de les désactiver individuellement.
+Les deux options les plus importantes sont [`noImplicitAny`](/tsconfig#noImplicitAny) et [`strictNullChecks`](/tsconfig#strictNullChecks).
 
 ## `noImplicitAny`
 
-Recall that in some places, TypeScript doesn't try to infer types for us and instead falls back to the most lenient type: `any`.
-This isn't the worst thing that can happen - after all, falling back to `any` is just the plain JavaScript experience anyway.
+À certains endroits, TypeScript n'essaie pas d'inférer de types et va rendre le type le plus laxiste : `any`.
+Ce n'est pas forcément un problème - de toute façon, le type `any` est ce que JavaScript va vous donner.
 
-However, using `any` often defeats the purpose of using TypeScript in the first place.
-The more typed your program is, the more validation and tooling you'll get, meaning you'll run into fewer bugs as you code.
-Turning on the [`noImplicitAny`](/tsconfig#noImplicitAny) flag will issue an error on any variables whose type is implicitly inferred as `any`.
+Cependant, utiliser `any` ne donne plus aucun intérêt d'utiliser TypeScript.
+Plus votre programme est couvert par du typage, plus vous serez épaulé en terme de validation et d'outillage, et moins vous aurez de bugs.
+Activer l'option [`noImplicitAny`](/tsconfig#noImplicitAny) va remonter une erreur pour toute variable avec un type qui a été inféré en `any`.
 
 ## `strictNullChecks`
 
-By default, values like `null` and `undefined` are assignable to any other type.
-This can make writing some code easier, but forgetting to handle `null` and `undefined` is the cause of countless bugs in the world - some consider it a [billion dollar mistake](https://www.youtube.com/watch?v=ybrQvs4x0Ps)!
-The [`strictNullChecks`](/tsconfig#strictNullChecks) flag makes handling `null` and `undefined` more explicit, and _spares_ us from worrying about whether we _forgot_ to handle `null` and `undefined`.
+Par défaut, les valeurs comme `null` et `undefined` sont assignables à tout autre type.
+Cela peut s'avérer pratique, mais oublier de gérer `null` et `undefined` est la cause d'innombrables bugs - certains le considèrent comme une erreur [coûtant des milliards de dollars](https://www.youtube.com/watch?v=ybrQvs4x0Ps) !
+L'option [`strictNullChecks`](/tsconfig#strictNullChecks) rend la gestion de `null` et `undefined` plus explicite, et _nous épargne_ les maux de tête autour du fait de devoir gérer `null` et `undefined`.
