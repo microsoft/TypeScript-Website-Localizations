@@ -4,7 +4,7 @@ firstLine: TSConfig 文件象征着,它所在的目录是一个 TypeScript 项�
 ---
 
 
-TSConfig 文件象征着,它所在的目录是一个 TypeScript 项目或者 JavaScript 项目的根目录。
+TSConfig 文件象征着，它所在的目录是一个 TypeScript 项目或者 JavaScript 项目的根目录。
 TSConfig 文件可以是 `tsconfig.json` 或 `jsconfig.json`，它们的配置相同。
 
 此页涵盖了 TSConfig 文件中可用的所有不同选项。同时没有按照线性叙述来构建,而是分为了5个主要部分:
