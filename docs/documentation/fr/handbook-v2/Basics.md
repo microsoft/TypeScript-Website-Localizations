@@ -2,7 +2,8 @@
 title: Bases
 layout: docs
 permalink: /docs/handbook/2/basic-types.html
-oneline: "Première étape dans l'apprentissage de TypeScript : les types de base."
+oneline: >
+  Première étape dans l'apprentissage de TypeScript : les types de base.
 preamble: >
   <p>Bienvenue dans la première page du manuel. Si c'est votre premier contact avec TypeScript, vous voudrez peut-être commencer avec <a href='https://www.typescriptlang.org/docs/handbook/intro.html#get-started'>les guides</a></p>
 ---
