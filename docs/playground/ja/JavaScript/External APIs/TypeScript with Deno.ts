@@ -1,4 +1,4 @@
-//// { order: 3 }
+//// {  "order": 3}
 
 // Denoはセキュリティに重点を置いた開発中のv8ベースの
 // JavaScript及びTypeScriptのランタイムです。

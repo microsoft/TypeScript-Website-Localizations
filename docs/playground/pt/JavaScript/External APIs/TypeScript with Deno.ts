@@ -1,4 +1,4 @@
-//// { order: 3 }
+//// {  "order": 3}
 
 // Deno é um ambiente de execução JavaScript e TypeScript
 // em desenvolvimento baseado no v8 com um foco em segurança.

@@ -1,4 +1,4 @@
-//// { title: 'Encadenamiento de funciones', order: 2, compiler: { esModuleInterop: true } }
+//// {  "title": "Encadenamiento de funciones",  "order": 2,  "compiler": {    "esModuleInterop": true  }}
 
 // Las APIs con funciones encadenadas son un patrón común en
 // JavaScript, lo que permite que tu código sea más conciso,

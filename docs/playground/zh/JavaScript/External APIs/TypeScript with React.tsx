@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { jsx: 2, esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "jsx": 2,    "esModuleInterop": true  }}
 
 // React 是一个流行的创建用户界面的库。它提供了 JavaScript 的抽象，
 // 即被称为 JSX 的 JavaScript 语言扩展来创建界面。
@@ -52,7 +52,7 @@ interface FauxactClassComponent<Props extends {}, State = {}> {
 
 // 由于这个类可以拥有 Props 和 State ——它有两个可以在类中使用的泛型参数。
 
-// React 库附带了他们更加全面的类型定义，让我们将其带入我们的游乐场
+// React 库附带了他们更加全面的类型定义，让我们将其带入我们的演练场
 // 并探索一些组件。
 
 import * as React from 'react';

@@ -22,7 +22,7 @@ export const docCopy = {
   doc_node_npm_oclif_blurb:
     "Crie ferramentas de linha de comando que seus usuários amam",
   doc_node_npm_gluegun_blurb:
-    "Uma maravilhosa coleção de ferramentas para construir aplicativos de linha de comando em Typescript",
+    "Uma maravilhosa coleção de ferramentas para construir aplicativos de linha de comando em TypeScript",
   doc_frameworks: "Frameworks Web",
   doc_frameworks_angular_blurb:
     "Transforme o trabalho de escrever apps lindos em algo alegre e divertido",
@@ -45,7 +45,7 @@ export const docCopy = {
     "Um modelo bem documentado, cortesia do time do TypeScript",
   doc_apis_wechat_blurb: "Use o JSSDK do WeChat com TypeScript",
   doc_apis_loopback_blurb:
-    "Um framework Node.js e Typescript altamente expansível para construir APIs e microsserviços",
+    "Um framework Node.js e TypeScript altamente expansível para construir APIs e microsserviços",
   doc_apis_fastify_blurb:
     "Um framework web rápido e de baixo custo computacional para Node.js",
   doc_react: "Projetos em React",
@@ -67,15 +67,15 @@ export const docCopy = {
   doc_apps_make_code_blurb:
     "Traga à vida ciência da computação para qualquer estudante com projetos divertidos",
   doc_tooling: "Ferramentas",
-  doc_tooling_babel_blurb: "Use Javascript da próxima geração, hoje",
+  doc_tooling_babel_blurb: "Use JavaScript da próxima geração, hoje",
   doc_tooling_parcel_blurb:
     "Bundler de aplicações web incrivelmente rápido, sem configuração necessária",
-  doc_tooling_webpack_blurb: "Agrupe seus recursos, scripts, images e estilos",
-  doc_learn: "Já conhece Typescript?",
+  doc_tooling_webpack_blurb: "Agrupe seus recursos, scripts, imagens e estilos",
+  doc_learn: "Já conhece TypeScript?",
   doc_learn_3_5_release_notes_title: "Notas de versão",
   doc_learn_3_5_release_notes_blurb: "Notas da versão 3.5",
   doc_learn_handbook_blurb: "Referência da linguagem TypeScript",
   doc_learn_d_ts_title: "Guia d.ts",
   doc_learn_d_ts_blurb: "Aprenda como declarar a forma de JS",
-  doc_learn_playground_blurb: "Explore and compartilhe TypeScript online",
+  doc_learn_playground_blurb: "Explore e compartilhe TypeScript online",
 }

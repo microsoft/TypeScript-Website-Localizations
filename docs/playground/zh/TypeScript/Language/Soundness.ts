@@ -1,4 +1,4 @@
-//// {compiler: { strictFunctionTypes: false } }
+//// {  "compiler": {    "strictFunctionTypes": false  }}
 
 // 如果您没有类型理论方面的背景知识，您可能不太了解
 // 类型系统是 “健全的” 这个概念。

@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" }, isJavaScript: true }
+//// {  "compiler": {    "ts": "3.8.3"  },  "isJavaScript": true}
 // @ts-check
 
 // TypeScriptのJSDocが拡張され、クラスプロパティのアクセス修飾子が

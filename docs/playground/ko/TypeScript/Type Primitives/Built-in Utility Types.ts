@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 // 대부분 코드에서 특정한 타입이 유용하다고 느낄 때,
 // TypeScript에 추가해서

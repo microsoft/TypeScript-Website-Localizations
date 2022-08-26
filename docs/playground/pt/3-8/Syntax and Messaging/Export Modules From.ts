@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 // A habilidade do TypeScript de re-exportar ficou mais perto de suportar
 // os casos adicionais disponíveis na ES2018.
 //

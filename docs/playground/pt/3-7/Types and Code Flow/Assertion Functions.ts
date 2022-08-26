@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // Dada a flexibilidade do JavaScript, pode ser uma boa ideia
 // adicionar verificações em tempo de execução ao seu código

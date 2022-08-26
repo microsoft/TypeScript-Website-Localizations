@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.1.0-dev.20201028" } }
+//// {  "compiler": {    "ts": "4.1.0-dev.20201028"  }}
 
 // TypeScript 4.1では、テンプレートリテラルがサポートされました。
 // テンプレートリテラルの基本はexample:intro-to-template-literalsで学ぶことができます。

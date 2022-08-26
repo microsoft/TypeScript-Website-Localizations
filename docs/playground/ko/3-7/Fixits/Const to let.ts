@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 1 }
+//// {  "compiler": {},  "order": 1}
 
 // 3.7 버전의 새로운 기능은
 // 값이 재할당 되었을 때 const 변수를 let으로

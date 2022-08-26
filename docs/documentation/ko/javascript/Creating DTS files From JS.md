@@ -73,7 +73,7 @@ TypeScript는 .d.ts 파일을 찾기 위한 추가 단계와 함께 `package.jso
 | :------------------------ | :----------------------------- |
 | "types" 필드 없음           | "main" 확인 후, index.d.ts 확인   |
 | "types": "main.d.ts"      | main.d.ts                      |
-| "types": "./dist/main.js" | ./main/main.d.ts               |
+| "types": "./dist/main.js" | ./dist/main.d.ts               |
 
 type 필드가 없다면, "main"으로 넘어갑니다.
 

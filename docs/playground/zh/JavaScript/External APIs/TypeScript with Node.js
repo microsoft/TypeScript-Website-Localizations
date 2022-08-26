@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // Node.js 是一个非常受欢迎的基于 v8（Chrome 的 JavaScript 引擎）
 // 的 JavaScript 运行时。你可以用它来构建服务器，前端客户端以及他们

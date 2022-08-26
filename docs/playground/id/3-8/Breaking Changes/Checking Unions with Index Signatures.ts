@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 
 // Pada TypeScript versi sebelumnya, fitur pemeriksaan kode tidak akan
 // memastikan _field_ yang tidak dideklarasikan dalam sebuah _union_

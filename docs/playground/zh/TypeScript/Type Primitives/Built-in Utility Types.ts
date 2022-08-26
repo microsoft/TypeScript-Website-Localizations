@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 // 当某种类型对于大多数代码来说都非常有用时，他们就会被添加到 TypeScript
 // 中并且被大家使用。这意味着您可以在代码中直接使用他们，而无需担心它们的可用性。

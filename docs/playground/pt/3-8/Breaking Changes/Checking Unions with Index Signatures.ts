@@ -1,4 +1,4 @@
-//// { compiler: { ts: "3.8.3" } }
+//// {  "compiler": {    "ts": "3.8.3"  }}
 // Nas versões anteriores do TypeScript, o verificador não valida
 // se os campos não declarados em uma união de tipos estavam em 
 // conformidade com qualquer tipo indexado na união.

@@ -1,4 +1,4 @@
-//// { order: 1, target: "ES5" }
+//// {  "order": 1,  "target": "ES5"}
 
 // JavaScript menambahkan sintaks impor dan ekspor pada tahun 2016
 // dan TypeScript memiliki dukungan penuh untuk sintaks ini yang

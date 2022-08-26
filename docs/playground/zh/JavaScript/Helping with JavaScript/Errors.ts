@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // 默认情况下，TypeScript 在 JavaScript 内不提供错误消息。
 // 该工具专注于为编辑器提供丰富的支持。

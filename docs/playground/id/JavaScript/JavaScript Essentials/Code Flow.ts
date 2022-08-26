@@ -1,6 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
-
-//// {order: 3, compiler: {strictNullChecks: true}}
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 // Bagaimana kode mengalir di dalam file JavaScript dapat mempengaruhi
 // tipe data di seluruh program kita.

@@ -1,4 +1,4 @@
-//// { compilador: { ts: "4.1.0-dev.20201028" } }
+//// {  "compilador": {    "ts": "4.1.0-dev.20201028"  }}
 
 // Template literals podem ser utilizados para extrair e manipular tipos de strings literais.
 // Estes tipos de string literal, por sua vez, podem ser usados como propriedades, e podem descrever

@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { jsx: 2, esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "jsx": 2,    "esModuleInterop": true  }}
 
 //React é uma biblioteca muito popular para criar interfaces de usuário.
 //Ela providencia uma abstração do Javascript ao criar visualização de componentes

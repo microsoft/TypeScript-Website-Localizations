@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { noImplicitAny: false } }
+//// {  "order": 2,  "compiler": {    "noImplicitAny": false  }}
 
 // 在 JavaScript 中有很多方式可以声明函数。让我们看一个将两个
 // 数字相加的函数：

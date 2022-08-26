@@ -1,4 +1,4 @@
-//// { order: 3 }
+//// {  "order": 3}
 
 // Deno adalah sebuah _runtime_ JavaScript dan TypeScript
 // yang masih dalam proses pengembangan dan dibangun

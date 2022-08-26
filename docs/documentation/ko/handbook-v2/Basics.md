@@ -436,5 +436,5 @@ CLI에서 `--strict` 플래그를 설정하거나 [`tsconfig.json`](https://www.
 ### `strictNullChecks`
 
 `null`과 `undefined`와 같은 값은 다른 타입의 값에 할당할 수 있는 것이 기본 동작입니다.
-이는 코드 작성을 쉽게 만들어주지만, `null`과 `undefined`의 처리를 잊는 것은 세상의 샐 수 없이 많은 버그들의 원인입니다. 혹자는 이를 [백만 불 짜리 실수](https://www.youtube.com/watch?v=ybrQvs4x0Ps)라고 일컫기도 합니다!
+이는 코드 작성을 쉽게 만들어주지만, `null`과 `undefined`의 처리를 잊는 것은 세상의 셀 수 없이 많은 버그들의 원인입니다. 혹자는 이를 [백만 불 짜리 실수](https://www.youtube.com/watch?v=ybrQvs4x0Ps)라고 일컫기도 합니다!
 `strictNullChecks` 플래그는 `null`과 `undefined`를 보다 명시적으로 처리하며, `null` 및 `undefined` 처리를 _잊었는지_ 여부를 걱정하는 데에서 우리를 _해방시켜_ 줍니다.

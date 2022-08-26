@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 3 }
+//// {  "compiler": {},  "order": 3}
 
 // Às vezes, as mensagens de erros no TypeScript pode ser um pouco verbosas...
 // Com a versão 3.7, nós tratamos alguns casos que poderiam ser

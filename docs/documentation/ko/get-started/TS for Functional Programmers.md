@@ -44,12 +44,13 @@ C++ 달리 TypeScript는 후위 타입을 사용합니다, 예를 들면: `strin
 
 ## 내장 타입 (Built-in types)
 
-JavaScript에서는 7개의 내장 타입을 정의합니다:
+JavaScript에서는 8개의 내장 타입을 정의합니다:
 
 | 타입         | 설명                                         |
 | ----------- | ------------------------------------------- |
 | `Number`    | 배정밀도 IEEE 754 부동소수점.                    |
 | `String`    | 수정 불가능한 UTF-16 문자열.                     |
+| `BigInt`    | 임의 정밀도 형식의 정수.                          |
 | `Boolean`   | `true` 와  `false`.                          |
 | `Symbol`    | 보통 키로 사용하는 고유한 값.                       |
 | `Null`      | 단위 타입과 동등.                               |
@@ -62,6 +63,7 @@ TypeScript에는 기본 내장된 타입에 해당하는 원시 타입이 있습
 
 * `number`
 * `string`
+* `bigint`
 * `boolean`
 * `symbol`
 * `null`
@@ -251,9 +253,9 @@ type Conflicting = { a: number } & { a: string };
 `a` 와 `b` 두 개의 속성을 가지고 있습니다. 교집합과 유니언은 재귀적인
 케이스에서 충돌을 일으켜서 `Conflicting.a: number & string` 입니다.
 
-## 유니언 타입 (Unit types)
+## 유닛 타입 (Unit types)
 
-유니언 타입은 정확히 하나의 원시 값을 포함하고 있는 원시 타입의 서브타입입니다.
+유닛 타입은 정확히 하나의 원시 값을 포함하고 있는 원시 타입의 서브타입입니다.
 예를 들면, 문자열 `"foo"` 는 타입 `"foo"`를 가지고 있습니다.
 JavaScript는 내장된 enum이 없기 때문에 잘 알려진 문자열 세트를
 대신해서 쓰는게 흔합니다.

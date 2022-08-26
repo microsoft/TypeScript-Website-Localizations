@@ -1,4 +1,4 @@
-//// { order: 3, isJavaScript: true }
+//// {  "order": 3,  "isJavaScript": true}
 
 // Node.js는 Chrome V8 JavaScript 엔진을 기반으로
 // 구축된 매우 유명한 JavaScript 런타임입니다.

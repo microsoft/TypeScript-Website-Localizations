@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "esModuleInterop": true  }}
 
 // Encadeamento de funções é um padrão comum em JavaScript que pode fazer seu
 // código mais legível e com menos valores intermediários, mais fácil de ler

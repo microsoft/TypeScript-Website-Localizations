@@ -133,10 +133,10 @@
     request "^2.88.0"
     unified-stream "^1.0.4"
 
-"@oss-docs/sync@*":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@oss-docs/sync/-/sync-1.1.1.tgz#fea457dabf8fd61f5170ae04de22026209c80b50"
-  integrity sha512-AGTyz/tBaKkIu9CcIYLPF6EdLSwT/Wpu5r+sawLUmcJwNylKeobwBAhswjRw34U3b4TiNRZK1a5Szc70l+l1qg==
+"@oss-docs/sync@1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@oss-docs/sync/-/sync-1.1.4.tgz#7b1de679a67b3be96cbd04aeb358c5688d8de7e6"
+  integrity sha512-lCbnRABxvQCSRrxyfuwRFU5K5eGiBHGIUevQzGArcTv3A0kxorVpmH5FZgVP9Iw2G4+UoWr8L6egcpy6Ar0tyw==
   dependencies:
     cachedir "^2.3.0"
     chalk "^4.1.0"
@@ -164,19 +164,28 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
 
-"@typescript/twoslash@1.1.4", "@typescript/twoslash@^1.1.3":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@typescript/twoslash/-/twoslash-1.1.4.tgz#e5693334ae39a90aae43d747f902eb0bebd47640"
-  integrity sha512-u5/V/Z3e9nMJ/TIKzyLfudUQrNa7ctjHxQ7NS05VveQPLJNlc/7hbhuuRy101BF54xy0KiYpQ0h/Ha5J7SKehg==
+"@typescript/twoslash@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@typescript/twoslash/-/twoslash-2.1.0.tgz#0128312e002670367393bb9b48378ac818aceccd"
+  integrity sha512-J72HH+zAMPA9udOuOgAxTXnzeRyz0t33Ww1jQ6CgNfjP3HtrOS4lNgG+m3u1H497U366zbcUOjNkIgNGqefd/A==
   dependencies:
-    "@typescript/vfs" "1.3.2"
+    "@typescript/vfs" "1.3.4"
     debug "^4.1.1"
     lz-string "^1.4.4"
 
-"@typescript/vfs@1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.3.2.tgz#4a9f207a74b93e63b255740ca9683d7eb09ee670"
-  integrity sha512-1moNIcxUtDextSNvhGtJcmNZX8gZgRBcea2UlRmKI7TX3fRZ4lHCharaDQUQeguk1rrqxCfOifFZg+Rx/Mi7Lw==
+"@typescript/twoslash@^1.1.3":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@typescript/twoslash/-/twoslash-1.1.7.tgz#9fc5709f37940f2deda396b74e503c6c33c54d6e"
+  integrity sha512-+oASPajHbUpmwsZgf0/ioBn9vjIodAO4c0na2nMLWxBKDMGAo16m8uEFtxjIrEYp6l+h3rBvHchSFucv1/qcNQ==
+  dependencies:
+    "@typescript/vfs" "1.3.4"
+    debug "^4.1.1"
+    lz-string "^1.4.4"
+
+"@typescript/vfs@1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.3.4.tgz#07f89d2114f6e29255d589395ed7f3b4af8a00c2"
+  integrity sha512-RbyJiaAGQPIcAGWFa3jAXSuAexU4BFiDRF1g3hy7LmRqfNpYlTQWGXjcrOaVZjJ8YkkpuwG0FcsYvtWQpd9igQ==
   dependencies:
     debug "^4.1.1"
 
@@ -656,10 +665,17 @@ debug@^3.1.0:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.0, debug@^4.1.1:
+debug@^4.0.0:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+  dependencies:
+    ms "2.1.2"
+
+debug@^4.1.1:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
   dependencies:
     ms "2.1.2"
 
@@ -861,6 +877,11 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
+fenceparser@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/fenceparser/-/fenceparser-1.1.0.tgz#b509f16e3ce68b04e19caa8636037755cfa4a67b"
+  integrity sha512-2/48W+LjGeYLYc7Z2WodoPv4xP4Bd9e2CsnnFZuzzoNkv+w8NyJKDD/EUhcwv9VkmXsnGtnDzZz6DNykD9JrlA==
+
 fill-range@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-4.0.0.tgz#d544811d428f98eb06a63dc402d2403c328c38f7"
@@ -923,17 +944,13 @@ fs-exists-sync@^0.1.0:
   resolved "https://registry.yarnpkg.com/fs-exists-sync/-/fs-exists-sync-0.1.0.tgz#982d6893af918e72d08dec9e8673ff2b5a8d6add"
   integrity sha1-mC1ok6+RjnLQjeyehnP/K1qNat0=
 
-gatsby-remark-shiki-twoslash@^0.7.0:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-shiki-twoslash/-/gatsby-remark-shiki-twoslash-0.7.1.tgz#bbe9aaaa9a5bf9d27a7a94ee2afda0ae58346b5b"
-  integrity sha512-4Vp1HXtUmK4iydJtAhcYNl+h8VSTvYrgxw+Y8ka5tF06Zjf/UMXruDttsTGmIYR+kGug8hiP3mekP7Lss/Tr3w==
+gatsby-remark-shiki-twoslash@^3.0.14:
+  version "3.0.14"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-shiki-twoslash/-/gatsby-remark-shiki-twoslash-3.0.14.tgz#bbf0976974598d57b599c68b1e0cdd45fcb37e81"
+  integrity sha512-I5eBLKC284imYOrpH7jY+NBJO6LoQ5xVI0MvDLdXXtfQh8lpK+s2o/QZ9nz8Swvp61YzIWp57nucoHTgvY/JxA==
   dependencies:
-    "@typescript/twoslash" "1.1.4"
-    "@typescript/vfs" "1.3.2"
-    shiki "^0.1.6"
-    shiki-languages "^0.1.6"
-    shiki-twoslash "0.8.2"
-    typescript "*"
+    remark-shiki-twoslash "2.0.1"
+    typescript ">3"
     unist-util-visit "^2.0.0"
 
 get-caller-file@^2.0.5:
@@ -1794,7 +1811,7 @@ once@^1.3.1, once@^1.4.0:
   dependencies:
     wrappy "1"
 
-onigasm@^2.2.1:
+onigasm@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/onigasm/-/onigasm-2.2.5.tgz#cc4d2a79a0fa0b64caec1f4c7ea367585a676892"
   integrity sha512-F+th54mPc0l1lp1ZcFMyL/jTs2Tlq4SqIHKIXGZOR/VkHkF9A7Fr5rRr5+ZG/lWeRsyrClLYRq7s/yFQ/XhWCA==
@@ -2017,7 +2034,7 @@ readline-sync@^1.4.9:
   resolved "https://registry.yarnpkg.com/readline-sync/-/readline-sync-1.4.10.tgz#41df7fbb4b6312d673011594145705bf56d8873b"
   integrity sha512-gNva8/6UAe8QYepIQH/jQ2qn91Qj0B9sYjMBBs3QOB8F2CXcKgLxQaJRP76sWVRQt+QU+8fAkCbCvjjMFu7Ycw==
 
-regenerator-runtime@^0.13.4:
+regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.7"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
@@ -2058,6 +2075,21 @@ remark-parse@^9.0.0:
   integrity sha512-geKatMwSzEXKHuzBNU1z676sGcDcFoChMK38TgdHJNAYfFtsfHDQG7MoJAjs6sgYMqyLduCYWDIWZIxiPeafEw==
   dependencies:
     mdast-util-from-markdown "^0.8.0"
+
+remark-shiki-twoslash@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/remark-shiki-twoslash/-/remark-shiki-twoslash-2.0.1.tgz#f47a304f044e0d78fdb09505442397fa7104509e"
+  integrity sha512-Xj2pMArldasY6WvqjaVR/G7HJnqIGYGIQlpNCpeq2kGTaABU80nJ5lF7AiELUGbg1f5aK4tosE24zo2ChWi9Zg==
+  dependencies:
+    "@typescript/twoslash" "2.1.0"
+    "@typescript/vfs" "1.3.4"
+    fenceparser "^1.1.0"
+    regenerator-runtime "^0.13.7"
+    shiki "0.9.3"
+    shiki-twoslash "2.0.3"
+    tslib "2.1.0"
+    typescript ">3"
+    unist-util-visit "^2.0.0"
 
 remark-stringify@^8.0.0:
   version "8.1.1"
@@ -2234,41 +2266,23 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-shiki-languages@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/shiki-languages/-/shiki-languages-0.1.6.tgz#4a71eba9d345de4780fc46994e4d073356573e3e"
-  integrity sha512-rMu+z97UCPKMtPBkzLBItReawXnlOgXZmELFwI/s3ATxd9VzJgSQTtQW/hmW5EYCrzF2kAUjoOnn+50/MPWjgQ==
+shiki-twoslash@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/shiki-twoslash/-/shiki-twoslash-2.0.3.tgz#b3f212560f63c3a73c2622feb4d92748a91cdd2d"
+  integrity sha512-tUeoek4e0pShUp0AnkfLXl4DCnvcC3iI1pDspPfdWKaBYY8hPW7J4iWxf9VXkdCA7wxwmT1bsiZ6e9h9Tndehg==
   dependencies:
-    vscode-textmate "https://github.com/octref/vscode-textmate"
+    "@typescript/twoslash" "2.1.0"
+    "@typescript/vfs" "1.3.4"
+    shiki "0.9.3"
+    typescript ">3"
 
-shiki-themes@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/shiki-themes/-/shiki-themes-0.1.7.tgz#edaf2027b31bb3645dd044f66a76d4cdb2599b77"
-  integrity sha512-mpF/VynGun/uNdjOIPnyPv4boN/QYDh+zE94SavgvmatMHkXXjZhls19Xv9rcRwuxUrWfXjaPkEZj7VAk94GGg==
+shiki@0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.9.3.tgz#7bf7bcf3ed50ca525ec89cc09254abce4264d5ca"
+  integrity sha512-NEjg1mVbAUrzRv2eIcUt3TG7X9svX7l3n3F5/3OdFq+/BxUdmBOeKGiH4icZJBLHy354Shnj6sfBTemea2e7XA==
   dependencies:
-    json5 "^2.1.0"
-    vscode-textmate "https://github.com/octref/vscode-textmate"
-
-shiki-twoslash@0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/shiki-twoslash/-/shiki-twoslash-0.8.2.tgz#27f7bed567c8f3798ba96ca878ee01a56ff8b506"
-  integrity sha512-VH25CoQ67vOynDemI5Qeosjz4SmUSK6dWpauqPiOF2xFT0rU332UzPdBHsv+RAw6zWMtTLOLC8TtVb0m5gj9TQ==
-  dependencies:
-    "@typescript/twoslash" "1.1.4"
-    "@typescript/vfs" "1.3.2"
-    shiki "^0.1.6"
-    shiki-languages "^0.1.6"
-    typescript "*"
-
-shiki@^0.1.6:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.1.7.tgz#138eed000063a80e44eedc800381977c690271e5"
-  integrity sha512-9J0PhAdXv6tt3FZf82oKZkcV8c8NRZYJEOH0eIrrxfcyNzMuB79tJFGFSI3OhhiYFL5namob/Ii0Ri4iDoF15A==
-  dependencies:
-    onigasm "^2.2.1"
-    shiki-languages "^0.1.6"
-    shiki-themes "^0.1.7"
-    vscode-textmate "https://github.com/octref/vscode-textmate"
+    onigasm "^2.2.5"
+    vscode-textmate "^5.2.0"
 
 signal-exit@^3.0.0:
   version "3.0.3"
@@ -2543,6 +2557,11 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
+tslib@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
+  integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
@@ -2555,10 +2574,10 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-typescript@*, typescript@^4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
-  integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
+typescript@>3, typescript@^4.1.3:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 unherit@^1.0.4:
   version "1.1.3"
@@ -2720,9 +2739,10 @@ vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
-"vscode-textmate@https://github.com/octref/vscode-textmate":
-  version "4.0.1"
-  resolved "https://github.com/octref/vscode-textmate#e65aabe2227febda7beaad31dd0fca1228c5ddf3"
+vscode-textmate@^5.2.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-5.4.0.tgz#4b25ffc1f14ac3a90faf9a388c67a01d24257cd7"
+  integrity sha512-c0Q4zYZkcLizeYJ3hNyaVUM2AA8KDhNCA3JvXY8CeZSJuBdAy3bAvSbv46RClC4P3dSO9BdwhnKEx2zOo6vP/w==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

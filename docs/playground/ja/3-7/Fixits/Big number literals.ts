@@ -1,4 +1,4 @@
-//// { compiler: {  target: 99 }, order: 1 }
+//// {  "compiler": {    "target": 99  },  "order": 1}
 
 // JavaScript を書く際に、JavaScript で表現できる数字の大きさに
 // 制限があることをあることをご存知でしたか？

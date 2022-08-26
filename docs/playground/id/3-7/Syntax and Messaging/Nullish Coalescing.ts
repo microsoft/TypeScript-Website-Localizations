@@ -1,4 +1,4 @@
-//// { compiler: {  }, order: 2 }
+//// {  "compiler": {},  "order": 2}
 
 // Operator _nullish coalescing_ adalah sebuah alternatif
 // untuk operator || yang akan mengembalikan ekspresi sebelah kanan

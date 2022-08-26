@@ -1,4 +1,4 @@
-//// { title: 'TypeScript con Node', order: 3, isJavaScript: true }
+//// {  "title": "TypeScript con Node",  "order": 3,  "isJavaScript": true}
 
 // Node.js en un entorno de ejecución muy popular para JavaScript,
 // construido sobre v8, el motor de JavaScript que utiliza Chrome. 

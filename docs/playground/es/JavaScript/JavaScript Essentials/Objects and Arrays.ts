@@ -1,4 +1,4 @@
-//// { title: 'Objetos y arreglos', order: 1, compiler: { strict: false } }
+//// {  "title": "Objetos y arreglos",  "order": 1,  "compiler": {    "strict": false  }}
 
 // Los objetos de JavaScript son colecciones de valores
 // asociados a un nombre (o clave).

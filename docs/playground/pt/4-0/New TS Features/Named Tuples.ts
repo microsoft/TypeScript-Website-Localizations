@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.0-beta" } }
+//// {  "compiler": {    "ts": "4.0.0-beta"  }}
 // Tuplas são vetores que sua ordem é importante para a tipagem,
 // você pode aprender mais sobre eles no exemplo:tuplas
 

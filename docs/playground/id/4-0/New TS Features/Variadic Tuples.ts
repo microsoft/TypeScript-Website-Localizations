@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.0.2" } }
+//// {  "compiler": {    "ts": "4.0.2"  }}
 
 // _Variadic tuples_ memberikan kemampuan pada _tuple_ untuk menangani
 // operator _rest_ (...) untuk memberikan tipe data pada pemeriksa tipe

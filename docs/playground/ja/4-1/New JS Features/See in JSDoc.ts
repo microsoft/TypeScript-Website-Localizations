@@ -1,4 +1,4 @@
-//// { compiler: { ts: "4.1.0-beta" } }
+//// {  "compiler": {    "ts": "4.1.0-beta"  }}
 
 // 4.1では、TypeScriptとJavaScriptファイルの両方で
 // 使われているTypeScriptのJSDocパーサが

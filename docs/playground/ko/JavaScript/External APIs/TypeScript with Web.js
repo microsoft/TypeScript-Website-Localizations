@@ -1,4 +1,4 @@
-//// { order: 0, isJavaScript: true }
+//// {  "order": 0,  "isJavaScript": true}
 
 // DOM(문서 객체 모델)은 웹페이지 동작을 위한 하위 API 요소입니다.
 // 그리고 TypeScript는 해당 API를 다루는

@@ -1,4 +1,4 @@
-//// { order: 1, compiler: { strict: false } }
+//// {  "order": 1,  "compiler": {    "strict": false  }}
 
 // JavaScript 对象是用具名键包装的值的集合。
 
@@ -31,7 +31,7 @@ console.log(purchaseOrder.item.type);
 //
 //   purchaseOrder.item.type
 
-// TypeScript 向游乐场提供关于此文件中可用的 JavaScript 对象
+// TypeScript 向演练场提供关于此文件中可用的 JavaScript 对象
 // 的反馈，让您可以减少输入错误并且可以查看额外的信息，而不必在
 // 其他地方查找。
 

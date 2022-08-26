@@ -1,4 +1,4 @@
-//// { compilador: { ts: "4.1.0-dev.20201028" } }
+//// {  "compilador": {    "ts": "4.1.0-dev.20201028"  }}
 
 // O TypeScript já suporta o tratamento de um string/número exato 
 // como um literal, por exemplo esta função permite somente duas

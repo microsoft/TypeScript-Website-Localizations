@@ -1,4 +1,4 @@
-//// { order: 2, compiler: { jsx: 2, esModuleInterop: true } }
+//// {  "order": 2,  "compiler": {    "jsx": 2,    "esModuleInterop": true  }}
 
 // React adalah sebuah pustaka yang populer untuk membangun
 // antarmuka pengguna. React menyediakan abstraksi JavaScript

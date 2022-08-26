@@ -1,4 +1,4 @@
-//// { order: 4 }
+//// {  "order": 4}
 
 // 混合（Mixins）是 TypeScript 支持的 JavaScript 类的伪多重继承
 // 模式。该模式允许您创建一个由许多类合并而成的类。

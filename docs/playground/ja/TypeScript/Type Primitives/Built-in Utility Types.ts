@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 // ある型がほとんどのコードベースで有効性があると感じられた場合、
 // その型はTypeScriptに追加され、他の誰もが使えるようになります。

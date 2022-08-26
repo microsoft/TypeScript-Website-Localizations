@@ -1,4 +1,4 @@
-//// { title: "Tipos Anulables", order: 3, compiler: { strictNullChecks: false } }
+//// {  "title": "Tipos Anulables",  "order": 3,  "compiler": {    "strictNullChecks": false  }}
 
 // JavaScript tiene dos formas de declarar valores que no
 // existen, y TypeScript agrega sintaxis adicional lo que

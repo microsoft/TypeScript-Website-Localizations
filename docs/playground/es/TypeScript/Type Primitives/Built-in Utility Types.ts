@@ -1,4 +1,4 @@
-//// { order: 3, compiler: { strictNullChecks: true } }
+//// {  "order": 3,  "compiler": {    "strictNullChecks": true  }}
 
 // Cuando un tipo en particular es utilizado en múltiples
 // bases de código, se agrega a TypeScript y pasa a estar
