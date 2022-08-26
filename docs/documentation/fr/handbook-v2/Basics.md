@@ -267,7 +267,7 @@ D'habitude, cela ne pose aucun problème, mais il y a des situations où cette r
 Par exemple, imaginez que vous migrez du code JavaScript en TypeScript, introduisant de ce fait des erreurs de typage.
 À la fin, vous corrigerez ces erreurs, mais ce code JavaScript fonctionnait déjà. Le convertir en TypeScript ne devrait rien y changer.
 
-Bien sûr, avec le temps, vous voudrez peut-être être plus sûr, et faire en sorte que TypeScript vous protège mieux.
+Bien sûr, avec le temps, vous voudrez peut-être qu'il soit plus restrictif par rapport aux erreurs, et faire en sorte que TypeScript agisse un peu plus strictement.
 Dans ce cas, vous pouvez utiliser l'option de compilateur [`noEmitOnError`](/tsconfig#noEmitOnError).
 Avec cette option, modifiez `hello.ts` et lancez `tsc` :
 
@@ -366,7 +366,7 @@ Une autre différence entre le code compilé et code source, la transformation d
 `Hello ${person}, today is ${date.toDateString()}!`;
 ```
 
-to
+vers
 
 ```js
 "Hello " + person + ", today is " + date.toDateString() + "!";
@@ -374,14 +374,14 @@ to
 
 Pourquoi cela ?
 
-Les Template strings sont une fonctionnalité d'ECMAScript appelée ECMAScript 2015 (aussi ECMAScript 6, ES2015, ES6, etc. - _c'est compliqué_).
+Les Template strings sont une fonctionnalité d'ECMAScript appelée ECMAScript 2015 (mais aussi ECMAScript 6, ES2015, ES6, etc. - _c'est compliqué_).
 TypeScript peut réécrire le code de versions récentes d'ECMAScript vers certaines plus anciennes, tel que ECMAScript 3 ou ECMAScript 5 (ES3 et ES5).
 Le fait de passer d'une version plus récente ou plus neuve d'ECMAScript vers une autre plus basse s'appelle le _nivellement vers le bas_.
 
 Par défaut, TypeScript vise ES3, une version extrêmement vieille d'ECMAScript.
 Nous aurions pu choisir une version un peu plus récente avec l'option [`target`](/tsconfig#target).
 Compiler avec `--target es2015` compile TypeScript en visant ECMAScript 2015, donc tout environnement supportant ES2015 peut lancer ce code.
-Ce qui nous mène au résultat suivant, quand on lance `tsc --target es2015 hello.ts` :
+Lancer `tsc --target es2015 hello.ts` nous mène au résultat suivant :
 
 ```js
 function greet(person, date) {
@@ -391,7 +391,7 @@ greet("Maddison", new Date());
 ```
 
 > La cible par défaut est ES3, mais tous les navigateurs modernes supportent ES2015.
-> Donc la plupart des développeurs peuvent viser ES2015 ou plus haut, sauf si supporter d'anciens navigateurs est un requis.
+Donc la plupart des développeurs peuvent viser ES2015 ou plus haut, sauf si supporter d'anciens navigateurs est une contrainte.
 
 ## Degré de rigueur
 
@@ -402,13 +402,13 @@ Tout comme `tsc` émet des fichiers même avec des erreurs, ces comportements pa
 Ce serait une première étape désirable si vous migrez du code JavaScript.
 
 D'autres utilisateurs souhaitent que TypeScript valide et soit strict le plus possible, d'où plusieurs options disponibles à cet effet.
-Cees paramètres permettent d'avoir des "niveaux" de rigueur (allant du laxiste au plus strict possible) plutôt que d'avoir deux options binaires (faire de la vérification de code ou pas du tout).
+Ces paramètres permettent d'avoir des "niveaux" de rigueur (allant du laxiste au plus strict possible) plutôt que d'avoir deux options binaires (faire de la vérification de code ou pas du tout).
 Plus vous montez en niveaux de rigueur, plus TypeScript vous assistera avec la validation et la vérification.
 Cela peut nécessiter du travail supplémentaire, mais il se rentabilise sur le long terme.
-Si possible, une nouvelle base de code doit toujours avoir ces vérifications strictes activées.
+Si possible, une nouvelle base de code doit toujours avoir les vérifications strictes activées.
 
 TypeScript a plusieurs options de rigueur qui peuvent être activées ou pas, et tous nos exemples les suivront, sauf si le contraire est mentionné.
-L'option [`strict`](/tsconfig#strict) dans la ligne de commande, ou `"strict": true` dans le fichier [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) les active toutes ensemble, mais il est passible de les désactiver individuellement.
+L'option [`strict`](/tsconfig#strict) dans la ligne de commande, ou `"strict": true` dans le fichier [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) les active toutes ensemble, mais il est possible de les désactiver individuellement.
 Les deux options les plus importantes sont [`noImplicitAny`](/tsconfig#noImplicitAny) et [`strictNullChecks`](/tsconfig#strictNullChecks).
 
 ## `noImplicitAny`
