@@ -997,15 +997,15 @@ Dans cet exemple, parce que cette fonction a été appelée avec une référence
 C'est rarement le comportement que vous désirez !
 TypeScript fournit plusieurs façons de remédier à ce problème.
 
-### Arrow Functions
+### Fonctions fléchées
 
 <blockquote class='bg-reading'>
-   <p>Background Reading:<br />
-   <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions'>Arrow functions (MDN)</a><br/>
+   <p>Lecture de fond :<br />
+   <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions'>Fonctions fléchées (MDN)</a><br/>
    </p>
 </blockquote>
 
-If you have a function that will often be called in a way that loses its `this` context, it can make sense to use an arrow function property instead of a method definition:
+Si vous avez une fonction qui va être appelée et va être amenée à perdre le contexte de `this`, cela a du sens d'utiliser une fonction fléchée au lieu d'une définition de méthode plus classique :
 
 ```ts twoslash
 class MyClass {
@@ -1016,39 +1016,39 @@ class MyClass {
 }
 const c = new MyClass();
 const g = c.getName;
-// Prints "MyClass" instead of crashing
+// Affiche "MyClass" au lieu de crash
 console.log(g());
 ```
 
-This has some trade-offs:
+Cette façon de faire impose quelques compromis :
 
-- The `this` value is guaranteed to be correct at runtime, even for code not checked with TypeScript
-- This will use more memory, because each class instance will have its own copy of each function defined this way
-- You can't use `super.getName` in a derived class, because there's no entry in the prototype chain to fetch the base class method from
+- La valeur de `this` est toujours correcte à l'exécution, même avec du code qui n'est pas vérifié par TypeScript.
+- Les fonctions fléchées consomment plus de mémoire, parce que chaque fonction aura sa propre copie de fonctions définies de cette façon.
+- Vous ne pouvez pas vous servir de `super.getName` dans une classe dérivée, parce qu'il n'existe aucune classe de base dans la chaîne de prototypes d'où il est possible de récupérer la méthode.
 
-### `this` parameters
+### Paramètre `this`
 
-In a method or function definition, an initial parameter named `this` has special meaning in TypeScript.
-These parameters are erased during compilation:
+Dans une définition de méthode ou de fonction, il est possible d'ajouter un paramètre `this` qui a un sens spécial en TypeScript.
+Ce paramètre est effacé à la compilation :
 
 ```ts twoslash
 type SomeType = any;
 // ---cut---
-// TypeScript input with 'this' parameter
+// Code TypeScript avec le paramètre 'this'
 function fn(this: SomeType, x: number) {
   /* ... */
 }
 ```
 
 ```js
-// JavaScript output
+// Sortie JavaScript
 function fn(x) {
   /* ... */
 }
 ```
 
-TypeScript checks that calling a function with a `this` parameter is done so with a correct context.
-Instead of using an arrow function, we can add a `this` parameter to method definitions to statically enforce that the method is called correctly:
+TypeScript vérifie qu'un appel de fonction avec un paramètre `this` est fait avec un contexte correct.
+Au lieu d'utiliser une fonction fléchée, il est possible d'utiliser un paramètre `this` dans les définitions de méthodes pour vérifier qu'elles ont été appelées correctement :
 
 ```ts twoslash
 // @errors: 2684
@@ -1062,21 +1062,21 @@ const c = new MyClass();
 // OK
 c.getName();
 
-// Error, would crash
+// Erreur, crash
 const g = c.getName;
 console.log(g());
 ```
 
-This method makes the opposite trade-offs of the arrow function approach:
+Cette façon opte pour les compromis opposés à l'approche de la fonction fléchée :
 
-- JavaScript callers might still use the class method incorrectly without realizing it
-- Only one function per class definition gets allocated, rather than one per class instance
-- Base method definitions can still be called via `super`.
+- Les entités JavaScript qui appellent ces méthodes pourraient utiliser le mauvais contexte de `this` sans s'en rendre compte.
+- Seule une fonction par définition de classe sera allouée.
+- Le mot-clé `super` couplé à ces fonctions sont accessibles dans les classes dérivées.
 
-## `this` Types
+## Types `this`
 
-In classes, a special type called `this` refers _dynamically_ to the type of the current class.
-Let's see how this is useful:
+Dans une classe, un type spécial `this` réfère _dynamiquement_ au type de la classe courante.
+Voici un exemple où cela pourrait être utile :
 
 <!-- prettier-ignore -->
 ```ts twoslash
