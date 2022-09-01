@@ -763,13 +763,12 @@ class MySafe {
 ```
 
 ```js
-// In a JavaScript file...
+// Dans un fichier JavaScript, va afficher 12345
 const s = new MySafe();
-// Will print 12345
 console.log(s.secretKey);
 ```
 
-`private` also allows access using bracket notation during type checking. This makes `private`-declared fields potentially easier to access for things like unit tests, with the drawback that these fields are _soft private_ and don't strictly enforce privacy.
+`private` permet également d'accéder à la propriété avec la notation à crochets. Cela permet de faciliter l'accès aux propriétés `private` pour, par exemple, les tests unitaires. Le défaut dans cette approche est que ces propriétés ne sont donc pas complètement `private`.
 
 ```ts twoslash
 // @errors: 2341
@@ -779,14 +778,14 @@ class MySafe {
 
 const s = new MySafe();
 
-// Not allowed during type checking
+// Interdit durant la vérification
 console.log(s.secretKey);
 
 // OK
 console.log(s["secretKey"]);
 ```
 
-Unlike TypeScripts's `private`, JavaScript's [private fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields) (`#`) remain private after compilation and do not provide the previously mentioned escape hatches like bracket notation access, making them _hard private_.
+Les [variables de classes privées](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields) (`#`) resteront privées après compilation et représentent une approche plus stricte aux champs privés, interdisant les contournements disponibles avec le mot-clé `private`.
 
 ```ts twoslash
 class Dog {
@@ -808,7 +807,7 @@ class Dog {
 }
 ```
 
-When compiling to ES2021 or less, TypeScript will use WeakMaps in place of `#`.
+En compilant vers ES2021 ou inférieur, TypeScript va utiliser des `WeakMaps` à la place de `#`.
 
 ```ts twoslash
 // @target: es2015
@@ -821,19 +820,18 @@ class Dog {
 }
 ```
 
-If you need to protect values in your class from malicious actors, you should use mechanisms that offer hard runtime privacy, such as closures, WeakMaps, or private fields. Note that these added privacy checks during runtime could affect performance.
+Si vous avez besoin de protéger vos valeurs de classes contre les acteurs malicieux, vous devez vous servir de mécanismes offrant de la sécurité stricte durant l'exécution, tel que les _closures_, _WeakMaps_, ou les champs privés. Remarquez que ces mesures additionnelles peuvent affecter la performance.
 
-## Static Members
+## Membres statiques
 
 <blockquote class='bg-reading'>
-   <p>Background Reading:<br />
-   <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static'>Static Members (MDN)</a><br/>
+   <p>Lecture de fond :<br />
+   <a href='https://developer.mozilla.org/fr-FR/docs/Web/JavaScript/Reference/Classes/static'>Membres statiques (MDN)</a><br/>
    </p>
 </blockquote>
 
-Classes may have `static` members.
-These members aren't associated with a particular instance of the class.
-They can be accessed through the class constructor object itself:
+Les Classes peuvent avoir des membres `static`.
+Ces membres ne sont pas associés à une instance particulière d'une classe, et peuvent être lus depuis le constructeur de la classe elle-même :
 
 ```ts twoslash
 class MyClass {
@@ -846,7 +844,7 @@ console.log(MyClass.x);
 MyClass.printX();
 ```
 
-Static members can also use the same `public`, `protected`, and `private` visibility modifiers:
+Les membres `static` peuvent avoir les mêmes modificateurs `public`, `protected`, et `private` :
 
 ```ts twoslash
 // @errors: 2341
@@ -856,7 +854,7 @@ class MyClass {
 console.log(MyClass.x);
 ```
 
-Static members are also inherited:
+Les membres `static` peuvent être hérités par les classes dérivées :
 
 ```ts twoslash
 class Base {
@@ -869,11 +867,11 @@ class Derived extends Base {
 }
 ```
 
-### Special Static Names
+### Noms spéciaux de propriétés statiques
 
-It's generally not safe/possible to overwrite properties from the `Function` prototype.
-Because classes are themselves functions that can be invoked with `new`, certain `static` names can't be used.
-Function properties like `name`, `length`, and `call` aren't valid to define as `static` members:
+Généralement, il n'est pas sûr / possible d'écrire sur des propriétés du prototype de `Function`.
+Les classes sont elles-mêmes des fonctions qui peuvent être invoquées avec `new`. Donc certaines propriétés `static` ne peuvent pas être utilisées.
+Les propriétés `name`, `length`, et `call` ne peuvent pas être définies en tant que membres `static` :
 
 ```ts twoslash
 // @errors: 2699
@@ -882,33 +880,32 @@ class S {
 }
 ```
 
-### Why No Static Classes?
+### Pourquoi pas des classes statiques ?
 
-TypeScript (and JavaScript) don't have a construct called `static class` the same way as, for example, C# does.
+TypeScript (et JavaScript) n'ont pas de classes statiques, de la même façon que, par exemple, C#.
 
-Those constructs _only_ exist because those languages force all data and functions to be inside a class; because that restriction doesn't exist in TypeScript, there's no need for them.
-A class with only a single instance is typically just represented as a normal _object_ in JavaScript/TypeScript.
+Ces structures n'existent que parce que ces langages obligent toutes les données et fonctions à être à l'intérieur de classes. Elles n'ont aucun intérêt à être dans TypeScript ou JavaScript, ces deux langages n'ayant pas cette restriction. Une classe qui n'a qu'une seule instance est parfois représentée simplement par un objet normal.
 
-For example, we don't need a "static class" syntax in TypeScript because a regular object (or even top-level function) will do the job just as well:
+Une classe statique n'est pas nécessaire car elle peut très bien se substituer à un objet ou une fonction :
 
 ```ts twoslash
-// Unnecessary "static" class
+// Classe statique non nécessaire
 class MyStaticClass {
   static doSomething() {}
 }
 
-// Preferred (alternative 1)
+// 1ère alternative privilégiée
 function doSomething() {}
 
-// Preferred (alternative 2)
+// 2ème alternative privilégiée
 const MyHelperObject = {
   dosomething() {},
 };
 ```
 
-## `static` Blocks in Classes
+## Blocs `static` dans une classe
 
-Static blocks allow you to write a sequence of statements with their own scope that can access private fields within the containing class. This means that we can write initialization code with all the capabilities of writing statements, no leakage of variables, and full access to our class's internals.
+Les blocs statiques vous permettent d'écrire des déclarations avec leur propre portée. Cette portée peut lire les champs privés dans la classe qui les contient. Cela signifie que l'on peut écrire ce qu'on veut en terme de code, sans fuite de variables vers l'extérieur, et avec accès complet aux propriétés et méthodes de la classe.
 
 ```ts twoslash
 declare function loadLastInstances(): any[]
@@ -930,10 +927,10 @@ class Foo {
 }
 ```
 
-## Generic Classes
+## Classes Génériques
 
-Classes, much like interfaces, can be generic.
-When a generic class is instantiated with `new`, its type parameters are inferred the same way as in a function call:
+Les classes, au même titre des interfaces, peuvent être génériques.
+Quand une classe est instanciée avec `new`, ses paramètres de type peuvent être inférés de la même façon qu'avec une fonction :
 
 ```ts twoslash
 class Box<Type> {
@@ -943,15 +940,15 @@ class Box<Type> {
   }
 }
 
-const b = new Box("hello!");
+const b = new Box("bonjour !");
 //    ^?
 ```
 
-Classes can use generic constraints and defaults the same way as interfaces.
+Les classes peuvent imposer des restrictions de type et des types par défaut tout comme les interfaces.
 
-### Type Parameters in Static Members
+### Paramètres de type dans les propriétés statiques
 
-This code isn't legal, and it may not be obvious why:
+Il peut être difficile de comprendre pourquoi ce code est illégal :
 
 ```ts twoslash
 // @errors: 2302
@@ -960,22 +957,22 @@ class Box<Type> {
 }
 ```
 
-Remember that types are always fully erased!
-At runtime, there's only _one_ `Box.defaultValue` property slot.
-This means that setting `Box<string>.defaultValue` (if that were possible) would _also_ change `Box<number>.defaultValue` - not good.
-The `static` members of a generic class can never refer to the class's type parameters.
+Rappelez-vous qu'à l'exécution, les données de types sont complètement effacées !
+Il n'existe qu'une seule valeur possible (et donc un seul type possible) à la propriété `Box.defaultValue`.
+Cela signifie que définir `Box<string>.defaultValue` (si c'était possible) changerait également `Box<number>.defaultValue` - pas idéal.
+Donc les membres `static` d'une classe générique ne peuvent pas faire de référence aux types génériques de la classe.
 
-## `this` at Runtime in Classes
+## `this` à l'exécution dans les classes
 
 <blockquote class='bg-reading'>
-   <p>Background Reading:<br />
-   <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this'>this keyword (MDN)</a><br/>
+   <p>Lecture de fond :<br />
+   <a href='https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/this'>L'opérateur this (MDN)</a><br/>
    </p>
 </blockquote>
 
-It's important to remember that TypeScript doesn't change the runtime behavior of JavaScript, and that JavaScript is somewhat famous for having some peculiar runtime behaviors.
+TypeScript ne change pas le comportement de JavaScript à l'exécution, et JavaScript est célèbre pour ses comportements très particuliers à l'exécution.
 
-JavaScript's handling of `this` is indeed unusual:
+Cela inclut l'opérateur `this` :
 
 ```ts twoslash
 class MyClass {
@@ -990,15 +987,15 @@ const obj = {
   getName: c.getName,
 };
 
-// Prints "obj", not "MyClass"
+// Affiche "obj", pas "MyClass"
 console.log(obj.getName());
 ```
 
-Long story short, by default, the value of `this` inside a function depends on _how the function was called_.
-In this example, because the function was called through the `obj` reference, its value of `this` was `obj` rather than the class instance.
+Pour résumer, par défaut, la valeur de `this` à l'intérieur d'une fonction dépend de _comment la fonction a été appelée_.
+Dans cet exemple, parce que cette fonction a été appelée avec une référence à `obj`, la valeur de `this` était `obj` au lieu d'être l'instance de classe.
 
-This is rarely what you want to happen!
-TypeScript provides some ways to mitigate or prevent this kind of error.
+C'est rarement le comportement que vous désirez !
+TypeScript fournit plusieurs façons de remédier à ce problème.
 
 ### Arrow Functions
 
