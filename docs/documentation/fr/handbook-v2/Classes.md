@@ -1090,8 +1090,8 @@ class Box {
 }
 ```
 
-Here, TypeScript inferred the return type of `set` to be `this`, rather than `Box`.
-Now let's make a subclass of `Box`:
+TypeScript a inféré le type de retour du `set` comme étant `this`, au lieu de `Box`.
+Créons une classe dérivée de `Box`:
 
 ```ts twoslash
 class Box {
@@ -1109,11 +1109,11 @@ class ClearableBox extends Box {
 }
 
 const a = new ClearableBox();
-const b = a.set("hello");
+const b = a.set("bonjour");
 //    ^?
 ```
 
-You can also use `this` in a parameter type annotation:
+Vous pouvez aussi utiliser `this` dans une annotation de type de paramètre :
 
 ```ts twoslash
 class Box {
@@ -1124,7 +1124,7 @@ class Box {
 }
 ```
 
-This is different from writing `other: Box` -- if you have a derived class, its `sameAs` method will now only accept other instances of that same derived class:
+La différence avec l'écriture `other: Box` est que si vous avez une classe dérivée, sa méthode `sameAs`  ne va accepter qu'une autre instance de cette classe dérivée :
 
 ```ts twoslash
 // @errors: 2345
@@ -1144,10 +1144,10 @@ const derived = new DerivedBox();
 derived.sameAs(base);
 ```
 
-### `this`-based type guards
+### Gardes de types sur `this`
 
-You can use `this is Type` in the return position for methods in classes and interfaces.
-When mixed with a type narrowing (e.g. `if` statements) the type of the target object would be narrowed to the specified `Type`.
+Vous pouvez utiliser `this is Type` dans la position de type de retour dans les méthodes à l'intérieur de classes ou interfaces.
+Avec le rétrécissement de types (par ex. les déclarations `if`), le type de l'objet peut être rétréci vers le `Type` spécifié.
 
 <!-- prettier-ignore -->
 ```ts twoslash
@@ -1193,7 +1193,7 @@ if (fso.isFile()) {
 }
 ```
 
-A common use-case for a this-based type guard is to allow for lazy validation of a particular field. For example, this case removes an `undefined` from the value held inside box when `hasValue` has been verified to be true:
+Un cas d'usage commun pour ces gardes de types de `this` est de permettre une validation passive d'un champ particulier. Par exemple, ce cas retire `undefined` des possibilités de valeur de `this.value`, si `hasValue` retourne `true` :
 
 ```ts twoslash
 class Box<T> {
@@ -1216,11 +1216,11 @@ if (box.hasValue()) {
 }
 ```
 
-## Parameter Properties
+## Propriétés-Paramètres
 
-TypeScript offers special syntax for turning a constructor parameter into a class property with the same name and value.
-These are called _parameter properties_ and are created by prefixing a constructor argument with one of the visibility modifiers `public`, `private`, `protected`, or `readonly`.
-The resulting field gets those modifier(s):
+TypeScript offre une syntaxe spéciale qui crée une propriété avec les mêmes modificateur, nom et valeur que le paramètre fourni.
+Ce sont des _propriétés-paramètres_ qui sont créées en préfixant un argument de constructeur avec l'un des modificateurs `public`, `private`, `protected`, ou `readonly`.
+Le champ résultant hérite de ces modificateurs :
 
 ```ts twoslash
 // @errors: 2341
@@ -1230,7 +1230,7 @@ class Params {
     protected y: number,
     private z: number
   ) {
-    // No body necessary
+    // Pas de corps nécessaire
   }
 }
 const a = new Params(1, 2, 3);
@@ -1239,16 +1239,15 @@ console.log(a.x);
 console.log(a.z);
 ```
 
-## Class Expressions
+## Expressions de Classes
 
 <blockquote class='bg-reading'>
-   <p>Background Reading:<br />
-   <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class'>Class expressions (MDN)</a><br/>
+   <p>Lecture de fond :<br />
+   <a href='https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/class'>Expression de Classe (MDN)</a><br/>
    </p>
 </blockquote>
 
-Class expressions are very similar to class declarations.
-The only real difference is that class expressions don't need a name, though we can refer to them via whatever identifier they ended up bound to:
+Les expressions de classe sont similaires aux déclarations de classes, à une différence près : les expressions de classes n'ont pas besoin de noms, même si on peut y référer avec l'identifiant qu'on lui associera :
 
 ```ts twoslash
 const someClass = class<Type> {
@@ -1258,21 +1257,21 @@ const someClass = class<Type> {
   }
 };
 
-const m = new someClass("Hello, world");
+const m = new someClass("Bonjour tout le monde !");
 //    ^?
 ```
 
-## `abstract` Classes and Members
+## Classes et membres `abstract`
 
-Classes, methods, and fields in TypeScript may be _abstract_.
+Les champs, méthodes et classes peuvent être _abstraits_.
 
-An _abstract method_ or _abstract field_ is one that hasn't had an implementation provided.
-These members must exist inside an _abstract class_, which cannot be directly instantiated.
+Une _méthode abstraite_ ou un _champ abstrait_ n'a pas d'implémentation.
+Ces membres ne peuvent exister que dans une _classe abstraite_, qui ne peut pas être instanciée directement.
 
-The role of abstract classes is to serve as a base class for subclasses which do implement all the abstract members.
-When a class doesn't have any abstract members, it is said to be _concrete_.
+Le rôle d'une classe abstraite est de servir de classe-mère pour toutes les classes-filles qui implémentent les membres abstraits.
+Une classe _concrète_ est une classe qui n'a pas de membre abstrait.
 
-Let's look at an example:
+Prenons un exemple :
 
 ```ts twoslash
 // @errors: 2511
@@ -1280,15 +1279,15 @@ abstract class Base {
   abstract getName(): string;
 
   printName() {
-    console.log("Hello, " + this.getName());
+    console.log("Bonjour, " + this.getName());
   }
 }
 
 const b = new Base();
 ```
 
-We can't instantiate `Base` with `new` because it's abstract.
-Instead, we need to make a derived class and implement the abstract members:
+Nous ne pouvons pas instancier `Base` avec `new` parce que la classe est abstraite.
+À la place, nous devons créer une classe dérivée et instancier cette classe :
 
 ```ts twoslash
 abstract class Base {
@@ -1298,7 +1297,7 @@ abstract class Base {
 // ---cut---
 class Derived extends Base {
   getName() {
-    return "world";
+    return "monde";
   }
 }
 
@@ -1306,7 +1305,7 @@ const d = new Derived();
 d.printName();
 ```
 
-Notice that if we forget to implement the base class's abstract members, we'll get an error:
+Remarquez que si vous oubliez d'implémenter un membre abstrait, vous aurez une erreur :
 
 ```ts twoslash
 // @errors: 2515
@@ -1316,15 +1315,15 @@ abstract class Base {
 }
 // ---cut---
 class Derived extends Base {
-  // forgot to do anything
+  // gros oubli, rien fait
 }
 ```
 
-### Abstract Construct Signatures
+### Signatures abstraites
 
-Sometimes you want to accept some class constructor function that produces an instance of a class which derives from some abstract class.
+Parfois, vous voudrez accepter un constructeur qui produit l'instance d'une classe dérivée d'une classe abstraite.
 
-For example, you might want to write this code:
+Prenez ce code par exemple :
 
 ```ts twoslash
 // @errors: 2511
@@ -1344,17 +1343,17 @@ function greet(ctor: typeof Base) {
 }
 ```
 
-TypeScript is correctly telling you that you're trying to instantiate an abstract class.
-After all, given the definition of `greet`, it's perfectly legal to write this code, which would end up constructing an abstract class:
+TypeScript devine correctement que vous essayer d'instancier une classe abstraite.
+D'après la signature de `greet`, ce code est légal, mais il construirait une classe abstraite :
 
 ```ts twoslash
 declare const greet: any, Base: any;
 // ---cut---
-// Bad!
+// Non !
 greet(Base);
 ```
 
-Instead, you want to write a function that accepts something with a construct signature:
+À la place, vous voudrez accepter une fonction qui accepte une signature de constructeur :
 
 ```ts twoslash
 // @errors: 2345
@@ -1376,13 +1375,13 @@ greet(Derived);
 greet(Base);
 ```
 
-Now TypeScript correctly tells you about which class constructor functions can be invoked - `Derived` can because it's concrete, but `Base` cannot.
+Maintenant, TypeScript vous dira que vous pouvez utiliser `Derived` car c'est une classe concrète, mais pas `Base`.
 
-## Relationships Between Classes
+## Relation entre les classes
 
-In most cases, classes in TypeScript are compared structurally, the same as other types.
+La plupart des cas avec TypeScript, les classes sont comparées avec leurs structures, comme avec les autres types.
 
-For example, these two classes can be used in place of each other because they're identical:
+Par exemple, ces deux classes sont utilisables et interchangeables, de par leurs structures identiques :
 
 ```ts twoslash
 class Point1 {
@@ -1399,7 +1398,7 @@ class Point2 {
 const p: Point1 = new Point2();
 ```
 
-Similarly, subtype relationships between classes exist even if there's no explicit inheritance:
+Similairement, une classe peut être un sous-type d'une autre même sans relation explicite d'héritage :
 
 ```ts twoslash
 // @strict: false
@@ -1418,20 +1417,20 @@ class Employee {
 const p: Person = new Employee();
 ```
 
-This sounds straightforward, but there are a few cases that seem stranger than others.
+Cela paraît évident, mais il y a certains cas plus bizarres que d'autres.
 
-Empty classes have no members.
-In a structural type system, a type with no members is generally a supertype of anything else.
-So if you write an empty class (don't!), anything can be used in place of it:
+Les classes vides n'ont pas de membres.
+Dans un système de types structurel, un type sans membres est un super-type de tous les autres types.
+Donc si vous écrivez une classe vide (ce que vous ne devez pas faire), vous pouvez l'utiliser partout :
 
 ```ts twoslash
 class Empty {}
 
 function fn(x: Empty) {
-  // can't do anything with 'x', so I won't
+  // je ne peux rien faire avec 'x'
 }
 
-// All OK!
+// Tout est OK !
 fn(window);
 fn({});
 fn(fn);
