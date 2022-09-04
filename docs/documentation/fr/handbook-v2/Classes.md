@@ -1005,7 +1005,7 @@ TypeScript fournit plusieurs façons de remédier à ce problème.
    </p>
 </blockquote>
 
-Si vous avez une fonction qui va être appelée et va être amenée à perdre le contexte de `this`, cela a du sens d'utiliser une fonction fléchée au lieu d'une définition de méthode plus classique :
+Si vous avez une fonction qui va être appelée et va être amenée à perdre le contexte de `this`, cela peut être judicieux d'utiliser une propriété de fonction fléchée au lieu d'une définition de méthode plus classique :
 
 ```ts twoslash
 class MyClass {
@@ -1070,8 +1070,8 @@ console.log(g());
 Cette façon opte pour les compromis opposés à l'approche de la fonction fléchée :
 
 - Les entités JavaScript qui appellent ces méthodes pourraient utiliser le mauvais contexte de `this` sans s'en rendre compte.
-- Seule une fonction par définition de classe sera allouée.
-- Le mot-clé `super` couplé à ces fonctions sont accessibles dans les classes dérivées.
+- Seule une fonction par définition de classe sera allouée, au lieu d'une par instance de classe.
+- Les définitions de méthode de base peuvent toujours être appelées via `super`.
 
 ## Types `this`
 
