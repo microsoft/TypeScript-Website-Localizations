@@ -6,7 +6,7 @@ oneline: "Les primitives du langage."
 ---
 
 Dans ce chapitre, nous couvrirons certains types fréquents des valeurs communes dans du code JavaScript, et nous expliquerons les façons de représenter ces types en TypeScript.
-This isn't an exhaustive list, and future chapters will describe more ways to name and use other types.
+Ce n'est pas une liste exhaustive, et les futurs chapitres couvriront plus de manières de nommer et utiliser d'autres types.
 
 Types can also appear in many more _places_ than just type annotations.
 As we learn about the types themselves, we'll also learn about the places where we can refer to these types to form new constructs.
