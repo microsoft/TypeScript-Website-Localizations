@@ -28,7 +28,7 @@ Le résultat de chaque opération dépend entièrement de la valeur qu'on avait 
 
 - Est-ce que `message` peut être appelé ?
 - Est-ce qu'il a une propriété `toLowerCase` ?
-- S'il en a une, est-ce que `toLowerCase` peut être appelé lui aussi ?
+- S'il en a une, est-ce que `toLowerCase` peut être appelée elle aussi ?
 - Si ces deux valeurs peuvent être appelées, qu'est-ce qu'elles retournent ?
 
 Les réponses à toutes ces questions sont normalement des informations qu'on retient en écrivant du JavaScript, tout en espérant que notre mémoire ne nous trahira pas.
@@ -113,8 +113,8 @@ const user = {
 user.location; // retourne undefined
 ```
 
-Finalement, un système de vérification statique de types devra décider quel code doit être considéré comme une erreur, même s'il est du JavaScript "valide" qui ne retournera pas d'erreur immédiate.
-TypeScript le code suivant lance une erreur à propos de `location` qui n'est pas défini:
+Finalement, un système de vérification statique de types devra décider quel code doit être considéré comme une erreur, même s'il est du code JavaScript "valide" qui ne retournera pas d'erreur immédiate.
+Avec le code suivant, TypeScript lance une erreur à propos de `location` qui n'est pas défini:
 
 ```ts twoslash
 // @errors: 2339
@@ -209,8 +209,8 @@ npm install -g typescript
 Créons un dossier vide et un fichier `hello.ts` qui contient :
 
 ```ts twoslash
-// Dit bonjour.
-console.log("Hello world!");
+// Dire bonjour.
+console.log("bonjour !");
 ```
 
 Rien de fantastique : ce "hello world" est identique à un "hello world" en JavaScript.
@@ -294,7 +294,7 @@ Ce qu'on vient d'ajouter s'appelle des _annotations de types_ sur `person` et `d
 Cet exemple peut se lire "`greet` prend une `person` de type `string`, et une `date` de type `Date`".
 
 Armé de cette information, TypeScript peut nous prévenir quand `greet` pourrait être utilisé de façon incorrecte.
-For example...
+Par exemple...
 
 ```ts twoslash
 // @errors: 2345
