@@ -1,7 +1,7 @@
 ---
 title: Everyday Types
 layout: docs
-permalink: /docs/handbook/2/everyday-types.html
+permalink: /fr/docs/handbook/2/everyday-types.html
 oneline: "Les primitives du langage."
 ---
 

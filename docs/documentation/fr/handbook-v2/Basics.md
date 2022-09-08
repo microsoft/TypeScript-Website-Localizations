@@ -1,7 +1,7 @@
 ---
 title: Bases
 layout: docs
-permalink: /docs/handbook/2/basic-types.html
+permalink: /fr/docs/handbook/2/basic-types.html
 oneline: >
   Première étape dans l'apprentissage de TypeScript : les types de base.
 preamble: >
@@ -143,7 +143,7 @@ announcement.toLocalLowerCase();
 announcement.toLocaleLowerCase();
 ```
 
-Les fonctions qui sont pas appelées :
+Les fonctions qui ne sont pas appelées :
 
 ```ts twoslash
 // @noUnusedLocals
@@ -232,7 +232,7 @@ Observons le contenu du fichier émis par TypeScript :
 console.log("Hello world!");
 ```
 
-Ici, TypeScript n'a pas eu grand chose à transformer, donc le code final est identique au code de départ. Le compilateur essaie toujours d'émettre du code qui ressemble à ce qu'écrirait une vraie personne.
+Ici, TypeScript n'a pas eu grand-chose à transformer, donc le code final est identique au code de départ. Le compilateur essaie toujours d'émettre du code qui ressemble à ce qu'écrirait une vraie personne.
 Ce n'est pas toujours facile, mais TypeScript conserve l'indentation, fait attention quand le code s'étend sur beaucoup de lignes, et essaie de conserver les commentaires.
 
 Essayons d'introduire une erreur de vérification en modifiant `hello.ts` :
@@ -418,7 +418,7 @@ Les deux options les plus importantes sont [`noImplicitAny`](/tsconfig#noImplici
 Ce n'est pas forcément un problème - de toute façon, le type `any` est ce que JavaScript va vous donner.
 
 Cependant, utiliser `any` ne donne plus aucun intérêt d'utiliser TypeScript.
-Plus votre programme est couvert par du typage, plus vous serez épaulé en terme de validation et d'outillage, et moins vous aurez de bugs.
+Plus votre programme est couvert par du typage, plus vous serez épaulé en termes de validation et d'outillage, et moins vous aurez de bugs.
 Activer l'option [`noImplicitAny`](/tsconfig#noImplicitAny) va remonter une erreur pour toute variable avec un type qui a été inféré en `any`.
 
 ## `strictNullChecks`

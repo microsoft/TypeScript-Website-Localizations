@@ -1,7 +1,7 @@
 ---
 title: Classes
 layout: docs
-permalink: /docs/handbook/2/classes.html
+permalink: /fr/docs/handbook/2/classes.html
 oneline: "Comment fonctionnent les classes en TypeScript"
 ---
 
@@ -54,7 +54,7 @@ const pt = new Point();
 console.log(`${pt.x}, ${pt.y}`);
 ```
 
-Tout comme avec `const`, `let`, et `var`, l'initialisateur d'une propriété de classe va être utilisé pour inférer le type de la propriété:
+Tout comme avec `const`, `let`, et `var`, l'initialiseur d'une propriété de classe va être utilisé pour inférer le type de la propriété:
 
 ```ts twoslash
 // @errors: 2322
@@ -403,7 +403,7 @@ d.woof(3);
    </p>
 </blockquote>
 
-Une classe dérivée peut aussi écraser une propriété ou une méthode pré-existantes.
+Une classe dérivée peut aussi écraser une propriété ou une méthode préexistantes.
 Les méthodes de la classe-mère sont accessibles avec le mot-clé `super`.
 Notez que, vu que les classes JavaScript ne sont que des objets, il n'y a pas de "champ super" qui donnerait une référence vers la classe-mère.
 
@@ -905,7 +905,7 @@ const MyHelperObject = {
 
 ## Blocs `static` dans une classe
 
-Les blocs statiques vous permettent d'écrire des déclarations avec leur propre portée. Cette portée peut lire les champs privés dans la classe qui les contient. Cela signifie que l'on peut écrire ce qu'on veut en terme de code, sans fuite de variables vers l'extérieur, et avec accès complet aux propriétés et méthodes de la classe.
+Les blocs statiques vous permettent d'écrire des déclarations avec leur propre portée. Cette portée peut lire les champs privés dans la classe qui les contient. Cela signifie que l'on peut écrire ce qu'on veut en termes de code, sans fuite de variables vers l'extérieur, et avec accès complet aux propriétés et méthodes de la classe.
 
 ```ts twoslash
 declare function loadLastInstances(): any[]
@@ -1124,7 +1124,7 @@ class Box {
 }
 ```
 
-La différence avec l'écriture `other: Box` est que si vous avez une classe dérivée, sa méthode `sameAs`  ne va accepter qu'une autre instance de cette classe dérivée :
+La différence avec l'écriture `other: Box` est que si vous avez une classe dérivée, sa méthode `sameAs` ne va accepter qu'une autre instance de cette classe dérivée :
 
 ```ts twoslash
 // @errors: 2345
@@ -1315,7 +1315,7 @@ abstract class Base {
 }
 // ---cut---
 class Derived extends Base {
-  // gros oubli, rien fait
+  // on a oublié de faire quoi que ce soit
 }
 ```
 
@@ -1343,7 +1343,7 @@ function greet(ctor: typeof Base) {
 }
 ```
 
-TypeScript devine correctement que vous essayer d'instancier une classe abstraite.
+TypeScript devine correctement que vous essayez d'instancier une classe abstraite.
 D'après la signature de `greet`, ce code est légal, mais il construirait une classe abstraite :
 
 ```ts twoslash
