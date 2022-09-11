@@ -8,44 +8,44 @@ oneline: "Les primitives du langage."
 Dans ce chapitre, nous couvrirons certains types fréquents des valeurs communes dans du code JavaScript, et nous expliquerons les façons de représenter ces types en TypeScript.
 Ce n'est pas une liste exhaustive, et les futurs chapitres couvriront plus de manières de nommer et utiliser d'autres types.
 
-Types can also appear in many more _places_ than just type annotations.
-As we learn about the types themselves, we'll also learn about the places where we can refer to these types to form new constructs.
+Les types peuvent également apparaître d'autres endroits que des annotations.
+À mesure que vous apprenez à connaître les types, vous connaîtrez également les façons et endroits où l'on peut référer aux types pour former de nouvelles entités.
 
-We'll start by reviewing the most basic and common types you might encounter when writing JavaScript or TypeScript code.
-These will later form the core building blocks of more complex types.
+D'abord, passons en revue les types les plus basiques et communs, que vous rencontrerez probablement quand vous écrirez du code JavaScript ou TypeScript.
+Ces types formeront les blocs essentiels de types plus complexes.
 
-## The primitives: `string`, `number`, and `boolean`
+## Les primitives: `string`, `number`, et `boolean`
 
-JavaScript has three very commonly used [primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive): `string`, `number`, and `boolean`.
-Each has a corresponding type in TypeScript.
-As you might expect, these are the same names you'd see if you used the JavaScript `typeof` operator on a value of those types:
+Le JavaScript possède trois [primitives](https://developer.mozilla.org/fr/docs/Glossary/Primitive) très communes : `string`, `number`, et `boolean`.
+Chacune d'entre elles a un type correspondant en TypeScript.
+Comme vous vous y attendrez, ce sont les mêmes noms que vous verrez si vous utilisez l'opérateur `typeof` sur les valeurs de ces types :
 
-- `string` represents string values like `"Hello, world"`
-- `number` is for numbers like `42`. JavaScript does not have a special runtime value for integers, so there's no equivalent to `int` or `float` - everything is simply `number`
-- `boolean` is for the two values `true` and `false`
+- `string` représente des chaînes de caractères comme `"bonjour tout le monde"`
+- `number` correspond aux nombres comme `42`. En JavaScript, tout est un `number` - il n'existe aucun équivalent à un `int` ou `float`. Tout est simplement un `number`
+- `boolean` représente les deux valeurs `true` et `false`
 
-> The type names `String`, `Number`, and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. _Always_ use `string`, `number`, or `boolean` for types.
+> Les noms de types `String`, `Number`, et `Boolean` (avec une première lettre majuscule) existent, mais réfèrent à des types spéciaux qui vont très rarement apparaître dans votre code. Utilisez _toujours_ `string`, `number`, ou `boolean` pour annoter vos types.
 
-## Arrays
+## Tableaux
 
-To specify the type of an array like `[1, 2, 3]`, you can use the syntax `number[]`; this syntax works for any type (e.g. `string[]` is an array of strings, and so on).
-You may also see this written as `Array<number>`, which means the same thing.
-We'll learn more about the syntax `T<U>` when we cover _generics_.
+Pour préciser le type d'un tableau comme `[1, 2, 3]`, vous pouvez utiliser la syntaxe `number[]`; cette syntaxe peut être utilisée pour d'autres types (par exemple, `string[]` est un tableau de chaînes de caractères, et ainsi de suite).
+Vous pourriez aussi voir la notation `Array<number>`, qui signifie la même chose.
+Nous en apprendrons plus sur la notation `T<U>` quand on couvrira les _types génériques_.
 
-> Note that `[number]` is a different thing; refer to the section on [Tuples](/docs/handbook/2/objects.html#tuple-types).
+> À noter que la notation `[number]` est différente; référez-vous à la section sur les [Tuples](/fr/docs/handbook/2/objects.html#tuple-types).
 
 
 ## `any`
 
-TypeScript also has a special type, `any`, that you can use whenever you don't want a particular value to cause typechecking errors.
+TypeScript possède également un type spécial, `any`, que vous pouvez utiliser dès que vous souhaitez qu'une valeur particulière ne cause pas d'erreurs à la vérification de types.
 
-When a value is of type `any`, you can access any properties of it (which will in turn be of type `any`), call it like a function, assign it to (or from) a value of any type, or pretty much anything else that's syntactically legal:
+Quand une valeur est de type `any`, vous pouvez accéder à toutes ses propriétés (qui seront, à leur tour, de type `any`), l'appeler comme une fonction, l'assigner à (ou depuis) une valeur de tous types, ainsi que tout ce qui pourrait être légal :
 
 ```ts twoslash
 let obj: any = { x: 0 };
-// None of the following lines of code will throw compiler errors.
-// Using `any` disables all further type checking, and it is assumed 
-// you know the environment better than TypeScript.
+// Aucune de ces lignes ne va émettre d'erreur.
+// Utiliser `any` désactive toute vérification de types, et TypeScript supposera
+// que vous connaissez l'environnement mieux que lui.
 obj.foo();
 obj();
 obj.bar = 100;
@@ -53,73 +53,73 @@ obj = "hello";
 const n: number = obj;
 ```
 
-The `any` type is useful when you don't want to write out a long type just to convince TypeScript that a particular line of code is okay.
+Le type `any` est utile quand vous ne voulez pas écrire une très grande ligne de typage rien que pour convaincre TypeScript qu'une certaine ligne de code est valide.
 
 ### `noImplicitAny`
 
-When you don't specify a type, and TypeScript can't infer it from context, the compiler will typically default to `any`.
+Si vous ne précisez pas de type, et TypeScript ne peut pas l'inférer du contexte, le compilateur va adopter le type `any`.
 
-You usually want to avoid this, though, because `any` isn't type-checked.
-Use the compiler flag [`noImplicitAny`](/tsconfig#noImplicitAny) to flag any implicit `any` as an error.
+Vous voudrez peut-être l'éviter, cependant, parce qu'il n'y a aucune vérification de types sur `any`.
+Utilisez l'option [`noImplicitAny`](/tsconfig#noImplicitAny) pour relever toutes ces situations en tant qu'erreurs.
 
-## Type Annotations on Variables
+## Annotations de Types sur des Variables
 
-When you declare a variable using `const`, `var`, or `let`, you can optionally add a type annotation to explicitly specify the type of the variable:
+Quand vous déclarez une variable avec `const`, `var`, ou `let`, vous pouvez optionnellement ajouter une annotation de type pour préciser explicitement le type de la variable :
 
 ```ts twoslash
 let myName: string = "Alice";
-//        ^^^^^^^^ Type annotation
+//        ^^^^^^^^ Annotation de type
 ```
 
-> TypeScript doesn't use "types on the left"-style declarations like `int x = 0;`
-> Type annotations will always go _after_ the thing being typed.
+> TypeScript n'utilise pas de déclarations du style "types vers la gauche", comme `int x = 0;`
+> Les annotations de types iront toujours _après_ la variable qui est typée.
 
-In most cases, though, this isn't needed.
-Wherever possible, TypeScript tries to automatically _infer_ the types in your code.
-For example, the type of a variable is inferred based on the type of its initializer:
+Par contre, la plupart des cas, cela n'est pas nécessaire.
+Dès que possible, TypeScript essaiera d'_inférer_ automatiquement les types de votre code.
+Par exemple, le type d'une variable est inféré en fonction du type de son initialiseur :
 
 ```ts twoslash
-// No type annotation needed -- 'myName' inferred as type 'string'
+// Pas d'annotation nécessaire -- inférer 'myName' montre que la variable est de type 'string'
 let myName = "Alice";
 ```
 
-For the most part you don't need to explicitly learn the rules of inference.
-If you're starting out, try using fewer type annotations than you think - you might be surprised how few you need for TypeScript to fully understand what's going on.
+La plupart du temps, vous n'aurez pas besoin d'apprendre les règles d'inférence.
+Si vous débutez avec TypeScript, essayez d'utiliser moins d'annotations que vous pensez nécessaire - vous verrez que TypeScript saura comprendre vos intentions bien plus souvent que vous ne le pensez.
 
-## Functions
+## Fonctions
 
-Functions are the primary means of passing data around in JavaScript.
-TypeScript allows you to specify the types of both the input and output values of functions.
+Les fonctions sont les moyens principaux de transfert de données en JavaScript.
+TypeScript vous permet d'annoter précisément les types de données en entrée et en sortie de ces fonctions.
 
-### Parameter Type Annotations
+### Annotations de Types de Paramètres
 
-When you declare a function, you can add type annotations after each parameter to declare what types of parameters the function accepts.
-Parameter type annotations go after the parameter name:
+Quand vous déclarez une fonction, vous pouvez ajouter des annotations de types après chaque paramètre pour déclarer quel(s) type(s) la fonction accepte.
+Les annotations de types de paramètres iront après le nom des paramètres :
 
 ```ts twoslash
-// Parameter type annotation
+// Annotation de type de paramètre
 function greet(name: string) {
   //                 ^^^^^^^^
-  console.log("Hello, " + name.toUpperCase() + "!!");
+  console.log("Bonjour, " + name.toUpperCase() + " !!");
 }
 ```
 
-When a parameter has a type annotation, arguments to that function will be checked:
+Dès qu'un paramètre est annoté, les arguments de cette fonction seront vérifiés :
 
 ```ts twoslash
 // @errors: 2345
 declare function greet(name: string): void;
 // ---cut---
-// Would be a runtime error if executed!
+// Ceci provoquera une erreur à l'exécution
 greet(42);
 ```
 
-> Even if you don't have type annotations on your parameters, TypeScript will still check that you passed the right number of arguments.
+> Même si vous n'avez pas d'annotation sur vos paramètres, TypeScript vérifiera également que vous passez le nombre correct d'arguments lors de l'appel de la fonction.
 
-### Return Type Annotations
+### Annotations de Type de Retour
 
-You can also add return type annotations.
-Return type annotations appear after the parameter list:
+Vous pouvez également ajouter des annotations de types de retour.
+Ces annotations apparaissent après les listes de paramètres :
 
 ```ts twoslash
 function getFavoriteNumber(): number {
@@ -128,97 +128,97 @@ function getFavoriteNumber(): number {
 }
 ```
 
-Much like variable type annotations, you usually don't need a return type annotation because TypeScript will infer the function's return type based on its `return` statements.
-The type annotation in the above example doesn't change anything.
-Some codebases will explicitly specify a return type for documentation purposes, to prevent accidental changes, or just for personal preference.
+Tout comme les annotations de variables, vous n'avez généralement pas besoin d'en préciser tout le temps, parce que TypeScript inférera les types de retour d'une fonction en se basant sur les valeurs retournées.
+Dans l'exemple ci-dessus, le `: number` ne changera rien.
+Certaines bases de code précisent explicitement le type de retour à des fins de documentation, pour éviter les changements accidentels, ou simplement par préférence personnelle.
 
-### Anonymous Functions
+### Fonctions anonymes
 
-Anonymous functions are a little bit different from function declarations.
-When a function appears in a place where TypeScript can determine how it's going to be called, the parameters of that function are automatically given types.
+Les fonctions anonymes sont légèrement différentes des déclarations de fonctions.
+Quand une fonction apparaît à un endroit où TypeScript peut déterminer comment elle sera appelée, les paramètres de cette fonction sont automatiquement typés.
 
-Here's an example:
+Voici un exemple :
 
 ```ts twoslash
 // @errors: 2551
-// No type annotations here, but TypeScript can spot the bug
+// Pas d'annotations, mais TypeScript sera capable de repérer les bugs
 const names = ["Alice", "Bob", "Eve"];
 
-// Contextual typing for function
+// Typage contextuel pour des fonctions
 names.forEach(function (s) {
   console.log(s.toUppercase());
 });
 
-// Contextual typing also applies to arrow functions
+// Le typage contextuel peut aussi s'appliquer aux fonctions fléchées
 names.forEach((s) => {
   console.log(s.toUppercase());
 });
 ```
 
-Even though the parameter `s` didn't have a type annotation, TypeScript used the types of the `forEach` function, along with the inferred type of the array, to determine the type `s` will have.
+Même si `s` n'a pas d'annotation de type, TypeScript a utilisé le type de la fonction `forEach`, ainsi que le type inféré du tableau (qui est, donc, `string[]`), pour déterminer le type de `s`.
 
-This process is called _contextual typing_ because the _context_ that the function occurred within informs what type it should have.
+Ce procédé s'appelle _typage contextuel_ car le _contexte_ de cette fonction a permis de préciser quel type le paramètre doit avoir.
 
-Similar to the inference rules, you don't need to explicitly learn how this happens, but understanding that it _does_ happen can help you notice when type annotations aren't needed.
-Later, we'll see more examples of how the context that a value occurs in can affect its type.
+De la même façon que les règles de l'inférence, vous n'avez pas besoin d'apprendre _exactement_ comment ça se passe, mais comprendre que cela _peut_ se produire peut vous aider à remarquer les endroits où une annotation n'est pas nécessaire.
+Nous verrons plus tard des exemples où le contexte d'une variable peut lui changer son type.
 
-## Object Types
+## Types Objets
 
-Apart from primitives, the most common sort of type you'll encounter is an _object type_.
-This refers to any JavaScript value with properties, which is almost all of them!
-To define an object type, we simply list its properties and their types.
+À part les primitives, le type le plus commun que vous rencontrerez est le _type objet_.
+Il fait référence à toute valeur JavaScript qui peut avoir une propriété, c'est-à-dire _quasiment toutes_ !
+Pour définir un type objet, il suffit de lister ses propriétés et leurs types.
 
-For example, here's a function that takes a point-like object:
+Par exemple, voici une fonction qui prend en paramètre un objet qui ressemble à un point à coordonnées :
 
 ```ts twoslash
-// The parameter's type annotation is an object type
+// L'annotation de type du paramètre est un objet
 function printCoord(pt: { x: number; y: number }) {
   //                      ^^^^^^^^^^^^^^^^^^^^^^^^
-  console.log("The coordinate's x value is " + pt.x);
-  console.log("The coordinate's y value is " + pt.y);
+  console.log("La valeur x de la coordonnée est " + pt.x);
+  console.log("La valeur y de la coordonnée est " + pt.y);
 }
 printCoord({ x: 3, y: 7 });
 ```
 
-Here, we annotated the parameter with a type with two properties - `x` and `y` - which are both of type `number`.
-You can use `,` or `;` to separate the properties, and the last separator is optional either way.
+Ici, nous avons annoté un paramètre avec un type à deux propriétés - `x` et `y` - qui sont toutes les deux de type `number`.
+Vous pouvez utiliser `,` ou `;` pour séparer les propriétés, le dernier séparateur étant optionnel.
 
-The type part of each property is also optional.
-If you don't specify a type, it will be assumed to be `any`.
+Il n'est également pas nécessaire de préciser le type d'une propriété.
+Dans ce cas, TypeScript supposera que la propriété en question est de type `any`.
 
-### Optional Properties
+### Propriétés facultatives
 
-Object types can also specify that some or all of their properties are _optional_.
-To do this, add a `?` after the property name:
+Les types objet peuvent aussi préciser que certaines ou toutes leurs propriétés sont _facultatives_.
+Pour ce faire, vous devrez ajouter un `?` après le nom de propriété :
 
 ```ts twoslash
 function printName(obj: { first: string; last?: string }) {
   // ...
 }
-// Both OK
+// Les deux sont OK
 printName({ first: "Bob" });
 printName({ first: "Alice", last: "Alisson" });
 ```
 
-In JavaScript, if you access a property that doesn't exist, you'll get the value `undefined` rather than a runtime error.
-Because of this, when you _read_ from an optional property, you'll have to check for `undefined` before using it.
+En JavaScript, accéder à une propriété qui n'existe pas retourne `undefined` au lieu d'une erreur.
+De ce fait, quand vous _lisez_ une propriété facultative, vous devrez vérifier qu'elle n'est pas `undefined` avant de continuer :
 
 ```ts twoslash
 // @errors: 2532
 function printName(obj: { first: string; last?: string }) {
-  // Error - might crash if 'obj.last' wasn't provided!
+  // Erreur - peut provoquer un crash si `obj.last` est undefined !
   console.log(obj.last.toUpperCase());
   if (obj.last !== undefined) {
     // OK
     console.log(obj.last.toUpperCase());
   }
 
-  // A safe alternative using modern JavaScript syntax:
+  // Une alternative plus sûre avec du JavaScript moderne :
   console.log(obj.last?.toUpperCase());
 }
 ```
 
-## Union Types
+## Types Union
 
 TypeScript's type system allows you to build new types out of existing ones using a large variety of operators.
 Now that we know how to write a few types, it's time to start _combining_ them in interesting ways.
