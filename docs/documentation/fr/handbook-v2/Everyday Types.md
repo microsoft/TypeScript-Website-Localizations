@@ -606,21 +606,21 @@ Dans l'exemple ci-dessus, `req.method` est inféré comme étant un `string`, pa
 
 Il y a deux façons de corriger ce problème.
 
-1. You can change the inference by adding a type assertion in either location:
+1. Vous pouvez ajouter une assertion à deux endroits :
 
    ```ts twoslash
    declare function handleRequest(url: string, method: "GET" | "POST"): void;
    // ---cut---
-   // Change 1:
+   // 1er endroit :
    const req = { url: "https://example.com", method: "GET" as "GET" };
-   // Change 2
+   // 2ème endroit
    handleRequest(req.url, req.method as "GET");
    ```
 
-   Change 1 means "I intend for `req.method` to always have the _literal type_ `"GET"`", preventing the possible assignment of `"GUESS"` to that field after.
-   Change 2 means "I know for other reasons that `req.method` has the value `"GET"`".
+   Le premier changement signifie "Je veux que `req.method` ait toujours le type littéral `"GET"`", empêchant tout changement de cette valeur vers `"GUESS"` plus tard.
+   Le deuxième changement signifie "Je sais que, pour certaines raisons, `req.method` est égal à `"GET"`".
 
-2. You can use `as const` to convert the entire object to be type literals:
+2. Vous pouvez utiliser `as const` pour convertir l'objet entier en types littéraux :
 
    ```ts twoslash
    declare function handleRequest(url: string, method: "GET" | "POST"): void;
@@ -629,86 +629,85 @@ Il y a deux façons de corriger ce problème.
    handleRequest(req.url, req.method);
    ```
 
-The `as const` suffix acts like `const` but for the type system, ensuring that all properties are assigned the literal type instead of a more general version like `string` or `number`.
+Le suffixe `as const` vaut la même chose que `const` mais pour le système de types, garantissant que toutes les propriétés aient un type littéral, au lieu d'un type plus général comme `string` ou `number`.
 
-## `null` and `undefined`
+## `null` et `undefined`
 
-JavaScript has two primitive values used to signal absent or uninitialized value: `null` and `undefined`.
+JavaScript a deux valeurs primitives pour signaler une valeur inexistante ou non-initialisée : `null` et `undefined`.
 
-TypeScript has two corresponding _types_ by the same names. How these types behave depends on whether you have the [`strictNullChecks`](/tsconfig#strictNullChecks) option on.
+TypeScript a deux _types_ des mêmes noms. Le comportement de ces types dépend de l'activation de l'option [`strictNullChecks`](/tsconfig#strictNullChecks).
 
-### `strictNullChecks` off
+### `strictNullChecks` désactivé
 
-With [`strictNullChecks`](/tsconfig#strictNullChecks) _off_, values that might be `null` or `undefined` can still be accessed normally, and the values `null` and `undefined` can be assigned to a property of any type.
-This is similar to how languages without null checks (e.g. C#, Java) behave.
-The lack of checking for these values tends to be a major source of bugs; we always recommend people turn [`strictNullChecks`](/tsconfig#strictNullChecks) on if it's practical to do so in their codebase.
+Si [`strictNullChecks`](/tsconfig#strictNullChecks) est _désactivé_, les valeurs qui pourraient être `null` ou `undefined` peuvent toujours être lues, et les valeurs `null` et `undefined` peuvent être assignées à des variables de tous types.
+Ce comportement est similaire aux langages qui n'ont pas de vérification pour `null` ou `undefined` (ex. Java ou C#).
+Ne pas vérifier pour ces deux valeurs tend à être une source importante de bugs ; nous recommandons toujours d'activer [`strictNullChecks`](/tsconfig#strictNullChecks) s'il est pratique de le faire.
 
-### `strictNullChecks` on
+### `strictNullChecks` activé
 
-With [`strictNullChecks`](/tsconfig#strictNullChecks) _on_, when a value is `null` or `undefined`, you will need to test for those values before using methods or properties on that value.
-Just like checking for `undefined` before using an optional property, we can use _narrowing_ to check for values that might be `null`:
+Si [`strictNullChecks`](/tsconfig#strictNullChecks) est _activé_, quand une valeur est `null` ou `undefined`, vous devrez vous assurer que ces deux types sont écartés avant d'utiliser des méthodes ou des propriétés sous ces valeurs.
+Tout comme `undefined` doit être éliminé avant d'utiliser une propriété facultative, vous pouvez vous servir du _rétrécissement_ pour éliminer les valeurs qui pourraient être `null` :
 
 ```ts twoslash
 function doSomething(x: string | null) {
   if (x === null) {
-    // do nothing
+    // ne rien faire
   } else {
-    console.log("Hello, " + x.toUpperCase());
+    console.log("Bonjour, " + x.toUpperCase());
   }
 }
 ```
 
-### Non-null Assertion Operator (Postfix `!`)
+### Opérateur d'assertion non-nulle (Suffixe `!`)
 
-TypeScript also has a special syntax for removing `null` and `undefined` from a type without doing any explicit checking.
-Writing `!` after any expression is effectively a type assertion that the value isn't `null` or `undefined`:
+TypeScript possède une syntaxe spéciale pour éliminer `null` et `undefined` d'un type sans passer par un rétrécissement.
+Écrire `!` après toute expression est effectivement une assertion que cette valeur n'est ni `null`, ni `undefined` :
 
 ```ts twoslash
 function liveDangerously(x?: number | null) {
-  // No error
+  // Pas d'erreur
   console.log(x!.toFixed());
 }
 ```
 
-Just like other type assertions, this doesn't change the runtime behavior of your code, so it's important to only use `!` when you know that the value _can't_ be `null` or `undefined`.
+Tout comme les autres assertions, votre code ne sera pas changé à l'exécution, donc n'utilisez l'opérateur `!` que si vous savez que votre type _ne peut jamais_ être `null` ni `undefined`.
 
 ## Enums
 
-Enums are a feature added to JavaScript by TypeScript which allows for describing a value which could be one of a set of possible named constants. Unlike most TypeScript features, this is _not_ a type-level addition to JavaScript but something added to the language and runtime. Because of this, it's a feature which you should know exists, but maybe hold off on using unless you are sure. You can read more about enums in the [Enum reference page](/docs/handbook/enums.html).
+Les Enums sont une fonctionnalité ajoutée à JavaScript par TypeScript. Elle permet de décrire une valeur qui pourrait faire partie d'un ensemble de constantes nommées. Au contraire de la plupart des fonctionnalités TypeScript, elle n'est _pas_ un ajout au niveau du système de types, mais bel et bien un ajout qui sera reflété à l'exécution. De ce fait, vous devriez savoir que cette possibilité existe, mais vous ne devriez vous en servir que si vous en avez la certitude. Vous pouvez lire plus dans la [page de référence d'Enums](/fr/docs/handbook/enums.html).
 
-## Less Common Primitives
+## Primitives moins fréquentes
 
-It's worth mentioning the rest of the primitives in JavaScript which are represented in the type system.
-Though we will not go into depth here.
+Il serait intéressant de mentionner le reste des primitives JavaScript représentées dans le système de types, bien que nous ne rentrerons pas dans leurs détails.
 
 #### `bigint`
 
-From ES2020 onwards, there is a primitive in JavaScript used for very large integers, `BigInt`:
+À partir d'ES2020, il existe une primitive JavaScript pour les très grands entiers, `BigInt`:
 
 ```ts twoslash
 // @target: es2020
 
-// Creating a bigint via the BigInt function
+// Création d'un BigInt via la fonction
 const oneHundred: bigint = BigInt(100);
 
-// Creating a BigInt via the literal syntax
+// Création d'un BigInt via la syntaxe littérale
 const anotherHundred: bigint = 100n;
 ```
 
-You can learn more about BigInt in [the TypeScript 3.2 release notes](/docs/handbook/release-notes/typescript-3-2.html#bigint).
+Vous pouvez en apprendre plus sur les BigInt dans les [notes de changement de TypeScript 3.2](/docs/handbook/release-notes/typescript-3-2.html#bigint).
 
 #### `symbol`
 
-There is a primitive in JavaScript used to create a globally unique reference via the function `Symbol()`:
+Il existe une primitive en JavaScript qui sert à créer des références uniques via la fonction `Symbol()`:
 
 ```ts twoslash
 // @errors: 2367
-const firstName = Symbol("name");
-const secondName = Symbol("name");
+const firstName = Symbol("nom");
+const secondName = Symbol("nom");
 
 if (firstName === secondName) {
-  // Can't ever happen
+  // Ne peut jamais se produire
 }
 ```
 
-You can learn more about them in [Symbols reference page](/docs/handbook/symbols.html).
+Vous pouvez en savoir plus dans la [page de référence des Symbols](/fr/docs/handbook/symbols.html).
