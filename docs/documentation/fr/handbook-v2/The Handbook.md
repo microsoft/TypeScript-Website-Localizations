@@ -1,8 +1,8 @@
 ---
-title: The TypeScript Handbook
+title: Le Manuel TypeScript
 layout: docs
-permalink: /docs/handbook/intro.html
-oneline: Your first step to learn TypeScript
+permalink: /fr/docs/handbook/intro.html
+oneline: Votre première étape vers l'apprentissage de TypeScript
 handbook: "true"
 ---
 
