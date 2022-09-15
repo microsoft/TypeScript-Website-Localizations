@@ -334,7 +334,7 @@ printCoord({ x: 100, y: 100 });
 ```
 
 타입 별칭을 사용하면 단지 객체 타입뿐이 아닌 모든 타입에 대하여 새로운 이름을 부여할 수 있습니다.
-예를 들어, 아래와 같이 유니언 타입에 대하여 타입 별칭을 부여할 수도 있습니다. 
+예를 들어, 아래와 같이 유니언 타입에 대하여 타입 별칭을 부여할 수도 있습니다.
 
 ```ts twoslash
 type ID = number | string;
@@ -347,7 +347,7 @@ type ID = number | string;
 ```ts twoslash
 declare function getInput(): string;
 declare function sanitize(str: string): string;
-// ---중간 생략---
+// ---cut---
 type UserInputSanitizedString = string;
 
 function sanitizeInput(str: string): UserInputSanitizedString {
@@ -404,7 +404,7 @@ interface Animal {
 interface Bear extends Animal {
   honey: boolean
 }<br/>
-const bear = getBear() 
+const bear = getBear()
 bear.name
 bear.honey
         </pre></code>
@@ -415,8 +415,8 @@ bear.honey
 type Animal = {
   name: string
 }<br/>
-type Bear = Animal & { 
-  honey: Boolean 
+type Bear = Animal & {
+  honey: Boolean
 }<br/>
 const bear = getBear();
 bear.name;
@@ -500,7 +500,7 @@ const x = "hello" as number;
 ```ts twoslash
 declare const expr: any;
 type T = { a: 1; b: 2; c: 3 };
-// ---중간 생략---
+// ---cut---
 const a = (expr as any) as T;
 ```
 
@@ -583,7 +583,7 @@ configure("automatic");
 
 ```ts twoslash
 declare const someCondition: boolean;
-// ---중간 생략---
+// ---cut---
 const obj = { counter: 0 };
 if (someCondition) {
   obj.counter = 1;
@@ -591,7 +591,7 @@ if (someCondition) {
 ```
 
 기존에 값이 `0`이었던 필드에 `1`을 대입하였을 때 TypeScript는 이를 오류로 간주하지 않습니다.
-이를 달리 말하면 `obj.counter`는 반드시 `number` 타입을 가져야 하며, `0` 리터럴 타입을 가질 수 없다는 의미입니다. 왜냐하면 타입은 _읽기_ 및 _쓰기_ 두 동작을 결정하는 데에 사용되기 때문입니다. 
+이를 달리 말하면 `obj.counter`는 반드시 `number` 타입을 가져야 하며, `0` 리터럴 타입을 가질 수 없다는 의미입니다. 왜냐하면 타입은 _읽기_ 및 _쓰기_ 두 동작을 결정하는 데에 사용되기 때문입니다.
 
 동일한 사항이 문자열에도 적용됩니다.
 
@@ -618,14 +618,14 @@ handleRequest(req.url, req.method);
    handleRequest(req.url, req.method as "GET");
    ```
 
-   수정 1은 "`req.method`가 항상 _리터럴 타입_ `"GET"`이기를 의도하며, 이에 따라 해당 필드에 `"GUESS"`와 같은 값이 대입되는 경우를 미연에 방지하겠다"는 것을 의미합니다.
+   수정 1은 `req.method`가 항상 _리터럴 타입_ `"GET"`이기를 의도하며, 이에 따라 해당 필드에 `"GUESS"`와 같은 값이 대입되는 경우를 미연에 방지하겠다"는 것을 의미합니다.
    수정 2는 "무슨 이유인지, `req.method`가 `"GET"`을 값으로 가진다는 사실을 알고 있다"는 것을 의미합니다.
 
 2. `as const`를 사용하여 객체 전체를 리터럴 타입으로 변환할 수 있습니다.
 
    ```ts twoslash
    declare function handleRequest(url: string, method: "GET" | "POST"): void;
-   // ---중간 생략---
+   // ---cut---
    const req = { url: "https://example.com", method: "GET" } as const;
    handleRequest(req.url, req.method);
    ```
@@ -674,16 +674,16 @@ function liveDangerously(x?: number | undefined) {
 
 다른 타입 단언과 마찬가지로 이 구문은 코드의 런타임 동작을 변화시키지 않으므로, `!` 연산자는 반드시 해당 값이 `null` 또는 `undefined`가 _아닌_ 경우에만 사용해야 합니다.
 
-### 열거형
+## 열거형
 
 열거형은 TypeScript가 JavaScript에 추가하는 기능으로, 어떤 값이 _이름이 있는 상수 집합_에 속한 값 중 하나일 수 있도록 제한하는 기능입니다. 대부분의 TypeScript 기능과 달리, 이 기능은 JavaScript에 타입 수준이 _아닌_, 언어와 런타임 수준에 추가되는 기능입니다. 따라서 열거형이 무엇인지는 알 필요가 있겠으나, 그 사용법을 명확하게 파악하지 않았다면 실제 사용은 보류하는 것이 좋습니다. 열거형에 대한 자세한 내용을 확인하려면 [열거형 문서](https://www.typescriptlang.org/ko/docs/handbook/enums.html)를 읽어보시기 바랍니다.
 
-### 자주 사용되지 않는 원시형 타입
+## 자주 사용되지 않는 원시형 타입
 
 앞서 언급한 타입 이외에, 타입 시스템에 존재하는 나머지 JavaScript 원시 타입들을 다루도록 하겠습니다.
 물론, 여기서 깊게 다루지는 않을 것입니다.
 
-##### `bigint`
+#### `bigint`
 
 ES2020 이후, 아주 큰 정수를 다루기 위한 원시 타입이 JavaScript에 추가되었습니다. 바로 `bigint`입니다.
 
@@ -699,7 +699,7 @@ const anotherHundred: bigint = 100n;
 
 BigInt에 대한 더 자세한 내용은 [TypeScript 3.2 릴리즈 노트]((/docs/handbook/release-notes/typescript-3-2.html#bigint))에서 확인할 수 있습니다.
 
-##### `symbol`
+#### `symbol`
 
 `symbol`은 전역적으로 고유한 참조값을 생성하는 데에 사용할 수 있는 원시 타입이며, `Symbol()` 함수를 통하여 생성할 수 있습니다.
 
