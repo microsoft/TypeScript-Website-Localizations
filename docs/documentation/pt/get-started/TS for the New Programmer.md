@@ -1,5 +1,5 @@
 ---
-title: TypeScript para o Novo Programados
+title: TypeScript para o Novo Programador
 short: TS para o Novo Programador
 layout: docs
 permalink: /pt/docs/handbook/typescript-from-scratch.html
