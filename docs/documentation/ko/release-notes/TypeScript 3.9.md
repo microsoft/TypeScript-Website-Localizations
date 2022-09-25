@@ -5,18 +5,7 @@ permalink: /ko/docs/handbook/release-notes/typescript-3-9.html
 oneline: TypeScript 3.9 Release Notes
 ---
 
-* [추론과 `Promise.all` 개선](#improvements-in-inference-and-promiseall)
-* [속도 향상](#speed-improvements)
-* [`// @ts-expect-error` 주석](#-ts-expect-error-comments)
-* [조건문에서 호출되지 않은 함수 체크](#uncalled-function-checks-in-conditional-expressions)
-* [에디터 개선](#editor-improvements)
-    * [JavaScript에서 CommonJS 자동-Imports](#commonjs-auto-imports-in-javascript)
-    * [코드 작업 개행 유지](#code-actions-preserve-newlines)
-    * [누락된 반환문 빠른 수정](#quick-fixes-for-missing-return-expressions)
-    * [`tsconfig.json` 파일 "솔루션 스타일" 지원](#support-for-solution-style-tsconfigjson-files)
-* [주요 변경 사항](#주요-변경-사항-breaking-changes)
-
-## <span id="improvements-in-inference-and-promiseall" /> 추론과 `Promise.all` 개선 (Improvements in Inference and `Promise.all`)
+## 추론과 `Promise.all` 개선 (Improvements in Inference and `Promise.all`)
 
 최신 버전의 TypeScript(약 3.7)는 `Promise.all` 및 `Promise.race`와 같은 함수 선언이 업데이트되었습니다.
 안타깝게도, 특히 `null` 또는 `undefined`와 값을 혼합할 때, 약간의 회귀가 발생했습니다.
@@ -54,7 +43,7 @@ async function visitZoo(lionExhibit: Promise<Lion>, sealExhibit: Promise<Seal | 
 결과적으로, 더 확실해질 때까지 메인 브랜치에서 이 기능을 빼기로 결정했습니다.
 이 기능에 대해 더 많은 실험을 할 예정이지만, 이번 릴리스에서는 제공하지 않습니다.
 
-## <span id="speed-improvements" /> 속도 향상 (Speed Improvements)
+## 속도 향상 (Speed Improvements)
 
 TypeScript 3.9는 많은 새로운 속도 향상 기능이 포함되어 있습니다.
 우리 팀은 material-ui 및 styled-components와 같은 패키지를 사용할 때 편집 / 컴파일 속도가 매우 열악한 것을 확인한 후 성능에 중점을 두었습니다.
@@ -76,7 +65,7 @@ TypeScript 3.9는 [컴파일러 및 언어 서비스가 파일 조회를 캐싱 
 
 여전히 개선의 여지가 있지만, 이 작업이 모든 사람들에게 보다 빠른 경험으로 이어지기를 바랍니다!
 
-## <span id="-ts-expect-error-comments" /> `// @ts-expect-error` 주석 (`// @ts-expect-error` Comments)
+## `// @ts-expect-error` 주석 (`// @ts-expect-error` Comments)
 
 TypeScript로 라이브러리를 작성하고 퍼블릭 API의 일부분으로 `doStuff`라는 함수를 export 한다고 상상해보세요.
 TypeScript 사용자가 타입-체크 오류를 받을 수 있도록 `doStuff` 함수의 타입은 두 개의 `string`을 갖는다고 선언하지만, 또한 JavaScript 사용자에게 유용한 오류를 제공하기 위해 런타임 오류 체크를 합니다 (개발 빌드 시에만 가능).
@@ -154,7 +143,7 @@ Unused '@ts-expect-error' directive.
 * TypeScript의 두 가지 버전 사이에서 업그레이드하는 중이고, 한 버전에서는 코드 오류가 발생하지만 나머지 버전에서는 그렇지 않은 경우
 * 솔직히 어떤 옵션 더 나은지 결정할 시간이 없는 경우
 
-## <span id="uncalled-function-checks-in-conditional-expressions" /> 조건문에서 호출되지 않은 함수 체크 (Uncalled Function Checks in Conditional Expressions)
+## 조건문에서 호출되지 않은 함수 체크 (Uncalled Function Checks in Conditional Expressions)
 
 TypeScript 3.7에서 함수 호출을 잊어버렸을 경우 오류를 보고하기 위해 *호출되지 않은 함수 체크*를 도입했습니다.
 
@@ -198,7 +187,7 @@ function getAllFiles(startFileName: string) {
 
 https://github.com/microsoft/TypeScript/issues/36048
 
-## <span id="editor-improvements" /> 에디터 개선 (Editor Improvements)
+## 에디터 개선 (Editor Improvements)
 
 TypeScript 컴파일러는 주요 에디터의 TypeScript 작성 경험뿐만 아니라, Visual Studio 계열 에디터의 JavaScript 작성 경험에도 영향을 줍니다.
 에디터에서 새로운 TypeScript/JavaScript 기능을 사용하는 것은 에디터에 따라 다르겠지만
@@ -207,7 +196,7 @@ TypeScript 컴파일러는 주요 에디터의 TypeScript 작성 경험뿐만 �
 * Visual Studio 2017/2019 에는 [SDK 설치 프로그램] 과 [MSBuild 설치](https://www.nuget.org/packages/Microsoft.TypeScript.MSBuild)가 있습니다.
 * Sublime Text 3은 [다른 버전의 TypeScript 선택]((https://github.com/microsoft/TypeScript-Sublime-Plugin#note-using-different-versions-of-typescript))을 지원합니다.
 
-### <span id="commonjs-auto-imports-in-javascript" /> JavaScript에서 CommonJS 자동-import (CommonJS Auto-Imports in JavaScript)
+### JavaScript에서 CommonJS 자동-import (CommonJS Auto-Imports in JavaScript)
 
 CommonJS 모듈을 사용하는 JavaScript 파일에서 자동-import 기능이 크게 개선되었습니다.
 
@@ -230,7 +219,7 @@ const fs = require("fs");
 
 이 변경에 대한 자세한 내용은, [해당 pull request](https://github.com/microsoft/TypeScript/pull/37027)를 참고하세요.
 
-### <span id="code-actions-preserve-newlines" /> 코드 작업 개행 유지 (Code Actions Preserve Newlines)
+### 코드 작업 개행 유지 (Code Actions Preserve Newlines)
 
 TypeScript의 리팩터링과 빠른 수정은 종종 개행을 유지하는데 큰 역할을 하지는 않았습니다.
 기본적인 예로 다음 코드를 보겠습니다.
@@ -291,7 +280,7 @@ function printSquares() {
 
 [이 pull request](https://github.com/microsoft/TypeScript/pull/36688)에서 구현에 대해 더 자세히 볼 수 있습니다.
 
-### <span id="quick-fixes-for-missing-return-expressions" /> 누락된 반환 문 빠른 수정 (Quick Fixes for Missing Return Expressions)
+### 누락된 반환 문 빠른 수정 (Quick Fixes for Missing Return Expressions)
 
 특히 화살표 함수에 중괄호를 추가할 때, 함수의 마지막 문의 값을 반환하는 것을 잊는 경우가 있습니다.
 
@@ -307,7 +296,7 @@ let f2 = () => { 42 }
 
 ![TypeScript는 `return` 문을 추가하거나 중괄호를 제거하여 식이 반환되지 않는 오류를 수정합니다.](https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2020/04/missingReturnValue-3-9.gif)
 
-### <span id="support-for-solution-style-tsconfigjson-files" /> `tsconfig.json` 파일 "솔루션 스타일" 지원 (Support for "Solution Style" `tsconfig.json` Files)
+### `tsconfig.json` 파일 "솔루션 스타일" 지원 (Support for "Solution Style" `tsconfig.json` Files)
 
 에디터는 파일이 어떤 설정 파일에 속하는지 파악하여 적절한 옵션을 적용할 수 있도록 하고 현재 "프로젝트"에 어떤 다른 파일이 포함되어 있는지 파악해야 합니다.
 기본적으로, TypeScript의 언어 서버가 영향을 주는 에디터는 각 상위 디렉터리를 따라 올라가 `tsconfig.json`을 찾음으로써 이 작업을 수행합니다.

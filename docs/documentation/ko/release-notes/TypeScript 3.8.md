@@ -5,15 +5,7 @@ permalink: /ko/docs/handbook/release-notes/typescript-3-8.html
 oneline: TypeScript 3.8 Release Notes
 ---
 
-* [타입-전용 Imports 와 Exports](#type-only-imports-exports)
-* [ECMAScript 비공개 필드](#ecmascript-private-fields)
-* [`export * as ns` 구문](#export-star-as-namespace-syntax)
-* [최상위-레벨 `await`](#top-level-await)
-* [JSDoc 프로퍼티 지정자](#jsdoc-modifiers)
-* [리눅스에서 더 나은 디렉터리 감시와 `watchOptions`](#better-directory-watching)
-* ["빠르고 느슨한" 증분 검사](#assume-direct-dependencies)
-
-## <span id="type-only-imports-exports" /> 타입-전용 Imports 와 Exports (Type-Only Imports and Exports)
+## 타입-전용 Imports 와 Exports (Type-Only Imports and Exports)
 
 이 기능은 대부분의 사용자에겐 생각할 필요가 없을 수도 있지만; `--isolatedModules`, TypeScript의 `transpileModule` API, 또는 Babel에서 문제가 발생하면 이 기능과 관련이 있을 수 있습니다.
 
@@ -68,7 +60,7 @@ import type Foo, { Bar, Baz } from "some-module";
 
 이 기능에 대한 더 자세한 정보는, `import type`선언이 사용될수 있는 범위를 확대하는 [pull request](https://github.com/microsoft/TypeScript/pull/35200), 와 [관련된 변경 사항](https://github.com/microsoft/TypeScript/pull/36092/)에서 찾을 수 있습니다.
 
-## <span id="ecmascript-private-fields" /> ECMAScript 비공개 필드 (ECMAScript Private Fields)
+## ECMAScript 비공개 필드 (ECMAScript Private Fields)
 
 TypeScript 3.8 은 ECMAScript의 [stage-3 클래스 필드 제안](https://github.com/tc39/proposal-class-fields/)의 비공개 필드를 지원합니다.
 
@@ -269,7 +261,7 @@ TypeScript의 `private`프로퍼티 선언에서는, 사용자는 여전히 상�
 반면에, `#` 비공개 필드는 `WeakMap`을 이용해 다운 레벨 되기 때문에 사용 속도가 느려질 수 있습니다.
 어떤 런타임은 `#` 비공개 필드 구현을 최적화 하고, 더 빠른 `WeakMap`을 구현하고 싶을 수 있지만, 모든 런타임에서 그렇지 않을 수 있습니다.
 
-## <span id="export-star-as-namespace-syntax" /> `export * as ns` 구문 (`export * as ns` Syntax)
+## `export * as ns` 구문 (`export * as ns` Syntax)
 
 다른 모듈의 모든 멤버를 하나의 멤버로 내보내는 단일 진입점을 갖는 것은 종종 일반적입니다.
 
@@ -287,7 +279,7 @@ export * as utilities from "./utilities.js";
 이것은 JavaScript에 대한 훌륭한 삶의 질의 향상이며, TypeScript 3.8은 이 구문을 지원합니다.
 모듈 대상이 `es2020` 이전인 경우, TypeScript는 첫 번째 줄의 코드 스니펫을 따라서 무언가를 출력할 것입니다.
 
-## <span id="top-level-await" /> 최상위-레벨 `await` (Top-Level `await`)
+## 최상위-레벨 `await` (Top-Level `await`)
 
 TypeScript 3.8은 "최상위-레벨 `await`"이라는 편리한 ECMAScript 기능을 지원합니다.
 
@@ -325,13 +317,13 @@ export {};
 
 구현에 관한 더 자세한 정보는 [the original pull request을 확인하세요](https://github.com/microsoft/TypeScript/pull/35813).
 
-## <span id="es2020-for-target-and-module" /> `es2020`용 `target`과 `module`   (`es2020` for `target` and `module`)
+## `es2020`용 `target`과 `module`   (`es2020` for `target` and `module`)
 
 TypeScript 3.8은 `es2020`을 `module`과 `target` 옵션으로 지원합니다.
 이를 통해 선택적 체이닝 (optional chaining), nullish 병합 (nullish coalescing), `export * as ns` 그리고 동적인 `import(...)` 구문과 같은 ECMAScript 2020 기능이 유지됩니다.
 또한 `bigint` 리터럴이 `esnext` 아래에 안정적인 `target`을 갖는 것을 의미합니다.
 
-## <span id="jsdoc-modifiers" /> JSDoc 프로퍼티 지정자 (JSDoc Property Modifiers)
+## JSDoc 프로퍼티 지정자 (JSDoc Property Modifiers)
 
 TypeScript 3.8는 `allowJs` 플래그를 사용하여 JavaScript 파일을 지원하고 `checkJs` 옵션이나 `// @ts-check` 주석을 `.js` 파일 맨 위에 추가하여 JavaScript 파일의 *타입-검사*를 지원합니다.
 
@@ -387,7 +379,7 @@ new Foo().stuff++;
 // 'stuff'는 읽기-전용(read-only) 프로퍼티이기 때문에 할당할 수 없습니다.
 ```
 
-## <span id="better-directory-watching" /> 리눅스에서 더 나은 디렉터리 감시와 `watchOptions`
+## 리눅스에서 더 나은 디렉터리 감시와 `watchOptions`
 
 TypeScript 3.8에서는 `node_modules`의 변경사항을 효율적으로 수집하는데 중요한 새로운 디렉터리 감시 전략을 제공합니다.
 
@@ -441,7 +433,7 @@ TypeScript의 이전 버전은 폴더에 디렉터리 왓쳐를 *즉시* 설치�
 
 이 변경의 더 자세한 내용은 Github으로 이동하여 [the pull request](https://github.com/microsoft/TypeScript/pull/35615)를 읽어보세요.
 
-## <span id="assume-direct-dependencies" /> "빠르고 느슨한" 증분 검사
+## "빠르고 느슨한" 증분 검사
 
 TypeScript 3.8은 새로운 컴파일러 옵션 `assumeChangesOnlyAffectDirectDepencies`을 제공합니다.
 이 옵션이 활성화되면, TypeScript는 정말로 영향을 받은 파일들은 재검사/재빌드하지않고, 변경된 파일뿐만 아니라 직접 import 한 파일만 재검사/재빌드 합니다.
