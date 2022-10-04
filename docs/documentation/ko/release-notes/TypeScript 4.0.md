@@ -340,7 +340,7 @@ class Square {
 
 ## 단축 할당 연산자 (Short-Circuiting Assignment Operators)
 
-JavaScript와 많은 언어는 _복합 할당 (compound assignment)_ 연산자라고 불리는 연산자 집합을 지원합니다.
+JavaScript와 많은 언어는 *복합 할당 (compound assignment)* 연산자라고 불리는 연산자 집합을 지원합니다.
 복합 할당 연산자는 두 개의 인수에 연산자를 적용한 다음 결과를 왼쪽에 할당합니다.
 이전에 아래와 같은 것을 본 적이 있을 것입니다:
 
@@ -371,7 +371,7 @@ a <<= b;
 ```
 
 JavaScript의 많은 연산자에 위와 같은 할당 연산자가 있습니다!
-그러나 최근까지도 논리 _and_ 연산자 (`&&`), 논리 _or_ 연산자 (`||`) 및 null과 같은 것을 병합하는 연산자 (nullish coalescing) (`??`)의 세 가지 주목할만한 예외가 있었습니다.
+그러나 최근까지도 논리 *and* 연산자 (`&&`), 논리 *or* 연산자 (`||`) 및 null과 같은 것을 병합하는 연산자 (nullish coalescing) (`??`)의 세 가지 주목할만한 예외가 있었습니다.
 
 이것이 TypeScript 4.0이 새로운 할당 연산자`&&=`,`||=`및`??=`를 추가하는 새로운 ECMAScript 기능을 지원하는 이유입니다.
 
@@ -402,7 +402,7 @@ let values: string[];
 (values ??= []).push("hello");
 ```
 
-(보세요, 우리가 작성한 _모든_ 코드가 자랑스러운 것은 아닙니다...)
+(보세요, 우리가 작성한 *모든* 코드가 자랑스러운 것은 아닙니다...)
 
 드물지만 부수 효과(side-effects)가 있는 getter 또는 setter를 사용하는 경우 이러한 연산자가 필요한 경우에만 할당을 수행한다는 점에 유의할 필요가 있습니다.
 그런 의미에서 연산자의 오른쪽이 "단축 (short-circuited)"될 뿐만 아니라 할당 자체도 마찬가지입니다.
@@ -419,7 +419,7 @@ if (!obj.prop) {
 }
 ```
 
-[다음 예시를 실행해보세요](https://www.typescriptlang.org/play?ts=Nightly#code/MYewdgzgLgBCBGArGBeGBvAsAKBnmA5gKawAOATiKQBQCUGO+TMokIANkQHTsgHUAiYlChFyMABYBDCDHIBXMANoBuHI2Z4A9FpgAlIqXZTgRGAFsiAQg2byJeeTAwAslKgSu5KWAAmIczoYAB4YAAYuAFY1XHwAXwAaWxgIEhgKKmoAfQA3KXYALhh4EA4iH3osWM1WCDKePkFUkTFJGTlFZRimOJw4mJwAM0VgKABLcBhB0qCqplr63n4BcjGCCVgIMd8zIjz2eXciXy7k+yhHZygFIhje7BwFzgblgBUJMdlwM3yAdykAJ6yBSQGAeMzNUTkU7YBCILgZUioOBIBGUJEAHwxUxmqnU2Ce3CWgnenzgYDMACo6pZxpYIJSOqDwSkSFCYXC0VQYFi0NMQHQVEA) 예시를 통해 _항상_ 할당을 수행하는 것과 어떻게 다른지 확인해보세요.
+[다음 예시를 실행해보세요](https://www.typescriptlang.org/play?ts=Nightly#code/MYewdgzgLgBCBGArGBeGBvAsAKBnmA5gKawAOATiKQBQCUGO+TMokIANkQHTsgHUAiYlChFyMABYBDCDHIBXMANoBuHI2Z4A9FpgAlIqXZTgRGAFsiAQg2byJeeTAwAslKgSu5KWAAmIczoYAB4YAAYuAFY1XHwAXwAaWxgIEhgKKmoAfQA3KXYALhh4EA4iH3osWM1WCDKePkFUkTFJGTlFZRimOJw4mJwAM0VgKABLcBhB0qCqplr63n4BcjGCCVgIMd8zIjz2eXciXy7k+yhHZygFIhje7BwFzgblgBUJMdlwM3yAdykAJ6yBSQGAeMzNUTkU7YBCILgZUioOBIBGUJEAHwxUxmqnU2Ce3CWgnenzgYDMACo6pZxpYIJSOqDwSkSFCYXC0VQYFi0NMQHQVEA) 예시를 통해 *항상* 할당을 수행하는 것과 어떻게 다른지 확인해보세요.
 
 ```ts
 const obj = {
@@ -468,7 +468,7 @@ try {
 }
 ```
 
-The above has some undesirable behavior if we're trying to prevent _more_ errors from happening in our error-handling code!
+The above has some undesirable behavior if we're trying to prevent *more* errors from happening in our error-handling code!
 Because these variables have the type `any` by default, they lack any type-safety which could have errored on invalid operations.
 
 That's why TypeScript 4.0 now lets you specify the type of `catch` clause variables as `unknown` instead.
@@ -497,7 +497,7 @@ For more details you can [peek at the changes for this feature](https://github.c
 
 ## Custom JSX Factories
 
-When using JSX, a [_fragment_](https://reactjs.org/docs/fragments.html) is a type of JSX element that allows us to return multiple child elements.
+When using JSX, a [*fragment*](https://reactjs.org/docs/fragments.html) is a type of JSX element that allows us to return multiple child elements.
 When we first implemented fragments in TypeScript, we didn't have a great idea about how other libraries would utilize them.
 Nowadays most other libraries that encourage using JSX and support fragments have a similar API shape.
 
@@ -597,7 +597,7 @@ That's why TypeScript 4.0 brings a new refactoring to convert common patterns to
 
 ![Converting `a && a.b.c && a.b.c.d.e.f()` to `a?.b.c?.d.e.f.()`](https://devblogs.microsoft.com/typescript/wp-content/uploads/sites/11/2020/08/convertToOptionalChain-4-0.gif)
 
-Keep in mind that while this refactoring doesn't _perfectly_ capture the same behavior due to subtleties with truthiness/falsiness in JavaScript, we believe it should capture the intent for most use-cases, especially when TypeScript has more precise knowledge of your types.
+Keep in mind that while this refactoring doesn't *perfectly* capture the same behavior due to subtleties with truthiness/falsiness in JavaScript, we believe it should capture the intent for most use-cases, especially when TypeScript has more precise knowledge of your types.
 
 For more details, [check out the pull request for this feature](https://github.com/microsoft/TypeScript/pull/39135).
 
@@ -615,14 +615,14 @@ See [the pull request](https://github.com/microsoft/TypeScript/pull/38523) for m
 ### Partial Semantic Mode at Startup
 
 We've heard a lot from users suffering from long startup times, especially on bigger projects.
-The culprit is usually a process called _program construction_.
+The culprit is usually a process called *program construction*.
 This is the process of starting with an initial set of root files, parsing them, finding their dependencies, parsing those dependencies, finding those dependencies' dependencies, and so on.
 The bigger your project is, the longer you'll have to wait before you can get basic editor operations like go-to-definition or quick info.
 
-That's why we've been working on a new mode for editors to provide a _partial_ experience until the full language service experience has loaded up.
+That's why we've been working on a new mode for editors to provide a *partial* experience until the full language service experience has loaded up.
 The core idea is that editors can run a lightweight partial server that only looks at the current files that the editor has open.
 
-It's hard to say precisely what sorts of improvements you'll see, but anecdotally, it used to take anywhere between _20 seconds to a minute_ before TypeScript would become fully responsive on the Visual Studio Code codebase.
+It's hard to say precisely what sorts of improvements you'll see, but anecdotally, it used to take anywhere between *20 seconds to a minute* before TypeScript would become fully responsive on the Visual Studio Code codebase.
 In contrast, **our new partial semantic mode seems to bring that delay down to just a few seconds**.
 As an example, in the following video, you can see two side-by-side editors with TypeScript 3.9 running on the left and TypeScript 4.0 running on the right.
 
@@ -630,7 +630,7 @@ As an example, in the following video, you can see two side-by-side editors with
 </video>
 
 When restarting both editors on a particularly large codebase, the one with TypeScript 3.9 can't provide completions or quick info at all.
-On the other hand, the editor with TypeScript 4.0 can _immediately_ give us a rich experience in the current file we're editing, despite loading the full project in the background.
+On the other hand, the editor with TypeScript 4.0 can *immediately* give us a rich experience in the current file we're editing, despite loading the full project in the background.
 
 Currently the only editor that supports this mode is [Visual Studio Code](http://code.visualstudio.com/) which has some UX improvements coming up in [Visual Studio Code Insiders](http://code.visualstudio.com/insiders).
 We recognize that this experience may still have room for polish in UX and functionality, and we have [a list of improvements](https://github.com/microsoft/TypeScript/issues/39035) in mind.
@@ -644,9 +644,9 @@ Auto-import is a fantastic feature that makes coding a lot easier; however, ever
 One specific issue that we heard from users was that auto-imports didn't work on dependencies that were written in TypeScript - that is, until they wrote at least one explicit import somewhere else in their project.
 
 Why would auto-imports work for `@types` packages, but not for packages that ship their own types?
-It turns out that auto-imports only work on packages your project _already_ includes.
-Because TypeScript has some quirky defaults that automatically add packages in `node_modules/@types` to your project, _those_ packages would be auto-imported.
-On the other hand, other packages were excluded because crawling through all your `node_modules` packages can be _really_ expensive.
+It turns out that auto-imports only work on packages your project *already* includes.
+Because TypeScript has some quirky defaults that automatically add packages in `node_modules/@types` to your project, *those* packages would be auto-imported.
+On the other hand, other packages were excluded because crawling through all your `node_modules` packages can be *really* expensive.
 
 All of this leads to a pretty lousy getting started experience for when you're trying to auto-import something that you've just installed but haven't used yet.
 

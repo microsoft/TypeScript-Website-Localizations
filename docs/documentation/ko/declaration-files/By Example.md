@@ -26,12 +26,12 @@ oneline: "How to create a d.ts file for a module"
 
 ## 프로퍼티를 갖는 객체 (Objects with Properties)
 
-_문서_
+*문서*
 
 > 전역 변수 `myLib`에는 인사말을 만드는 함수 `makeGreeting`와,
 > 지금까지 생성한 인사말의 수를 가리키는 `numberOfGreetings` 프로퍼티가 있습니다.
 
-_코드_
+*코드*
 
 ```ts
 let result = myLib.makeGreeting("hello, world");
@@ -40,7 +40,7 @@ console.log("The computed greeting is:" + result);
 let count = myLib.numberOfGreetings;
 ```
 
-_선언_
+*선언*
 
 점 표기법으로 접근하는 타입이나 값을 설명하기 위해 `declare namespace`를 사용하세요.
 
@@ -53,11 +53,11 @@ declare namespace myLib {
 
 ## 오버로드된 함수 (Overloaded Functions)
 
-_문서_
+*문서*
 
 `getWidget` 함수는 숫자를 인자로 받아 Widget을 반환하거나, 문자열을 인자로 받아 Widget 배열을 반환합니다.
 
-_코드_
+*코드*
 
 ```ts
 let x: Widget = getWidget(43);
@@ -65,7 +65,7 @@ let x: Widget = getWidget(43);
 let arr: Widget[] = getWidget("all of them");
 ```
 
-_선언_
+*선언*
 
 ```ts
 declare function getWidget(n: number): Widget;
@@ -74,7 +74,7 @@ declare function getWidget(s: string): Widget[];
 
 ## 재사용 가능한 타입 (인터페이스) (Reusable Types (Interfaces))
 
-_문서_
+*문서*
 
 > greeting을 명시할 때, 반드시 `GreetingSettings` 객체를 전달해야 합니다.
 > 이 객체는 다음의 프로퍼티를 갖고 있습니다:
@@ -85,7 +85,7 @@ _문서_
 >
 > 3 - color: 선택적 문자열, 예. '#ff00ff'
 
-_코드_
+*코드*
 
 ```ts
 greet({
@@ -94,7 +94,7 @@ greet({
 });
 ```
 
-_선언_
+*선언*
 
 프로퍼티를 갖는 타입을 정의하기 위해 `interface`를 사용하세요.
 
@@ -110,11 +110,11 @@ declare function greet(setting: GreetingSettings): void;
 
 ## 재사용 가능한 타입 (타입 별칭) (Reusable Types (Type Aliases))
 
-_문서_
+*문서*
 
 > 인사말이 예상되는 어느 곳에나, `string`, `string`을 반환하는 함수, 또는 `Greeter` 인스턴스를 전달할 수 있습니다.
 
-_코드_
+*코드*
 
 ```ts
 function getGreeting() {
@@ -127,7 +127,7 @@ greet(getGreeting);
 greet(new MyGreeter());
 ```
 
-_선언_
+*선언*
 
 타입에 대한 약칭으로 타입 별칭을 사용할 수 있습니다:
 
@@ -139,12 +139,12 @@ declare function greet(g: GreetingLike): void;
 
 ## 타입 구조화하기 (Organizing Types)
 
-_문서_
+*문서*
 
 > `greeter` 객체는 파일에 로그를 작성하거나 경고 창을 띄울 수 있습니다.
 > 로그 옵션을 `.log(...)` 내부에, 경고 창 옵션을 `.alert(...)` 내부에 전달할 수 있습니다.
 
-_코드_
+*코드*
 
 ```ts
 const g = new Greeter("Hello");
@@ -152,7 +152,7 @@ g.log({ verbose: true });
 g.alert({ modal: false, title: "Current Greeting" });
 ```
 
-_선언_
+*선언*
 
 타입을 구조화하기 위해 네임스페이스를 사용하세요.
 
@@ -187,11 +187,11 @@ declare namespace GreetingLib.Options {
 
 ## 클래스 (Classes)
 
-_문서_
+*문서*
 
 > `Greeter` 객체를 인스턴스화해서 greeter를 생성하거나, 이 객체를 상속해서 커스텀 greeter를 생성할 수 있습니다.
 
-_코드_
+*코드*
 
 ```ts
 const myGreeter = new Greeter("hello, world");
@@ -205,7 +205,7 @@ class SpecialGreeter extends Greeter {
 }
 ```
 
-_선언_
+*선언*
 
 클래스 혹은 클래스-같은 객체를 설명하기 위해 `declare class`를 사용하세요.
 클래스는 생성자 뿐만 아니라 프로퍼티와 메서드를 가질 수 있습니다.
@@ -221,17 +221,17 @@ declare class Greeter {
 
 ## 전역 변수 (Global Variables)
 
-_문서_
+*문서*
 
 > 전역 변수 `foo`는 존재하는 위젯의 수를 포함합니다.
 
-_코드_
+*코드*
 
 ```ts
 console.log("Half the number of widgets is " + (foo / 2));
 ```
 
-_선언_
+*선언*
 
 변수를 선언하기 위해 `declare var`를 사용하세요.
 만약 변수가 읽기-전용이라면, `declare const`를 사용하세요.
@@ -244,17 +244,17 @@ declare var foo: number;
 
 ## 전역 함수 (Global Functions)
 
-_문서_
+*문서*
 
 > 사용자에게 인사말을 보여주기 위해 `greet` 함수를 호출할 수 있습니다.
 
-_코드_
+*코드*
 
 ```ts
 greet("hello, world");
 ```
 
-_선언_
+*선언*
 
 함수를 선언하기 위해 `declare function`을 사용하세요.
 

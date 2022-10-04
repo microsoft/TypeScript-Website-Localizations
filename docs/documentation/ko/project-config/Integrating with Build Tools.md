@@ -182,7 +182,7 @@ gulp.task("default", function () {
 npm install -g jspm@beta
 ```
 
-_주의사항: 현재 jspm의 TypeScript 지원은 0.16beta 입니다._
+*주의사항: 현재 jspm의 TypeScript 지원은 0.16beta 입니다.*
 
 자세한 내용: [TypeScriptSamples/jspm](https://github.com/Microsoft/TypeScriptSamples/tree/master/jspm)
 
