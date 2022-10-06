@@ -1,6 +1,6 @@
 ---
-title: TypeScript pour les Développeurs Java/C#
-short: TS pour les Développeurs Java/C#
+title: TypeScript pour les Programmeurs Java/C#
+short: TS pour les Programmeurs Java/C#
 layout: docs
 permalink: /fr/docs/handbook/typescript-in-5-minutes-oop.html
 oneline: Apprenez TypeScript si vous avez de l'expérience avec les langages orientés objet

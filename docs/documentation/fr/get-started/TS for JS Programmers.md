@@ -1,6 +1,6 @@
 ---
-title: TypeScript pour les développeurs JavaScript
-short: TypeScript pour les développeurs JS
+title: TypeScript pour les Programmeurs JavaScript
+short: TypeScript pour les Programmeurs JS
 layout: docs
 permalink: /fr/docs/handbook/typescript-in-5-minutes.html
 oneline: Apprenez comment TypeScript étend JavaScript
