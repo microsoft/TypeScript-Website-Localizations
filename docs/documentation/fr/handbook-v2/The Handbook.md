@@ -51,9 +51,9 @@ Enfin, le Manuel ne couvrira pas comment TypeScript interagit avec les autres ou
 
 Avant de commencer avec les [Bases](/docs/fr/handbook/2/basic-types.html), nous recommandons de commencer par l'une de ces pages d'introduction. Ces introductions ont pour objectif de mettre en lumière les similarités et différences importantes entre votre langage de prédilection et TypeScript, pour clarifier tout malentendu ou confusion.
 
-- [TypeScript pour les nouveaux programmeurs](/docs/fr/handbook/typescript-from-scratch.html)
-- [TypeScript pour les programmeurs JavaScript](/docs/fr/handbook/typescript-in-5-minutes.html)
-- [TypeScript pour les programmeurs Java/C#](/docs/fr/handbook/typescript-in-5-minutes-oop.html)
+- [TypeScript pour les nouveaux programmeurs](/fr/docs/handbook/typescript-from-scratch.html)
+- [TypeScript pour les programmeurs JavaScript](/fr/docs/handbook/typescript-in-5-minutes.html)
+- [TypeScript pour les programmeurs Java/C#](/fr/docs/handbook/typescript-in-5-minutes-oop.html)
 - [TypeScript pour les programmeurs fonctionnels (en anglais)](/docs/handbook/typescript-in-5-minutes-func.html)
 
 Sinon, vous pouvez obtenir une copie en [Epub](/assets/typescript-handbook.epub) ou [PDF](/assets/typescript-handbook.pdf).

@@ -1,7 +1,7 @@
 ---
 title: Modules
 layout: docs
-permalink: /docs/fr/handbook/2/modules.html
+permalink: /fr/docs/handbook/2/modules.html
 oneline: "Comment le JavaScript gère la communication entre les fichiers."
 ---
 
