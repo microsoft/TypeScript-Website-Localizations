@@ -366,7 +366,7 @@ type Size = [number, number];
 let x: Size = [101.1, 999.9];
 ```
 
-`newtype`과 가장 유사한 것은 _태그된 교차 타입(tagged intersection)_ 입니다:
+`newtype`과 가장 유사한 것은 *태그된 교차 타입(tagged intersection)* 입니다:
 
 ```ts
 type FString = string & { __compileTimeOnly: any };
@@ -462,7 +462,7 @@ TypeScript는 일반적으로 인자 타입에 기반하여 호출로부터 타�
 왜냐하면 TypeScript는 구조적이기 때문에, 이름 기반의 시스템만큼 타입 매개 변수를 필요로
 하지 않습니다. 특히 함수를 다형성으로 만들
 필요는 없습니다. 타입 매개변수는 매개변수를 같은 타입으로
-제한하는 것처럼 타입 정보를 _전파하는데만_
+제한하는 것처럼 타입 정보를 *전파하는데만*
 쓰여야 합니다:
 
 ```ts
@@ -534,7 +534,7 @@ function g() { }
 ## `readonly` 와 `const` (`readonly` and `const`)
 
 JavaScript에서, 수정 가능함이 기본이지만,
-_참조_가 수정 불가능함을 선언하기 위해 `const`로 변수를 선언할 수 있습니다.
+*참조*가 수정 불가능함을 선언하기 위해 `const`로 변수를 선언할 수 있습니다.
 참조 대상은 여전히 수정 가능합니다:
 
 ```js

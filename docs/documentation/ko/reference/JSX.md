@@ -65,7 +65,7 @@ JSX를 통한 타입 검사를 이해하기 위해서는 먼저 내장 요소와
 
 1. React에서 내장 요소는 문자열 (`React.createElement("div")`)로 방출되지만 생성한 구성 요소는 (`React.createElement(MyComponent)`)가 아닙니다.
 2. JSX 요소에 전달되는 속성의 타입은 다르게 조회되어야 합니다.
-   내장 요소의 속성은 _내재적으로_ 알려져야 하지만, 컴포넌트는 각자의 속성 집합을 지정하고자 합니다.
+   내장 요소의 속성은 *내재적으로* 알려져야 하지만, 컴포넌트는 각자의 속성 집합을 지정하고자 합니다.
 
 TypeScript는 이를 구분하기 위해 [React와 같은 규칙](http://facebook.github.io/react/docs/jsx-in-depth.html#html-tags-vs.-react-components)을 사용합니다.
 내장 요소는 항상 소문자로 시작하고, 값-기반 요소는 항상 대문자로 시작합니다.
@@ -74,7 +74,7 @@ TypeScript는 이를 구분하기 위해 [React와 같은 규칙](http://faceboo
 
 내장 요소는 특별한 인터페이스인 `JSX.IntrinsicElements`에서 조회됩니다.
 기본적으로 인터페이스가 지정되지 않으면 그대로 진행되어 내장 함수는 타입 검사가 이루어지지 않을 것입니다.
-그러나 이 인터페이스가 _있는_ 경우 내장 함수의 이름이 `JSX.IntrinsicElements` 인터페이스에 있는 프로퍼티로 조회됩니다.
+그러나 이 인터페이스가 *있는* 경우 내장 함수의 이름이 `JSX.IntrinsicElements` 인터페이스에 있는 프로퍼티로 조회됩니다.
 예를 들어:
 
 ```ts
@@ -166,9 +166,9 @@ function MainButton(prop: SideProps): JSX.Element {
 ### 클래스형 컴포넌트
 
 클래스형 컴포넌트 타입을 정의하는 것도 가능합니다.
-하지만 이를 위해서는 _요소 클래스 타입(element class type)_ 과 _요소 인스턴스 타입(element instance type)_이라는 두 가지 용어를 이해하는 것이 좋습니다.
+하지만 이를 위해서는 *요소 클래스 타입(element class type)* 과 *요소 인스턴스 타입(element instance type)*이라는 두 가지 용어를 이해하는 것이 좋습니다.
 
-`<Expr />`가 주어지면, _요소 클래스 타입_은 `Expr`타입입니다.
+`<Expr />`가 주어지면, *요소 클래스 타입*은 `Expr`타입입니다.
 따라서 위의 예시에서 `MyComponent`가 ES6 클래스인 경우, 해당 클래스의 타입은 클래스의 생성자이고 전역입니다.
 만약 `MyComponent`가 팩토리 함수인 경우, 해당 클래스의 타입은 해당 함수입니다.
 
@@ -230,7 +230,7 @@ function NotAValidFactoryFunction() {
 
 ## 속성 타입 검사
 
-속성 타입 검사를 위해서는 먼저 _요소 속성 타입_을 결정해야 합니다.
+속성 타입 검사를 위해서는 먼저 *요소 속성 타입*을 결정해야 합니다.
 이는 내장 요소와 값-기반 요소에서 약간의 차이가 있습니다.
 
 내장 요소의 경우, 요소 속성 타입은 `JSX.IntrinsicElements` 내 프로퍼티의 타입입니다.
@@ -247,7 +247,7 @@ declare namespace JSX {
 ```
 
 값-기반 요소의 경우, 이는 약간 더 복잡합니다.
-요소 속성 타입은 이전에 결정된 _요소 인스턴스 타입_ 의 프로퍼티 타입으로 결정됩니다.
+요소 속성 타입은 이전에 결정된 *요소 인스턴스 타입* 의 프로퍼티 타입으로 결정됩니다.
 사용할 프로퍼티는 `JSX.ElementAttributesProperty`에 의해 결정됩니다.
 이는 단일 프로퍼티로 선언되어야 합니다.
 이후에는 해당 프로퍼티의 이름을 사용합니다.
@@ -305,8 +305,8 @@ var badProps = {};
 
 ## 자식 타입 검사
 
-TypeScript 2.3부터, TS는 _자식(children)_ 타입 검사를 도입했습니다. _자식_은 자식 _JSXExpressions_이 속성에 삽입하고자 하는 _요소 속성 타입_의 특수 프로퍼티입니다.
-TS가 _props_ 명을 결정하기 위해 `JSX.ElementAttributesProperty`를 사용하는 것과 유사하게, TS는 _자식_ 내의 props명을 결정하기 위하여 `JSX.ElementChildrenAttribute`를 사용합니다.
+TypeScript 2.3부터, TS는 *자식(children)* 타입 검사를 도입했습니다. *자식*은 자식 *JSXExpressions*이 속성에 삽입하고자 하는 *요소 속성 타입*의 특수 프로퍼티입니다.
+TS가 *props* 명을 결정하기 위해 `JSX.ElementAttributesProperty`를 사용하는 것과 유사하게, TS는 *자식* 내의 props명을 결정하기 위하여 `JSX.ElementChildrenAttribute`를 사용합니다.
 `JSX.ElementChildrenAttribute` 는 단일 프로퍼티로 정의되어야만 합니다.
 
 ```ts
@@ -334,7 +334,7 @@ const CustomComp = (props) => <div>{props.children}</div>
 </CustomComp>
 ```
 
-다른 속성과 같이_자식_의 타입도 지정할 수 있습니다. 예를 들어서 [React 타이핑](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)을 사용하는 경우, 이는 기본 타입을 오버라이드 할 것입니다.
+다른 속성과 같이*자식*의 타입도 지정할 수 있습니다. 예를 들어서 [React 타이핑](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react)을 사용하는 경우, 이는 기본 타입을 오버라이드 할 것입니다.
 
 ```ts
 interface PropsType {
