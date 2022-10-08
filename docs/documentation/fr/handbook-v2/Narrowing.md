@@ -14,7 +14,7 @@ function padLeft(padding: number | string, input: string): string {
 ```
 
 Si `padding` est un `number`, la fonction va le traiter comme le nombre d'espaces à insérer avant `input`.
-If `padding` est un `string`, elle doit juste mettre `padding` avant `input`.
+Si `padding` est un `string`, elle doit juste concaténer `padding` avant `input`.
 Essayons d'implémenter la logique d'implémentation de `padLeft` quand elle reçoit un `number` pour `padding`.
 
 ```ts twoslash
