@@ -698,7 +698,7 @@ Vous pouvez en apprendre plus sur les BigInt dans les [notes de changement de Ty
 
 #### `symbol`
 
-Il existe une primitive en JavaScript qui sert à créer des références uniques via la fonction `Symbol()`:
+Il existe une primitive en JavaScript qui sert à créer des références uniques via la fonction `Symbol()` :
 
 ```ts twoslash
 // @errors: 2367
