@@ -7,7 +7,7 @@ translatable: true
 ---
 
 > 이번 섹션은 모듈에 대한 기초적인 지식을 전제로 합니다.
-더 많은 정보는 [모듈](./modules.md)을 보도록 하세요.
+> 더 많은 정보는 [모듈](./modules.md)을 보도록 하세요.
 
 *모듈 해석 (module resolution)* 은 컴파일러가 import가 무엇을 참조하는지 알아내기 위해 사용하는 프로세스입니다.
 `import { a } from "moduleA"`같은 import 문을 생각해보세요;
