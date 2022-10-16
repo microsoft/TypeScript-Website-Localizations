@@ -6,7 +6,7 @@ oneline: 为何要创建 TypeScript
 translatable: true
 ---
 
-TypeScript 是由 MicroSoft公司 创建的一门基于 JavaScript 的语言。这篇文章是关于 JavaScript 是什么、TypeScript 如何扩展 JavaScript 以及 TypeScript 解决了哪些问题的非技术概述。
+TypeScript 是由 MicroSoft 公司创建的一门基于 JavaScript 的语言。这篇文章是关于 JavaScript 是什么，TypeScript 如何扩展 JavaScript 以及 TypeScript 解决了哪些问题的非技术概述。
 
 ## JavaScript 是什么？
 
@@ -107,11 +107,11 @@ console.log("Hello, " + name)
 
 简单来说，我们称这些标注为"类型系统"。因此命名为 _Type_ Script。TypeScript 的口号之一是"可扩展的 JavaScript"，它声明这些额外的类型标注可以帮助你开发更大的项目。这是因为您可以预先验证代码的正确性。这意味着你可以更少关注每一次修改代码是否会对代码其他部分造成影响。
 
-在 90 年代，或许直到 5 ~ 10 年前，在 JavaScript 应用程序中没有类型系统是没问题的，因为当前创建的应用程序无论在大小还是复杂性方面都仅限于网站的前端部分。然而今天，JavaScript 几乎在任何地方都会使用，几乎可以构建在计算机上运行的任何应用。大量移动端和桌面应用程序都在使用 JavaScript 和 Web 技术。
+在 90 年代，或许直到 5-10 年前，在 JavaScript 应用程序中没有类型系统是没问题的，因为当前创建的应用程序无论在大小还是复杂性方面都仅限于网站的前端部分。然而今天，JavaScript 几乎在任何地方都会使用，几乎可以构建在计算机上运行的任何应用。大量移动端和桌面应用程序都在使用 JavaScript 和 Web 技术。
 
 这些项目在创建和理解时都相当复杂，添加类型系统大大降低了对这些应用程序进行修改的复杂性。
 
-## TypeScript能解决什么问题？
+## TypeScript 能解决什么问题？
 
 通常，可以通过编写自动化测试来确保你的代码中没有错误，然后手动验证代码是否按你的预期工作，最后让另一个人验证它是否正确。
 
