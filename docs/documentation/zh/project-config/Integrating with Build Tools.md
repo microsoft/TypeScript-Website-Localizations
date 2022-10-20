@@ -134,13 +134,13 @@ gulp.task("default", function () {
 npm install -g jspm@beta
 ```
 
-注意：目前 jspm 中支持TypeScript版本是 0.16beta
+注意：目前jspm的0.16beta版本支持TypeScript
 
 更多细节: [TypeScriptSamples/jspm](https://github.com/Microsoft/TypeScriptSamples/tree/master/jspm)
 
 ## MSBuild
 
-更新项目文件，包括本地安装`Microsoft.TypeScript.Default.props` (顶部) 和 `Microsoft.TypeScript.targets` (底部):
+更新项目文件，包括本地安装的`Microsoft.TypeScript.Default.props` (顶部) 和 `Microsoft.TypeScript.targets` (底部)文件:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
