@@ -38,8 +38,8 @@ type Stuff =
 
 Quand le type à gauche d'`extends` peut être assigné au type de droite, le résultat sera le type dans la première branche (la branche "vrai"); sinon ce sera le type dans la deuxième branche (la branche "false").
 
-From the examples above, conditional types might not immediately seem useful - we can tell ourselves whether or not `Dog extends Animal` and pick `number` or `string`!
-But the power of conditional types comes from using them with generics.
+Ces exemples ne montrent pas forcément l'intérêt des conditions, vu qu'on peut voir si `Dog extends Animal` et décider entre `number` et `string` de nous-même.
+Cet intérêt se manifeste surtout en utilisant les types génériques.
 
 For example, let's take the following `createLabel` function:
 
