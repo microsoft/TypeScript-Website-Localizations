@@ -41,14 +41,14 @@ Quand le type à gauche d'`extends` peut être assigné au type de droite, le r�
 Ces exemples ne montrent pas forcément l'intérêt des conditions, vu qu'on peut voir si `Dog extends Animal` et décider entre `number` et `string` de nous-même.
 Cet intérêt se manifeste surtout en utilisant les types génériques.
 
-For example, let's take the following `createLabel` function:
+Considérons cette fonction `createLabel` :
 
 ```ts twoslash
 interface IdLabel {
-  id: number /* some fields */;
+  id: number /* + d'autres champs */;
 }
 interface NameLabel {
-  name: string /* other fields */;
+  name: string /* + d'autres champs */;
 }
 
 function createLabel(id: number): IdLabel;
@@ -59,19 +59,19 @@ function createLabel(nameOrId: string | number): IdLabel | NameLabel {
 }
 ```
 
-These overloads for createLabel describe a single JavaScript function that makes a choice based on the types of its inputs. Note a few things:
+Ces surcharges de createLabel décrivent une seule fonction JavaScript qui fait des choix en fonction du type de son entrée. Notez, cependant, quelques problèmes :
 
-1. If a library has to make the same sort of choice over and over throughout its API, this becomes cumbersome.
-2. We have to create three overloads: one for each case when we're _sure_ of the type (one for `string` and one for `number`), and one for the most general case (taking a `string | number`). For every new type `createLabel` can handle, the number of overloads grows exponentially.
+1. Si une librairie doit faire à chaque fois plusieurs choix à travers son API, toutes ces surcharges peuvent vite polluer le code.
+2. Trois surcharges doivent être créées : une pour chaque cas où vous êtes _sûrs et certains_ du type de votre valeur (un cas pour `string`, un pour `number`), et une surcharge plus générale (`string | number`). Pour chaque nouveau type que `createLabel` peut gérer, le nombre de surcharges croît exponentiellement.
 
-Instead, we can encode that logic in a conditional type:
+À la place, nous pouvons décrire cette logique avec un type conditionnel :
 
 ```ts twoslash
 interface IdLabel {
-  id: number /* some fields */;
+  id: number /* + d'autres champs */;
 }
 interface NameLabel {
-  name: string /* other fields */;
+  name: string /* + d'autres champs */;
 }
 // ---cut---
 type NameOrId<T extends number | string> = T extends number
@@ -79,14 +79,14 @@ type NameOrId<T extends number | string> = T extends number
   : NameLabel;
 ```
 
-We can then use that conditional type to simplify our overloads down to a single function with no overloads.
+Nous pouvons ensuite utiliser les types conditionnels pour éliminer les surcharges et simplifier la signature de la fonction.
 
 ```ts twoslash
 interface IdLabel {
-  id: number /* some fields */;
+  id: number /* + d'autres champs */;
 }
 interface NameLabel {
-  name: string /* other fields */;
+  name: string /* + d'autres champs */;
 }
 type NameOrId<T extends number | string> = T extends number
   ? IdLabel
@@ -102,24 +102,24 @@ let a = createLabel("typescript");
 let b = createLabel(2.8);
 //  ^?
 
-let c = createLabel(Math.random() ? "hello" : 42);
+let c = createLabel(Math.random() ? "bonjour" : 42);
 //  ^?
 ```
 
-### Conditional Type Constraints
+### Contraintes de Types Conditionnels
 
-Often, the checks in a conditional type will provide us with some new information.
-Just like with narrowing with type guards can give us a more specific type, the true branch of a conditional type will further constrain generics by the type we check against.
+Les vérifications sur des types conditionnels vont souvent révéler de nouvelles informations.
+Tout comme rétrécir avec des gardes de types peut donner un type plus spécifique, la branche "vrai" du type conditionnel va restreindre le type générique qu'on vérifie avec la contrainte demandée.
 
-For example, let's take the following:
+Prenons cet exemple :
 
 ```ts twoslash
 // @errors: 2536
 type MessageOf<T> = T["message"];
 ```
 
-In this example, TypeScript errors because `T` isn't known to have a property called `message`.
-We could constrain `T`, and TypeScript would no longer complain:
+TypeScript signale une erreur parce que `T` n'aura pas forcément une propriété `message`.
+Il serait possible de contraindre `T`, et TypeScript ne donnera plus d'erreur :
 
 ```ts twoslash
 type MessageOf<T extends { message: unknown }> = T["message"];
@@ -132,8 +132,8 @@ type EmailMessageContents = MessageOf<Email>;
 //   ^?
 ```
 
-However, what if we wanted `MessageOf` to take any type, and default to something like `never` if a `message` property isn't available?
-We can do this by moving the constraint out and introducing a conditional type:
+Mais si on voulait que `MessageOf` prenne tout, mais soit égal à `never` s'il n'y a pas de propriété `message` ?
+Nous pouvons déplacer la contrainte et introduire un type conditionnel :
 
 ```ts twoslash
 type MessageOf<T> = T extends { message: unknown } ? T["message"] : never;
@@ -153,39 +153,39 @@ type DogMessageContents = MessageOf<Dog>;
 //   ^?
 ```
 
-Within the true branch, TypeScript knows that `T` _will_ have a `message` property.
+Dans la branche "vrai", TypeScript sait que `T` _va_ avoir une propriété `message`.
 
-As another example, we could also write a type called `Flatten` that flattens array types to their element types, but leaves them alone otherwise:
+Dans un tout autre exemple, nous pouvons aussi écrire un type `Flatten` qui aplatit les tableaux en récupérant les types de leurs contenus, mais laisse les types tels quels sinon :
 
 ```ts twoslash
 type Flatten<T> = T extends any[] ? T[number] : T;
 
-// Extracts out the element type.
+// Extraction du type des éléments de tableau
 type Str = Flatten<string[]>;
 //   ^?
 
-// Leaves the type alone.
+// Laisse le type tranquille.
 type Num = Flatten<number>;
 //   ^?
 ```
 
-When `Flatten` is given an array type, it uses an indexed access with `number` to fetch out `string[]`'s element type.
-Otherwise, it just returns the type it was given.
+Quand `Flatten` reçoit un type tableau, il utilise un accès indexé avec `number` pour récupérer le type des éléments de `string[]`.
+Sinon, il retourne simplement le type qui lui a été donné.
 
-### Inferring Within Conditional Types
+### Inférence dans les Types Conditionnels
 
-We just found ourselves using conditional types to apply constraints and then extract out types.
-This ends up being such a common operation that conditional types make it easier.
+Nous avons utilisé des types conditionnels pour appliquer des contraintes et extraire des types.
+Cette opération devient très facile avec ces types, qu'elle est devenue très commune.
 
-Conditional types provide us with a way to infer from types we compare against in the true branch using the `infer` keyword.
-For example, we could have inferred the element type in `Flatten` instead of fetching it out "manually" with an indexed access type:
+Les types conditionnels fournissent une façon d'inférer depuis les types qu'on compare avec le mot-clé `infer`.
+Par exemple, on pouvait inférer le type d'éléments de tableaux dans `Flatten` au lieu de le récupérer "manuellement" :
 
 ```ts twoslash
 type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
 ```
 
-Here, we used the `infer` keyword to declaratively introduce a new generic type variable named `Item` instead of specifying how to retrieve the element type of `T` within the true branch.
-This frees us from having to think about how to dig through and probing apart the structure of the types we're interested in.
+Ici, le mot-clé `infer` introduit un nouveau type générique variable appelé `Item`, au lieu de préciser comment récupérer le type élément de `T` dans la branche vrai.
+Cela nous libère de devoir penser à la façon de creuser et obtenir manuellement les types qui nous intéressent.
 
 We can write some useful helper type aliases using the `infer` keyword.
 For example, for simple cases, we can extract the return type out from function types:
