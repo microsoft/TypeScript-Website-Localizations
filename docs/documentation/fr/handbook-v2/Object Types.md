@@ -1,7 +1,7 @@
 ---
 title: Object Types
 layout: docs
-permalink: /docs/handbook/2/objects.html
+permalink: /fr/docs/handbook/2/objects.html
 oneline: "How TypeScript describes the shapes of JavaScript objects."
 ---
 

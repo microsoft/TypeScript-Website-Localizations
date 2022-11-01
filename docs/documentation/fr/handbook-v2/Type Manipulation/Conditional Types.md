@@ -1,7 +1,7 @@
 ---
 title: Types Conditionnels
 layout: docs
-permalink: /docs/fr/handbook/2/conditional-types.html
+permalink: /fr/docs/handbook/2/conditional-types.html
 oneline: "Créer des types qui agissent comme des déclarations if dans le système de typage."
 ---
 
@@ -187,8 +187,8 @@ type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
 Ici, le mot-clé `infer` introduit un nouveau type générique variable appelé `Item`, au lieu de préciser comment récupérer le type élément de `T` dans la branche vrai.
 Cela nous libère de devoir penser à la façon de creuser et obtenir manuellement les types qui nous intéressent.
 
-We can write some useful helper type aliases using the `infer` keyword.
-For example, for simple cases, we can extract the return type out from function types:
+Nous pouvons écrire des types utiles grâce au mot-clé `infer`.
+Pour les cas simples, il est possible d'inférer le type de retour d'une fonction :
 
 ```ts twoslash
 type GetReturnType<Type> = Type extends (...args: never[]) => infer Return
@@ -205,7 +205,7 @@ type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>;
 //   ^?
 ```
 
-When inferring from a type with multiple call signatures (such as the type of an overloaded function), inferences are made from the _last_ signature (which, presumably, is the most permissive catch-all case). It is not possible to perform overload resolution based on a list of argument types.
+Lorsqu'on infère depuis une fonction qui a plusieurs signatures, le résultat est l'inférence de la _dernière_ (et donc probablement la plus laxiste). Il n'est pas possible d'inférer une signature particulière en se basant sur une liste d'arguments de types.
 
 ```ts twoslash
 declare function stringOrNum(x: string): number;
@@ -216,16 +216,16 @@ type T1 = ReturnType<typeof stringOrNum>;
 //   ^?
 ```
 
-## Distributive Conditional Types
+## Types Conditionnels Distributifs
 
-When conditional types act on a generic type, they become _distributive_ when given a union type.
-For example, take the following:
+Quand les types conditionnels opèrent sur un type générique, ils deviennent _distributifs_ quand on utilise également un type union.
+Par exemple :
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
 ```
 
-If we plug a union type into `ToArray`, then the conditional type will be applied to each member of that union.
+Si `ToArray` reçoit un type union, le type conditionnel va s'appliquer sur chaque membre de ce type union.
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
@@ -234,7 +234,7 @@ type StrArrOrNumArr = ToArray<string | number>;
 //   ^?
 ```
 
-What happens here is that `StrArrOrNumArr ` distributes on:
+`StrArrOrNumArr ` se distribue sur :
 
 ```ts twoslash
 type StrArrOrNumArr =
@@ -242,7 +242,7 @@ type StrArrOrNumArr =
   string | number;
 ```
 
-and maps over each member type of the union, to what is effectively:
+et s'applique à chaque membre de l'union, ce qui donne :
 
 ```ts twoslash
 type ToArray<Type> = Type extends any ? Type[] : never;
@@ -251,7 +251,7 @@ type StrArrOrNumArr =
   ToArray<string> | ToArray<number>;
 ```
 
-which leaves us with:
+En suivant la logique de `ToArray` avec `string` et `number`, on finit par obtenir :
 
 ```ts twoslash
 type StrArrOrNumArr =
@@ -259,8 +259,8 @@ type StrArrOrNumArr =
   string[] | number[];
 ```
 
-Typically, distributivity is the desired behavior.
-To avoid that behavior, you can surround each side of the `extends` keyword with square brackets.
+La distributivité est le comportement voulu d'habitude.
+Pour éviter ce comportement, vous pouvez entourer chaque côté du mot-clé `extends` avec des crochets.
 
 ```ts twoslash
 type ToArrayNonDist<Type> = [Type] extends [any] ? Type[] : never;
