@@ -122,27 +122,27 @@ function getUsersOnlineMessage(numUsersOnline: number) {
 }
 ```
 
-En JavaScript, constructs like `if` first "coerce" their conditions to `boolean`s to make sense of them, and then choose their branches depending on whether the result is `true` or `false`.
-Values like
+En JavaScript, les expressions tel que `if` convertissent leurs conditions vers des `boolean`s pour les comprendre, puis choisissent leur branche selon si le résultat est `true` ou `false`.
+Les valeurs
 
 - `0`
 - `NaN`
-- `""` (the empty string)
-- `0n` (the `bigint` version of zero)
+- `""` (chaîne de caractères vide)
+- `0n` (zéro mais en `bigint`)
 - `null`
 - `undefined`
 
-all coerce to `false`, and other values get coerced `true`.
-You can always coerce values to `boolean`s by running them through the `Boolean` function, or by using the shorter double-Boolean negation. (The latter has the advantage that TypeScript infers a narrow literal boolean type `true`, while inferring the first as type `boolean`.)
+sont toutes converties en `false`, et les autres valeurs sont converties en `true`.
+Vous pouvez obtenir des `boolean`s en passant ces valeurs à la fonction `Boolean`, ou grâce à la double négation (TypeScript pourra inférer `true` dans le deuxième cas, tandis qu'il se contentera de `boolean` dans le premier.)
 
 ```ts twoslash
-// both of these result in 'true'
+// les deux renverront 'true'
 Boolean("hello"); // type: boolean, value: true
 !!"world"; // type: true,    value: true
 ```
 
-It's fairly popular to leverage this behavior, especially for guarding against values like `null` or `undefined`.
-As an example, let's try using it for our `printAll` function.
+Ce comportement est utilisé assez souvent, surtout pour se prémunir de valeurs tel que `null` ou `undefined`.
+Essayons de l'appliquer à notre fonction `printAll`.
 
 ```ts twoslash
 function printAll(strs: string | string[] | null) {
@@ -156,21 +156,20 @@ function printAll(strs: string | string[] | null) {
 }
 ```
 
-You'll notice that we've gotten rid of the error above by checking if `strs` is truthy.
-This at least prevents us from dreaded errors when we run our code like:
+Vous remarquerez que nous nous sommes débarrassés de l'erreur ci-dessus en vérifiant si `strs` est _truthy_ (si sa valeur booléenne est `true`).
+Cela nous prémunit d'erreurs fatales tel que :
 
 ```txt
 TypeError: null is not iterable
 ```
 
-Keep in mind though that truthiness checking on primitives can often be error prone.
-As an example, consider a different attempt at writing `printAll`
+Souvenez-vous cependant que vérifier des primitives peut souvent mal se passer.
+Considérez ce deuxième essai d'implémentation de `printAll` :
 
 ```ts twoslash {class: "do-not-do-this"}
 function printAll(strs: string | string[] | null) {
   // !!!!!!!!!!!!!!!!
-  //  DON'T DO THIS!
-  //   KEEP READING
+  //  Ne faites pas ça
   // !!!!!!!!!!!!!!!!
   if (strs) {
     if (typeof strs === "object") {
@@ -184,13 +183,12 @@ function printAll(strs: string | string[] | null) {
 }
 ```
 
-We wrapped the entire body of the function in a truthy check, but this has a subtle downside: we may no longer be handling the empty string case correctly.
+Nous avons entouré tout le corps de la fonction dans une vérification de valeur _truthy_, mais cette approche possède un défaut subtil : on ne gère plus le cas de la chaîne de caractères vide correctement. Les développeurs moins expérimentés avec JavaScript pourraient tomber dans ce piège.
 
-TypeScript doesn't hurt us here at all, but this is behavior worth noting if you're less familiar with JavaScript.
-TypeScript can often help you catch bugs early on, but if you choose to do _nothing_ with a value, there's only so much that it can do without being overly prescriptive.
-If you want, you can make sure you handle situations like these with a linter.
+TypeScript est souvent capable de repérer les bugs existants, mais si vous décidez de ne _rien_ faire avec une valeur, il ne peut pas non plus pallier à vos oublis sans être trop strict.
+Un linter, cependant, peut signaler ces cas de figure.
 
-One last word on narrowing by truthiness is that Boolean negations with `!` filter out from negated branches.
+Une dernière remarque sur le filtrage par `Boolean`, c'est que le système de typage s'adaptera dans la branche appropriée et omettra les types `falsy` (qui ne sont, donc, pas `truthy`) de ses prédictions.
 
 ```ts twoslash
 function multiplyAll(
@@ -205,15 +203,15 @@ function multiplyAll(
 }
 ```
 
-## Equality narrowing
+## Rétrécissement par égalités
 
-TypeScript also uses `switch` statements and equality checks like `===`, `!==`, `==`, and `!=` to narrow types.
-For example:
+TypeScript utilise également les déclarations `switch` ainsi que les vérifications d'égalités, comme `===`, `!==`, `==`, et `!=` pour rétrécir les types.
+Par exemple :
 
 ```ts twoslash
 function example(x: string | number, y: string | boolean) {
   if (x === y) {
-    // We can now call any 'string' method on 'x' or 'y'.
+    // On peut appeler toutes les méthodes de 'string' sur x ou y.
     x.toUpperCase();
     // ^?
     y.toLowerCase();
@@ -227,10 +225,10 @@ function example(x: string | number, y: string | boolean) {
 }
 ```
 
-When we checked that `x` and `y` are both equal in the above example, TypeScript knew their types also had to be equal.
-Since `string` is the only common type that both `x` and `y` could take on, TypeScript knows that `x` and `y` must be a `string` in the first branch.
+Quand on a vérifié que `x` et `y` sont égaux, TypeScript a su que leurs types devaient aussi être égaux.
+Vu que `string` est le seul type que `x` et `y` peuvent avoir, TypeScript sait que `x` et `y` doivent être des `string` dans la première branche.
 
-Checking against specific literal values (as opposed to variables) works also.
+Accomplir des vérifications contre des valeurs (et non pas des variables) fonctionne également.
 In our section about truthiness narrowing, we wrote a `printAll` function which was error-prone because it accidentally didn't handle empty strings properly.
 Instead we could have done a specific check to block out `null`s, and TypeScript still correctly removes `null` from the type of `strs`.
 
