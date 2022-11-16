@@ -10,7 +10,7 @@ translatable: true
 > TypeScript 1.5 버전부터 용어가 변경되었습니다.
 > "Internal modules" 은 "네임스페이스" 로 변경되었습니다.
 > "External modules" 은 "모듈" 로 변경되었습니다. 이는 [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)의 용어와 통일시키기 위함입니다.
-(`module X {` 는 현재 선호되는 `namespace X {` 와 동일합니다.)
+> (`module X {` 는 현재 선호되는 `namespace X {` 와 동일합니다.)
 
 이 게시물에서는 TypeScript에서 네임스페이스(구 "internal modules")를 사용하여 코드를 구성하는 다양한 방법을 간략하게 설명합니다.
 위에서 설명했듯이, "internal modules" 은 "네임스페이스" 로 변경되었습니다.
