@@ -229,8 +229,8 @@ Quand on a vérifié que `x` et `y` sont égaux, TypeScript a su que leurs types
 Vu que `string` est le seul type que `x` et `y` peuvent avoir, TypeScript sait que `x` et `y` doivent être des `string` dans la première branche.
 
 Accomplir des vérifications contre des valeurs (et non pas des variables) fonctionne également.
-In our section about truthiness narrowing, we wrote a `printAll` function which was error-prone because it accidentally didn't handle empty strings properly.
-Instead we could have done a specific check to block out `null`s, and TypeScript still correctly removes `null` from the type of `strs`.
+Dans la section sur le rétrécissement par _truthiness_, la fonction `printAll` ne gérait pas les strings vides.
+Une vérification simple pour éliminer les `null`s aurait suffi pour que TypeScript soit plus précis sur le type de `strs`.
 
 ```ts twoslash
 function printAll(strs: string | string[] | null) {
@@ -248,9 +248,8 @@ function printAll(strs: string | string[] | null) {
 }
 ```
 
-JavaScript's looser equality checks with `==` and `!=` also get narrowed correctly.
-If you're unfamiliar, checking whether something `== null` actually not only checks whether it is specifically the value `null` - it also checks whether it's potentially `undefined`.
-The same applies to `== undefined`: it checks whether a value is either `null` or `undefined`.
+Les vérifications d'égalité moins strictes de JavaScript, tel que `==` et `!=`, sont rétrécies correctement.
+Si vous n'êtes pas familier, vérifier si quelque chose `== null` vérifie aussi si elle `== undefined`. De même, si quelque chose `== undefined`, JavaScript vérifiera aussi si elle `== null`.
 
 ```ts twoslash
 interface Container {
