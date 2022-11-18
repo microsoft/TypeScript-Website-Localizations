@@ -1,7 +1,7 @@
 ---
 title: Generics
 layout: docs
-permalink: /docs/handbook/2/generics.html
+permalink: /fr/docs/handbook/2/generics.html
 oneline: Types which take parameters
 ---
 

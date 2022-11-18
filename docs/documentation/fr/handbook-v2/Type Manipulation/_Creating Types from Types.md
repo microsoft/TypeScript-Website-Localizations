@@ -1,7 +1,7 @@
 ---
 title: Creating Types from Types
 layout: docs
-permalink: /docs/handbook/2/types-from-types.html
+permalink: /fr/docs/handbook/2/types-from-types.html
 oneline: "An overview of the ways in which you can create more types from existing types."
 ---
 

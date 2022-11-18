@@ -1,7 +1,7 @@
 ---
 title: Typeof Type Operator
 layout: docs
-permalink: /docs/handbook/2/typeof-types.html
+permalink: /fr/docs/handbook/2/typeof-types.html
 oneline: "Using the typeof operator in type contexts."
 ---
 

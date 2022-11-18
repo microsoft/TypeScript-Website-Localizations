@@ -1,7 +1,7 @@
 ---
 title: Keyof Type Operator
 layout: docs
-permalink: /docs/handbook/2/keyof-types.html
+permalink: /fr/docs/handbook/2/keyof-types.html
 oneline: "Using the keyof operator in type contexts."
 ---
 

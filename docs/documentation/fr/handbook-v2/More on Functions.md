@@ -1,7 +1,7 @@
 ---
 title: More on Functions
 layout: docs
-permalink: /docs/handbook/2/functions.html
+permalink: /fr/docs/handbook/2/functions.html
 oneline: "Learn about how Functions work in TypeScript."
 ---
 
