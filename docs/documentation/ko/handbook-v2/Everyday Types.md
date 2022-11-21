@@ -108,7 +108,7 @@ function greet(name: string) {
 ```ts twoslash
 // @errors: 2345
 declare function greet(name: string): void;
-// ---셍략---
+// ---생략---
 // 만약 실행되면 런타임 오류가 발생하게 됩니다!
 greet(42);
 ```
