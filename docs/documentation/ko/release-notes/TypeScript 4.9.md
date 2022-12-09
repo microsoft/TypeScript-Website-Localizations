@@ -388,22 +388,21 @@ We expect TypeScript will expand this functionality to more keywords [such as `a
 
 [This feature was implemented](https://github.com/microsoft/TypeScript/pull/51227) thanks to [Oleksandr Tarasiuk](https://github.com/a-tarasyuk).
 
-## Performance Improvements
+## 성능 개선
 
-TypeScript has a few small, but notable, performance improvements.
+TypeScript에는 몇 가지 작지만 주목할 만한 성능 개선이 있습니다.
 
-First, TypeScript's `forEachChild` function has been rewritten to use a function table lookup instead of a `switch` statement across all syntax nodes.
-`forEachChild` is a workhorse for traversing syntax nodes in the compiler, and is used heavily in the binding stage of our compiler, along with parts of the language service.
-The refactoring of `forEachChild` yielded up to a 20% reduction of time spent in our binding phase and across language service operations.
+첫째, 모든 구문 노드에서 `switch` 문 대신 함수 테이블 조회를 사용하도록 TypeScript의 `forEachChild` 함수가 리팩터링되었습니다.
+`forEachChild`는 컴파일러에서 구문 노드를 순회하기 위한 작업 도구이며 언어 서비스의 일부와 함께 컴파일러의 바인딩 단계에서 많이 사용됩니다. `forEachChild` 리팩터링은 바인딩 단계와 언어 서비스 작업 전반에 소요되는 시간을 최대 20% 단축했습니다.
 
-Once we discovered this performance win for `forEachChild`, we tried it out on `visitEachChild`, a function we use for transforming nodes in the compiler and language service.
-The same refactoring yielded up to a 3% reduction in time spent in generating project output.
+`forEachChild`에 대한 성능 향상을 확인한 후 컴파일러 및 언어 서비스에서 노드를 변환하는 데 사용하는 함수인 `visitEachChild`에서 리팩터링을 시도했습니다.
+동일한 리팩터링으로 프로젝트 결과를 생성하는 데 소요되는 시간이 최대 3% 감소했습니다.
 
-The initial exploration in `forEachChild` was [inspired by a blog post](https://artemis.sh/2022/08/07/emulating-calculators-fast-in-js.html) by [Artemis Everfree](https://artemis.sh/).
-While we have some reason to believe the root cause of our speed-up might have more to do with function size/complexity than the issues described in the blog post, we're grateful that we were able to learn from the experience and try out a relatively quick refactoring that made TypeScript faster.
+`forEachChild`의 초기 탐색은 [Artemis Everfree](https://artemis.sh/)의 [블로그 게시물에서 영감](https://artemis.sh/2022/08/07/emulating-calculators-fast-in-js.html)을 받았습니다.
+속도 향상의 근본 원인이 블로그 게시물에 설명된 문제보다 기능 크기/복잡성과 더 관련이 있다고 믿을만한 이유가 있지만 경험을 통해 배우고 TypeScript를 더 빠르게 만든 상대적으로 빠른 리팩토링을 시험해 볼 수 있었던 것에 감사드립니다.
 
-Finally, the way TypeScript preserves the information about a type in the true branch of a conditional type has been optimized.
-In a type like
+마지막으로 TypeScript가 조건부 유형의 실제 분기에서 타입에 대한 정보를 보존하는 방식이 최적화되었습니다.
+다음과 같은 타입에서
 
 ```ts
 interface Zoo<T extends Animal> {
@@ -413,18 +412,18 @@ interface Zoo<T extends Animal> {
 type MakeZoo<A> = A extends Animal ? Zoo<A> : never;
 ```
 
-TypeScript has to "remember" that `A` must also be an `Animal` when checking if `Zoo<A>` is valid.
-This is basically done by creating a special type that used to hold the intersection of `A` with `Animal`;
-however, TypeScript previously did this eagerly which isn't always necessary.
-Furthermore, some faulty code in our type-checker prevented these special types from being simplified.
-TypeScript now defers intersecting these types until it's necessary.
-For codebases with heavy use of conditional types, you might witness significant speed-ups with TypeScript, but in our performance testing suite, we saw a more modest 3% reduction in type-checking time.
+TypeScript는 `Zoo<A>`가 유효한지 확인할 때 `A`도 `Animal`이어야 한다는 것을 "기억"해야 합니다.
+기본적으로 `A`와 `Animal`의 교차점을 유지하는 데 사용되는 특수 타입을 생성하여 수행됩니다.
+그러나 TypeScript는 이전에 이 작업을 열심히 수행했으며 항상 필요한 것은 아닙니다.
+또한 타입 검사기의 일부 잘못된 코드로 인해 이러한 특수 타입이 단순화되지 않았습니다.
+TypeScript는 이제 필요할 때까지 이러한 타입의 교차를 연기합니다.
+조건부 타입을 많이 사용하는 코드베이스의 경우 TypeScript를 사용하여 상당한 속도 향상을 목격할 수 있지만 성능 테스트 제품군에서는 유형 검사 시간이 3% 더 완만하게 감소했습니다.
 
-You can read up more on these optimizations on their respective pull requests:
+각각의 풀 리퀘스트에서 더 자세히 알아볼 수 있습니다.
 
-* [`forEachChild` as a jump-table](https://github.com/microsoft/TypeScript/pull/50225)
-* [`visitEachChild` as a jump-table](https://github.com/microsoft/TypeScript/pull/50266)
-* [Optimize substitition types](https://github.com/microsoft/TypeScript/pull/50397)
+* [`forEachChild` 점프 테이블](https://github.com/microsoft/TypeScript/pull/50225)
+* [`visitEachChild` 점프 테이블](https://github.com/microsoft/TypeScript/pull/50266)
+* [대체 타입 최적화](https://github.com/microsoft/TypeScript/pull/50397)
 
 ## Correctness Fixes and Breaking Changes
 
