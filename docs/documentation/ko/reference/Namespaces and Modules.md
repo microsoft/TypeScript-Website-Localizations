@@ -12,7 +12,7 @@ translatable: true
 ES 모듈에 대한 자세한 내용은 [모듈](./modules.md) 문서를 참고하세요.
 TypeScript 네임스페이스에 대한 자세한 내용은 [네임스페이스](./namespaces.md) 문서를 참고하세요.
 
-참고: _매우_ 오래된 버전의 TypeScript 네임스페이스는 이전의 JavaScript 모듈 시스템인 '내부 모듈'이라고 불렸습니다.
+참고: *매우* 오래된 버전의 TypeScript 네임스페이스는 이전의 JavaScript 모듈 시스템인 '내부 모듈'이라고 불렸습니다.
 
 # 모듈 사용하기 (Using Modules)
 

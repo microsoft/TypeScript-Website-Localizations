@@ -45,7 +45,7 @@ translatable: true
 
 You can read more about this in [the release notes](/docs/handbook/release-notes/typescript-3-8.html#better-directory-watching-on-linux-and-watchoptions).
 
-## 환경 변수 `TSC_WATCHFILE`을 사용하여 파일 감시 설정 (Configuring file watching using environment variable `TSC_WATCHFILE`)
+## 환경 변수 `TSC*WATCHFILE`을 사용하여 파일 감시 설정 (Configuring file watching using environment variable `TSC*WATCHFILE`)
 
 <!-- prettier-ignore -->
 옵션                                            | 설명
@@ -55,11 +55,11 @@ You can read more about this in [the release notes](/docs/handbook/release-notes
 `UseFsEvents`                                  | 파일 시스템 이벤트를 사용하는 `fs.watch`를 사용하여 파일 변경/생성/삭제에 대한 알림을 받습니다. (`fs.watch`는 OS마다 다르게 작동할 수 있습니다.) 예를 들어. 리눅스는 watcher 수에 제한이 있으며 `fs.watch`를 사용하여 watcher를 만들지 못하면, `fs.watchFile`를 대신 사용하여 watcher를 만들게 됩니다.
 `UseFsEventsWithFallbackDynamicPolling`        | 이 옵션은 `fs.watch`를 사용하여 감시자를 만들지 못한 경우 폴링이 동적 큐를 통해 수행된다는 것을 제외하고는 `UseFsEvents` 옵션과 비슷합니다.(동적 큐에 대한 것은 `DynamicPriorityPolling`옵션에서 설명하였습니다.).
 `UseFsEventsOnParentDirectory`                 | 이 옵션은 `fs.watch`(파일 시스템 이벤트 사용하는)로 파일의 상위 디렉터리를 감시합니다. 다만, CPU 사용량이 늘어나고 정확도는 떨어질 수 있습니다.
-default (no value specified)                   | 환경 변수`TSC_NONPOLLING_WATCHER`가 true로 설정되면 파일의 상위 디렉터리를 감시합니다. (`UseFsEventsOnParentDirectory`와 동일).false 일 때는 `fs.watchFile`을 사용하여 `250ms` 시간 제한과 함께 모든 파일들을 감시합니다.
+default (no value specified)                   | 환경 변수`TSC*NONPOLLING*WATCHER`가 true로 설정되면 파일의 상위 디렉터리를 감시합니다. (`UseFsEventsOnParentDirectory`와 동일).false 일 때는 `fs.watchFile`을 사용하여 `250ms` 시간 제한과 함께 모든 파일들을 감시합니다.
 
-## 환경 변수`TSC_WATCHDIRECTORY`를 사용하여 디렉터리 감시 설정 (Configuring directory watching using environment variable `TSC_WATCHDIRECTORY`)
+## 환경 변수`TSC*WATCHDIRECTORY`를 사용하여 디렉터리 감시 설정 (Configuring directory watching using environment variable `TSC*WATCHDIRECTORY`)
 
-기본적으로 node에서 디렉터리의 재귀적인 감시를 지원하지 않는 플랫폼에서, 디렉터리 감시 기능은 `TSC_WATCHDIRECTORY`에서 선택한 다양한 옵션을 사용하여 하위 디렉터리에 대한 디렉터리 watcher를 재귀적으로 생성함으로써 지원됩니다. 기본적으로 재귀 디렉터리 감시(예: windows)를 지원하는 플랫폼에서는 이 환경 변수의 값이 무시됩니다.
+기본적으로 node에서 디렉터리의 재귀적인 감시를 지원하지 않는 플랫폼에서, 디렉터리 감시 기능은 `TSC*WATCHDIRECTORY`에서 선택한 다양한 옵션을 사용하여 하위 디렉터리에 대한 디렉터리 watcher를 재귀적으로 생성함으로써 지원됩니다. 기본적으로 재귀 디렉터리 감시(예: windows)를 지원하는 플랫폼에서는 이 환경 변수의 값이 무시됩니다.
 
 <!-- prettier-ignore -->
 옵션                                            | 설명
