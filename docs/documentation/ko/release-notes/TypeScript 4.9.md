@@ -439,13 +439,13 @@ DOM과 `lib.d.ts` 업데이트의 결과로 major break 는 일어나지 않을 
 이는 종종 더 정확한 `Promise` 타입을 반환하지만, 이 개선된 타입이 `Promise` 대신 `any` 또는 `unknown` 타입을 기대하고 있던 기존 코드를 깨버릴 수도 있습니다.
 더 자세한 정보는 [original change](https://github.com/microsoft/TypeScript/pull/33074)를 참고하세요.
 
-### JavaScript Emit No Longer Elides Imports
+### JavaScript 내보내기(Emit) 에서 더이상 Import 를 생략하지 않습니다
 
-When TypeScript first supported type-checking and compilation for JavaScript, it accidentally supported a feature called import elision.
-In short, if an import is not used as a value, or the compiler can detect that the import doesn't refer to a value at runtime, the compiler will drop the import during emit.
+TypeScript가 JavaScript에 대한 유형 검사 및 컴파일을 처음 지원했을 때 실수로 import 생략이라는 기능을 지원했었습니다.
+짧게 말하면, 만약 import 한 것이 값으로 쓰이지 않거나 런타임에서의 값을 참조하지 않는 다면 컴파일러는 내보내기 과정에서 해당 import를 제거하는 기능입니다.
 
-This behavior was questionable, especially the detection of whether the import doesn't refer to a value, since it means that TypeScript has to trust sometimes-inaccurate declaration files.
-In turn, TypeScript now preserves imports in JavaScript files.
+이러한 동작은 특히 import가 값을 참조하는지 감지할 때 종종 TypeScript가 부정확한 선언 파일을 신뢰해야한다는 점에서 아리송했습니다. 
+이제 TypeScript는 JavaScript 파일 내의 import를 유지합니다.
 
 ```js
 // Input:
@@ -467,7 +467,7 @@ import { someValue, SomeClass } from "some-module";
 let val = someValue;
 ```
 
-More information is available at [the implementing change](https://github.com/microsoft/TypeScript/pull/50404).
+더 많은 정보는 [implementing change](https://github.com/microsoft/TypeScript/pull/50404)을 참고하세요.
 
 ### `exports` is Prioritized Over `typesVersions`
 
