@@ -469,10 +469,10 @@ let val = someValue;
 
 더 많은 정보는 [implementing change](https://github.com/microsoft/TypeScript/pull/50404)을 참고하세요.
 
-### `exports` is Prioritized Over `typesVersions`
+### `exports`가 `typesVersions`보다 우선 순위가 높습니다.
 
-Previously, TypeScript incorrectly prioritized the `typesVersions` field over the `exports` field when resolving through a `package.json` under `--moduleResolution node16`.
-If this change impacts your library, you may need to add `types@` version selectors in your `package.json`'s `exports` field.
+이전에는 TypeScript가 `--moduleResolution node16` 조건의 `package.json`을 통해 리졸브할 때 `exports` 필드보다 `typesVersions` 필드를 우선했습니다.
+이 변경 사항이 여러분의 라이브러리에 영향을 미치는 경우 `package.json`의 `exports` 필드에 `types@` version selector를 추가하면 됩니다.
 
 ```diff
   {
@@ -492,7 +492,7 @@ If this change impacts your library, you may need to add `types@` version select
   }
 ```
 
-For more information, [see this pull request](https://github.com/microsoft/TypeScript/pull/50890).
+더 자세한 정보는 이 [pull request](https://github.com/microsoft/TypeScript/pull/50890)를 참고하세요.
 
 ## `substitute` Replaced With `constraint` on `SubstitutionType`s
 
