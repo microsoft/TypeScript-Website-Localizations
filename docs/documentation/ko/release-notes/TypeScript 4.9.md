@@ -102,7 +102,7 @@ const palette = {
 const redComponent = palette.red.at(0);
 const greenNormalized = palette.green.toUpperCase();
 ```
-더 많은 예시를 보고 싶다면, [문제를 제기한 이슈](https://github.com/microsoft/TypeScript/issues/47920) 와 [이를 구현한 pull request](https://github.com/microsoft/TypeScript/pull/46827)를 확인하세요.
+더 많은 예시를 보고 싶다면, [제안한 이슈](https://github.com/microsoft/TypeScript/issues/47920) 와 [이를 구현한 pull request](https://github.com/microsoft/TypeScript/pull/46827)를 확인하세요.
 우리와 함께 이 기능을 구현한 [Oleksandr Tarasiuk](https://github.com/a-tarasyuk)에게 감사드립니다.
 
 ## Unlisted Property Narrowing with the `in` Operator
