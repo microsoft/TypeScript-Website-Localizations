@@ -426,12 +426,12 @@ You can read up more on these optimizations on their respective pull requests:
 * [`visitEachChild` as a jump-table](https://github.com/microsoft/TypeScript/pull/50266)
 * [Optimize substitition types](https://github.com/microsoft/TypeScript/pull/50397)
 
-## Correctness Fixes and Breaking Changes
+## 수정 및 변경사항
 
-### `lib.d.ts` Updates
+### `lib.d.ts` 업데이트
 
-While TypeScript strives to avoid major breaks, even small changes in the built-in libraries can cause issues.
-We don't expect major breaks as a result of DOM and `lib.d.ts` updates, but there may be some small ones.
+TypeScript 은 major break 는 피하기위해 노력하지만, 내장 라이브러리의 아주 작은 변경조차도 문제가 될 수 있습니다.
+DOM과 `lib.d.ts` 업데이트의 결과로 major break 는 일어나지 않을 것으로 기대하지만, 종종 작은 문제가 생길 수도 있습니다.
 
 ### Better Types for `Promise.resolve` 
 
