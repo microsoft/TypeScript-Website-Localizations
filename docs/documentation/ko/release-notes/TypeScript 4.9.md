@@ -494,8 +494,8 @@ let val = someValue;
 
 더 자세한 정보는 이 [pull request](https://github.com/microsoft/TypeScript/pull/50890)를 참고하세요.
 
-## `substitute` Replaced With `constraint` on `SubstitutionType`s
+## `SubstitutionType`에서 `substitute`가 `constraint`로 대체됩니다
 
-As part of an optimization on substitution types, `SubstitutionType` objects no longer contain the `substitute` property representing the effective substitution (usually an intersection of the base type and the implicit constraint) - instead, they just contain the `constraint` property.
+substitution 타입의 최적화의 일부로 `SubstitutionType` 객체는 effective substitution을 나타내는 (일반적으로 base type과 암시적 constraint의 intersection) `substitution` 속성을 더 이상 포함하지 않습니다. 대신 `constraint` 속성만 포함합니다.
 
-For more details, [read more on the original pull request](https://github.com/microsoft/TypeScript/pull/50397).
+더 자세히 보려면 원본 [pull request](https://github.com/microsoft/TypeScript/pull/50397)에서 읽어보세요.
