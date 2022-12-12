@@ -433,11 +433,11 @@ You can read up more on these optimizations on their respective pull requests:
 TypeScript 은 major break 는 피하기위해 노력하지만, 내장 라이브러리의 아주 작은 변경조차도 문제가 될 수 있습니다.
 DOM과 `lib.d.ts` 업데이트의 결과로 major break 는 일어나지 않을 것으로 기대하지만, 종종 작은 문제가 생길 수도 있습니다.
 
-### Better Types for `Promise.resolve` 
+### `Promise.resolve` 를 위한 보다 나은 타입들
 
-`Promise.resolve` now uses the `Awaited` type to unwrap Promise-like types passed to it.
-This means that it more often returns the right `Promise` type, but that improved type can break existing code if it was expecting `any` or `unknown` instead of a `Promise`.
-For more information, [see the original change](https://github.com/microsoft/TypeScript/pull/33074).
+`Promise.resolve` 는 현재 이것으로 전달되는 Promise-like 타입을 멋겨내기 위해 `Awaited` 타입을 사용하고 있습니다.
+이는 종종 더 정확한 `Promise` 타입을 반환하지만, 이 개선된 타입이 `Promise` 대신 `any` 또는 `unknown` 타입을 기대하고 있던 기존 코드를 깨버릴 수도 있습니다.
+더 자세한 정보는 [original change](https://github.com/microsoft/TypeScript/pull/33074)를 참고하세요.
 
 ### JavaScript Emit No Longer Elides Imports
 
