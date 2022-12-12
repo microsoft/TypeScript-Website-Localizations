@@ -7,9 +7,9 @@ oneline: TypeScript 4.9 릴리즈 노트
 
 ## `satisfies` 연산자
 
-TypeScript 개발자들은 종종 딜레마에 직면합니다. 우리는 일부 표현식이 일부 타입과 *일치*하는지 확인하고 싶지만, 추론을 위해 표현식의 *가장 구체적인 타입*을 유지하고 싶을 때가 있습니다.
+TypeScript 개발자들은 종종 딜레마에 직면합니다. 우리는 일부 표현식이 타입과 *일치*하는지 확인하고 싶지만, 추론을 위해 표현식의 *가장 구체적인 타입*을 유지하고 싶을 때가 있습니다.
 
-예를 들어:
+예를 들어
 
 ```ts
 // 각 속성은 문자열 또는 RGB 튜플일 수 있습니다.
@@ -20,15 +20,15 @@ const palette = {
 //  ^^^^ sacrebleu - 오타를 냈습니다!
 };
 
-// 'red'속성이 배열로 사용할 수 있기를 원합니다.
+// 우리는 배열 메서드를 'red'에 사용하고 싶습니다...
 const redComponent = palette.red.at(0);
 
-// 혹은 `green`속성은 문자열로 사용할 수 있기를 원합니다.
+// 혹은 'green'에 문자열 메서드를 사용하고 싶을 수 있습니다...
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-우리는 `bleu`를 썼지만, `blue`를 썼어야 했습니다.
-`palette`에 타입 표기를 사용해서 `bleu` 오타를 잡을 수도 있지만, 그렇게 되면 각 속성에 대한 정보를 잃게 됩니다.
+우리는 `bleu` 대신, `blue`를 썼어야 했습니다.
+`palette`에 타입을 표기해서 `bleu` 오타를 잡을 수도 있지만, 그렇게 되면 각 속성에 대한 정보를 잃게 됩니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -39,10 +39,10 @@ const palette: Record<Colors, string | RGB> = {
     red: [255, 0, 0],
     green: "#00ff00",
     bleu: [0, 0, 255]
-//  ~~~~ 이제 오타가 올바르게 감지되었습니다
+//  ~~~~ 이제 오타를 올바르게 감지했습니다.
 };
 
-// 하지만 여기서 원치 않는 문제가 발생했습니다. - 'palette.red'가 문자열이 될 수 있다는것 입니다.
+// 하지만 여기서 원치 않는 문제가 발생했습니다. 'palette.red'가 문자열이 "될 수 있다"는것 입니다.
 const redComponent = palette.red.at(0);
 ```
 
@@ -61,13 +61,13 @@ const palette = {
 //  ~~~~ 오타가 잡혔습니다!
 } satisfies Record<Colors, string | RGB>;
 
-// 이 두 가지 방법 모두 여전히 접근할 수 있습니다!
+// 두 메서드 모두 여전히 접근할 수 있습니다!
 const redComponent = palette.red.at(0);
 const greenNormalized = palette.green.toUpperCase();
 ```
 
 `satisfies`는 많은 오류를 탐지하는데 사용할 수 있습니다.
-예를 들면, 우리는 객체가 특정 타입의 *모든*키를 가지지만, 그 이상은 가지지 않도록 할 수 있습니다.
+예를 들면, 객체가 특정 타입의 *모든* 키를 가지지만, 그 이상은 가지지 않도록 할 수 있습니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -81,11 +81,11 @@ const favoriteColors = {
 //  ~~~~~~~~~~ 에러 - "platypus"는 'Colors' 리스트에 없습니다.
 } satisfies Record<Colors, unknown>;
 
-// '빨간색', '녹색' 및 '파란색' 속성에 대한 모든 정보가 유지됩니다.
+// 'red', 'green' 및 'blue' 속성의 모든 정보가 유지됩니다.
 const g: boolean = favoriteColors.green;
 ```
 
-속성 이름이 어떻게든 일치하는지 여부는 신경 쓰지 않지만 각 속성의 타입에는 관심이 있습니다.
+이따금 우리는 속성 이름이 일치 여부보다 각 속성의 타입에 관심이 있을 수 있습니다.
 이 경우 개체의 모든 속성 값이 일부 타입을 준수하는지 확인할 수도 있습니다.
 
 ```ts
