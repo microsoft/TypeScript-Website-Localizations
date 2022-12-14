@@ -255,7 +255,7 @@ You can [read up more about the auto-accessors pull request on the original PR](
 
 ## `NaN` 동등성 검사
 
-JavaScript 개발자의 주요 문제는 내장된 동등 연사자를 사용해서 `NaN` 값을 확인하는 점입니다.
+JavaScript 개발자의 주요 문제는 내장된 동등 연산자를 사용해서 `NaN` 값을 확인하는 점입니다.
 
 `NaN`은 특수 숫자 값으로 "Not a Number"를 의미합니다. 
 `NaN`과 동일한 것은 없습니다. 심지어 `NaN`도 마찬가지입니다.
