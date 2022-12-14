@@ -253,12 +253,12 @@ class Person {
 
 You can [read up more about the auto-accessors pull request on the original PR](https://github.com/microsoft/TypeScript/pull/49705).
 
-## Checks For Equality on `NaN`
+## `NaN` 동등성 검사
 
-A major gotcha for JavaScript developers is checking against the value `NaN` using the built-in equality operators.
+JavaScript 개발자의 주요 문제는 내장된 동등 연산자를 사용해서 `NaN` 값을 확인하는 점입니다.
 
-For some background, `NaN` is a special numeric value that stands for "Not a Number".
-Nothing is ever equal to `NaN` - even `NaN`!
+`NaN`은 특수 숫자 값으로 "Not a Number"를 의미합니다. 
+`NaN`과 동일한 것은 없습니다. 심지어 `NaN`도 마찬가지입니다.
 
 ```js
 console.log(NaN == 0)  // false
@@ -268,7 +268,7 @@ console.log(NaN == NaN)  // false
 console.log(NaN === NaN) // false
 ```
 
-But at least symmetrically *everything* is always not-equal to `NaN`.
+하지만 적어도 대칭적으로 *모든 것* 은 항상 `NaN`과 동일하지 않습니다.
 
 ```js
 console.log(NaN != 0)  // true
@@ -278,11 +278,11 @@ console.log(NaN != NaN)  // true
 console.log(NaN !== NaN) // true
 ```
 
-This technically isn't a JavaScript-specific problem, since any language that contains IEEE-754 floats has the same behavior;
-but JavaScript's primary numeric type is a floating point number, and number parsing in JavaScript can often result in `NaN`.
-In turn, checking against `NaN` ends up being fairly common, and the correct way to do so is to use [`Number.isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) - *but* as we mentioned, lots of people accidentally end up checking with `someValue === NaN` instead.
+IEEE-754 float를 포함하는 모든 언어가 동일하게 동작하므로, 기술적으로 JavaScript만의 문제는 아닙니다.
+JavaScript의 기본 숫자 타입은 부동소수점 숫자이며, JavaScript는 숫자 구문을 종종 `NaN`으로 분석할 수 있습니다.
+그러므로 `NaN` 값 확인은 일반적이며, [`Number.isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN)를 사용하면 올바르게 확인할 수 있습니다. 하지만 위에서 언급했듯이 많은 사람들이 실수로 `someValue === NaN`을 사용해서 확인하게 됩니다.
 
-TypeScript now errors on direct comparisons against `NaN`, and will suggest using some variation of `Number.isNaN` instead.
+TypeScript는 이제 `NaN` 값을 직접 비교하면 오류를 보여주고 `Number.isNaN` 사용을 제안합니다.
 
 ```ts
 function validate(someValue: number) {
@@ -293,9 +293,9 @@ function validate(someValue: number) {
 }
 ```
 
-We believe that this change should strictly help catch beginner errors, similar to how TypeScript currently issues errors on comparisons against object and array literals.
+이번 변경은 TypeScript가 현재 객체 및 배열 리터럴에 대한 비교에서 오류를 발생시키는 방식과 유사하게, 초보자 오류를 잡는 데 큰 도움이 될 것이라고 믿습니다.
 
-We'd like to extend our thanks to [Oleksandr Tarasiuk](https://github.com/a-tarasyuk) who [contributed this check](https://github.com/microsoft/TypeScript/pull/50626).
+[이 기능에 기여한](https://github.com/microsoft/TypeScript/pull/50626) [Oleksandr Tarasiuk](https://github.com/a-tarasyuk)에게 감사를 전하고 싶습니다.
 
 ## 파일 시스템 이벤트를 사용한 파일 감시
 
