@@ -5,30 +5,30 @@ permalink: /ko/docs/handbook/release-notes/typescript-4-9.html
 oneline: TypeScript 4.9 릴리즈 노트
 ---
 
-## The `satisfies` Operator
+## `satisfies` 연산자
 
-TypeScript developers are often faced with a dilemma: we want to ensure that some expression *matches* some type, but also want to keep the *most specific* type of that expression for inference purposes.
+TypeScript 개발자들은 종종 딜레마에 직면합니다. 우리는 일부 표현식이 타입과 *일치*하는지 확인하고 싶지만, 추론을 위해 표현식의 *가장 구체적인 타입*을 유지하고 싶을 때가 있습니다.
 
-For example:
+예를 들어
 
 ```ts
-// Each property can be a string or an RGB tuple.
+// 각 속성은 문자열 또는 RGB 튜플일 수 있습니다.
 const palette = {
     red: [255, 0, 0],
     green: "#00ff00",
     bleu: [0, 0, 255]
-//  ^^^^ sacrebleu - we've made a typo!
+//  ^^^^ sacrebleu - 오타를 냈습니다!
 };
 
-// We want to be able to use array methods on 'red'...
+// 우리는 배열 메서드를 'red'에 사용하고 싶습니다...
 const redComponent = palette.red.at(0);
 
-// or string methods on 'green'...
+// 혹은 'green'에 문자열 메서드를 사용하고 싶을 수 있습니다...
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-Notice that we've written `bleu`, whereas we probably should have written `blue`.
-We could try to catch that `bleu` typo by using a type annotation on `palette`, but we'd lose the information about each property.
+우리는 `bleu` 대신, `blue`를 썼어야 했습니다.
+`palette`에 타입을 표기해서 `bleu` 오타를 잡을 수도 있지만, 그렇게 되면 각 속성에 대한 정보를 잃게 됩니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -39,15 +39,15 @@ const palette: Record<Colors, string | RGB> = {
     red: [255, 0, 0],
     green: "#00ff00",
     bleu: [0, 0, 255]
-//  ~~~~ The typo is now correctly detected
+//  ~~~~ 이제 오타를 올바르게 감지했습니다.
 };
 
-// But we now have an undesirable error here - 'palette.red' "could" be a string.
+// 하지만 여기서 원치 않는 문제가 발생했습니다. 'palette.red'가 문자열이 "될 수 있다"는것 입니다.
 const redComponent = palette.red.at(0);
 ```
 
-The new `satisfies` operator lets us validate that the type of an expression matches some type, without changing the resulting type of that expression.
-As an example, we could use `satisfies` to validate that all the properties of `palette` are compatible with `string | number[]`:
+`satisfies` 연산자를 사용하면 표현식의 결과 타입을 변경하지 않고 표현식의 타입이 특정 타입과 일치하는지 검증할 수 있습니다.
+예를 들어, 우리는 `satisfies`를 사용하여 `palette`의 모든 속성이 `string | number[]`와 호환되는지 검증할 수 있습니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -58,35 +58,35 @@ const palette = {
     red: [255, 0, 0],
     green: "#00ff00",
     bleu: [0, 0, 255]
-//  ~~~~ The typo is now caught!
+//  ~~~~ 오타가 잡혔습니다!
 } satisfies Record<Colors, string | RGB>;
 
-// Both of these methods are still accessible!
+// 두 메서드 모두 여전히 접근할 수 있습니다!
 const redComponent = palette.red.at(0);
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-`satisfies` can be used to catch lots of possible errors.
-For example, we could ensure that an object has *all* the keys of some type, but no more:
+`satisfies`는 많은 오류를 탐지하는데 사용할 수 있습니다.
+예를 들면, 객체가 특정 타입의 *모든* 키를 가지지만, 그 이상은 가지지 않도록 할 수 있습니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
 
-// Ensure that we have exactly the keys from 'Colors'.
+// 'Colors' 키가 정확한지 확인합니다.
 const favoriteColors = {
     "red": "yes",
     "green": false,
     "blue": "kinda",
     "platypus": false
-//  ~~~~~~~~~~ error - "platypus" was never listed in 'Colors'.
+//  ~~~~~~~~~~ 에러 - "platypus"는 'Colors' 리스트에 없습니다.
 } satisfies Record<Colors, unknown>;
 
-// All the information about the 'red', 'green', and 'blue' properties are retained.
+// 'red', 'green' 및 'blue' 속성의 모든 정보가 유지됩니다.
 const g: boolean = favoriteColors.green;
 ```
 
-Maybe we don't care about if the property names match up somehow, but we do care about the types of each property.
-In that case, we can also ensure that all of an object's property values conform to some type.
+이따금 우리는 속성 이름 일치 여부보다 각 속성의 타입에 관심이 있을 수 있습니다.
+이 경우 개체의 모든 속성 값이 일부 타입을 준수하는지 확인할 수도 있습니다.
 
 ```ts
 type RGB = [red: number, green: number, blue: number];
@@ -95,16 +95,16 @@ const palette = {
     red: [255, 0, 0],
     green: "#00ff00",
     blue: [0, 0]
-    //    ~~~~~~ error!
+    //    ~~~~~~ 에러!
 } satisfies Record<string, string | RGB>;
 
-// Information about each property is still maintained.
+// 각 속성에 대한 정보는 계속 유지됩니다.
 const redComponent = palette.red.at(0);
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-For more examples, you can see the [issue proposing this](https://github.com/microsoft/TypeScript/issues/47920) and [the implementing pull request](https://github.com/microsoft/TypeScript/pull/46827).
-We'd like to thank [Oleksandr Tarasiuk](https://github.com/a-tarasyuk) who implemented and iterated on this feature with us.
+더 많은 예시를 보고 싶다면, [제안한 이슈](https://github.com/microsoft/TypeScript/issues/47920) 와 [이를 구현한 pull request](https://github.com/microsoft/TypeScript/pull/46827)를 확인하세요.
+우리와 함께 이 기능을 구현한 [Oleksandr Tarasiuk](https://github.com/a-tarasyuk)에게 감사드립니다.
 
 ## Unlisted Property Narrowing with the `in` Operator
 
