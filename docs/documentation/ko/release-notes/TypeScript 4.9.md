@@ -297,38 +297,38 @@ We believe that this change should strictly help catch beginner errors, similar 
 
 We'd like to extend our thanks to [Oleksandr Tarasiuk](https://github.com/a-tarasyuk) who [contributed this check](https://github.com/microsoft/TypeScript/pull/50626).
 
-## File-Watching Now Uses File System Events
+## 파일 시스템 이벤트를 사용한 파일 감시
 
-In earlier versions, TypeScript leaned heavily on *polling* for watching individual files.
-Using a polling strategy meant checking the state of a file periodically for updates.
-On Node.js, [`fs.watchFile`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilefilename-options-listener) is the built-in way to get a polling file-watcher.
-While polling tends to be more predictable across platforms and file systems, it means that your CPU has to periodically get interrupted and check for updates to the file, even when nothing's changed.
-For a few dozen files, this might not be noticeable;
-but on a bigger project with lots of files - or lots of files in `node_modules` - this can become a resource hog.
+이전 버전에서 TypeScript는 개별 파일을 감시하기 위해 *폴링*에 크게 의존했습니다.
+폴링 전략을 사용하는 것은 업데이트를 위해 주기적으로 파일 상태를 감시함을 의미합니다.
+Node.js에서 [`fs.watchFile`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilefilename-options-listener)은 폴링 파일 감시자를 가져오는 기본 제공 방법입니다.
+폴링은 플랫폼과 파일 시스템에서 보다 예측 가능한 경향이 있지만 CPU가 주기적으로 중단되어 변경된 사항이 없을 때에도 파일 업데이트를 확인해야 합니다.
+파일이 수십 개라면 큰 차이가 없을 수 있습니다.
+하지만 파일이 많고 더 큰 프로젝트에서 또는 `node_modules`에 많은 파일이 있는 경우, 폴링은 자원을 많이 차지할 수 있습니다.
 
-Generally speaking, a better approach is to use file system events.
-Instead of polling, we can announce that we're interested in updates of specific files and provide a callback for when those files *actually do* change.
-Most modern platforms in use provide facilities and APIs like `CreateIoCompletionPort`, `kqueue`, `epoll`, and `inotify`.
-Node.js mostly abstracts these away by providing [`fs.watch`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilename-options-listener).
-File system events usually work great, but there are [lots of caveats](https://nodejs.org/docs/latest-v18.x/api/fs.html#caveats) to using them, and in turn, to using the `fs.watch` API.
-A watcher needs to be careful to consider [inode watching](https://nodejs.org/docs/latest-v18.x/api/fs.html#inodes), [unavailability on certain file systems](https://nodejs.org/docs/latest-v18.x/api/fs.html#availability) (e.g.networked file systems), whether recursive file watching is available, whether directory renames trigger events, and even file watcher exhaustion!
-In other words, it's not quite a free lunch, especially if you're looking for something cross-platform.
+일반적으로 더 좋은 접근 방식은 파일 시스템 이벤트를 사용하는 것입니다.
+폴링하는 대신 특정 파일의 업데이트에 관심이 있음을 알리고 해당 파일이 *실제로* 변경될 때 콜백을 제공할 수 있습니다.
+대부분의 최신 플랫폼은 `CreateIoCompletionPort`, `kqueue`, `epoll` 및 `inotify`와 같은 기능과 API를 제공합니다.
+Node.js는 대부분 [`fs.watch`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilename-options-listener)를 제공하여 이를 추상화합니다.
+파일 시스템 이벤트는 일반적으로 잘 동작하지만 이를 사용하고 `fs.watch` API를 사용하는 데 [많은 주의 사항](https://nodejs.org/docs/latest-v18.x/api/fs.html#caveats)이 있습니다.
+감시자는 [inode 감시](https://nodejs.org/docs/latest-v18.x/api/fs.html#inodes),[특정 파일 시스템에서 비가용성](https://nodejs.org/docs/latest-v18.x/api/fs.html#availability) (예를 들면 네트워크 파일 시스템), 재귀 파일 감시가 사용 가능한지 여부, 디렉터리 이름 변경이 이벤트를 트리거하는지 여부, 파일 감시자 고갈까지 고려해야 합니다!
+특히 크로스 플랫폼을 찾고 있다면 쉽지 않습니다.
 
-As a result, our default was to pick the lowest common denominator: polling.
-Not always, but most of the time.
+결과적으로 우리는 기본 값으로 폴링이라는 가장 낮은 공통분모를 선택하는 것이었습니다.
+항상 그런 것은 아니지만 대부분의 경우에 해당했습니다.
 
-Over time, we've provided the means to [choose other file-watching strategies](https://www.typescriptlang.org/docs/handbook/configuring-watch.html).
-This allowed us to get feedback and harden our file-watching implementation against most of these platform-specific gotchas.
-As TypeScript has needed to scale to larger codebases, and has improved in this area, we felt swapping to file system events as the default would be a worthwhile investment.
+시간이 지남에 따라 우리는 [다른 파일 감시 전략을 선택](https://www.typescriptlang.org/docs/handbook/configuring-watch.html)할 수 있는 수단을 제공했습니다.
+이를 통해 피드백을 받고 대부분 플랫폼 문제들에 대해 파일 감시 구현을 강화할 수 있었습니다.
+TypeScript가 더 큰 코드베이스로 확장되어야 하고 이 영역에서 개선되었으므로 파일 시스템 이벤트를 기본값으로 바꾸는 것이 가치 있는 투자라고 생각했습니다.
 
-In TypeScript 4.9, file watching is powered by file system events by default, only falling back to polling if we fail to set up event-based watchers.
-For most developers, this should provide a much less resource-intensive experience when running in `--watch` mode, or running with a TypeScript-powered editor like Visual Studio or VS Code.
+TypeScript 4.9에서 파일 감시는 기본적으로 파일 시스템 이벤트에 의해 구동되며 이벤트 기반 감시자를 설정하지 못한 경우에만 폴링으로 돌아갑니다.
+대부분의 개발자에게 `--watch` 모드에서 실행하거나 Visual Studio 또는 VS Code와 같은 TypeScript 기반 편집기로 실행할 때 훨씬 덜 리소스 집약적인 환경을 제공해야 합니다.
 
-[The way file-watching works can still be configured](https://www.typescriptlang.org/docs/handbook/configuring-watch.html) through environment variables and `watchOptions` - and [some editors like VS Code can support `watchOptions` independently](https://code.visualstudio.com/docs/getstarted/settings#:~:text=typescript%2etsserver%2ewatchOptions).
-Developers using more exotic set-ups where source code resides on a networked file systems (like NFS and SMB) may need to opt back into the older behavior; though if a server has reasonable processing power, it might just be better to enable SSH and run TypeScript remotely so that it has direct local file access.
-VS Code has plenty of [remote extensions](https://marketplace.visualstudio.com/search?term=remote&target=VSCode&category=All%20categories&sortBy=Relevance) to make this easier.
+[파일 감시가 작동하는 방식은 여전히 ​​환경 변수 및 `watchOptions`를 통해 구성](https://www.typescriptlang.org/docs/handbook/configuring-watch.html)할 수 있으며 [VS Code와 같은 일부 편집기는 `watchOptions`를 독립적으로 지원할 수 있습니다.](https://code.visualstudio.com/docs/getstarted/settings#:~:text=typescript%2etsserver%2ewatchOptions)
+NFS 및 SMB와 같은 네트워크 파일 시스템에 소스 코드가 상주하는 좀 더 특이한 설정을 사용하는 개발자는 이전 동작을 다시 선택해야 할 수 있습니다. 하지만 서버에 적절한 처리 능력이 있는 경우 SSH를 활성화하고 TypeScript를 원격으로 실행하여 직접 로컬 파일에 액세스할 수 있도록 하는 것이 더 나을 수 있습니다.
+VS Code에는 이 작업을 더 쉽게 수행할 수 있는 [원격 익스텐션](https://marketplace.visualstudio.com/search?term=remote&target=VSCode&category=All%20categories&sortBy=Relevance)이 많이 있습니다.
 
-You can [read up more on this change on GitHub](https://github.com/microsoft/TypeScript/pull/50366).
+GitHub에서 [이 변경 사항에 대해 자세히](https://github.com/microsoft/TypeScript/pull/50366) 알아볼 수 있습니다.
 
 ## "Remove Unused Imports" and "Sort Imports" Commands for Editors
 
