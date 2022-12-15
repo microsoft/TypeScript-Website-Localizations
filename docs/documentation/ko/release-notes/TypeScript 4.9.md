@@ -330,10 +330,10 @@ VS Code has plenty of [remote extensions](https://marketplace.visualstudio.com/s
 
 You can [read up more on this change on GitHub](https://github.com/microsoft/TypeScript/pull/50366).
 
-## "Remove Unused Imports" and "Sort Imports" Commands for Editors
+## "Remove Unused Imports" 와 "Sort Imports" 편집기 명령어
 
-Previously, TypeScript only supported two editor commands to manage imports.
-For our examples, take the following code:
+이전까지 Typescript 는 import 를 관리하기 위한 편집기 명령어로 두 가지만을 지원했습니다.
+예시를 위해 다음 코드를 참고하세요.
 
 ```ts
 import { Zebra, Moose, HoneyBadger } from "./zoo";
@@ -342,8 +342,8 @@ import { foo, bar } from "./helper";
 let x: Moose | HoneyBadger = foo();
 ```
 
-The first was called "Organize Imports" which would remove unused imports, and then sort the remaining ones.
-It would rewrite that file to look like this one:
+첫 번째는 사용되지 않는 import 를 제거하고 남은 import 를 정렬하는 "Organize Imports" 입니다.
+이것은 파일을 다음과 같이 재작성합니다.
 
 ```ts
 import { foo } from "./helper";
@@ -352,7 +352,7 @@ import { HoneyBadger, Moose } from "./zoo";
 let x: Moose | HoneyBadger = foo();
 ```
 
-In TypeScript 4.3, we introduced a command called "Sort Imports" which would *only* sort imports in the file, but not remove them - and would rewrite the file like this.
+Typescript 4.3 에서는, 파일 내 import를 *오직* 정렬만 하고 제거하지는 않는 "Sort Imports" 가 소개되었습니다. 이것은 파일을 다음과 같이 재작성합니다.
 
 ```ts
 import { bar, foo } from "./helper";
@@ -361,10 +361,10 @@ import { HoneyBadger, Moose, Zebra } from "./zoo";
 let x: Moose | HoneyBadger = foo();
 ```
 
-The caveat with "Sort Imports" was that in Visual Studio Code, this feature was only available as an on-save command - not as a manually triggerable command.
+"Sort Imports" 에 대한 주의 사항은, Visual Studio Code 에서 이 기능이 수동으로 트리거할 수 있는 명령이 아닌 on-save 명령으로만 사용할 수 있었다는 점입니다.
 
-TypeScript 4.9 adds the other half, and now provides "Remove Unused Imports".
-TypeScript will now remove unused import names and statements, but will otherwise leave the relative ordering alone.
+Typescript 4.9 는 나머지 절반을 추가하여 이제 "Remove Unused Improts" 기능을 제공합니다.
+TypeScript는 이제 사용되지 않는 이름 import 및 구문 import를 제거하지만, 그 외 상대적인 순서는 그대로 유지합니다.
 
 ```ts
 import { Moose, HoneyBadger } from "./zoo";
@@ -373,11 +373,11 @@ import { foo } from "./helper";
 let x: Moose | HoneyBadger = foo();
 ```
 
-This feature is available to all editors that wish to use either command;
-but notably, Visual Studio Code (1.73 and later) will have support built in *and* will surface these commands via its Command Palette.
-Users who prefer to use the more granular "Remove Unused Imports" or "Sort Imports" commands should be able to reassign the "Organize Imports" key combination to them if desired.
+이 기능은 두 명령어를 사용하고자 하는 모든 편집기에서 사용 가능합니다.
+특히 Visual Studio Code (1.73 이상) 에선 이에 대한 빌트인 기능을 지원하며 *또한* Command Palette 를 통해 해당 명령어들을 확인할 수 있습니다.
+더 세분화된 "Remove Unused Imports" 또는 "Sort Imports" 사용을 선호하는 사용자는 원하는 경우 "Organize Imports" 키 조합을 재할당할 수 있습니다.
 
-You can [view specifics of the feature here](https://github.com/microsoft/TypeScript/pull/50931).
+[여기서 이 기능의 세부 사항](https://github.com/microsoft/TypeScript/pull/50931)을 볼 수 있습니다.
 
 ## Go-to-Definition on `return` Keywords
 
