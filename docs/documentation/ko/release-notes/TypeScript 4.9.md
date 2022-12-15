@@ -106,14 +106,13 @@ const greenNormalized = palette.green.toUpperCase();
 For more examples, you can see the [issue proposing this](https://github.com/microsoft/TypeScript/issues/47920) and [the implementing pull request](https://github.com/microsoft/TypeScript/pull/46827).
 We'd like to thank [Oleksandr Tarasiuk](https://github.com/a-tarasyuk) who implemented and iterated on this feature with us.
 
-## Unlisted Property Narrowing with the `in` Operator
+## "in" 연산자를 사용하여 정의되지 않은 프로퍼티로 타입 좁히기
 
-As developers, we often need to deal with values that aren't fully known at runtime.
-In fact, we often don't know if properties exist, whether we're getting a response from a server or reading a configuration file.
-JavaScript's `in` operator can check whether a property 
-exists on an object.
+개발자들은 자주 런타임에서 알 수 없는 값을 처리해야 할 때가 있습니다.
+서버에서 응답받거나 설정 파일을 읽는 경우처럼 실제로 프로퍼티가 존재하는지 알 수 없는 경우가 흔하게 있습니다.
+JavaScript의 `in` 연산자를 활용하면 객체에 프로퍼티가 존재하는지 알 수 있습니다.
 
-Previously, TypeScript allowed us to narrow away any types that don't explicitly list a property.
+이전에, TypeScript에서는 정의되지 않는 프로퍼티를 사용하여 타입을 좁힐 수 있었습니다.
 
 ```ts
 interface RGB {
@@ -130,24 +129,24 @@ interface HSV {
 
 function setColor(color: RGB | HSV) {
     if ("hue" in color) {
-        // 'color' now has the type HSV
+        // 이제 'color' 는 HSV 타입을 갖게되었습니다.
     }
     // ...
 }
 ```
 
-Here, the type `RGB` didn't list the `hue` and got narrowed away, and leaving us with the type `HSV`.
+여기서, `RGB` 타입에 정의되지 않은 `hue`에 의해 타입이 좁혀지게 되어, `HSV` 타입이 남게 되었습니다.
 
-But what about examples where no type listed a given property?
-In those cases, the language didn't help us much.
-Let's take the following example in JavaScript:
+그러나 프로퍼티가 주어진 타입이 없는 경우에는 어떨까요?
+그런 경우, 언어가 큰 도움이 되지 않습니다.
+여기 JavaScript로 된 예시를 살펴보겠습니다
 
 ```js
 function tryGetPackageName(context) {
     const packageJSON = context.packageJSON;
-    // Check to see if we have an object.
+    // 객체가 맞는지 확인합니다.
     if (packageJSON && typeof packageJSON === "object") {
-        // Check to see if it has a string name property.
+        // 문자열 타입의 name 프로퍼티를 가지고 있는지 확인합니다.
         if ("name" in packageJSON && typeof packageJSON.name === "string") {
             return packageJSON.name;
         }
@@ -157,8 +156,8 @@ function tryGetPackageName(context) {
 }
 ```
 
-Rewriting this to canonical TypeScript would just be a matter of defining and using a type for `context`;
-however, picking a safe type like `unknown` for the `packageJSON` property would cause issues in older versions of TypeScript.
+이것을 표준 Typescript로 다시 작성한다면 `context`에 대한 타입을 정의해서 사용하게 될 것입니다.
+하지만, `packageJSON`의 속성에 `unknown`과 같은 안전한 타입을 사용하면 이전 타입스크립트 버전들에서 문제가 발생할 수도 있습니다.
 
 ```ts
 interface Context {
@@ -167,9 +166,9 @@ interface Context {
 
 function tryGetPackageName(context: Context) {
     const packageJSON = context.packageJSON;
-    // Check to see if we have an object.
+    // 객체가 맞는지 확인합니다.
     if (packageJSON && typeof packageJSON === "object") {
-        // Check to see if it has a string name property.
+        // 문자열 타입의 name 프로퍼티를 가지고 있는지 확인합니다.
         if ("name" in packageJSON && typeof packageJSON.name === "string") {
         //                                              ~~~~
         // error! Property 'name' does not exist on type 'object.
@@ -183,14 +182,14 @@ function tryGetPackageName(context: Context) {
 }
 ```
 
-This is because while the type of `packageJSON` was narrowed from `unknown` to `object`, the `in` operator strictly narrowed to types that actually defined the property being checked.
-As a result, the type of `packageJSON` remained `object`.
+이는 `packageJSON`의 타입이 `unknown`에서 `object`로 좁혀졌으나, `in` 연산자는 실제로 정의한 타입으로 엄격하게 좁혔기 때문입니다.
+그 결과, `packageJSON`은 `object`로 남게 되었습니다.
 
-TypeScript 4.9 makes the `in` operator a little bit more powerful when narrowing types that *don't* list the property at all.
-Instead of leaving them as-is, the language will intersect their types with `Record<"property-key-being-checked", unknown>`.
+TypeScript 4.9는 프로퍼티가 전혀 정의되지 _않은_ 타입을 좁힐 때, `in` 연산자를 사용하여 조금 더 강력하게 만듭니다.
+이전과는 다르게, 언어는 `Record<"property-key-being-checked", unknown>`과 타입을 교차합니다.
 
-So in our example, `packageJSON` will have its type narrowed from `unknown` to `object` to `object & Record<"name", unknown>`
-That allows us to access `packageJSON.name` directly and narrow that independently.
+따라서 위 예시에서, `packageJSON`는 `unknown`에서 `object`로 그다음 `object & Record<"name", unknown>`로 타입이 좁혀집니다.
+이를 통해 `packageJSON.name`에 직접 접근이 가능해지고 독립적으로 좁혀집니다.
 
 ```ts
 interface Context {
@@ -199,11 +198,11 @@ interface Context {
 
 function tryGetPackageName(context: Context): string | undefined {
     const packageJSON = context.packageJSON;
-    // Check to see if we have an object.
+    // 객체가 맞는지 확인합니다.
     if (packageJSON && typeof packageJSON === "object") {
-        // Check to see if it has a string name property.
+        // 문자열 타입의 name 프로퍼티를 가지고 있는지 확인합니다.
         if ("name" in packageJSON && typeof packageJSON.name === "string") {
-            // Just works!
+            // 동작!
             return packageJSON.name;
         }
     }
@@ -212,15 +211,15 @@ function tryGetPackageName(context: Context): string | undefined {
 }
 ```
 
-TypeScript 4.9 also tightens up a few checks around how `in` is used, ensuring that the left side is assignable to the type `string | number | symbol`, and the right side is assignable to `object`.
-This helps check that we're using valid property keys, and not accidentally checking primitives.
+TypeScript 4.9는 또한 `in`의 검사를 강화하여 left side에는 `string | number | symbol`, right side에는 `object`로만 할당할 수 있도록 보증합니다.
+이는 유효한 프로퍼티 키를 사용했는지, 실수로 프리미티브를 검증하고 있는지 확인하는 데 도움이 됩니다.
 
-For more information, [read the implementing pull request](https://github.com/microsoft/TypeScript/pull/50666)
+더 많은 정보를 얻고 싶다면, [이를 구현한 pull request를 읽어보세요](https://github.com/microsoft/TypeScript/pull/50666)
 
-## <a name="auto-accessors-in-classes"> Auto-Accessors in Classes
+## <a name="auto-accessors-in-classes"> 클래스의 자동 접근자
 
-TypeScript 4.9 supports an upcoming feature in ECMAScript called auto-accessors.
-Auto-accessors are declared just like properties on classes, except that they're declared with the `accessor` keyword.
+TypeScript 4.9는 자동 접근자라고 하는 ECMAScript의 향후 기능을 지원합니다.
+자동 접근자는 `accessor` 키워드로 선언된다는 점을 제외하면 클래스의 속성처럼 선언됩니다.
 
 ```ts
 class Person {
@@ -232,7 +231,7 @@ class Person {
 }
 ```
 
-Under the covers, these auto-accessors "de-sugar" to a `get` and `set` accessor with an unreachable private property.
+내부적으로 이러한 자동 접근자는 도달할 수 없는 private 프로퍼티의 `get` 및 `set` 접근자로 "de-sugar"됩니다.
 
 ```ts
 class Person {
@@ -251,7 +250,7 @@ class Person {
 }
 ```
 
-You can [read up more about the auto-accessors pull request on the original PR](https://github.com/microsoft/TypeScript/pull/49705).
+[자세한 내용은 자동 접근자에 대한 원본 pull request](https://github.com/microsoft/TypeScript/pull/49705)에서 확인할 수 있습니다.
 
 ## Checks For Equality on `NaN`
 
