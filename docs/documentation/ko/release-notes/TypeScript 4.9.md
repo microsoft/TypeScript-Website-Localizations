@@ -379,14 +379,14 @@ let x: Moose | HoneyBadger = foo();
 
 [여기서 이 기능의 세부 사항](https://github.com/microsoft/TypeScript/pull/50931)을 볼 수 있습니다.
 
-## Go-to-Definition on `return` Keywords
+## `return` 키워드에 대한 Go-to-Definition
 
-In the editor, when running a go-to-definition on the `return` keyword, TypeScript will now jump you to the top of the corresponding function.
-This can be helpful to get a quick sense of which function a `return` belongs to.
+Typescript는 이제 편집기에서 return 키워드에 대한 go-to-definition 기능이 수행되면 해당 함수의 상단부로 이동할 수 있게 합니다.
+이는 `return` 이 어떤 함수에 속하는지 빠르게 파악하는 데 도움이 됩니다.
 
-We expect TypeScript will expand this functionality to more keywords [such as `await` and `yield`](https://github.com/microsoft/TypeScript/issues/51223) or [`switch`, `case`, and `default`](https://github.com/microsoft/TypeScript/issues/51225).
+Typescript 는 이 기능을 [`await`와 `yield`](https://github.com/microsoft/TypeScript/issues/51223) 또는 [`switch`, `case`, 그리고 `default`](https://github.com/microsoft/TypeScript/issues/51225) 같은 더 많은 키워드에도 확장할 것으로 기대합니다.
 
-[This feature was implemented](https://github.com/microsoft/TypeScript/pull/51227) thanks to [Oleksandr Tarasiuk](https://github.com/a-tarasyuk).
+[Oleksandr Tarasiuk](https://github.com/a-tarasyuk) 덕분에 [이 기능이 구현되었습니다](https://github.com/microsoft/TypeScript/pull/51227).
 
 ## 성능 개선
 
