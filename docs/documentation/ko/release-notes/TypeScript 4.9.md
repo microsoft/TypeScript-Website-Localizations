@@ -435,7 +435,7 @@ DOM과 `lib.d.ts` 업데이트의 결과로 major break 는 일어나지 않을 
 
 ### `Promise.resolve` 를 위한 보다 나은 타입들
 
-`Promise.resolve` 는 현재 이것으로 전달되는 Promise-like 타입을 멋겨내기 위해 `Awaited` 타입을 사용하고 있습니다.
+현재 `Promise.resolve`는 이것으로 전달되는 Promise-like 타입을 벗겨내기 위해 `Awaited` 타입을 사용합니다.
 이는 종종 더 정확한 `Promise` 타입을 반환하지만, 이 개선된 타입이 `Promise` 대신 `any` 또는 `unknown` 타입을 기대하고 있던 기존 코드를 깨버릴 수도 있습니다.
 더 자세한 정보는 [original change](https://github.com/microsoft/TypeScript/pull/33074)를 참고하세요.
 
