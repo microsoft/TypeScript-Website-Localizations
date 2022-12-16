@@ -430,7 +430,7 @@ You can read up more on these optimizations on their respective pull requests:
 
 ### `lib.d.ts` 업데이트
 
-TypeScript 은 major break 는 피하기위해 노력하지만, 내장 라이브러리의 아주 작은 변경조차도 문제가 될 수 있습니다.
+TypeScript는 major break는 피하기 위해 노력하지만, 내장 라이브러리의 아주 작은 변경조차도 문제가 될 수 있습니다.
 DOM과 `lib.d.ts` 업데이트의 결과로 major break 는 일어나지 않을 것으로 기대하지만, 종종 작은 문제가 생길 수도 있습니다.
 
 ### `Promise.resolve` 를 위한 보다 나은 타입들
