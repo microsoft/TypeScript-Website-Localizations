@@ -441,7 +441,7 @@ DOM과 `lib.d.ts` 업데이트의 결과로 major break 는 일어나지 않을 
 
 ### JavaScript 내보내기(Emit) 에서 더이상 Import 를 생략하지 않습니다
 
-TypeScript가 JavaScript에 대한 유형 검사 및 컴파일을 처음 지원했을 때 실수로 import 생략이라는 기능을 지원했었습니다.
+TypeScript가 JavaScript에 대한 타입 검사 및 컴파일을 처음 지원했을 때 실수로 import 생략이라는 기능을 지원했었습니다.
 짧게 말하면, 만약 import 한 것이 값으로 쓰이지 않거나 런타임에서의 값을 참조하지 않는 다면 컴파일러는 내보내기 과정에서 해당 import를 제거하는 기능입니다.
 
 이러한 동작은 특히 import가 값을 참조하는지 감지할 때 종종 TypeScript가 부정확한 선언 파일을 신뢰해야한다는 점에서 아리송했습니다. 
