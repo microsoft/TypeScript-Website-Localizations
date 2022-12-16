@@ -5,30 +5,30 @@ permalink: /ko/docs/handbook/release-notes/typescript-4-9.html
 oneline: TypeScript 4.9 릴리즈 노트
 ---
 
-## The `satisfies` Operator
+## `satisfies` 연산자
 
-TypeScript developers are often faced with a dilemma: we want to ensure that some expression *matches* some type, but also want to keep the *most specific* type of that expression for inference purposes.
+TypeScript 개발자들은 종종 딜레마에 직면합니다. 우리는 일부 표현식이 타입과 *일치*하는지 확인하고 싶지만, 추론을 위해 표현식의 *가장 구체적인 타입*을 유지하고 싶을 때가 있습니다.
 
-For example:
+예를 들어
 
 ```ts
-// Each property can be a string or an RGB tuple.
+// 각 속성은 문자열 또는 RGB 튜플일 수 있습니다.
 const palette = {
     red: [255, 0, 0],
     green: "#00ff00",
     bleu: [0, 0, 255]
-//  ^^^^ sacrebleu - we've made a typo!
+//  ^^^^ sacrebleu - 오타를 냈습니다!
 };
 
-// We want to be able to use array methods on 'red'...
+// 우리는 배열 메서드를 'red'에 사용하고 싶습니다...
 const redComponent = palette.red.at(0);
 
-// or string methods on 'green'...
+// 혹은 'green'에 문자열 메서드를 사용하고 싶을 수 있습니다...
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-Notice that we've written `bleu`, whereas we probably should have written `blue`.
-We could try to catch that `bleu` typo by using a type annotation on `palette`, but we'd lose the information about each property.
+우리는 `bleu` 대신, `blue`를 썼어야 했습니다.
+`palette`에 타입을 표기해서 `bleu` 오타를 잡을 수도 있지만, 그렇게 되면 각 속성에 대한 정보를 잃게 됩니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -39,15 +39,15 @@ const palette: Record<Colors, string | RGB> = {
     red: [255, 0, 0],
     green: "#00ff00",
     bleu: [0, 0, 255]
-//  ~~~~ The typo is now correctly detected
+//  ~~~~ 이제 오타를 올바르게 감지했습니다.
 };
 
-// But we now have an undesirable error here - 'palette.red' "could" be a string.
+// 하지만 여기서 원치 않는 문제가 발생했습니다. 'palette.red'가 문자열이 "될 수 있다"는것 입니다.
 const redComponent = palette.red.at(0);
 ```
 
-The new `satisfies` operator lets us validate that the type of an expression matches some type, without changing the resulting type of that expression.
-As an example, we could use `satisfies` to validate that all the properties of `palette` are compatible with `string | number[]`:
+`satisfies` 연산자를 사용하면 표현식의 결과 타입을 변경하지 않고 표현식의 타입이 특정 타입과 일치하는지 검증할 수 있습니다.
+예를 들어, 우리는 `satisfies`를 사용하여 `palette`의 모든 속성이 `string | number[]`와 호환되는지 검증할 수 있습니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -58,35 +58,35 @@ const palette = {
     red: [255, 0, 0],
     green: "#00ff00",
     bleu: [0, 0, 255]
-//  ~~~~ The typo is now caught!
+//  ~~~~ 오타가 잡혔습니다!
 } satisfies Record<Colors, string | RGB>;
 
-// Both of these methods are still accessible!
+// 두 메서드 모두 여전히 접근할 수 있습니다!
 const redComponent = palette.red.at(0);
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-`satisfies` can be used to catch lots of possible errors.
-For example, we could ensure that an object has *all* the keys of some type, but no more:
+`satisfies`는 많은 오류를 탐지하는데 사용할 수 있습니다.
+예를 들면, 객체가 특정 타입의 *모든* 키를 가지지만, 그 이상은 가지지 않도록 할 수 있습니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
 
-// Ensure that we have exactly the keys from 'Colors'.
+// 'Colors' 키가 정확한지 확인합니다.
 const favoriteColors = {
     "red": "yes",
     "green": false,
     "blue": "kinda",
     "platypus": false
-//  ~~~~~~~~~~ error - "platypus" was never listed in 'Colors'.
+//  ~~~~~~~~~~ 에러 - "platypus"는 'Colors' 리스트에 없습니다.
 } satisfies Record<Colors, unknown>;
 
-// All the information about the 'red', 'green', and 'blue' properties are retained.
+// 'red', 'green' 및 'blue' 속성의 모든 정보가 유지됩니다.
 const g: boolean = favoriteColors.green;
 ```
 
-Maybe we don't care about if the property names match up somehow, but we do care about the types of each property.
-In that case, we can also ensure that all of an object's property values conform to some type.
+이따금 우리는 속성 이름 일치 여부보다 각 속성의 타입에 관심이 있을 수 있습니다.
+이 경우 개체의 모든 속성 값이 일부 타입을 준수하는지 확인할 수도 있습니다.
 
 ```ts
 type RGB = [red: number, green: number, blue: number];
@@ -95,16 +95,16 @@ const palette = {
     red: [255, 0, 0],
     green: "#00ff00",
     blue: [0, 0]
-    //    ~~~~~~ error!
+    //    ~~~~~~ 에러!
 } satisfies Record<string, string | RGB>;
 
-// Information about each property is still maintained.
+// 각 속성에 대한 정보는 계속 유지됩니다.
 const redComponent = palette.red.at(0);
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-For more examples, you can see the [issue proposing this](https://github.com/microsoft/TypeScript/issues/47920) and [the implementing pull request](https://github.com/microsoft/TypeScript/pull/46827).
-We'd like to thank [Oleksandr Tarasiuk](https://github.com/a-tarasyuk) who implemented and iterated on this feature with us.
+더 많은 예시를 보고 싶다면, [제안한 이슈](https://github.com/microsoft/TypeScript/issues/47920) 와 [이를 구현한 pull request](https://github.com/microsoft/TypeScript/pull/46827)를 확인하세요.
+우리와 함께 이 기능을 구현한 [Oleksandr Tarasiuk](https://github.com/a-tarasyuk)에게 감사드립니다.
 
 ## Unlisted Property Narrowing with the `in` Operator
 
@@ -253,12 +253,12 @@ class Person {
 
 You can [read up more about the auto-accessors pull request on the original PR](https://github.com/microsoft/TypeScript/pull/49705).
 
-## Checks For Equality on `NaN`
+## `NaN` 동등성 검사
 
-A major gotcha for JavaScript developers is checking against the value `NaN` using the built-in equality operators.
+JavaScript 개발자의 주요 문제는 내장된 동등 연산자를 사용해서 `NaN` 값을 확인하는 점입니다.
 
-For some background, `NaN` is a special numeric value that stands for "Not a Number".
-Nothing is ever equal to `NaN` - even `NaN`!
+`NaN`은 특수 숫자 값으로 "Not a Number"를 의미합니다. 
+`NaN`과 동일한 것은 없습니다. 심지어 `NaN`도 마찬가지입니다.
 
 ```js
 console.log(NaN == 0)  // false
@@ -268,7 +268,7 @@ console.log(NaN == NaN)  // false
 console.log(NaN === NaN) // false
 ```
 
-But at least symmetrically *everything* is always not-equal to `NaN`.
+하지만 적어도 대칭적으로 *모든 것* 은 항상 `NaN`과 동일하지 않습니다.
 
 ```js
 console.log(NaN != 0)  // true
@@ -278,11 +278,11 @@ console.log(NaN != NaN)  // true
 console.log(NaN !== NaN) // true
 ```
 
-This technically isn't a JavaScript-specific problem, since any language that contains IEEE-754 floats has the same behavior;
-but JavaScript's primary numeric type is a floating point number, and number parsing in JavaScript can often result in `NaN`.
-In turn, checking against `NaN` ends up being fairly common, and the correct way to do so is to use [`Number.isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) - *but* as we mentioned, lots of people accidentally end up checking with `someValue === NaN` instead.
+IEEE-754 float를 포함하는 모든 언어가 동일하게 동작하므로, 기술적으로 JavaScript만의 문제는 아닙니다.
+JavaScript의 기본 숫자 타입은 부동소수점 숫자이며, JavaScript는 숫자 구문을 종종 `NaN`으로 분석할 수 있습니다.
+그러므로 `NaN` 값 확인은 일반적이며, [`Number.isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN)를 사용하면 올바르게 확인할 수 있습니다. 하지만 위에서 언급했듯이 많은 사람들이 실수로 `someValue === NaN`을 사용해서 확인하게 됩니다.
 
-TypeScript now errors on direct comparisons against `NaN`, and will suggest using some variation of `Number.isNaN` instead.
+TypeScript는 이제 `NaN` 값을 직접 비교하면 오류를 보여주고 `Number.isNaN` 사용을 제안합니다.
 
 ```ts
 function validate(someValue: number) {
@@ -293,42 +293,42 @@ function validate(someValue: number) {
 }
 ```
 
-We believe that this change should strictly help catch beginner errors, similar to how TypeScript currently issues errors on comparisons against object and array literals.
+이번 변경은 TypeScript가 현재 객체 및 배열 리터럴에 대한 비교에서 오류를 발생시키는 방식과 유사하게, 초보자 오류를 잡는 데 큰 도움이 될 것이라고 믿습니다.
 
-We'd like to extend our thanks to [Oleksandr Tarasiuk](https://github.com/a-tarasyuk) who [contributed this check](https://github.com/microsoft/TypeScript/pull/50626).
+[이 기능에 기여한](https://github.com/microsoft/TypeScript/pull/50626) [Oleksandr Tarasiuk](https://github.com/a-tarasyuk)에게 감사를 전하고 싶습니다.
 
-## File-Watching Now Uses File System Events
+## 파일 시스템 이벤트를 사용한 파일 감시
 
-In earlier versions, TypeScript leaned heavily on *polling* for watching individual files.
-Using a polling strategy meant checking the state of a file periodically for updates.
-On Node.js, [`fs.watchFile`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilefilename-options-listener) is the built-in way to get a polling file-watcher.
-While polling tends to be more predictable across platforms and file systems, it means that your CPU has to periodically get interrupted and check for updates to the file, even when nothing's changed.
-For a few dozen files, this might not be noticeable;
-but on a bigger project with lots of files - or lots of files in `node_modules` - this can become a resource hog.
+이전 버전에서 TypeScript는 개별 파일을 감시하기 위해 *폴링*에 크게 의존했습니다.
+폴링 전략을 사용하는 것은 업데이트를 위해 주기적으로 파일 상태를 감시함을 의미합니다.
+Node.js에서 [`fs.watchFile`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilefilename-options-listener)은 폴링 파일 감시자를 가져오는 기본 제공 방법입니다.
+폴링은 플랫폼과 파일 시스템에서 보다 예측 가능한 경향이 있지만 CPU가 주기적으로 중단되어 변경된 사항이 없을 때에도 파일 업데이트를 확인해야 합니다.
+파일이 수십 개라면 큰 차이가 없을 수 있습니다.
+하지만 파일이 많고 더 큰 프로젝트에서 또는 `node_modules`에 많은 파일이 있는 경우, 폴링은 자원을 많이 차지할 수 있습니다.
 
-Generally speaking, a better approach is to use file system events.
-Instead of polling, we can announce that we're interested in updates of specific files and provide a callback for when those files *actually do* change.
-Most modern platforms in use provide facilities and APIs like `CreateIoCompletionPort`, `kqueue`, `epoll`, and `inotify`.
-Node.js mostly abstracts these away by providing [`fs.watch`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilename-options-listener).
-File system events usually work great, but there are [lots of caveats](https://nodejs.org/docs/latest-v18.x/api/fs.html#caveats) to using them, and in turn, to using the `fs.watch` API.
-A watcher needs to be careful to consider [inode watching](https://nodejs.org/docs/latest-v18.x/api/fs.html#inodes), [unavailability on certain file systems](https://nodejs.org/docs/latest-v18.x/api/fs.html#availability) (e.g.networked file systems), whether recursive file watching is available, whether directory renames trigger events, and even file watcher exhaustion!
-In other words, it's not quite a free lunch, especially if you're looking for something cross-platform.
+일반적으로 더 좋은 접근 방식은 파일 시스템 이벤트를 사용하는 것입니다.
+폴링하는 대신 특정 파일의 업데이트에 관심이 있음을 알리고 해당 파일이 *실제로* 변경될 때 콜백을 제공할 수 있습니다.
+대부분의 최신 플랫폼은 `CreateIoCompletionPort`, `kqueue`, `epoll` 및 `inotify`와 같은 기능과 API를 제공합니다.
+Node.js는 대부분 [`fs.watch`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswatchfilename-options-listener)를 제공하여 이를 추상화합니다.
+파일 시스템 이벤트는 일반적으로 잘 동작하지만 이를 사용하고 `fs.watch` API를 사용하는 데 [많은 주의 사항](https://nodejs.org/docs/latest-v18.x/api/fs.html#caveats)이 있습니다.
+감시자는 [inode 감시](https://nodejs.org/docs/latest-v18.x/api/fs.html#inodes),[특정 파일 시스템에서 비가용성](https://nodejs.org/docs/latest-v18.x/api/fs.html#availability) (예를 들면 네트워크 파일 시스템), 재귀 파일 감시가 사용 가능한지 여부, 디렉터리 이름 변경이 이벤트를 트리거하는지 여부, 파일 감시자 고갈까지 고려해야 합니다!
+특히 크로스 플랫폼을 찾고 있다면 쉽지 않습니다.
 
-As a result, our default was to pick the lowest common denominator: polling.
-Not always, but most of the time.
+결과적으로 우리는 기본 값으로 폴링이라는 가장 낮은 공통분모를 선택하는 것이었습니다.
+항상 그런 것은 아니지만 대부분의 경우에 해당했습니다.
 
-Over time, we've provided the means to [choose other file-watching strategies](https://www.typescriptlang.org/docs/handbook/configuring-watch.html).
-This allowed us to get feedback and harden our file-watching implementation against most of these platform-specific gotchas.
-As TypeScript has needed to scale to larger codebases, and has improved in this area, we felt swapping to file system events as the default would be a worthwhile investment.
+시간이 지남에 따라 우리는 [다른 파일 감시 전략을 선택](https://www.typescriptlang.org/docs/handbook/configuring-watch.html)할 수 있는 수단을 제공했습니다.
+이를 통해 피드백을 받고 대부분 플랫폼 문제들에 대해 파일 감시 구현을 강화할 수 있었습니다.
+TypeScript가 더 큰 코드베이스로 확장되어야 하고 이 영역에서 개선되었으므로 파일 시스템 이벤트를 기본값으로 바꾸는 것이 가치 있는 투자라고 생각했습니다.
 
-In TypeScript 4.9, file watching is powered by file system events by default, only falling back to polling if we fail to set up event-based watchers.
-For most developers, this should provide a much less resource-intensive experience when running in `--watch` mode, or running with a TypeScript-powered editor like Visual Studio or VS Code.
+TypeScript 4.9에서 파일 감시는 기본적으로 파일 시스템 이벤트에 의해 구동되며 이벤트 기반 감시자를 설정하지 못한 경우에만 폴링으로 돌아갑니다.
+대부분의 개발자에게 `--watch` 모드에서 실행하거나 Visual Studio 또는 VS Code와 같은 TypeScript 기반 편집기로 실행할 때 훨씬 덜 리소스 집약적인 환경을 제공해야 합니다.
 
-[The way file-watching works can still be configured](https://www.typescriptlang.org/docs/handbook/configuring-watch.html) through environment variables and `watchOptions` - and [some editors like VS Code can support `watchOptions` independently](https://code.visualstudio.com/docs/getstarted/settings#:~:text=typescript%2etsserver%2ewatchOptions).
-Developers using more exotic set-ups where source code resides on a networked file systems (like NFS and SMB) may need to opt back into the older behavior; though if a server has reasonable processing power, it might just be better to enable SSH and run TypeScript remotely so that it has direct local file access.
-VS Code has plenty of [remote extensions](https://marketplace.visualstudio.com/search?term=remote&target=VSCode&category=All%20categories&sortBy=Relevance) to make this easier.
+[파일 감시가 작동하는 방식은 여전히 ​​환경 변수 및 `watchOptions`를 통해 구성](https://www.typescriptlang.org/docs/handbook/configuring-watch.html)할 수 있으며 [VS Code와 같은 일부 편집기는 `watchOptions`를 독립적으로 지원할 수 있습니다.](https://code.visualstudio.com/docs/getstarted/settings#:~:text=typescript%2etsserver%2ewatchOptions)
+NFS 및 SMB와 같은 네트워크 파일 시스템에 소스 코드가 상주하는 좀 더 특이한 설정을 사용하는 개발자는 이전 동작을 다시 선택해야 할 수 있습니다. 하지만 서버에 적절한 처리 능력이 있는 경우 SSH를 활성화하고 TypeScript를 원격으로 실행하여 직접 로컬 파일에 액세스할 수 있도록 하는 것이 더 나을 수 있습니다.
+VS Code에는 이 작업을 더 쉽게 수행할 수 있는 [원격 익스텐션](https://marketplace.visualstudio.com/search?term=remote&target=VSCode&category=All%20categories&sortBy=Relevance)이 많이 있습니다.
 
-You can [read up more on this change on GitHub](https://github.com/microsoft/TypeScript/pull/50366).
+GitHub에서 [이 변경 사항에 대해 자세히](https://github.com/microsoft/TypeScript/pull/50366) 알아볼 수 있습니다.
 
 ## "Remove Unused Imports" and "Sort Imports" Commands for Editors
 
@@ -388,22 +388,22 @@ We expect TypeScript will expand this functionality to more keywords [such as `a
 
 [This feature was implemented](https://github.com/microsoft/TypeScript/pull/51227) thanks to [Oleksandr Tarasiuk](https://github.com/a-tarasyuk).
 
-## Performance Improvements
+## 성능 개선
 
-TypeScript has a few small, but notable, performance improvements.
+TypeScript에는 몇 가지 작지만 주목할 만한 성능 개선이 있습니다.
 
-First, TypeScript's `forEachChild` function has been rewritten to use a function table lookup instead of a `switch` statement across all syntax nodes.
-`forEachChild` is a workhorse for traversing syntax nodes in the compiler, and is used heavily in the binding stage of our compiler, along with parts of the language service.
-The refactoring of `forEachChild` yielded up to a 20% reduction of time spent in our binding phase and across language service operations.
+첫째, 모든 구문 노드에서 `switch` 문 대신 함수 테이블 조회를 사용하도록 TypeScript의 `forEachChild` 함수가 리팩터링되었습니다.
+`forEachChild`는 컴파일러에서 구문 노드를 순회하기 위한 작업 도구이며 언어 서비스의 일부와 함께 컴파일러의 바인딩 단계에서 많이 사용됩니다.
+`forEachChild` 리팩터링은 바인딩 단계와 언어 서비스 작업 전반에 소요되는 시간을 최대 20% 단축했습니다.
 
-Once we discovered this performance win for `forEachChild`, we tried it out on `visitEachChild`, a function we use for transforming nodes in the compiler and language service.
-The same refactoring yielded up to a 3% reduction in time spent in generating project output.
+`forEachChild`에 대한 성능 향상을 확인한 후 컴파일러 및 언어 서비스에서 노드를 변환하는 데 사용하는 함수인 `visitEachChild`에서 리팩터링을 시도했습니다.
+동일한 리팩터링으로 프로젝트 결과를 생성하는 데 소요되는 시간이 최대 3% 감소했습니다.
 
-The initial exploration in `forEachChild` was [inspired by a blog post](https://artemis.sh/2022/08/07/emulating-calculators-fast-in-js.html) by [Artemis Everfree](https://artemis.sh/).
-While we have some reason to believe the root cause of our speed-up might have more to do with function size/complexity than the issues described in the blog post, we're grateful that we were able to learn from the experience and try out a relatively quick refactoring that made TypeScript faster.
+`forEachChild`의 초기 탐색은 [Artemis Everfree](https://artemis.sh/)의 [블로그 게시물에서 영감](https://artemis.sh/2022/08/07/emulating-calculators-fast-in-js.html)을 받았습니다.
+속도 향상의 근본 원인이 블로그 게시물에 설명된 문제보다 기능 크기/복잡성과 더 관련이 있다고 믿을만한 이유가 있지만 경험을 통해 배우고 TypeScript를 더 빠르게 만든 상대적으로 빠른 리팩토링을 시험해 볼 수 있었던 것에 감사드립니다.
 
-Finally, the way TypeScript preserves the information about a type in the true branch of a conditional type has been optimized.
-In a type like
+마지막으로 TypeScript가 조건부 유형의 실제 분기에서 타입에 대한 정보를 보존하는 방식이 최적화되었습니다.
+다음과 같은 타입에서
 
 ```ts
 interface Zoo<T extends Animal> {
@@ -413,18 +413,18 @@ interface Zoo<T extends Animal> {
 type MakeZoo<A> = A extends Animal ? Zoo<A> : never;
 ```
 
-TypeScript has to "remember" that `A` must also be an `Animal` when checking if `Zoo<A>` is valid.
-This is basically done by creating a special type that used to hold the intersection of `A` with `Animal`;
-however, TypeScript previously did this eagerly which isn't always necessary.
-Furthermore, some faulty code in our type-checker prevented these special types from being simplified.
-TypeScript now defers intersecting these types until it's necessary.
-For codebases with heavy use of conditional types, you might witness significant speed-ups with TypeScript, but in our performance testing suite, we saw a more modest 3% reduction in type-checking time.
+TypeScript는 `Zoo<A>`가 유효한지 확인할 때 `A`도 `Animal`이어야 한다는 것을 "기억"해야 합니다.
+기본적으로 `A`와 `Animal`의 교차점을 유지하는 데 사용되는 특수 타입을 생성하여 수행됩니다.
+그러나 TypeScript는 이전에 이 작업을 열심히 수행했으며 항상 필요한 것은 아닙니다.
+또한 타입 검사기의 일부 잘못된 코드로 인해 이러한 특수 타입이 단순화되지 않았습니다.
+TypeScript는 이제 필요할 때까지 이러한 타입의 교차를 연기합니다.
+조건부 타입을 많이 사용하는 코드베이스의 경우 TypeScript를 사용하여 상당한 속도 향상을 목격할 수 있지만 성능 테스트 제품군에서는 유형 검사 시간이 3% 더 완만하게 감소했습니다.
 
-You can read up more on these optimizations on their respective pull requests:
+각각의 풀 리퀘스트에서 더 자세히 알아볼 수 있습니다.
 
-* [`forEachChild` as a jump-table](https://github.com/microsoft/TypeScript/pull/50225)
-* [`visitEachChild` as a jump-table](https://github.com/microsoft/TypeScript/pull/50266)
-* [Optimize substitition types](https://github.com/microsoft/TypeScript/pull/50397)
+* [`forEachChild` 점프 테이블](https://github.com/microsoft/TypeScript/pull/50225)
+* [`visitEachChild` 점프 테이블](https://github.com/microsoft/TypeScript/pull/50266)
+* [대체 타입 최적화](https://github.com/microsoft/TypeScript/pull/50397)
 
 ## 수정 및 변경사항
 
