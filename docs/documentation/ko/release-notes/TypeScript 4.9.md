@@ -426,26 +426,26 @@ TypeScript는 이제 필요할 때까지 이러한 타입의 교차를 연기합
 * [`visitEachChild` 점프 테이블](https://github.com/microsoft/TypeScript/pull/50266)
 * [대체 타입 최적화](https://github.com/microsoft/TypeScript/pull/50397)
 
-## Correctness Fixes and Breaking Changes
+## 수정 및 변경사항
 
-### `lib.d.ts` Updates
+### `lib.d.ts` 업데이트
 
-While TypeScript strives to avoid major breaks, even small changes in the built-in libraries can cause issues.
-We don't expect major breaks as a result of DOM and `lib.d.ts` updates, but there may be some small ones.
+TypeScript는 major break는 피하기 위해 노력하지만, 내장 라이브러리의 아주 작은 변경조차도 문제가 될 수 있습니다.
+DOM과 `lib.d.ts` 업데이트의 결과로 major break 는 일어나지 않을 것으로 기대하지만, 종종 작은 문제가 생길 수도 있습니다.
 
-### Better Types for `Promise.resolve` 
+### `Promise.resolve` 를 위한 보다 나은 타입들
 
-`Promise.resolve` now uses the `Awaited` type to unwrap Promise-like types passed to it.
-This means that it more often returns the right `Promise` type, but that improved type can break existing code if it was expecting `any` or `unknown` instead of a `Promise`.
-For more information, [see the original change](https://github.com/microsoft/TypeScript/pull/33074).
+현재 `Promise.resolve`는 이것으로 전달되는 Promise-like 타입을 벗겨내기 위해 `Awaited` 타입을 사용합니다.
+이는 종종 더 정확한 `Promise` 타입을 반환하지만, 이 개선된 타입이 `Promise` 대신 `any` 또는 `unknown` 타입을 기대하고 있던 기존 코드를 깨버릴 수도 있습니다.
+더 자세한 정보는 [original change](https://github.com/microsoft/TypeScript/pull/33074)를 참고하세요.
 
-### JavaScript Emit No Longer Elides Imports
+### JavaScript 내보내기(Emit) 에서 더이상 Import 를 생략하지 않습니다
 
-When TypeScript first supported type-checking and compilation for JavaScript, it accidentally supported a feature called import elision.
-In short, if an import is not used as a value, or the compiler can detect that the import doesn't refer to a value at runtime, the compiler will drop the import during emit.
+TypeScript가 JavaScript에 대한 타입 검사 및 컴파일을 처음 지원했을 때 실수로 import 생략이라는 기능을 지원했었습니다.
+짧게 말하면, 만약 import 한 것이 값으로 쓰이지 않거나 런타임에서의 값을 참조하지 않는다면 컴파일러는 내보내기 과정에서 해당 import를 제거하는 기능입니다.
 
-This behavior was questionable, especially the detection of whether the import doesn't refer to a value, since it means that TypeScript has to trust sometimes-inaccurate declaration files.
-In turn, TypeScript now preserves imports in JavaScript files.
+이러한 동작은 특히 import가 값을 참조하는지 감지할 때 종종 TypeScript가 부정확한 선언 파일을 신뢰해야 한다는 점에서 아리송했습니다. 
+이제 TypeScript는 JavaScript 파일 내의 import를 유지합니다.
 
 ```js
 // Input:
@@ -467,12 +467,12 @@ import { someValue, SomeClass } from "some-module";
 let val = someValue;
 ```
 
-More information is available at [the implementing change](https://github.com/microsoft/TypeScript/pull/50404).
+더 많은 정보는 [implementing change](https://github.com/microsoft/TypeScript/pull/50404)을 참고하세요.
 
-### `exports` is Prioritized Over `typesVersions`
+### `exports`가 `typesVersions`보다 우선 순위가 높습니다.
 
-Previously, TypeScript incorrectly prioritized the `typesVersions` field over the `exports` field when resolving through a `package.json` under `--moduleResolution node16`.
-If this change impacts your library, you may need to add `types@` version selectors in your `package.json`'s `exports` field.
+이전에는 TypeScript가 `--moduleResolution node16` 조건의 `package.json`을 통해 리졸브할 때 `exports` 필드보다 `typesVersions` 필드를 우선했습니다.
+이 변경 사항이 여러분의 라이브러리에 영향을 미치는 경우 `package.json`의 `exports` 필드에 `types@` version selector를 추가하면 됩니다.
 
 ```diff
   {
@@ -492,10 +492,10 @@ If this change impacts your library, you may need to add `types@` version select
   }
 ```
 
-For more information, [see this pull request](https://github.com/microsoft/TypeScript/pull/50890).
+더 자세한 정보는 이 [pull request](https://github.com/microsoft/TypeScript/pull/50890)를 참고하세요.
 
-## `substitute` Replaced With `constraint` on `SubstitutionType`s
+## `SubstitutionType`에서 `substitute`가 `constraint`로 대체됩니다
 
-As part of an optimization on substitution types, `SubstitutionType` objects no longer contain the `substitute` property representing the effective substitution (usually an intersection of the base type and the implicit constraint) - instead, they just contain the `constraint` property.
+substitution 타입의 최적화의 일부로 `SubstitutionType` 객체는 effective substitution을 나타내는 (일반적으로 base type과 암시적 constraint의 intersection) `substitution` 속성을 더 이상 포함하지 않습니다. 대신 `constraint` 속성만 포함합니다.
 
-For more details, [read more on the original pull request](https://github.com/microsoft/TypeScript/pull/50397).
+더 자세히 보려면 원본 [pull request](https://github.com/microsoft/TypeScript/pull/50397)에서 읽어보세요.
