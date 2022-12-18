@@ -12,7 +12,7 @@ TypeScript 개발자들은 종종 딜레마에 직면합니다. 우리는 일부
 예를 들어
 
 ```ts
-// 각 속성은 문자열 또는 RGB 튜플일 수 있습니다.
+// 각 프로퍼티는 문자열 또는 RGB 튜플일 수 있습니다.
 const palette = {
     red: [255, 0, 0],
     green: "#00ff00",
@@ -28,7 +28,7 @@ const greenNormalized = palette.green.toUpperCase();
 ```
 
 우리는 `bleu` 대신, `blue`를 썼어야 했습니다.
-`palette`에 타입을 표기해서 `bleu` 오타를 잡을 수도 있지만, 그렇게 되면 각 속성에 대한 정보를 잃게 됩니다.
+`palette`에 타입을 표기해서 `bleu` 오타를 잡을 수도 있지만, 그렇게 되면 각 프로퍼티에 대한 정보를 잃게 됩니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -47,7 +47,7 @@ const redComponent = palette.red.at(0);
 ```
 
 `satisfies` 연산자를 사용하면 표현식의 결과 타입을 변경하지 않고 표현식의 타입이 특정 타입과 일치하는지 검증할 수 있습니다.
-예를 들어, 우리는 `satisfies`를 사용하여 `palette`의 모든 속성이 `string | number[]`와 호환되는지 검증할 수 있습니다.
+예를 들어, 우리는 `satisfies`를 사용하여 `palette`의 모든 프로퍼티가 `string | number[]`와 호환되는지 검증할 수 있습니다.
 
 ```ts
 type Colors = "red" | "green" | "blue";
@@ -81,12 +81,12 @@ const favoriteColors = {
 //  ~~~~~~~~~~ 에러 - "platypus"는 'Colors' 리스트에 없습니다.
 } satisfies Record<Colors, unknown>;
 
-// 'red', 'green' 및 'blue' 속성의 모든 정보가 유지됩니다.
+// 'red', 'green' 및 'blue' 프로퍼티의 모든 정보가 유지됩니다.
 const g: boolean = favoriteColors.green;
 ```
 
-이따금 우리는 속성 이름 일치 여부보다 각 속성의 타입에 관심이 있을 수 있습니다.
-이 경우 개체의 모든 속성 값이 일부 타입을 준수하는지 확인할 수도 있습니다.
+이따금 우리는 프로퍼티 이름 일치 여부보다 각 프로퍼티의 타입에 관심이 있을 수 있습니다.
+이 경우 개체의 모든 프로퍼티 값이 일부 타입을 준수하는지 확인할 수도 있습니다.
 
 ```ts
 type RGB = [red: number, green: number, blue: number];
@@ -98,7 +98,7 @@ const palette = {
     //    ~~~~~~ 에러!
 } satisfies Record<string, string | RGB>;
 
-// 각 속성에 대한 정보는 계속 유지됩니다.
+// 각 프로퍼티에 대한 정보는 계속 유지됩니다.
 const redComponent = palette.red.at(0);
 const greenNormalized = palette.green.toUpperCase();
 ```
