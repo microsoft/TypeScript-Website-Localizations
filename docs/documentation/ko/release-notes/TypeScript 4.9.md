@@ -110,9 +110,10 @@ We'd like to thank [Oleksandr Tarasiuk](https://github.com/a-tarasyuk) who imple
 
 개발자들은 자주 런타임에서 알 수 없는 값을 처리해야 할 때가 있습니다.
 서버에서 응답받거나 설정 파일을 읽는 경우처럼 실제로 프로퍼티가 존재하는지 알 수 없는 경우가 흔하게 있습니다.
-JavaScript의 `in` 연산자를 활용하면 객체에 프로퍼티가 존재하는지 알 수 있습니다.
+JavaScript의 `in` 연산자를 사용하면
+객체에 프로퍼티가 존재하는지 알 수 있습니다.
 
-이전에, TypeScript에서는 정의되지 않는 프로퍼티를 사용하여 타입을 좁힐 수 있었습니다.
+이전 TypeScript 버전에서는 명시적으로 프로퍼티가 타입 목록에 없다면 범위를 좁힐 수 있었습니다.
 
 ```ts
 interface RGB {
@@ -129,22 +130,22 @@ interface HSV {
 
 function setColor(color: RGB | HSV) {
     if ("hue" in color) {
-        // 이제 'color' 는 HSV 타입을 갖게되었습니다.
+        // 이제 'color'의 타입은 HSV 입니다.
     }
     // ...
 }
 ```
 
-여기서, `RGB` 타입에 정의되지 않은 `hue`에 의해 타입이 좁혀지게 되어, `HSV` 타입이 남게 되었습니다.
+여기서, `RGB` 타입에 정의되지 않은 `hue`에 의해 타입이 좁혀지게 되어, `HSV` 타입이 되었습니다.
 
 그러나 프로퍼티가 주어진 타입이 없는 경우에는 어떨까요?
-그런 경우, 언어가 큰 도움이 되지 않습니다.
-여기 JavaScript로 된 예시를 살펴보겠습니다
+그런 경우, 언어는 큰 도움이 되지 않습니다.
+여기 JavaScript로 된 예시를 살펴보겠습니다.
 
 ```js
 function tryGetPackageName(context) {
     const packageJSON = context.packageJSON;
-    // 객체가 맞는지 확인합니다.
+    // 객체 여부를 확인합니다.
     if (packageJSON && typeof packageJSON === "object") {
         // 문자열 타입의 name 프로퍼티를 가지고 있는지 확인합니다.
         if ("name" in packageJSON && typeof packageJSON.name === "string") {
@@ -156,8 +157,8 @@ function tryGetPackageName(context) {
 }
 ```
 
-이것을 표준 Typescript로 다시 작성한다면 `context`에 대한 타입을 정의해서 사용하게 될 것입니다.
-하지만, `packageJSON`의 속성에 `unknown`과 같은 안전한 타입을 사용하면 이전 타입스크립트 버전들에서 문제가 발생할 수도 있습니다.
+이것을 표준 TypeScript로 다시 작성한다면 `context` 타입을 정의해서 사용할 수 있습니다.
+하지만 `packageJSON`의 프로퍼티에 `unknown`과 같은 안전한 타입을 사용하면 이전 TypeScript 버전에서 문제가 발생할 수 있습니다.
 
 ```ts
 interface Context {
@@ -166,7 +167,7 @@ interface Context {
 
 function tryGetPackageName(context: Context) {
     const packageJSON = context.packageJSON;
-    // 객체가 맞는지 확인합니다.
+    // 객체 여부를 확인합니다.
     if (packageJSON && typeof packageJSON === "object") {
         // 문자열 타입의 name 프로퍼티를 가지고 있는지 확인합니다.
         if ("name" in packageJSON && typeof packageJSON.name === "string") {
@@ -182,13 +183,13 @@ function tryGetPackageName(context: Context) {
 }
 ```
 
-이는 `packageJSON`의 타입이 `unknown`에서 `object`로 좁혀졌으나, `in` 연산자는 실제로 정의한 타입으로 엄격하게 좁혔기 때문입니다.
-그 결과, `packageJSON`은 `object`로 남게 되었습니다.
+`packageJSON`의 타입이 `unknown`에서 `object`로 좁혀졌지만, `in` 연산자는 실제 정의한 타입으로 엄격하게 좁혔기 때문입니다.
+결과적으로 `packageJSON`의 타입은 `object`가 되었습니다.
 
-TypeScript 4.9는 프로퍼티가 전혀 정의되지 _않은_ 타입을 좁힐 때, `in` 연산자를 사용하여 조금 더 강력하게 만듭니다.
-이전과는 다르게, 언어는 `Record<"property-key-being-checked", unknown>`과 타입을 교차합니다.
+TypeScript 4.9는 프로퍼티가 전혀 정의되지 _않은_ 타입으로 좁힐 때, `in` 연산자를 사용하여 조금 더 강력하게 만듭니다.
+이전과 차이는 없지만, 언어 내부적으로 `Record<"property-key-being-checked", unknown>` 타입을 교차합니다.
 
-따라서 위 예시에서, `packageJSON`는 `unknown`에서 `object`로 그다음 `object & Record<"name", unknown>`로 타입이 좁혀집니다.
+따라서 위 예시에서, `packageJSON` 타입은 `unknown`에서 `object`로 그다음 `object & Record<"name", unknown>`로 타입이 좁혀집니다.
 이를 통해 `packageJSON.name`에 직접 접근이 가능해지고 독립적으로 좁혀집니다.
 
 ```ts
@@ -198,11 +199,11 @@ interface Context {
 
 function tryGetPackageName(context: Context): string | undefined {
     const packageJSON = context.packageJSON;
-    // 객체가 맞는지 확인합니다.
+    // 객체 여부를 확인합니다.
     if (packageJSON && typeof packageJSON === "object") {
         // 문자열 타입의 name 프로퍼티를 가지고 있는지 확인합니다.
         if ("name" in packageJSON && typeof packageJSON.name === "string") {
-            // 동작!
+            // 정상 동작합니다!
             return packageJSON.name;
         }
     }
@@ -211,8 +212,8 @@ function tryGetPackageName(context: Context): string | undefined {
 }
 ```
 
-TypeScript 4.9는 또한 `in`의 검사를 강화하여 left side에는 `string | number | symbol`, right side에는 `object`로만 할당할 수 있도록 보증합니다.
-이는 유효한 프로퍼티 키를 사용했는지, 실수로 프리미티브를 검증하고 있는지 확인하는 데 도움이 됩니다.
+또한 TypeScript 4.9는`in`의 사용성에서 확인하는 부분을 강화하여 왼쪽에는 `string | number | symbol`, 오른쪽에는 `object`로만 할당할 수 있도록 보장합니다.
+이를 이용해서 프로퍼티 키가 유효한지, 실수로 프리미티브 검증을 놓쳤는지 확인할 수 있습니다.
 
 더 많은 정보를 얻고 싶다면, [이를 구현한 pull request를 읽어보세요](https://github.com/microsoft/TypeScript/pull/50666)
 
