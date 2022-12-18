@@ -330,10 +330,10 @@ VS Code에는 이 작업을 더 쉽게 수행할 수 있는 [원격 익스텐션
 
 GitHub에서 [이 변경 사항에 대해 자세히](https://github.com/microsoft/TypeScript/pull/50366) 알아볼 수 있습니다.
 
-## "Remove Unused Imports" and "Sort Imports" Commands for Editors
+## "Remove Unused Imports" 와 "Sort Imports" 편집기 명령어
 
-Previously, TypeScript only supported two editor commands to manage imports.
-For our examples, take the following code:
+지금까지 TypeScript는 import를 관리하기 위한 편집기 명령어로 단 두 가지만 지원했습니다.
+예시를 위해 다음 코드를 참고하세요.
 
 ```ts
 import { Zebra, Moose, HoneyBadger } from "./zoo";
@@ -342,8 +342,8 @@ import { foo, bar } from "./helper";
 let x: Moose | HoneyBadger = foo();
 ```
 
-The first was called "Organize Imports" which would remove unused imports, and then sort the remaining ones.
-It would rewrite that file to look like this one:
+먼저 사용하지 않는 import를 제거하고 남은 import를 정렬하는 "Organize Imports" 입니다.
+이것은 파일을 다음과 같이 재작성합니다.
 
 ```ts
 import { foo } from "./helper";
@@ -352,7 +352,7 @@ import { HoneyBadger, Moose } from "./zoo";
 let x: Moose | HoneyBadger = foo();
 ```
 
-In TypeScript 4.3, we introduced a command called "Sort Imports" which would *only* sort imports in the file, but not remove them - and would rewrite the file like this.
+TypeScript 4.3에서, 파일 내 import를 *오직* 정렬만 하고 제거하지는 않는 "Sort Imports"가 도입되었습니다. 이것은 파일을 다음과 같이 재작성합니다.
 
 ```ts
 import { bar, foo } from "./helper";
@@ -361,10 +361,10 @@ import { HoneyBadger, Moose, Zebra } from "./zoo";
 let x: Moose | HoneyBadger = foo();
 ```
 
-The caveat with "Sort Imports" was that in Visual Studio Code, this feature was only available as an on-save command - not as a manually triggerable command.
+"Sort Imports"에 대한 주의 사항은, Visual Studio Code에서 이 기능이 수동으로 트리거할 수 있는 명령이 아닌 on-save 명령으로만 사용할 수 있었다는 점입니다.
 
-TypeScript 4.9 adds the other half, and now provides "Remove Unused Imports".
-TypeScript will now remove unused import names and statements, but will otherwise leave the relative ordering alone.
+TypeScript 4.9는 나머지 절반을 추가하여 이제 "Remove Unused Imports" 기능을 제공합니다.
+TypeScript는 이제 사용되지 않는 이름 import 및 구문 import를 제거하지만, 그 외 상대적인 순서는 그대로 유지합니다.
 
 ```ts
 import { Moose, HoneyBadger } from "./zoo";
@@ -373,20 +373,20 @@ import { foo } from "./helper";
 let x: Moose | HoneyBadger = foo();
 ```
 
-This feature is available to all editors that wish to use either command;
-but notably, Visual Studio Code (1.73 and later) will have support built in *and* will surface these commands via its Command Palette.
-Users who prefer to use the more granular "Remove Unused Imports" or "Sort Imports" commands should be able to reassign the "Organize Imports" key combination to them if desired.
+이 기능은 두 명령어를 사용하고자 하는 모든 편집기에서 사용 가능합니다.
+특히 Visual Studio Code (1.73 이상)에선 이에 대한 빌트인 기능을 지원하며 *또한* Command Palette를 통해 해당 명령어들을 확인할 수 있습니다.
+더 세분화된 "Remove Unused Imports" 또는 "Sort Imports" 사용을 선호하는 사용자는 원하는 경우 "Organize Imports" 키 조합을 재할당할 수 있습니다.
 
-You can [view specifics of the feature here](https://github.com/microsoft/TypeScript/pull/50931).
+[여기서 이 기능의 세부 사항](https://github.com/microsoft/TypeScript/pull/50931)을 볼 수 있습니다.
 
-## Go-to-Definition on `return` Keywords
+## `return` 키워드에 대한 Go-to-Definition
 
-In the editor, when running a go-to-definition on the `return` keyword, TypeScript will now jump you to the top of the corresponding function.
-This can be helpful to get a quick sense of which function a `return` belongs to.
+TypeScript는 이제 편집기에 `return` 키워드에 대한 go-to-definition 기능이 수행되면 해당 함수의 상단부로 이동할 수 있게 합니다.
+이는 `return` 이 어떤 함수에 속하는지 빠르게 파악하는 데 도움이 됩니다.
 
-We expect TypeScript will expand this functionality to more keywords [such as `await` and `yield`](https://github.com/microsoft/TypeScript/issues/51223) or [`switch`, `case`, and `default`](https://github.com/microsoft/TypeScript/issues/51225).
+TypeScript는 이 기능을 [`await`와 `yield`](https://github.com/microsoft/TypeScript/issues/51223) 또는 [`switch`, `case`, 그리고 `default`](https://github.com/microsoft/TypeScript/issues/51225) 같은 더 많은 키워드에도 확장할 예정입니다.
 
-[This feature was implemented](https://github.com/microsoft/TypeScript/pull/51227) thanks to [Oleksandr Tarasiuk](https://github.com/a-tarasyuk).
+[Oleksandr Tarasiuk](https://github.com/a-tarasyuk) 덕분에 [이 기능이 구현되었습니다](https://github.com/microsoft/TypeScript/pull/51227).
 
 ## 성능 개선
 
