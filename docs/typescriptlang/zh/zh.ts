@@ -7,6 +7,7 @@ import { docCopy } from "./documentation"
 import { indexCopy } from "./index"
 import { comCopy } from "./community"
 import { handbookCopy } from "./handbook"
+import { cheatCopy } from "./cheatsheets"
 
 export const lang = defineMessages({
   ...englishMessages,
@@ -17,4 +18,5 @@ export const lang = defineMessages({
   ...playCopy,
   ...comCopy,
   ...handbookCopy,
+  ...cheatCopy
 })
