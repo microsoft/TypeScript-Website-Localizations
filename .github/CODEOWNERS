@@ -22,11 +22,11 @@ docs/typescriptlang/es.ts @KingDarBoja [translation] [es]
 docs/documentation/es/**/*.md @KingDarBoja [translation] [es]
 
 # Collaborators for Chinese Translation of the Website
-docs/playground/zh @Kingwl [translation] [zh]
-docs/tsconfig/zh/**/*.md @Kingwl [translation] [zh]
-docs/typescriptlang/zh/**/*.ts @Kingwl [translation] [zh]
-docs/typescriptlang/zh.ts @Kingwl [translation] [zh]
-docs/documentation/zh/**/*.md @Kingwl [translation] [zh]
+docs/playground/zh @Kingwl @EnochGao [translation] [zh]
+docs/tsconfig/zh/**/*.md @Kingwl @EnochGao [translation] [zh]
+docs/typescriptlang/zh/**/*.ts @Kingwl @EnochGao [translation] [zh]
+docs/typescriptlang/zh.ts @Kingwl @EnochGao [translation] [zh]
+docs/documentation/zh/**/*.md @Kingwl @EnochGao [translation] [zh]
 
 # Collaborators for Korean Translation of the Website
 docs/playground/ko @bumkeyy @yeonjuan @guyeol @dvlprsh [translation] [ko]
