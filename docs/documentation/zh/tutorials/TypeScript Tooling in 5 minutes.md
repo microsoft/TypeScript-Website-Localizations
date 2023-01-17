@@ -170,7 +170,7 @@ TypeScript中的类只是JavaScript中常用的基于原型的面向对象的简
 
 小提示：在Visual Studio中打开`greeter.ts`，或将代码复制到[TypeScript Playground](https://www.typescriptlang.org/play)中。
 您可以将光标悬停在标识符上来查看其类型。
-请注意，在某些情况下，类型会自动为您推到。
+请注意，在某些情况下，类型会自动为您推导。
 重新键入最后一行，并根据DOM元素的类型查看约束列表和参数帮助。
 将光标放在greeter函数的引用上，然后按F12键转到其定义。
 还请注意，您可以右键单击符号并使用重构对其进行重命名。
