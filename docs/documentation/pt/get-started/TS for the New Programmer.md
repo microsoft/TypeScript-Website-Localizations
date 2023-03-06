@@ -12,9 +12,9 @@ Você provavelmente já deve ter ouvido que TypeScript é um "sabor" ou uma "var
 
 ## O Que é JavaScript? Uma Breve História
 
-JavaScript (também conhecido como ECMAScript) começou sua vida como uma lingaugem de script simples para navegadores. Na época em que foi inventada, sempre foi esperado que fosse usada para pequenos snippets de código embarcados em uma página web - escrevendo mais do que uma dúzia de linhas de código seria algo incomum. Por isso, navegadores jovens da época executavam tal código bem devagar. Entretanto, com o tempo, JS se tornou mais e mais popular e desenvolvedores web começaram a usar ele para criar experiências interativas.
+JavaScript (também conhecido como ECMAScript) começou sua vida como uma linguagem de script simples para navegadores. Na época em que foi inventada, sempre foi esperado que fosse usada para pequenos snippets de código embarcados em uma página web - escrevendo mais do que uma dúzia de linhas de código seria algo incomum. Por isso, navegadores jovens da época executavam tal código bem devagar. Entretanto, com o tempo, JS se tornou mais e mais popular e desenvolvedores web começaram a usar ele para criar experiências interativas.
 
-Desenvolvedores de navegadores web responderam a esse uso aumentado de JS otimizando seus motores de execução (compilação dinâmica) e extendendo o que poderia ser feito com ele (adicionando APIs), o que por sua vez fez os desenvolvedores web o usarem ainda mais. Em websites modernos, seu browser frequentemente está rodando aplicações que têm centenas de milhares de linhas de código. Esse é o crescimento longo e gradual da "web", começando como uma rede simples de páginas estáticas e evoluindo em uma plataforma para _aplicações_ ricas de todos os tipos.
+Desenvolvedores de navegadores web responderam a esse uso aumentado de JS otimizando seus motores de execução (compilação dinâmica) e estendendo o que poderia ser feito com ele (adicionando APIs), o que por sua vez fez os desenvolvedores web o usarem ainda mais. Em websites modernos, seu browser frequentemente está rodando aplicações que têm centenas de milhares de linhas de código. Esse é o crescimento longo e gradual da "web", começando como uma rede simples de páginas estáticas e evoluindo em uma plataforma para _aplicações_ ricas de todos os tipos.
 
 Mais do que isso, JS se tornou popular o suficiente para ser usado fora do contexto de navegadores, como a implementação de servidores JS usando node.js. A natureza de "rodar em qualquer lugar" do JS faz ele ser uma escolha atrativa para desenvolvimento multiplataforma. Há muitos desenvolvedores nesses dias que usam _apenas_ JavaScript para programar toda seu conjunto de aplicações!
 
@@ -85,7 +85,7 @@ Este programa sintaticamente legal exibe `Infinity`. TypeScript por sua vez cons
 console.log(4 / []);
 ```
 
-É possível que você realmente _queira_ dividir um núemro po rum array, talvez só para ver o que acontece, mas na maior parte do tempo isso é um erro de programação. O verificador de tipo do TypeScript é desenvolvido para permitir programas corretos enquanto previne quantos erros comuns forem possíveis. (Mais tarde, aprenderemos sobre configurações que você pode usar para configurar quão estritamente o TypeScript verifica seu código.)
+É possível que você realmente _queira_ dividir um número por um array, talvez só para ver o que acontece, mas na maior parte do tempo isso é um erro de programação. O verificador de tipo do TypeScript é desenvolvido para permitir programas corretos enquanto previne quantos erros comuns forem possíveis. (Mais tarde, aprenderemos sobre configurações que você pode usar para configurar quão estritamente o TypeScript verifica seu código.)
 
 Se você move algum código de um arquivo JavaScript para um arquivo TypeScript, você pode ver _erros de tipo_ dependendo de como o código é escrito. Esses podem ser problemas legítimos com o código ou TypeScript sendo conservador em excesso. Por meio deste guia nós vamos demonstrar como adicionar várias sintaxes do TypeScript para eliminar tais erros.
 
@@ -119,9 +119,9 @@ Nós frequentemente vemos a questão "Eu deveria aprender JavaScript ou TypeScri
 
 A resposta é que vocẽ não pode aprender TypeScript sem aprender JavaScript! TypeScript compartilha sintaxe e comportamento de tempo de execução com JavaScript, então qualquer coisa que você queira aprender sobre JavaScript estará ajudando você a aprender TypeScript ao mesmo tempo.
 
-Hà muitos, muitos recursos disponíveis para programadores aprenderem JavaScript; você _não_ deveria ignorar estes recursos se você está escrevendo TypeScript. Por exemplo, há cerca de 20 vezes mais questões no StackOverflow marcadas com `javascript` do que com `typescript`, mas _todas_ as questões `javascript` também se aplicam ao TypeScript.
+Há muitos, muitos recursos disponíveis para programadores aprenderem JavaScript; você _não_ deveria ignorar estes recursos se você está escrevendo TypeScript. Por exemplo, há cerca de 20 vezes mais questões no StackOverflow marcadas com `javascript` do que com `typescript`, mas _todas_ as questões `javascript` também se aplicam ao TypeScript.
 
-Se você se encontra procurando por algo como "como organizar uma lista em TypeScript", lembre-se: **TypeSript é o ambiente de execução do JavaScript com verificador de tipo em tempo de compilação**. A forma com que você organiza uma lista em TypeScript é a mesma no JavaScript. Se você encontrar um recurso que usa TypeScript diretamente isso é ótimo também, mas não se limite a pensar que você precisa de respostas específicas do TypeScript para questões do dia a dia sobre como alcançar tarefas do ambiente de execução.
+Se você se encontra procurando por algo como "como organizar uma lista em TypeScript", lembre-se: **TypeScript é o ambiente de execução do JavaScript com verificador de tipo em tempo de compilação**. A forma com que você organiza uma lista em TypeScript é a mesma no JavaScript. Se você encontrar um recurso que usa TypeScript diretamente isso é ótimo também, mas não se limite a pensar que você precisa de respostas específicas do TypeScript para questões do dia a dia sobre como alcançar tarefas do ambiente de execução.
 
 ## Próximos Passos
 
