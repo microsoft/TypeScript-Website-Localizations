@@ -181,7 +181,7 @@ TypeScript가 이를 알아내면 `on`메서드는 원래 객체에서 `firstNam
 
 문자열의 각 문자를 대문자로 변환합니다.
 
-##### 예제
+#### 예제
 
 ```ts twoslash
 type Greeting = "Hello, world"
@@ -197,7 +197,7 @@ type MainID = ASCIICacheKey<"my_app">
 
 문자열의 각 문자를 소문자로 변환합니다.
 
-##### 예제
+#### 예제
 
 ```ts twoslash
 type Greeting = "Hello, world"
@@ -213,7 +213,7 @@ type MainID = ASCIICacheKey<"MY_APP">
 
 문자열의 첫 번째 문자를 대문자로 변환합니다.
 
-##### 예제
+#### 예제
 
 ```ts twoslash
 type LowercaseGreeting = "hello, world";
@@ -225,7 +225,7 @@ type Greeting = Capitalize<LowercaseGreeting>;
 
 문자열의 첫 번째 문자를 소문자로 변환합니다.
 
-##### Example
+#### 예제
 
 ```ts twoslash
 type UppercaseGreeting = "HELLO WORLD";
