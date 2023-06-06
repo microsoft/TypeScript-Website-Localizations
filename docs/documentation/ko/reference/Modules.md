@@ -557,7 +557,7 @@ x(y);
 ### 와일드카드 모듈 선언 (Wildcard module declarations)
 
 [SystemJS](https://github.com/systemjs/systemjs/blob/master/docs/overview.md#plugin-syntax)나
-[AMD](https://github.com/amdjs/amdjs-api/blob/master/LoaderPlugins.md)와 같은 모듈 로더는 비-JavaScirpt 내용을 import 할 수 있습니다.
+[AMD](https://github.com/amdjs/amdjs-api/blob/master/LoaderPlugins.md)와 같은 모듈 로더는 비-JavaScript 내용을 import 할 수 있습니다.
 이 둘은 일반적으로 접두사 또는 접미사를 사용하여 특수한 로딩 의미를 표시합니다.
 이러한 경우를 다루기 위해 와일드카드 모듈 선언을 사용할 수 있습니다.
 
