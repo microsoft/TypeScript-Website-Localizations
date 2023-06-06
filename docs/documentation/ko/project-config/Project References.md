@@ -129,7 +129,7 @@ B     C
 
 # TypeScript를 위한 빌드 모드 (Build Mode for TypeScript)
 
-오래 기다린 기능은 TypeScirpt 프로젝트를 위한 똑똑한 증분 빌드입니다.
+오래 기다린 기능은 TypeScript 프로젝트를 위한 똑똑한 증분 빌드입니다.
 3.0에서 `tsc`에서 `--build` 플래그를 사용할 수 있게 되었습니다.
 이것은 단순한 컴파일러보다 빌드 관리자처럼 동작하는 `tsc`의 새로운 진입점입니다.
 
