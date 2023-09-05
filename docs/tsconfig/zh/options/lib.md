@@ -18,9 +18,9 @@ TypeScript 还包括与你指定的 `target` 选项相匹配的较新的 JS 特�
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ES5`        | ES3 和 ES5 的核心功能定义                                                                                              |
 | `ES2015`     | ES2015 中额外提供的 API (又被称为 ES6) —— `array.find`， `Promise`，`Proxy`，`Symbol`，`Map`，`Set`，`Reflect` 等。               |
-| `ES6`        |  ES2015 的别名。                                                                                                                                |
+| `ES6`        | ES2015 的别名。                                                                                                                                |
 | `ES2016`     | ES2016 中额外提供的 API —— `array.include` 等。                                                                                       |
-| `ES7`        |  ES2016 的别名。                                                                                                                                |
+| `ES7`        | ES2016 的别名。                                                                                                                                |
 | `ES2017`     | ES2017 中额外提供的 API ——  `Object.entries`，`Object.values`，`Atomics`，`SharedArrayBuffer`，`date.formatToParts`，`typed arrays` 等。 |
 | `ES2018`     | ES2018 中额外提供的 API ——  `async iterables`，`promise.finally`，`Intl.PluralRules`，`rexexp.groups` 等。                             |
 | `ES2019`     | ES2019 中额外提供的 API —— `array.flat`，`array.flatMap`，`Object.fromEntries`，`string.trimStart`，`string.trimEnd` 等。             |
