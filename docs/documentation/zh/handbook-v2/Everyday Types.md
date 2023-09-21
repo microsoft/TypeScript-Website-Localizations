@@ -8,43 +8,42 @@ oneline: "The language primitives."
 在本章中，我们将介绍一些在 JavaScript 代码中最常见的值的类型，并说明在 TypeScript 中描述这些类型相应的方法。
 这不是一个详尽的列表，后续章节将描述命名和使用其他类型的更多方法。
 
-类型还可以出现在许多 _地方_ ，而不仅仅是类型注释。
+类型还可以出现在许多地方，而不仅仅是类型注释。
 在我们了解类型本身的同时，我们还将了解在哪些地方可以引用这些类型来形成新的结构。
 
 我们将首先回顾一下你在编写 JavaScript 或 TypeScript 代码时可能遇到的最基本和最常见的类型。
-这些将在稍后形成更复杂类型的核心构建块。
+这些核心构建块会稍后会形成更复杂的类型。
 
 ## 基本类型：`string`，`number`，和 `boolean`
 
-JavaScript has three very commonly used [primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive): `string`, `number`, and `boolean`.
-Each has a corresponding type in TypeScript.
-As you might expect, these are the same names you'd see if you used the JavaScript `typeof` operator on a value of those types:
+JavaScript 有三种非常常用的 [基本类型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive): `string`、`number` 和 `boolean`。
+每个在 TypeScript 中都有对应的类型。
+正如您所期望的， 如果您对这些类型的值使用 JavaScript `typeof` 运算符，您会看到这些相同的名称：
 
-- `string` represents string values like `"Hello, world"`
-- `number` is for numbers like `42`. JavaScript does not have a special runtime value for integers, so there's no equivalent to `int` or `float` - everything is simply `number`
-- `boolean` is for the two values `true` and `false`
+- `string` 表示字符串值，例如 `"Hello, world"`
+- `number` 代表像这样的数字 `42`. JavaScript 没有专门的整数运行时值， 因此没有相当于 `int` 或 `float` 的类型，一切都是 `number`
+- `boolean` 有两个值 `true` 和 `false`
 
-> The type names `String`, `Number`, and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. _Always_ use `string`, `number`, or `boolean` for types.
+> 类型名称 `String`、`Number` 和 `Boolean`（以大写字母开头）是合法的，但引用了一些很少出现在代码中的特殊内置类型。 _始终_ 使用 `string`、`number` 或 `boolean` 作为类型。
 
-## Arrays
+## Arrays (数组类型)
 
-To specify the type of an array like `[1, 2, 3]`, you can use the syntax `number[]`; this syntax works for any type (e.g. `string[]` is an array of strings, and so on).
-You may also see this written as `Array<number>`, which means the same thing.
-We'll learn more about the syntax `T<U>` when we cover _generics_.
+要指定像 `[1, 2, 3]` 这样的数组类型，可以使用语法 `number[]`， 此语法适用于任何类型（例如 `string[]` 是字符串数组，等等）。
+您可能还会看到它写为 `Array<number>`，它们的意思是一样的。
+当我们学习泛型时，我们将了解更多的关于 `T<U>` 的语法知识。
 
-> Note that `[number]` is a different thing; refer to the section on _tuple types_.
+> 请注意，`[number]` 是不同的东西， 请参阅章节[元组类型](/docs/handbook/2/objects.html#tuple-types)。
 
 ## `any`
 
-TypeScript also has a special type, `any`, that you can use whenever you don't want a particular value to cause typechecking errors.
+TypeScript 还有一个特殊类型 `any`，每当您不希望特定值导致类型检查错误时都可以使用它。
 
-When a value is of type `any`, you can access any properties of it (which will in turn be of type `any`), call it like a function, assign it to (or from) a value of any type, or pretty much anything else that's syntactically legal:
+当值的类型为 `any` 时，您可以访问它的任何属性（将变为 `any` 类型）， 像函数一样调用它， 将其赋值给 `any` 类型的值（或者从 `any` 类型取值），或者在语法上合法的任意值:
 
 ```ts twoslash
 let obj: any = { x: 0 };
-// None of the following lines of code will throw compiler errors.
-// Using `any` disables all further type checking, and it is assumed
-// you know the environment better than TypeScript.
+// 以下代码行都不会引发编译器错误。
+// 使用 `any` 会禁用所有进一步的类型检查，并且假设你比 TypeScript 更了解代码运行环境。
 obj.foo();
 obj();
 obj.bar = 100;
@@ -52,73 +51,73 @@ obj = "hello";
 const n: number = obj;
 ```
 
-The `any` type is useful when you don't want to write out a long type just to convince TypeScript that a particular line of code is okay.
+当您不想编写一个很长的类型只是为了让 TypeScript 相信某行特定的代码没有问题时，`any` 类型是非常有用的。
 
-### `noImplicitAny`
+### `noImplicitAny` （不含 `any` 类型）
 
-When you don't specify a type, and TypeScript can't infer it from context, the compiler will typically default to `any`.
+当您不指定类型，并且 TypeScript 无法从上下文中推断出类型时，编译器通常会默认为 `any` 类型。
 
-You usually want to avoid this, though, because `any` isn't type-checked.
-Use the compiler flag [`noImplicitAny`](/tsconfig#noImplicitAny) to flag any implicit `any` as an error.
+不过，您通常希望避免这种情况，因为 `any` 没有经过类型检查。
+使用编译器标志 [`noImplicitAny`](/tsconfig#noImplicitAny) 去标记任何隐含有 `any` 为一个错误。
 
-## Type Annotations on Variables
+## Type Annotations on Variables （变量的类型注释）
 
-When you declare a variable using `const`, `var`, or `let`, you can optionally add a type annotation to explicitly specify the type of the variable:
+当您使用 `const`、`var` 或 `let` 声明变量时，您可以选择添加类型注释来显式指定变量的类型：
 
 ```ts twoslash
 let myName: string = "Alice";
-//        ^^^^^^^^ Type annotation
+//        ^^^^^^^^ 类型注释
 ```
 
-> TypeScript doesn't use "types on the left"-style declarations like `int x = 0;`
-> Type annotations will always go _after_ the thing being typed.
+> TypeScript 不使用 `左侧类型` 样式的声明，例如 `int x = 0;`
+> 类型注释始终位于正在键入的内容 _之后_。
 
-In most cases, though, this isn't needed.
-Wherever possible, TypeScript tries to automatically _infer_ the types in your code.
-For example, the type of a variable is inferred based on the type of its initializer:
+但在大多数情况下，这是不需要的。
+只要有可能，TypeScript 就会尝试自动 _推断_ 代码中的类型。
+例如，变量的类型是根据其初始值设定项的类型推断的：
 
 ```ts twoslash
-// No type annotation needed -- 'myName' inferred as type 'string'
+// 不需要类型注释 “myName”被推断为“string”类型
 let myName = "Alice";
 ```
 
-For the most part you don't need to explicitly learn the rules of inference.
-If you're starting out, try using fewer type annotations than you think - you might be surprised how few you need for TypeScript to fully understand what's going on.
+在大多数情况下，您不需要明确学习推理规则。
+如果您刚刚开始，您应该考虑尝试更少的使用类型注释 - 您可能会感到惊讶，TypeScript 只需要很少的内容就可以完全理解正在发生的事情。
 
-## Functions
+## Functions （函数）
 
-Functions are the primary means of passing data around in JavaScript.
-TypeScript allows you to specify the types of both the input and output values of functions.
+函数是 JavaScript 中传递数据的主要方式。
+TypeScript 允许您指定函数的输入和输出值的类型。
 
-### Parameter Type Annotations
+### Parameter Type Annotations （参数类型注释）
 
-When you declare a function, you can add type annotations after each parameter to declare what types of parameters the function accepts.
-Parameter type annotations go after the parameter name:
+声明函数时，可以在每个参数后面添加类型注释，以声明该函数接受的参数类型。
+参数类型注释位于参数名称之后：
 
 ```ts twoslash
-// Parameter type annotation
+// 参数类型注释
 function greet(name: string) {
   //                 ^^^^^^^^
   console.log("Hello, " + name.toUpperCase() + "!!");
 }
 ```
 
-When a parameter has a type annotation, arguments to that function will be checked:
+当参数具有类型注释时，将检查该函数的参数：
 
 ```ts twoslash
 // @errors: 2345
 declare function greet(name: string): void;
 // ---cut---
-// Would be a runtime error if executed!
+// 如果执行的话会出现运行时错误！
 greet(42);
 ```
 
-> Even if you don't have type annotations on your parameters, TypeScript will still check that you passed the right number of arguments.
+> 即使您的参数上没有类型注释，TypeScript 仍会检查您是否传递了正确数量的参数。
 
-### Return Type Annotations
+### Return Type Annotations （返回类型注释）
 
-You can also add return type annotations.
-Return type annotations appear after the parameter list:
+您还可以添加返回类型注释。
+返回类型注释出现在参数列表之后：
 
 ```ts twoslash
 function getFavoriteNumber(): number {
@@ -127,38 +126,48 @@ function getFavoriteNumber(): number {
 }
 ```
 
-Much like variable type annotations, you usually don't need a return type annotation because TypeScript will infer the function's return type based on its `return` statements.
-The type annotation in the above example doesn't change anything.
-Some codebases will explicitly specify a return type for documentation purposes, to prevent accidental changes, or just for personal preference.
+与变量类型注释非常相似，您通常不需要返回类型注释，因为 TypeScript 会根据函数的 `return` 语句推断函数的返回类型。
+上面示例中的类型注释不会改变任何内容。
+某些代码库会出于文档目的显式指定返回类型，以防止意外更改或仅出于个人喜好。
 
-### Anonymous Functions
+#### Functions Which Return Promises （返回 Promise 的函数）
 
-Anonymous functions are a little bit different from function declarations.
-When a function appears in a place where TypeScript can determine how it's going to be called, the parameters of that function are automatically given types.
+如果你想注释一个返回 Promise 的函数的返回类型，你应该使用 `Promise` 类型：
 
-Here's an example:
+```ts twoslash
+async function getFavoriteNumber(): Promise<number> {
+  return 26;
+}
+```
+
+### Anonymous Functions （匿名函数）
+
+匿名函数与函数声明略有不同。
+当函数出现在 TypeScript 可以明确如何调用它的地方时，该函数的参数将自动指定类型。
+
+这是一个例子：
 
 ```ts twoslash
 // @errors: 2551
-// No type annotations here, but TypeScript can spot the bug
 const names = ["Alice", "Bob", "Eve"];
 
-// Contextual typing for function
+// 函数的上下文类型 - 推断参数具有字符串类型
 names.forEach(function (s) {
-  console.log(s.toUppercase());
+  console.log(s.toUpperCase());
 });
 
-// Contextual typing also applies to arrow functions
+// 上下文类型也适用于箭头函数
 names.forEach((s) => {
-  console.log(s.toUppercase());
+  console.log(s.toUpperCase());
 });
 ```
 
-Even though the parameter `s` didn't have a type annotation, TypeScript used the types of the `forEach` function, along with the inferred type of the array, to determine the type `s` will have.
+即使参数 `s` 没有类型注释，TypeScript 也使用 `forEach` 函数的类型以及推断的数组类型来确定 `s` 的类型。
 
-This process is called _contextual typing_ because the _context_ that the function occurred in informed what type it should have.
-Similar to the inference rules, you don't need to explicitly learn how this happens, but understanding that it _does_ happen can help you notice when type annotations aren't needed.
-Later, we'll see more examples of how the context that a value occurs in can affect its type.
+这个过程称为 _上下文类型_，因为函数发生的 _上下文_ 决定了它应该具有什么类型。
+
+与推理规则类似，您不需要明确了解这是如何发生的，但了解它确实发生可以帮助您注意到何时不需要类型注释。
+稍后，我们将看到更多示例，说明值出现的上下文如何影响其类型。
 
 ## Object Types
 
