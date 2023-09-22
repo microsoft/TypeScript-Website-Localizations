@@ -8,11 +8,11 @@ oneline: "The language primitives."
 在本章中，我们将介绍一些在 JavaScript 代码中最常见的值的类型，并说明在 TypeScript 中描述这些类型相应的方法。
 这不是一个详尽的列表，后续章节将描述命名和使用其他类型的更多方法。
 
-类型还可以出现在许多地方，而不仅仅是类型注释。
+类型还可以出现在许多 _地方_，而不仅仅是类型注释。
 在我们了解类型本身的同时，我们还将了解在哪些地方可以引用这些类型来形成新的结构。
 
 我们将首先回顾一下你在编写 JavaScript 或 TypeScript 代码时可能遇到的最基本和最常见的类型。
-这些核心构建块会稍后会形成更复杂的类型。
+这些核心构建块稍后会形成更复杂的类型。
 
 ## 基本类型：`string`，`number`，和 `boolean`
 
@@ -169,95 +169,95 @@ names.forEach((s) => {
 与推理规则类似，您不需要明确了解这是如何发生的，但了解它确实发生可以帮助您注意到何时不需要类型注释。
 稍后，我们将看到更多示例，说明值出现的上下文如何影响其类型。
 
-## Object Types
+## Object Types （对象类型）
 
-Apart from primitives, the most common sort of type you'll encounter is an _object type_.
-This refers to any JavaScript value with properties, which is almost all of them!
-To define an object type, we simply list its properties and their types.
+除了基本类型之外，您遇到的最常见的类型是 _对象类型_。
+这是指几乎所有具有任何属性的 JavaScript 值！
+要定义对象类型，我们只需列出其属性及其类型。
 
-For example, here's a function that takes a point-like object:
+例如，这是一个采用点状对象的函数：
 
 ```ts twoslash
-// The parameter's type annotation is an object type
+// 参数的类型注解是对象类型
 function printCoord(pt: { x: number; y: number }) {
   //                      ^^^^^^^^^^^^^^^^^^^^^^^^
-  console.log("The coordinate's x value is " + pt.x);
-  console.log("The coordinate's y value is " + pt.y);
+  console.log("x坐标的值为 " + pt.x);
+  console.log("y坐标的值为 " + pt.y);
 }
 printCoord({ x: 3, y: 7 });
 ```
 
-Here, we annotated the parameter with a type with two properties - `x` and `y` - which are both of type `number`.
-You can use `,` or `;` to separate the properties, and the last separator is optional either way.
+在这里，我们使用具有两个属性（ `x` 和 `y` ）的类型来注释该参数，这两个属性都是 `number` 类型。
+您可以使用 `","` 或 `";"` 来分隔属性，并且最后一个分隔符是可选的。
 
-The type part of each property is also optional.
-If you don't specify a type, it will be assumed to be `any`.
+每个属性的类型部分也是可选的。
+如果您未指定类型，则将假定为 `any`。
 
-### Optional Properties
+### Optional Properties （可选属性）
 
-Object types can also specify that some or all of their properties are _optional_.
-To do this, add a `?` after the property name:
+对象类型还可以指定其部分或全部属性是 _可选_。
+要这样做，请在属性名称后添加 `"?"`：
 
 ```ts twoslash
 function printName(obj: { first: string; last?: string }) {
   // ...
 }
-// Both OK
+// 两种都可以
 printName({ first: "Bob" });
 printName({ first: "Alice", last: "Alisson" });
 ```
 
-In JavaScript, if you access a property that doesn't exist, you'll get the value `undefined` rather than a runtime error.
-Because of this, when you _read_ from an optional property, you'll have to check for `undefined` before using it.
+在 JavaScript 中，如果访问不存在的属性，您将得到值是 `undefined` 而不是运行时错误。
+因此，当您从可选属性读取时，您必须在使用它之前检查 `undefined`。
 
 ```ts twoslash
 // @errors: 2532
 function printName(obj: { first: string; last?: string }) {
-  // Error - might crash if 'obj.last' wasn't provided!
+  // 错误 - 如果未提供“obj.last”，可能会意外错误。
   console.log(obj.last.toUpperCase());
   if (obj.last !== undefined) {
-    // OK
+    // 正确
     console.log(obj.last.toUpperCase());
   }
 
-  // A safe alternative using modern JavaScript syntax:
+  // 使用 JavaScript 最新语法的安全替代方案：
   console.log(obj.last?.toUpperCase());
 }
 ```
 
-## Union Types
+## Union Types （联合类型）
 
-TypeScript's type system allows you to build new types out of existing ones using a large variety of operators.
-Now that we know how to write a few types, it's time to start _combining_ them in interesting ways.
+TypeScript 的类型系统允许您使用多种运算符从现有类型构建新类型。
+现在我们知道如何编写一些类型，是时候开始以有趣的方式 _组合_ 它们了。
 
-### Defining a Union Type
+### Defining a Union Type （定义联合类型）
 
-The first way to combine types you might see is a _union_ type.
-A union type is a type formed from two or more other types, representing values that may be _any one_ of those types.
-We refer to each of these types as the union's _members_.
+您可能看到的第一种组合类型的方法是 _联合_ 类型。
+联合类型是由两个或多个其他类型形成的类型，表示可以是这些类型中的 _任何一种_ 类型的值。
+我们将这些类型中的每一种称为联合的 _成员_。
 
-Let's write a function that can operate on strings or numbers:
+让我们编写一个可以对字符串或数字进行操作的函数：
 
 ```ts twoslash
 // @errors: 2345
 function printId(id: number | string) {
   console.log("Your ID is: " + id);
 }
-// OK
+// 正确
 printId(101);
-// OK
+// 正确
 printId("202");
-// Error
+// 错误
 printId({ myID: 22342 });
 ```
 
-### Working with Union Types
+### Working with Union Types （使用联合类型）
 
-It's easy to _provide_ a value matching a union type - simply provide a type matching any of the union's members.
-If you _have_ a value of a union type, how do you work with it?
+_提供_ 与联合类型匹配的值很容易 - 只需提供与任何联合成员匹配的类型即可。
+如果您 _有_ 联合类型的值，您如何使用它？
 
-TypeScript will only allow you to do things with the union if that thing is valid for _every_ member of the union.
-For example, if you have the union `string | number`, you can't use methods that are only available on `string`:
+TypeScript 仅允许对联合体的 _每个_ 成员都有效的操作。
+例如，如果您有联合类型 `string | number`，您不能使用仅适用于 `string` 的方法：
 
 ```ts twoslash
 // @errors: 2339
@@ -266,62 +266,62 @@ function printId(id: number | string) {
 }
 ```
 
-The solution is to _narrow_ the union with code, the same as you would in JavaScript without type annotations.
-_Narrowing_ occurs when TypeScript can deduce a more specific type for a value based on the structure of the code.
+解决方案是 _缩小_ 代码的联合范围，就像在没有类型注释的 JavaScript 中一样。
+当 TypeScript 可以根据代码结构推断出更具体的值类型时，就会发生  _缩小_ 范围。
 
-For example, TypeScript knows that only a `string` value will have a `typeof` value `"string"`:
+例如，TypeScript 知道只有 `string` 类型的值才会 `typeof` 值为 `"string"`：
 
 ```ts twoslash
 function printId(id: number | string) {
   if (typeof id === "string") {
-    // In this branch, id is of type 'string'
+    // 在此分支中，id 的类型为“string”
     console.log(id.toUpperCase());
   } else {
-    // Here, id is of type 'number'
+    // 这里，id 的类型是“number”
     console.log(id);
   }
 }
 ```
 
-Another example is to use a function like `Array.isArray`:
+另一个例子是使用像 `Array.isArray` 这样的函数：
 
 ```ts twoslash
 function welcomePeople(x: string[] | string) {
   if (Array.isArray(x)) {
-    // Here: 'x' is 'string[]'
+    // 这里：“x”是“string[]”
     console.log("Hello, " + x.join(" and "));
   } else {
-    // Here: 'x' is 'string'
+    // 这里：“x”是“string”
     console.log("Welcome lone traveler " + x);
   }
 }
 ```
 
-Notice that in the `else` branch, we don't need to do anything special - if `x` wasn't a `string[]`, then it must have been a `string`.
+请注意，在 `else` 分支中，我们不需要做任何特殊的事情 - 如果 `x` 不是 `string[]`，那么它一定是 `string`。
 
-Sometimes you'll have a union where all the members have something in common.
-For example, both arrays and strings have a `slice` method.
-If every member in a union has a property in common, you can use that property without narrowing:
+有时，您会建立一个联合，其中所有成员都有一些共同点。
+例如，数组和字符串都有一个 `slice` 方法。
+如果联合中的每个成员都有一个共同的属性，则可以使用该属性而无需缩小范围：
 
 ```ts twoslash
-// Return type is inferred as number[] | string
+// 返回类型被推断为 number[] | string
 function getFirstThree(x: number[] | string) {
   return x.slice(0, 3);
 }
 ```
 
-> It might be confusing that a _union_ of types appears to have the _intersection_ of those types' properties.
-> This is not an accident - the name _union_ comes from type theory.
-> The _union_ `number | string` is composed by taking the union _of the values_ from each type.
-> Notice that given two sets with corresponding facts about each set, only the _intersection_ of those facts applies to the _union_ of the sets themselves.
-> For example, if we had a room of tall people wearing hats, and another room of Spanish speakers wearing hats, after combining those rooms, the only thing we know about _every_ person is that they must be wearing a hat.
+> 令人困惑的是，类型的 _联合_ 似乎具有这些类型的属性的 _交集_。
+> 这并非偶然——联合这个名字来自于类型理论。
+> 联合类型 `number | string` 由每种类型的 _取值_ 的并集组成。
+> 请注意，给定两个集合以及每个集合的事实相符，只有这些事实的 _交集_ 适用于集合本身的 _并集_。
+> 例如，如果我们有一个房间，里面都是戴着帽子的高个子，另一个房间里讲西班牙语的人都戴着帽子，那么将这些房间组合起来后，我们对 _每个_ 人唯一了解的就是他们一定戴着帽子。
 
-## 类型别名
+## Type Aliases （类型别名）
 
-我们通过直接在类型注解中编写对象类型和联合类型来使用它们。
-这很方便，但是常常会想要多次使用同一个类型，并且通过一个名称引用它。
+我们一直通过直接在类型注释中编写对象类型和联合类型来使用它们。
+但是常常就想要很方便的多次使用同一个类型，并且通过一个名称去引用它。
 
-_类型别名_ 正是如此 - 任意 _类型_ 的一个 _名称_ 。
+_类型别名_ 正是这样 - 任意 _类型_ 的 _名称_ 。
 类型别名的语法是：
 
 ```ts twoslash
@@ -339,16 +339,16 @@ function printCoord(pt: Point) {
 printCoord({ x: 100, y: 100 });
 ```
 
-实际上，不只是对象类型，你可以使用类型别名为任何类型命名。
+实际上，您可以使用类型别名为任何类型命名，而不仅仅是对象类型。
 例如，类型别名可以命名联合类型：
 
 ```ts twoslash
 type ID = number | string;
 ```
 
-请注意，别名 _只是_ 别名 - 你不能使用类型别名创建同一类型的不同“版本”。
-当你使用别名时，它与您编写的别名类型完全一样。
-换句话说，这段代码 _看起来_ 可能是非法的，但是对于 TypeScript 来说是正确的，因为这两种类型都是同一类型的别名：
+请注意，别名只是别名 - 您不能使用类型别名来创建同一类型的不同/确定无疑的 `版本`。
+当您使用别名时，就像您编写了别名类型一样。
+换句话说，这段代码可能 _看起来_ 非法，但根据 TypeScript 是可以的，因为两种类型都是同一类型的别名：
 
 ```ts twoslash
 declare function getInput(): string;
@@ -360,14 +360,14 @@ function sanitizeInput(str: string): UserInputSanitizedString {
   return sanitize(str);
 }
 
-// 创建一个经过清理的输入框
+// 创建经过美化的输入
 let userInput = sanitizeInput(getInput());
 
-// 仍然可以使用字符串重新赋值
+// 但仍然可以用字符串重新分配
 userInput = "new input";
 ```
 
-## 接口
+## Interfaces （接口）
 
 _接口声明_ 是命名对象类型的另一种方式：
 
@@ -378,16 +378,16 @@ interface Point {
 }
 
 function printCoord(pt: Point) {
-  console.log("The coordinate's x value is " + pt.x);
-  console.log("The coordinate's y value is " + pt.y);
+  console.log("x坐标的值为 " + pt.x);
+  console.log("y坐标的值为 " + pt.y);
 }
 
 printCoord({ x: 100, y: 100 });
 ```
 
-就像我们上面使用类型别名时一样，这个示例的工作方式就像我们使用了匿名对象类型一样。
-TypeScript 只关心我们传递给 `printCoord` 的值的结构 - 它只关心它是否具有预期的属性。
-只关心类型的结构和功能，这就是为什么我们说 TypeScript 是一个 _结构化类型_ 的类型系统。
+Just like when we used a type alias above, the example works just as if we had used an anonymous object type.
+TypeScript is only concerned with the _structure_ of the value we passed to `printCoord` - it only cares that it has the expected properties.
+Being concerned only with the structure and capabilities of types is why we call TypeScript a _structurally typed_ type system.
 
 ### 类型别名和接口之间的区别
 
