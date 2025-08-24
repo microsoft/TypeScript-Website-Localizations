@@ -1,9 +1,14 @@
 ---
 display: "Allow Unreachable Code"
-oneline: "Error when code will never be called"
+oneline: "Disable error reporting for unreachable code."
 ---
 
-false に設定すると、到達不可能なコードに対する警告を無効化します。
+設定値:
+
+- `undefined` （デフォルト）エディターに警告として提案を表示します
+- `true` 到達不可能コードは無視されます
+- `false` 到達不可能コードについてのコンパイラエラーを発生させます
+
 この警告は、JavaScript 構文の利用によって到達不可能になり得るコードにのみ関係します。例えば:
 
 ```ts
