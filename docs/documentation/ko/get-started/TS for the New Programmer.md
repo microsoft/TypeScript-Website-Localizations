@@ -96,7 +96,7 @@ TypeScript는 독특한 구문 때문에 JavaScript 코드를 오류로 보지 �
 console.log(4 / []);
 ```
 
-구문적으로 옳은(syntactically-legal) 위 코드는 JavaScript에서 `NaN`을 출력합니다.
+구문적으로 옳은(syntactically-legal) 위 코드는 JavaScript에서 `Infinity`을 출력합니다.
 그러나 TypeScript는 배열로 숫자를 나누는 연산이 옳지 않다고 판단하고 오류를 발생시킵니다:
 
 ```
