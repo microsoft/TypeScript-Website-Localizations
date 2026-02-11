@@ -88,7 +88,7 @@ Cela signifie que vous pouvez prendre du code JavaScript fonctionnel et le mettr
 Cependant, TypeScript est une surcouche _typée_. Cela veut dire que TS ajoute des règles régissant comment différents types de valeurs peuvent être utilisés.
 L'erreur à propos de `obj.heigth` n'est pas une erreur de _syntaxe_ : c'est une erreur où l'on a utilisé une sorte de valeur (un _type_) de façon incorrecte.
 
-Autre exemple, ce code JavaScript que vous pouvez lancez dans votre navigateur. Il _va_ afficher une valeur :
+Autre exemple, ce code JavaScript que vous pouvez lancer dans votre navigateur. Il _va_ afficher une valeur :
 
 ```js
 console.log(4 / []);
