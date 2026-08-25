@@ -8,29 +8,29 @@ oneline: "Les primitives du langage."
 Dans ce chapitre, nous couvrirons certains types fréquents des valeurs communes dans du code JavaScript, et nous expliquerons les façons de représenter ces types en TypeScript.
 Ce n'est pas une liste exhaustive, et les futurs chapitres couvriront plus de manières de nommer et utiliser d'autres types.
 
-Les types peuvent également apparaître d'autres endroits que des annotations.
-À mesure que vous apprenez à connaître les types, vous connaîtrez également les façons et endroits où l'on peut référer aux types pour former de nouvelles entités.
+Les types peuvent également apparaitre d'autres endroits que des annotations.
+À mesure que vous apprenez à connaitre les types, vous connaitrez également les façons et endroits où l'on peut référer aux types pour former de nouvelles entités.
 
-D'abord, passons en revue les types les plus basiques et communs, que vous rencontrerez probablement quand vous écrirez du code JavaScript ou TypeScript.
-Ces types formeront les blocs essentiels de types plus complexes.
+D'abord, passons en revue les types les plus basiques et communs que vous rencontrerez probablement quand vous écrirez du code JavaScript ou TypeScript.
+Ces types formeront les blocs essentiels pour les types plus complexes.
 
 ## Les primitives: `string`, `number`, et `boolean`
 
-Le JavaScript possède trois [primitives](https://developer.mozilla.org/fr/docs/Glossary/Primitive) très communes : `string`, `number`, et `boolean`.
+JavaScript possède trois [primitives](https://developer.mozilla.org/fr/docs/Glossary/Primitive) communes : `string`, `number`, et `boolean`.
 Chacune d'entre elles a un type correspondant en TypeScript.
-Comme vous vous y attendrez, ce sont les mêmes noms que vous verrez si vous utilisez l'opérateur `typeof` sur les valeurs de ces types :
+Ce sont les mêmes noms que vous verrez si vous utilisez l'opérateur `typeof` sur les valeurs de ces types :
 
-- `string` représente des chaînes de caractères comme `"bonjour tout le monde"`
-- `number` correspond aux nombres comme `42`. En JavaScript, tout est un `number` - il n'existe aucun équivalent à un `int` ou `float`. Tout est simplement un `number`
-- `boolean` représente les deux valeurs `true` et `false`
+- `string` représente des chaines de caractères comme `"bonjour tout le monde"`,
+- `number` correspond aux nombres comme `42`. En JavaScript, tout chiffre est un `number` - il n'existe aucun équivalent à un `int` (entier) ou `float` (flottant). Tout est simplement un `number`,
+- `boolean` représente les deux valeurs `true` et `false`.
 
-> Les noms de types `String`, `Number`, et `Boolean` (avec une première lettre majuscule) existent, mais réfèrent à des types spéciaux qui vont très rarement apparaître dans votre code. Utilisez _toujours_ `string`, `number`, ou `boolean` pour annoter vos types.
+> Les noms de types `String`, `Number`, et `Boolean` (avec une première lettre majuscule) existent, mais réfèrent à des types spéciaux qui vont très rarement apparaitre dans votre code. Utilisez _toujours_ `string`, `number`, ou `boolean` pour annoter vos types.
 
 ## Tableaux
 
 Pour préciser le type d'un tableau comme `[1, 2, 3]`, vous pouvez utiliser la syntaxe `number[]`; cette syntaxe peut être utilisée pour d'autres types (par exemple, `string[]` est un tableau de chaînes de caractères, et ainsi de suite).
-Vous pourriez aussi voir la notation `Array<number>`, qui signifie la même chose.
-Nous en apprendrons plus sur la notation `T<U>` quand on couvrira les _types génériques_.
+Vous pouvez aussi rencontrer la notation `Array<number>`, qui signifie la même chose.
+Nous en apprendrons plus sur la notation `T<U>` quand nous couvrirons les _types génériques_.
 
 > À noter que la notation `[number]` est différente; référez-vous à la section sur les [Tuples](/fr/docs/handbook/2/objects.html#tuple-types).
 
@@ -39,7 +39,7 @@ Nous en apprendrons plus sur la notation `T<U>` quand on couvrira les _types gé
 
 TypeScript possède également un type spécial, `any`, que vous pouvez utiliser dès que vous souhaitez qu'une valeur particulière ne cause pas d'erreurs à la vérification de types.
 
-Quand une valeur est de type `any`, vous pouvez accéder à toutes ses propriétés (qui seront, à leur tour, de type `any`), l'appeler comme une fonction, l'assigner à (ou depuis) une valeur de tous types, ainsi que tout ce qui pourrait être légal :
+Quand une valeur est de type `any`, vous pouvez accéder à toutes ses propriétés (qui seront, à leur tour, de type `any`), l'appeler comme une fonction, l'assigner à (ou depuis) une valeur de tous types, ainsi que tout ce qui peut être légal :
 
 ```ts twoslash
 let obj: any = { x: 0 };
@@ -53,18 +53,18 @@ obj = "hello";
 const n: number = obj;
 ```
 
-Le type `any` est utile quand vous ne voulez pas écrire une très grande ligne de typage rien que pour convaincre TypeScript qu'une certaine ligne de code est valide.
+Le type `any` est utile quand vous ne voulez pas écrire une très grande ligne de typage dans le seul but de convaincre TypeScript qu'une certaine ligne de code est valide.
 
 ### `noImplicitAny`
 
 Si vous ne précisez pas de type, et TypeScript ne peut pas l'inférer du contexte, le compilateur va adopter le type `any`.
 
-Vous voudrez peut-être l'éviter, cependant, parce qu'il n'y a aucune vérification de types sur `any`.
+Il vaut mieux l'éviter, cependant, car il n'y a aucune vérification de types sur `any`.
 Utilisez l'option [`noImplicitAny`](/tsconfig#noImplicitAny) pour relever toutes ces situations en tant qu'erreurs.
 
 ## Annotations de Types sur des Variables
 
-Quand vous déclarez une variable avec `const`, `var`, ou `let`, vous pouvez optionnellement ajouter une annotation de type pour préciser explicitement le type de la variable :
+Quand vous déclarez une variable avec `const`, `var`, ou `let`, vous pouvez optionnellement ajouter une annotation de type pour préciser le type de la variable de façon explicite :
 
 ```ts twoslash
 let myName: string = "Alice";
@@ -72,10 +72,9 @@ let myName: string = "Alice";
 ```
 
 > TypeScript n'utilise pas de déclarations du style "types vers la gauche", comme `int x = 0;`
-> Les annotations de types iront toujours _après_ la variable qui est typée.
+> Les annotations de types se placent toujours _après_ la variable qui est typée.
 
-Par contre, la plupart des cas, cela n'est pas nécessaire.
-Dès que possible, TypeScript essaiera d'_inférer_ automatiquement les types de votre code.
+Dans la plupart des cas, cela n'est pas nécessaire. Car dès qu'il le peut, TypeScript _infère_ automatiquement les types de votre code.
 Par exemple, le type d'une variable est inféré en fonction du type de son initialiseur :
 
 ```ts twoslash
@@ -83,18 +82,17 @@ Par exemple, le type d'une variable est inféré en fonction du type de son init
 let myName = "Alice";
 ```
 
-La plupart du temps, vous n'aurez pas besoin d'apprendre les règles d'inférence.
-Si vous débutez avec TypeScript, essayez d'utiliser moins d'annotations que vous pensez nécessaire - vous verrez que TypeScript saura comprendre vos intentions bien plus souvent que vous ne le pensez.
+Vous n'avez pas besoin d'apprendre les règles d'inférence. Si vous débutez avec TypeScript, essayez d'utiliser le moins d'annotations possible - vous verrez que TypeScript saura comprendre vos intentions bien plus souvent que vous ne le pensez.
 
 ## Fonctions
 
-Les fonctions sont les moyens principaux de transfert de données en JavaScript.
+En JavaScript, les fonctions sont les moyens classiques de transfert de données.
 TypeScript vous permet d'annoter précisément les types de données en entrée et en sortie de ces fonctions.
 
 ### Annotations de Types de Paramètres
 
 Quand vous déclarez une fonction, vous pouvez ajouter des annotations de types après chaque paramètre pour déclarer quel(s) type(s) la fonction accepte.
-Les annotations de types de paramètres iront après le nom des paramètres :
+Les annotations de types de paramètres se placent après le nom des paramètres :
 
 ```ts twoslash
 // Annotation de type de paramètre
@@ -118,8 +116,8 @@ greet(42);
 
 ### Annotations de Type de Retour
 
-Vous pouvez également ajouter des annotations de types de retour.
-Ces annotations apparaissent après les listes de paramètres :
+Vous pouvez également ajouter des annotations de type de retour.
+Ces annotations se placent après les listes de paramètres :
 
 ```ts twoslash
 function getFavoriteNumber(): number {
@@ -128,14 +126,14 @@ function getFavoriteNumber(): number {
 }
 ```
 
-Tout comme les annotations de variables, vous n'avez généralement pas besoin d'en préciser tout le temps, parce que TypeScript inférera les types de retour d'une fonction en se basant sur les valeurs retournées.
+Tout comme les annotations de variables, vous n'avez généralement pas besoin d'en préciser tout le temps, parce que TypeScript inférera le type de retour d'une fonction en se basant sur les valeurs retournées.
 Dans l'exemple ci-dessus, le `: number` ne changera rien.
-Certaines bases de code précisent explicitement le type de retour à des fins de documentation, pour éviter les changements accidentels, ou simplement par préférence personnelle.
+Certaines bases de code précisent explicitement le type de retour à des fins de documentation, pour éviter les changements accidentels, ou par simple préférence personnelle.
 
 ### Fonctions anonymes
 
-Les fonctions anonymes sont légèrement différentes des déclarations de fonctions.
-Quand une fonction apparaît à un endroit où TypeScript peut déterminer comment elle sera appelée, les paramètres de cette fonction sont automatiquement typés.
+Les fonctions anonymes se déclarent de façon légèrement différente.
+Quand une fonction apparait à un endroit où TypeScript peut déterminer comment elle sera appelée, les paramètres de cette fonction sont automatiquement typés.
 
 Voici un exemple :
 
@@ -157,10 +155,10 @@ names.forEach((s) => {
 
 Même si `s` n'a pas d'annotation de type, TypeScript a utilisé le type de la fonction `forEach`, ainsi que le type inféré du tableau (qui est, donc, `string[]`), pour déterminer le type de `s`.
 
-Ce procédé s'appelle _typage contextuel_ car le _contexte_ de cette fonction a permis de préciser quel type le paramètre doit avoir.
+Ce procédé s'appelle _typage contextuel_ car le _contexte_ de cette fonction a permis de préciser le type du paramètre.
 
 De la même façon que les règles de l'inférence, vous n'avez pas besoin d'apprendre _exactement_ comment ça se passe, mais comprendre que cela _peut_ se produire peut vous aider à remarquer les endroits où une annotation n'est pas nécessaire.
-Nous verrons plus tard des exemples où le contexte d'une variable peut lui changer son type.
+Nous verrons plus tard des exemples où le contexte d'une variable peut modifier son type.
 
 ## Types Objets
 
@@ -188,7 +186,7 @@ Dans ce cas, TypeScript supposera que la propriété en question est de type `an
 
 ### Propriétés facultatives
 
-Les types objet peuvent aussi préciser que certaines ou toutes leurs propriétés sont _facultatives_.
+Les types _objet_ peuvent aussi préciser que certaines ou toutes leurs propriétés sont _facultatives_.
 Pour ce faire, vous devrez ajouter un `?` après le nom de propriété :
 
 ```ts twoslash
@@ -220,8 +218,8 @@ function printName(obj: { first: string; last?: string }) {
 
 ## Types Union
 
-Le système de types de TypeScript permet de créer de nouveaux types en partant de types existants, à travers une grande variété opérateurs.
-Maintenant qu'on sait écrire des types, il est l'heure de les _combiner_ de façons qui vont être intéressantes.
+Le système de typage de TypeScript permet de créer de nouveaux types en partant de types existants, grâce à plusieurs opérateurs.
+Maintenant qu'on sait écrire des types, il est l'heure de les _combiner_ de façons intéressantes.
 
 ### Définir un Type Union
 
@@ -259,10 +257,10 @@ function printId(id: number | string) {
 }
 ```
 
-La solution est de _rétrécir_ l'union avec du code, de la même façon qu'avec du code JavaScript sans annotation de types.
+La solution pour contourner cette limite consiste à _rétrécir_ l'union avec du code, de la même façon qu'avec du code JavaScript sans annotation de types.
 Le _rétrécissement_ se produit quand TypeScript peut déduire un type plus spécifique pour une certaine valeur, en se basant sur la structure du code.
 
-Par exemple, TypeScript sait que si `typeof` une valeur renvoie `string`, cette valeur peut uniquement être un `string` :
+Par exemple, TypeScript sait que si le `typeof` d'une valeur renvoie `string`, cette valeur peut uniquement être un `string` :
 
 ```ts twoslash
 function printId(id: number | string) {
@@ -276,7 +274,7 @@ function printId(id: number | string) {
 }
 ```
 
-Un autre exemple qui implique d'utiliser `Array.isArray` :
+Voyons un autre exemple, qui implique d'utiliser `Array.isArray` :
 
 ```ts twoslash
 function welcomePeople(x: string[] | string) {
@@ -294,7 +292,7 @@ Remarquez que dans la branche `else`, nous n'avons pas eu à faire quoi que ce s
 
 Parfois, vous aurez des unions où les types membres ont des éléments en commun.
 Par exemple, les tableaux et les `string` possèdent la méthode `slice`.
-Si chaque membre de l'union a cette propriété, vous pourrez vous en servir sans faire de rétrécissement :
+Si chaque membre de l'union a cette méthode, vous pourrez vous en servir sans rétrécissement :
 
 ```ts twoslash
 // Le type de retour est number[] | string
@@ -303,18 +301,18 @@ function getFirstThree(x: number[] | string) {
 }
 ```
 
-> L'_union_ de types paraît posséder l'_intersection_ des propriétés de ces types, ce qui peut paraître perturbant.
+> L'_union_ de types parait posséder l'_intersection_ des propriétés de ces types, ce qui peut paraître perturbant.
 > C'est voulu : le nom _union_ vient de la théorie des ensembles.
 > L'_union_ `number | string` est créée en obtenant l'union _des valeurs_ de chaque type.
 > Remarquez que pour deux ensembles avec des éléments qui décrivent chaque ensemble, seule l'_intersection_ de ces éléments s'applique à l'_union_ de ces ensembles.
-> Par exemple, si on a une salle remplie de grandes personnes avec un chapeau, avec des personnes parlant l'espagnol et portant un chapeau, la seule description commune qui s'applique à l'_union_ de ces personnes (à toutes ces personnes) est le fait qu'elles portent toutes un chapeau.
+> Par exemple, si on a une salle remplie de personnes avec un chapeau, avec des personnes parlant l'espagnol et portant un chapeau, la seule description commune qui s'applique à l'_union_ de ces personnes (à toutes ces personnes) est le fait qu'elles portent un chapeau.
 
 ## Alias de Types
 
-Jusque-là, vous avez utilisé les types objet et types union en les écrivant directement dans les annotations de types.
-C'est convenable, mais vous voudrez souvent utiliser le même type plus d'une fois, et y référer avec un seul nom.
+Jusque-là, nous avons utilisé les types objet et les types union en les écrivant directement dans les annotations de types.
+C'est convenable, mais vous aurez souvent à utiliser le même type plus d'une fois et y faire référence avec un seul nom.
 
-Un _alias de type_ est exactement cela - un _nom_ pour un _type_.
+Un _alias de type_ sert exactement à cela - un _nom_ pour un _type_.
 Voici la syntaxe d'un alias de type :
 
 ```ts twoslash
@@ -353,10 +351,14 @@ function sanitizeInput(str: string): UserInputSanitizedString {
   return sanitize(str);
 }
 
-// Aseptiser l'entrée reçue
+// Aseptiser l'entrée reçue. Ici, le type de userInput
+// est UserInputSanitizedString, type retourné par la
+// fonction sanitizeInput
 let userInput = sanitizeInput(getInput());
 
-// Peut toujours recevoir un string
+// Mais userInput peut toujours recevoir un string
+// car UserInputSanitizedString est un alias de 
+// type string lui aussi
 userInput = "new input";
 ```
 
@@ -378,9 +380,9 @@ function printCoord(pt: Point) {
 printCoord({ x: 100, y: 100 });
 ```
 
-Tout comme les alias de types ci-dessus, l'exemple des interfaces fonctionne de la même façon qu'avec une annotation anonyme de propriétés.
+Tout comme les alias de types ci-dessus, les interfaces fonctionnent de la même façon qu'avec une annotation anonyme de propriétés.
 TypeScript vérifie uniquement la _structure_ de la valeur transmise à `printCoord` - l'appel est valide du moment que l'objet possède les propriétés requises.
-Le fait de n'être concerné que par la _structure_ et capacités des types permet de dire que TypeScript est un système _typé structurellement_.
+Le fait de n'être concerné que par la _structure_ et les capacités des types permet de dire que TypeScript est un système _typé structurellement_.
 
 ### Différence entre les alias de types et interfaces
 
@@ -455,26 +457,26 @@ type Window = {
 
 Vous en apprendrez plus sur ces concepts dans les chapitres suivants, donc ne vous inquiétez pas si vous ne comprenez pas l'erreur immédiatement.
 
-- Avant la version 4.2 de TypeScript, les alias de types [_pourraient_ apparaître dans les messages d'erreurs](/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWZWhfYAjABMAMwALA+gbsVjoADqgjKESytQPxCHghAByXigYgBfr8LAsYj8aQMUASbDQcRSExCeCwFiIQh+AKfAYyBiQFgOPyIaikSGLQo0Zj-aazaY+dSaXjLDgAGXgAC9CKhDqAALxJaw2Ib2RzOISuDycLw+ImBYKQflCkWRRD2LXCw6JCxS1JCdJZHJ5RAFIbFJU8ADKC3WzEcnVZaGYE1ABpFnFOmsFhsil2uoHuzwArO9SmAAEIsSFrZB-GgAjjA5gtVN8VCEc1o1C4Q4AGlR2AwO1EsBQoAAbvB-gJ4HhPgB5aDwem-Ph1TCV3AEEirTp4ELtRbTPD4vwKjOfAuioSQHuDXBcnmgACC+eCONFEs73YAPGGZVT5cRyyhiHh7AAON7lsG3vBggB8XGV3l8-nVISOgghxoLq9i7io-AHsayRWGaFrlFauq2rg9qaIGQHwCBqChtKdgRo8TxRjeyB3o+7xAA), sometimes in place of the equivalent anonymous type (which may or may not be desirable). Interfaces will always be named in error messages.
+- Avant la version 4.2 de TypeScript, les alias de types [_pouvaient_ apparaître dans les messages d'erreurs](/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWZWhfYAjABMAMwALA+gbsVjoADqgjKESytQPxCHghAByXigYgBfr8LAsYj8aQMUASbDQcRSExCeCwFiIQh+AKfAYyBiQFgOPyIaikSGLQo0Zj-aazaY+dSaXjLDgAGXgAC9CKhDqAALxJaw2Ib2RzOISuDycLw+ImBYKQflCkWRRD2LXCw6JCxS1JCdJZHJ5RAFIbFJU8ADKC3WzEcnVZaGYE1ABpFnFOmsFhsil2uoHuzwArO9SmAAEIsSFrZB-GgAjjA5gtVN8VCEc1o1C4Q4AGlR2AwO1EsBQoAAbvB-gJ4HhPgB5aDwem-Ph1TCV3AEEirTp4ELtRbTPD4vwKjOfAuioSQHuDXBcnmgACC+eCONFEs73YAPGGZVT5cRyyhiHh7AAON7lsG3vBggB8XGV3l8-nVISOgghxoLq9i7io-AHsayRWGaFrlFauq2rg9qaIGQHwCBqChtKdgRo8TxRjeyB3o+7xAA), quelquefois à la place du type _anonyme_ (`any`) (ce qui pouvaient être ou ne pas être désiré). Les _interfaces_, au contraire, seront toujours nommées dans les messages d'erreur.
 - Les alias de types ne sont pas concernés par les [fusions de déclarations, au contraire des interfaces](/play?#code/PTAEEEDtQS0gXApgJwGYEMDGjSfdAIx2UQFoB7AB0UkQBMAoEUfO0Wgd1ADd0AbAK6IAzizp16ALgYM4SNFhwBZdAFtV-UAG8GoPaADmNAcMmhh8ZHAMMAvjLkoM2UCvWad+0ARL0A-GYWVpA29gyY5JAWLJAwGnxmbvGgALzauvpGkCZmAEQAjABMAMwALLkANBl6zABi6DB8okR4Jjg+iPSgABboovDk3jjo5pbW1d6+dGb5djLwAJ7UoABKiJTwjThpnpnGpqPBoTLMAJrkArj4kOTwYmycPOhW6AR8IrDQ8N04wmo4HHQCwYi2Waw2W1S6S8HX8gTGITsQA).
 - Les interfaces ne servent qu'à [déclarer les formes d'objets, et ne peuvent pas renommer des primitives](/play?#code/PTAEAkFMCdIcgM6gC4HcD2pIA8CGBbABwBtIl0AzUAKBFAFcEBLAOwHMUBPQs0XFgCahWyGBVwBjMrTDJMAshOhMARpD4tQ6FQCtIE5DWoixk9QEEWAeV37kARlABvaqDegAbrmL1IALlAEZGV2agBfampkbgtrWwMAJlAAXmdXdy8ff0Dg1jZwyLoAVWZ2Lh5QVHUJflAlSFxROsY5fFAWAmk6CnRoLGwmILzQQmV8JmQmDzI-SOiKgGV+CaYAL0gBBdyy1KCQ-Pn1AFFplgA5enw1PtSWS+vCsAAVAAtB4QQWOEMKBuYVUiVCYvYQsUTQcRSBDGMGmKSgAAa-VEgiQe2GLgKQA).
 - Les interfaces [apparaissent toujours dans leurs formes originelles](/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWY2Q-YAjABMAMwALA+gbsVjNXW8yxySoAADaAA0CCaZbPh1XYqXgOIY0ZgmcK0AA0nyaLFhhGY8F4AHJmEJILCWsgZId4NNfIgGFdcIcUTVfgBlZTOWC8T7kAJ42G4eT+GS42QyRaYbCgXAEEguTzeXyCjDBSAAQSE8Ai0Xsl0K9kcziExDeiQs1lAqSE6SyOTy0AKQ2KHk4p1V6s1OuuoHuzwArMagA) dans les messages d'erreur, mais _seulement_ si elles sont utilisées avec leurs noms.
 
-La plupart du temps, vous êtes libres d'utiliser un type ou une interface, et TypeScript vous dira si vous avez besoin de l'autre déclaration. En règle générale, utilisez une `interface` sauf si vous avez besoin d'utiliser des `type`.
+La plupart du temps, vous êtes libres d'utiliser un type ou une interface et TypeScript vous dira si vous avez besoin de l'autre déclaration. En règle générale, utilisez une `interface` sauf si vous avez réellement besoin d'un `type`.
 
 ## Assertions de Types
 
-Parfois, vous aurez des informations sur le type d'une valeur que TypeScript ne connaît pas.
+Parfois, vous aurez des informations sur le type d'une valeur que TypeScript ne connait pas.
 
 Par exemple, si vous appelez `document.getElementById`, TypeScript saura uniquement que c'est une espèce d'`HTMLElement`, mais vous savez peut-être que cet appel renverra un `HTMLCanvasElement` avec un certain ID.
 
-Dans cette situation, vous pourrez utiliser une _assertion de types_ pour spécifier un type plus précis :
+Dans cette situation, au lieu d'une _annotation de types_, vous pouvez utiliser une _assertion de types_ pour spécifier un type plus précis :
 
 ```ts twoslash
 const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
 ```
 
-Tout comme les annotations, les assertions de types sont enlevées par le compilateur et n'affecteront pas l'exécution de votre code.
+Tout comme les _annotations_, les _assertions_ de types sont supprimées par le compilateur et n'affecteront donc pas l'exécution de votre code.
 
 Une écriture équivalente consiste à utiliser les chevrons (sauf si votre fichier a l'extension `.tsx`) :
 
@@ -482,8 +484,8 @@ Une écriture équivalente consiste à utiliser les chevrons (sauf si votre fich
 const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
 ```
 
-> Rappel : Les assertions de types sont retirées à la compilation, et il n'existe aucune vérification associée à ces assertions.
-> Si l'assertion est fausse, il n'y aura ni erreur ni `null` qui seront renvoyés.
+> Rappel : Les assertions de types sont supprimées à la compilation, et il n'existe aucune vérification associée à ces assertions.
+> Si l'assertion est fausse, il n'y aura ni erreur ni `null` renvoyé.
 
 TypeScript permet de faire des assertions qui sont _plus spécifiques_ ou _moins spécifiques_ que le type d'origine.
 Cette règle interdit les assertions impossibles, tel que :
@@ -518,13 +520,14 @@ changingString;
 // ^?
 
 const constantString = "Bonjour tout le monde";
-// `constantString` ne peut représenter qu'un seul string, donc TypeScript
-// lui assigne un type littéral
+// `constantString` ne peut représenter qu'un seul string, celui
+// fourni comme valeur, donc TypeScript lui assigne comme type 
+// cette valeur littérale
 constantString;
 // ^?
 ```
 
-Les types littéraux ne sont pas très utiles tous seuls :
+Les types littéraux ne sont pas très utiles tout seuls :
 
 ```ts twoslash
 // @errors: 2322
@@ -537,7 +540,7 @@ x = "salut";
 
 Une variable qui n'a qu'une seule valeur n'est pas très utile !
 
-Mais en _combinant_ les types littéraux dans des unions, vous pouvez exprimer des concepts bien plus utiles - par exemple, il est possible de créer des fonctions qui n'acceptent que certaines valeurs précises :
+Mais en _combinant_ les types littéraux dans des unions, vous pouvez exprimer des concepts bien plus utiles - par exemple, il est possible de créer des fonctions qui n'acceptent que certaines valeurs définies :
 
 ```ts twoslash
 // @errors: 2345
@@ -572,12 +575,12 @@ configure("automatic");
 ```
 
 Un autre type littéral existe : les littéraux booléens.
-Il n'existe que deux types booléens littéraux, et comme vous pourriez le deviner, ce sont `true` et `false`.
+Il n'existe que deux types booléens littéraux, et comme vous pouvez le deviner, ce sont `true` et `false`.
 Le type `boolean`, est, en réalité, un type alias de l'union `true | false`.
 
 ### Inférence littérale
 
-Quand vous créez une variable qui est un objet, TypeScript pense que les propriétés de cet objet pourraient changer de valeur.
+Quand vous créez une variable qui est un objet, TypeScript pense que les propriétés de cet objet peuvent changer de valeur.
 Par exemple, si vous écrivez ce code :
 
 ```ts twoslash
@@ -590,19 +593,19 @@ if (someCondition) {
 ```
 
 TypeScript ne pense pas qu'assigner `1` à un champ qui avait `0` est une erreur.
-En d'autres termes `obj.counter` est de type `number`, pas `0`, parce que les types sont utilisés pour déterminer le comportement à la _lecture_ et l'_écriture_.
+En d'autres termes `obj.counter` est de type `number`, pas de type `0`, parce que les types sont utilisés pour déterminer le comportement à la _lecture_ et l'_écriture_.
 
-Même chose pour les `string`:
+Cela s'applique aussi aux variables `string`:
 
 ```ts twoslash
-// @errors: 2345
+
 declare function handleRequest(url: string, method: "GET" | "POST"): void;
-// ---cut---
+
 const req = { url: "https://example.com", method: "GET" };
 handleRequest(req.url, req.method);
 ```
 
-Dans l'exemple ci-dessus, `req.method` est inféré comme étant un `string`, pas `"GET"`. BIl se peut qu'il y ait du code entre la déclaration de `req` et l'appel de `handleRequest`, et ce code pourrait assigner un nouveau `string` comme `"GUESS"` to `req.method`. Donc TypeScript considère que ce code contient une erreur.
+Dans l'exemple ci-dessus, `req.method` est inféré comme étant un `string`, pas un type `"GET"`. Il se peut qu'il y ait du code entre la déclaration de `req` et l'appel de `handleRequest`, et ce code pourrait assigner un nouveau `string` comme `"GUESS"` to `req.method`. Donc TypeScript considère que ce code contient une erreur.
 
 Il y a deux façons de corriger ce problème.
 
@@ -620,7 +623,7 @@ Il y a deux façons de corriger ce problème.
    Le premier changement signifie "Je veux que `req.method` ait toujours le type littéral `"GET"`", empêchant tout changement de cette valeur vers `"GUESS"` plus tard.
    Le deuxième changement signifie "Je sais que, pour certaines raisons, `req.method` est égal à `"GET"`".
 
-2. Vous pouvez utiliser `as const` pour convertir l'objet entier en types littéraux :
+2. Vous pouvez utiliser `as const` pour convertir l'objet entier en type littéral :
 
    ```ts twoslash
    declare function handleRequest(url: string, method: "GET" | "POST"): void;
@@ -641,7 +644,7 @@ TypeScript a deux _types_ des mêmes noms. Le comportement de ces types dépend 
 
 Si [`strictNullChecks`](/tsconfig#strictNullChecks) est _désactivé_, les valeurs qui pourraient être `null` ou `undefined` peuvent toujours être lues, et les valeurs `null` et `undefined` peuvent être assignées à des variables de tous types.
 Ce comportement est similaire aux langages qui n'ont pas de vérification pour `null` ou `undefined` (ex. Java ou C#).
-Ne pas vérifier pour ces deux valeurs tend à être une source importante de bugs ; nous recommandons toujours d'activer [`strictNullChecks`](/tsconfig#strictNullChecks) s'il est pratique de le faire.
+Ne pas vérifier ces deux valeurs est une source importante de bugs ; nous recommandons de toujours activer [`strictNullChecks`](/tsconfig#strictNullChecks) quand c'est possible.
 
 ### `strictNullChecks` activé
 
@@ -658,7 +661,7 @@ function doSomething(x: string | null) {
 }
 ```
 
-### Opérateur d'assertion non-nulle (Suffixe `!`)
+### Opérateur d'assertion non-nulle (suffixe `!`)
 
 TypeScript possède une syntaxe spéciale pour éliminer `null` et `undefined` d'un type sans passer par un rétrécissement.
 Écrire `!` après toute expression est effectivement une assertion que cette valeur n'est ni `null`, ni `undefined` :
@@ -674,11 +677,11 @@ Tout comme les autres assertions, votre code ne sera pas changé à l'exécution
 
 ## Enums
 
-Les Enums sont une fonctionnalité ajoutée à JavaScript par TypeScript. Elle permet de décrire une valeur qui pourrait faire partie d'un ensemble de constantes nommées. Au contraire de la plupart des fonctionnalités TypeScript, elle n'est _pas_ un ajout au niveau du système de types, mais bel et bien un ajout qui sera reflété à l'exécution. De ce fait, vous devriez savoir que cette possibilité existe, mais vous ne devriez vous en servir que si vous en avez la certitude. Vous pouvez lire plus dans la [page de référence d'Enums](/fr/docs/handbook/enums.html).
+Les Enums sont une fonctionnalité ajoutée à JavaScript par TypeScript. Elle permet de décrire une valeur qui pourrait faire partie d'un ensemble de constantes nommées. Au contraire de la plupart des fonctionnalités TypeScript, elle n'est _pas_ un ajout au niveau du système de types, mais bel et bien un ajout qui sera reflété à l'exécution. De ce fait, vous devez savoir que cette possibilité existe mais vous ne devez vous en servir qu'en toute connaissance de cause. Vous pouvez en apprendre plus sur la [page de référence d'Enums](/fr/docs/handbook/enums.html).
 
 ## Primitives moins fréquentes
 
-Il serait intéressant de mentionner le reste des primitives JavaScript représentées dans le système de types, bien que nous ne rentrerons pas dans leurs détails.
+Il est intéressant de mentionner, même sans entrer dans le détail, les autres primitives JavaScript représentées dans le système de types.
 
 #### `bigint`
 
@@ -710,4 +713,4 @@ if (firstName === secondName) {
 }
 ```
 
-Vous pouvez en savoir plus dans la [page de référence des Symbols](/fr/docs/handbook/symbols.html).
+Vous pouvez en apprendre plus à propos de ce type sur la [page de référence des Symbols](/fr/docs/handbook/symbols.html).
