@@ -5,6 +5,7 @@ import { navCopy } from "./nav"
 import { headCopy } from "./head-seo"
 import { docCopy } from "./documentation"
 import { indexCopy } from "./index"
+import { indexCopy as index2Copy } from "./index2"
 import { comCopy } from "./community"
 import { handbookCopy } from "./handbook"
 
@@ -17,4 +18,5 @@ export const lang = defineMessages({
   ...playCopy,
   ...comCopy,
   ...handbookCopy,
+  ...index2Copy
 })
