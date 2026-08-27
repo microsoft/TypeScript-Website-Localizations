@@ -6,7 +6,7 @@ oneline: Jak korzystać z nocnej kompilacji języka TypeScript
 translatable: true
 ---
 
-Nocna kompilacja z gałęzi „master” [TypeScript](https://github.com/Microsoft/TypeScript/tree/master) jest publikowana o północy czasu PST do npm.
+Nocna kompilacja z gałęzi „main” [TypeScript](https://github.com/Microsoft/TypeScript/tree/main) jest publikowana o północy czasu PST do npm.
 Oto, jak możesz go pobrać i używać ze swoimi narzędziami.
 
 ## Używając npm

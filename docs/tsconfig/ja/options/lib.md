@@ -66,4 +66,4 @@ TypeScriptには組み込みのJS API（例：`Math`）の型定義や、ブラ�
 | `ESNext.Intl`             |
 | `ESNext.Symbol`           |
 
-もしこのリストが古くなっている場合は、完全なリストを[TypeScript source code](https://github.com/microsoft/TypeScript/tree/master/lib)で読むことができます。
+もしこのリストが古くなっている場合は、完全なリストを[TypeScript source code](https://github.com/microsoft/TypeScript/tree/main/lib)で読むことができます。

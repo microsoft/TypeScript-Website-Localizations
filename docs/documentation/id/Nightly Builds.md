@@ -6,7 +6,7 @@ oneline: Cara menggunakan nightly build TypeScript
 translatable: true
 ---
 
-_Nightly build_ dari _branch_ [master TypeScript](https://github.com/Microsoft/TypeScript/tree/master) diterbitkan pada tengah malam, di zona waktu PST ke npm.
+_Nightly build_ dari _branch_ [main TypeScript](https://github.com/Microsoft/TypeScript/tree/main) diterbitkan pada tengah malam, di zona waktu PST ke npm.
 Berikut adalah cara untuk mendapatkan versi ini dan cara menggunakannya.
 
 ## Menggunakan npm

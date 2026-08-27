@@ -67,4 +67,4 @@ Potresti volerli cambiare per alcuni motivi:
 | `ESNext.Symbol`           |  
 
 
-Questa lista potrebbe non essere aggiornata, puoi vedere la lista completa nel [codice sorgente di TypeScript](https://github.com/microsoft/TypeScript/tree/master/lib).
+Questa lista potrebbe non essere aggiornata, puoi vedere la lista completa nel [codice sorgente di TypeScript](https://github.com/microsoft/TypeScript/tree/main/lib).

@@ -66,4 +66,4 @@ Você pode querer alterá-los por alguns motivos:
 | `ESNext.Intl`             |
 | `ESNext.Symbol`           |
 
-Esta lista pode estar desatualizada, você pode ver a lista completa no [TypeScript source code](https://github.com/microsoft/TypeScript/tree/master/lib).
+Esta lista pode estar desatualizada, você pode ver a lista completa no [TypeScript source code](https://github.com/microsoft/TypeScript/tree/main/lib).
