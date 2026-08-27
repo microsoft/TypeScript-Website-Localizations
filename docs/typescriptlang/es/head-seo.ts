@@ -7,7 +7,7 @@ export const headCopy = {
     "Referencia TSConfig - Documentación sobre todas las opciones de configuración en TSConfig",
   tsconfig_description:
     "Desde la opción allowJs a useDefineForClassFields, las referencias de TSConfig incluyen información sobre todas las configuraciones activas del compilador en un proyecto TypeScript.",
-  playground_example_prefix: "Playground Example - ",
+  playground_example_prefix: "Ejemplo de Playground - ",
 
   head_index_title: "JavaScript Escalable",
   head_index_description: "JavaScript Escalable",

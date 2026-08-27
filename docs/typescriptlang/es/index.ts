@@ -4,7 +4,7 @@ export const indexCopy = {
   index_summary:
     "TypeScript agiliza la experiencia de desarrollo al capturar errores y proveer soluciones incluso antes de ejecutar tu código.",
   index_locations:
-    "Cualquier navegador, cualquier sistema operativo, en donde JavaScript se ejecuta. Completamente Código Abierto.",
+    "Cualquier navegador, cualquier sistema operativo, en donde JavaScript se ejecuta. Completamente, Código Abierto.",
 
   index_what_is: "¿Qué es TypeScript?",
 
