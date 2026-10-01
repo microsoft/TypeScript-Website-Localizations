@@ -10,13 +10,30 @@
     "uk": 8,
     "pl": 9,
     "it": 10,
-    "fr": 100
+    "fr": 100,
+    "tr": 263
   },
   "docsRoots": [
-    { "name": "Playground", "from": "packages/playground-examples/copy/", "to": "docs/playground" },
-    { "name": "TSConfig Reference", "from": "packages/tsconfig-reference/copy/", "to": "docs/tsconfig" },
-    { "name": "Website copy", "from": "packages/typescriptlang-org/src/copy/", "to": "docs/typescriptlang" },
-    { "name": "Documentation", "from": "packages/documentation/copy/", "to": "docs/documentation" }
+    {
+      "name": "Playground",
+      "from": "packages/playground-examples/copy/",
+      "to": "docs/playground"
+    },
+    {
+      "name": "TSConfig Reference",
+      "from": "packages/tsconfig-reference/copy/",
+      "to": "docs/tsconfig"
+    },
+    {
+      "name": "Website copy",
+      "from": "packages/typescriptlang-org/src/copy/",
+      "to": "docs/typescriptlang"
+    },
+    {
+      "name": "Documentation",
+      "from": "packages/documentation/copy/",
+      "to": "docs/documentation"
+    }
   ],
   "validate": {
     "ignoreFiles": [
@@ -28,7 +45,8 @@
       "docs/typescriptlang/pt/pt.ts",
       "docs/typescriptlang/vo/vo.ts",
       "docs/typescriptlang/zh/zh.ts",
-      "docs/typescriptlang/fr/fr.ts"
+      "docs/typescriptlang/fr/fr.ts",
+      "docs/typescriptlang/tr/tr.ts"
     ]
   }
 }
