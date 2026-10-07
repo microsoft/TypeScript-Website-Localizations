@@ -13,7 +13,7 @@ jobs:
       - name: Run Codeowners merge check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: OSS-Docs-Tools/code-owner-self-merge@master
+        uses: OSS-Docs-Tools/code-owner-self-merge@35e0f55671d1cebd7c0a53e199cb3a3a03678c2b # 1.6.8
         with:
           if_no_maintainers_add_label: 'maintainers'
           if_no_maintainers_assign: '@orta'
