@@ -757,7 +757,7 @@ const angle = Math.atan2(...args);
 
 <!-- TODO link to downlevel iteration -->
 
-## 매개변수 구조 분해(Parameter Destructing)
+## 매개변수 구조 분해(Parameter Destructuring)
 
 <blockquote class='bg-reading'>
    <p>배경지식 읽기:<br />
