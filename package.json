@@ -14,7 +14,7 @@
   "dependencies": {
     "@orta/markdown-translator": "^0.4.2",
     "@oss-docs/sync": "1.1.4",
-    "danger": "^10.6.0"
+    "danger": "^13.0.8"
   },
   "devDependencies": {
     "@typescript/twoslash": "^1.1.3",
