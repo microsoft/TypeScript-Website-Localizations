@@ -32,7 +32,7 @@ Adicionalmente, certos construtos de C# e Java tais como singletons e classes es
 
 ## POO em TypeScript
 
-Com isso dito, você ainda pode usar classes se quiser! Alguns problemas são adequados a serem resolvidosp por hierarquia de POO tradicional e o suporte do TypeScript a classes JavaScript fará esses modelos ainda mais poderosos. TypeScript suporta muitos padrões comuns tais como implementar interfaces, herança e métodos estáticos.
+Com isso dito, você ainda pode usar classes se quiser! Alguns problemas são adequados a serem resolvidos por hierarquia de POO tradicional e o suporte do TypeScript a classes JavaScript fará esses modelos ainda mais poderosos. TypeScript suporta muitos padrões comuns tais como implementar interfaces, herança e métodos estáticos.
 
 Nós cobriremos classes mais tarde neste guia.
 
