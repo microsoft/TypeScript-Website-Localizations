@@ -69,3 +69,10 @@ docs/tsconfig/fr/**/*.md @ManuSquall @Ascor8522 [translation] [fr]
 docs/typescriptlang/fr/**/*.ts @ManuSquall @Ascor8522 [translation] [fr]
 docs/typescriptlang/fr.ts @ManuSquall @Ascor8522 [translation] [fr]
 docs/documentation/fr/**/*.md @ManuSquall @Ascor8522 [translation] [fr]
+
+# Collaborators for Turkish Translation of the Website
+docs/playground/tr @tunahanhaksever [translation] [tr]
+docs/tsconfig/tr/**/*.md @tunahanhaksever [translation] [tr]
+docs/typescriptlang/tr/**/*.ts @tunahanhaksever [translation] [tr]
+docs/typescriptlang/tr.ts @tunahanhaksever [translation] [tr]
+docs/documentation/tr/**/*.md @tunahanhaksever [translation] [tr]
