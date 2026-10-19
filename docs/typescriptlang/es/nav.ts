@@ -5,6 +5,6 @@ export const navCopy = {
   nav_download: "Descargar",
   nav_community: "Conectar",
   nav_tools: "Probar TypeScript!",
-  nav_search_placeholder: "Buscar en documentación",
+  nav_search_placeholder: "Buscar en la documentación",
   nav_search_aria: "Búsqueda en el sitio de TypeScript",
 }
