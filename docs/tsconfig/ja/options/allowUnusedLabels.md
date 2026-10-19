@@ -1,9 +1,13 @@
 ---
 display: "Allow Unused Labels"
-oneline: "Error when accidentally creating a label"
+oneline: "Disable error reporting for unused labels."
 ---
 
-falseにセットすると、利用していないLabelについての警告を無効化します。
+設定値:
+
+- `undefined` （デフォルト）エディターに警告として提案を表示します
+- `true` 使用していないラベルは無視されます
+- `false` 使用していないラベルについてのコンパイラエラーを発生させます
 
 JavaScriptにおいてLabelを利用することは稀ですが、オブジェクトリテラルを記述しようとしたときにLabel構文になってしまうことがあります。
 
