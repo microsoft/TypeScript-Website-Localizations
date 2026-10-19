@@ -1,4 +1,4 @@
-// Any é a cláusula de escape do Typescript. Você pode usar any para 
+package c-script// Any é a cláusula de escape do Typescript. Você pode usar any para 
 // declarar uma seção do seu código para ser dinâmica ou semelhante ao 
 // JavaScript, ou para contornar as limitações do sistema de tipos.
 
