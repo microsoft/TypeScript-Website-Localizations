@@ -4,11 +4,10 @@ layout: docs
 permalink: /fr/docs/handbook/2/basic-types.html
 oneline: "Première étape dans l'apprentissage de TypeScript : les types de base."
 preamble: >
-  <p>Bienvenue dans la première page du manuel. Si c'est votre premier contact avec TypeScript, vous voudrez peut-être commencer avec <a href='https://www.typescriptlang.org/docs/handbook/intro.html#get-started'>les guides</a></p>
+  <p>Bienvenue dans la première page du manuel. Si c'est votre premier contact avec TypeScript, il peut être bon de commencer par <a href='https://www.typescriptlang.org/docs/handbook/intro.html#get-started'>les guides</a>.</p>
 ---
 
-Chaque valeur en JavaScript a un ensemble de comportements que l'on peut observer en exécutant diverses opérations.
-Cela paraît abstrait, mais considérons cet exemple d'opérations qu'on pourrait lancer sur une variable appelée `message`.
+En JavaScript, chaque valeur possède un ensemble de comportements observables en exécutant certaines opérations. L'affirmation peut paraitre abstraite, alors considérons cet exemple d'opérations qu'on pourrait lancer sur une variable appelée `message`.
 
 ```js
 // Accès à la propriété "toLowerCase"
@@ -19,41 +18,40 @@ message.toLowerCase();
 message();
 ```
 
-Si on y va étape par étape, la première ligne accède à une propriété appelée `toLowerCase` puis l'appelle.
-La deuxième appelle `message` directement.
+La première ligne accède à une propriété appelée `toLowerCase` puis l'invoque comme une fonction.
+La seconde ligne invoque `message` directement.
 
-Mais en supposant qu'on ne connaît pas la valeur de `message` - et cela arrive souvent - nous ne pouvons pas dire quel résultat nous obtiendrons quand on essaie de lancer le code.
-Le résultat de chaque opération dépend entièrement de la valeur qu'on avait au départ.
+En supposant qu'on ne connait pas la valeur de `message` — comme cela cela arrive souvent — nous somme incapable de prédire le résultat obtienu en lançant le code. Chaque opération dépend entièrement de la valeur de `message` au départ.
 
-- Est-ce que `message` peut être appelé ?
-- Est-ce qu'il a une propriété `toLowerCase` ?
-- S'il en a une, est-ce que `toLowerCase` peut être appelée elle aussi ?
-- Si ces deux valeurs peuvent être appelées, qu'est-ce qu'elles retournent ?
+- La variable `message` peut-elle être invoquée comme une fonction ?
+- Possède-t-elle une propriété `toLowerCase` ?
+- Si `toLowerCase` existe, peut-elle être invoquée elle aussi comme une fonction ?
+- Si ces deux valeurs peuvent être appelées, que retournent-elles ?
 
-Les réponses à toutes ces questions sont normalement des informations qu'on retient en écrivant du JavaScript, tout en espérant que notre mémoire ne nous trahira pas.
+Les réponses à toutes ces questions sont des informations qu'on retient en codant, en espérant que notre mémoire ne nous trahira pas.
 
 Supposons que `message` soit défini de cette façon.
 
 ```js
-const message = "Hello World!";
+const message = "Salut le monde !";
 ```
 
-Comme vous pourrez peut-être le deviner, si nous essayons de lancer `message.toLowerCase()`, nous aurons le même string mais en minuscules.
+Comme vous pouvez le deviner si vous connaissez l'anglais, si nous lançons `message.toLowerCase()` (littéralement "message.versBasDeCasse()" donc "message.versMinuscules()"), nous obtenons la même chaine de caractères mais en minuscules.
 
-Et cette seconde ligne ?
+Et la seconde ligne ?
 Si vous êtes familier avec JavaScript, vous saurez qu'elle échouera avec l'exception :
 
 ```txt
-TypeError: message is not a function
+TypeError: message is not a function.
 ```
 
-Ce serait bien si on pouvait éviter ce genre d'erreurs.
+Ce serait formidable de pouvoir éviter ce genre d'erreurs !
 
 Quand on lance notre code, la façon dont JavaScript décide comment agir est de trouver quel est le _type_ de la valeur - quelles sortes de comportements et capacités possède-t-elle.
-C'est en partie ce que `TypeError` nous dit - le string `"Hello World!"` ne peut pas être appelé comme une fonction.
+C'est en partie ce que `TypeError` nous dit - le *string* `"Salut le monde !"` ne peut pas être appelé comme une fonction.
 
-Pour certaines valeurs, comme les `string` et `number`, nous pouvons identifier leurs types à l'exécution grâce à l'opérateur `typeof`.
-Mais pour autre chose comme des fonctions, il n'y a aucun mécanisme pour faire de même.
+Pour certaines valeurs, comme les `string` et `number`, nous pouvons identifier leurs types à l'exécution grâce à l'opérateur `typeof`. Mais pour autre chose comme des fonctions, il n'y a aucun mécanisme pour faire de même.
+
 Considérons cette fonction par exemple :
 
 ```js
@@ -132,7 +130,7 @@ Par exemple, les fautes d'orthographes :
 
 ```ts twoslash
 // @noErrors
-const announcement = "Hello World!";
+const announcement = "Salut le monde !";
 
 // Combien de temps mettrez-vous à repérer l'erreur ?
 announcement.toLocaleLowercase();
@@ -227,8 +225,8 @@ C'est le résultat de la compilation de `hello.ts` en un fichier JavaScript stan
 Observons le contenu du fichier émis par TypeScript :
 
 ```js
-// Greets the world.
-console.log("Hello world!");
+// Dire bonjour.
+console.log("bonjour !");
 ```
 
 Ici, TypeScript n'a pas eu grand-chose à transformer, donc le code final est identique au code de départ. Le compilateur essaie toujours d'émettre du code qui ressemble à ce qu'écrirait une vraie personne.
