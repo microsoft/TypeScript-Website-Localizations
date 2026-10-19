@@ -6,7 +6,7 @@ oneline: How to use a nightly build of TypeScript
 translatable: true
 ---
 
-[TypeScript의 `master`](https://github.com/Microsoft/TypeScript/tree/master) 브랜치의 nightly 빌드는 태평양 표준시(PST) 자정까지 NPM에 배포됩니다.  
+[TypeScript의 `main`](https://github.com/Microsoft/TypeScript/tree/main) 브랜치의 nightly 빌드는 태평양 표준시(PST) 자정까지 NPM에 배포됩니다.  
 도구를 사용하여 가져오는 방법과 사용하는 방법은 다음과 같습니다.
 
 ## npm 사용하기 (Using npm)

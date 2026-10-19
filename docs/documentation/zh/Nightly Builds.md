@@ -6,7 +6,7 @@ oneline: 如何使用TypeScript的每日构建版本
 translatable: true
 ---
 
-在太平洋标准时间的每日午夜，TypeScript 代码仓库中[master 分支](https://github.com/Microsoft/TypeScript/tree/master)上的代码会自动构建并发布到 npm 上。
+在太平洋标准时间的每日午夜，TypeScript 代码仓库中[main 分支](https://github.com/Microsoft/TypeScript/tree/main)上的代码会自动构建并发布到 npm 上。
 下面将介绍如何获取并结合你的工具来使用它。
 
 ## 使用 npm

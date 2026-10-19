@@ -6,7 +6,7 @@ oneline: TypeScriptのナイトリービルドを使うには
 translatable: true
 ---
 
-ナイトリービルドは、[TypeScriptの`master`](https://github.com/Microsoft/TypeScript/tree/master)ブランチからビルドされて、PST深夜0時までにnpmに公開されています。
+ナイトリービルドは、[TypeScriptの`main`](https://github.com/Microsoft/TypeScript/tree/main)ブランチからビルドされて、PST深夜0時までにnpmに公開されています。
 これを入手してご自身のツールで利用する手順は次のとおりです。
 
 ## npmを使う

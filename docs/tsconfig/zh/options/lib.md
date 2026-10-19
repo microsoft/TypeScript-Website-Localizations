@@ -66,4 +66,4 @@ TypeScript 还包括与你指定的 `target` 选项相匹配的较新的 JS 特�
 | `ESNext.Intl`             |
 | `ESNext.Symbol`           |
 
-此列表有可能会过期，你可以在 [TypeScript 源码中](https://github.com/microsoft/TypeScript/tree/master/lib)查看完整列表。
+此列表有可能会过期，你可以在 [TypeScript 源码中](https://github.com/microsoft/TypeScript/tree/main/src/lib)查看完整列表。
